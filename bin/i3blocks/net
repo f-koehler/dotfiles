@@ -1,0 +1,22 @@
+#!/bin/sh
+if [ -d "/sys/class/net/net0" ]; then
+    INTERFACE=net0
+else
+    echo "Interface ???"
+    exit 0
+fi
+
+STATE="$(cat /sys/class/net/$INTERFACE/operstate)"
+if [ "$STATE" != "up" ]; then
+    echo "down"
+    echo "down"
+    echo "#FF0000"
+    exit 0
+fi
+
+IPADDR="$(ip addr show $INTERFACE | perl -n -e'/inet (.+)\// && print $1')"
+SPEED="$(cat /sys/class/net/$INTERFACE/speed 2> /dev/null)"
+echo -n "$INTERFACE: $IPADDR"
+[ -n "$SPEED" ] && echo " ($SPEED Mbit/s)" || echo
+
+echo "$INTERFACE: $IPADDR"

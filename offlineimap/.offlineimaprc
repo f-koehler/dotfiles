@@ -1,0 +1,60 @@
+##################################################
+# General definitions
+##################################################
+
+[General]
+metadata = ~/.offlineimap
+accounts = tudo
+maxsyncaccounts = 1
+ui = basic
+pythonfile = ~/.offlineimap.py
+socktimeout = 30
+fsync = true
+
+##################################################
+# Accounts
+##################################################
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+status_backend = sqlite 
+synclabels = yes
+autorefresh = 1
+quick = 2
+
+[Repository gmail-local]
+type = GmailMaildir
+localfolders = ~/.mail/gmail
+sep = /
+
+[Repository gmail-remote]
+type = Gmail
+remoteuser = fabian2804
+remotepasseval = passwords["gmail"]
+spamfolder = spam
+cert_fingerprint = fb28fb2d7a043b18d051bd0cfddf22bfc14012fc
+maxconnections = 3
+realdelete = no
+
+[Account tudo]
+localrepository = tudo-local
+remoterepository = tudo-remote
+status_backend = sqlite
+
+[Repository tudo-local]
+type = Maildir
+localfolders = ~/.mail/tudo
+sep = /
+
+[Repository tudo-remote]
+type = IMAP
+ssl = yes
+remotehost = unimail.uni-dortmund.de
+remoteport = 993
+remoteuser = smfakoeh
+remotepasseval = mailpasswd("tudo")
+cert_fingerprint = 8358e67ad8dd3426f2735729a2ad20ef259a3dc3
+maxconnections = 3
+
+# vim: ft=cfg tw=0
