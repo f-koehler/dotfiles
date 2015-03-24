@@ -55,8 +55,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'xaizek/vim-inccomplete'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'altercation/vim-colors-solarized'
 
 "set foldmethod=syntax
