@@ -15,7 +15,7 @@
 <Multi_key> <g> <e> : "ε" U03B5 # GREEK SMALL LETTER EPSILON
 <Multi_key> <g> <z> : "ζ" U03B6 # GREEK SMALL LETTER ZETA
 <Multi_key> <g> <h> : "η" U03B7 # GREEK SMALL LETTER ETA
-#<Multi_key> <g> <h> : "θ" U03B8 # GREEK SMALL LETTER THETA
+<Multi_key> <g> <q> : "θ" U03B8 # GREEK SMALL LETTER THETA
 <Multi_key> <g> <i> : "ι" U03B9 # GREEK SMALL LETTER IOTA
 <Multi_key> <g> <k> : "κ" U03BA # GREEK SMALL LETTER KAPPA
 <Multi_key> <g> <l> : "λ" U03BB # GREEK SMALL LETTER LAMBDA
@@ -27,8 +27,10 @@
 <Multi_key> <g> <s> : "σ" U03C3 # GREEK SMALL LETTER SIGMA
 <Multi_key> <g> <t> : "τ" U03C4 # GREEK SMALL LETTER TAU
 <Multi_key> <g> <y> : "υ" U03A5 # GREEK SMALL LETTER YPSILON
-#
+<Multi_key> <g> <w> : "ω" U03C9 # GREEK SMALL LETTER OMEGA
 
 # capital greek letters
 <Multi_key> <h> <d> : "Δ" U0394 # GREEK CAPITAL LETTER DELTA
+<Multi_key> <h> <q> : "Θ" U0398 # GREEK CAPITAL LETTER THETA
 <Multi_key> <h> <g> : "Γ" U0393 # GREEK CAPITAL LETTER GAMMA
+<Multi_key> <h> <w> : "Ω" U03C9 # GREEK CAPITAL LETTER OMEGA

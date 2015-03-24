@@ -124,8 +124,8 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-noremap ö l
-noremap k k
-noremap l j
-noremap j h
-noremap h <NOP>
+" noremap ö l
+" noremap k k
+" noremap l j
+" noremap j h
+" noremap h <NOP>
