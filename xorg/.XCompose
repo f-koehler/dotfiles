@@ -34,3 +34,11 @@
 <Multi_key> <h> <q> : "Θ" U0398 # GREEK CAPITAL LETTER THETA
 <Multi_key> <h> <g> : "Γ" U0393 # GREEK CAPITAL LETTER GAMMA
 <Multi_key> <h> <w> : "Ω" U03C9 # GREEK CAPITAL LETTER OMEGA
+
+# special characters
+<Multi_key> <f> <f> : "∀" U2200 # FOR ALL
+<Multi_key> <f> <p> : "∂" U2202 # PARTIAL DIFFERENTIAL
+<Multi_key> <f> <e> : "∃" U2203 # THERE EXISTS
+<Multi_key> <f> <n> : "∇" U2206 # NABLA
+<Multi_key> <f> <e> : "∈" U2208 # ELEMENT OF
+<Multi_key> <f> <u> : "∞" U221E # INFINITY
