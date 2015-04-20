@@ -152,6 +152,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks
     font pango:Droid Sans Mono for Powerline 9, Awesome 9
+    tray_output primary
 
 	# colors {
 	# 		background #002b36

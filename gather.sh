@@ -5,7 +5,7 @@ mkdir -p bin ghc git gtk/gtk-3.0 i3 msmtp mutt offlineimap profile systemd vim x
 
 # copy folder contents
 cp -rf $HOME/.bin/* bin/
-cp -rf $HOME/.config/systemd/user/*.service systemd/
+cp -rf $HOME/.config/systemd/user/* systemd/
 cp -rf $HOME/.vim vim/
 
 # copy single files

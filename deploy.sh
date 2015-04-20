@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # create folder structure
-mkdir -p $HOME/{.bin,.config/gtk-3.0,.i3,.vim}
+mkdir -p $HOME/{.bin,.config/{gtk-3.0,systemd/user},.i3,.vim}
 
 # copy folder contents
 cp -rf bin/* $HOME/.bin
 cp -rf vim/.vim $HOME
 cp -r  xorg/.X* xorg/.x* $HOME
+cp -rf systemd/* $HOME/.config/systemd/user/
 
 # copy single files
 cp -f ghc/.ghci $HOME
