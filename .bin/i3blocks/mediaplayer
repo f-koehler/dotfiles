@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if ps ax | grep -v grep | grep 'amarok' > /dev/null; then
+    echo "$(playerctl metadata artist) - $(playerctl metadata title)"
+    exit 0
+fi
+
+if ps ax | grep -v grep | grep 'vlc' > /dev/null; then
+    echo "$(playerctl metadata url)"
+    exit 0
+fi

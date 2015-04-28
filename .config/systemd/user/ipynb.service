@@ -1,0 +1,11 @@
+[Unit]
+Description=IPython notebook
+
+[Service]
+Type=simple
+PIDFile=/home/fabian/.cache/ipython-notebook.pid
+ExecStart=/usr/bin/ipython notebook --no-browser
+WorkingDirectory=/home/fabian/notebooks/python
+
+[Install]
+WantedBy=multi-user.target
