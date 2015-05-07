@@ -18,11 +18,6 @@ if [[ -f "/usr/bin/ruby" ]]; then
     pathadd $GEMDIR
 fi
 
-# TexLive paths
-export PATH=$PATH:/usr/local/texlive/2014/bin/x86_64-linux
-export MANPATH=$MANPATH:/usr/local/texlive/2014/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:/usr/local/texlive/2014/texmf-dist/doc/info
-
 # set compilers
 export CC=clang
 export CXX=clang++
@@ -31,7 +26,6 @@ alias v="vim"
 alias t="urxvtc"
 alias hi="pygmentize -g"
 alias open="xdg-open"
-alias update_submodules="git submodule update --init --recursive && git pull --recurse-submodules && git submodule update --recursive"
 
 function extract {
     if [ -z "$1" ]; then
