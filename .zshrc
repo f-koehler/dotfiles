@@ -14,7 +14,7 @@ CASE_SENSITIVE="true"
 DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=4
+# export UPDATE_ZSH_DAYS=4
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -79,39 +79,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias v="vim"
-alias t="urxvtc"
-alias hi="pygmentize -g"
-alias open="xdg-open"
-
 source ~/.profile
-
-function extract {
-    if [ -z "$1" ]; then
-        echo "Usage: extract FILEPATH"
-        return
-    fi
-
-    if [ ! -f $1 ] ; then
-        echo "extract: File \"$1\" does not exist"
-    fi
-    
-    case $1 in
-        *.tar.bz2)   tar xvjf $1    ;;
-        *.tar.gz)    tar xvzf $1    ;;
-        *.tar.xz)    tar xvJf $1    ;;
-        *.lzma)      unlzma $1      ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar x -ad $1 ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xvf $1     ;;
-        *.tbz2)      tar xvjf $1    ;;
-        *.tgz)       tar xvzf $1    ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *.xz)        unxz $1        ;;
-        *.exe)       cabextract $1  ;;
-        *)           echo "extract: Unhandled archive type of file \"$1\"" ;;
-    esac
-}

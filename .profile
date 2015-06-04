@@ -26,7 +26,7 @@ alias v="vim"
 alias t="urxvtc"
 alias hi="pygmentize -g"
 alias open="xdg-open"
-alias lolcow="cowsay | lolcat"
+
 
 function extract {
     if [ -z "$1" ]; then
