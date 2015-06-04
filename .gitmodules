@@ -17,7 +17,7 @@
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vundle.vim"]
-	path = .vim/bundle/vundle.vim
+	path = .vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.vim.git
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
