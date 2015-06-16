@@ -33,6 +33,7 @@
 <Multi_key> <h> <d> : "Δ" U0394 # GREEK CAPITAL LETTER DELTA
 <Multi_key> <h> <q> : "Θ" U0398 # GREEK CAPITAL LETTER THETA
 <Multi_key> <h> <g> : "Γ" U0393 # GREEK CAPITAL LETTER GAMMA
+<Multi_key> <h> <p> : "Π" U03A0 # GREEK CAPITAL LETTER PI
 <Multi_key> <h> <w> : "Ω" U03C9 # GREEK CAPITAL LETTER OMEGA
 
 # special characters

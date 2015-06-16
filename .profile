@@ -18,6 +18,8 @@ if [[ -f "/usr/bin/ruby" ]]; then
     pathadd $GEMDIR
 fi
 
+pathadd /opt/intel/bin
+
 # set compilers
 export CC=clang
 export CXX=clang++

@@ -175,12 +175,9 @@ client.urgent           #cd322f #dc322f #fdf6e3 #dc322f
 focus_follows_mouse no
 
 
+exec xrdb .Xresources
+exec urxvtd -q -o
 exec setxkbmap -layout de -variant nodeadkeys -option compose:caps
-exec xrdb ~/.Xresources
-exec xmodmap ~/.Xmodmap
 exec xset -b
-exec numlockx off
-exec urxvtd
 exec thunar --daemon
 exec mpd ~/.config/mpd/mpd.conf
-exec feh --bg-center /usr/share/archlinux/wallpaper/archlinux-simplyblack.png

@@ -1,9 +1,0 @@
-[Unit]
-Description=Network Manager Applet
-
-[Service]
-ExecStart=/usr/bin/nm-applet
-Environment=DISPLAY=:0
-
-[Install]
-WantedBy=default.target
