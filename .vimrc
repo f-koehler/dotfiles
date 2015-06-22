@@ -58,6 +58,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'rhysd/vim-clang-format'
 
 "set foldmethod=syntax
 
