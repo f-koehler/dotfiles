@@ -153,7 +153,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks
     font pango:Droid Sans Mono for Powerline 9, Awesome 9
-    tray_output primary
+    # tray_output primary
 
 	# colors {
 	# 		background #002b36
@@ -175,7 +175,7 @@ client.urgent           #cd322f #dc322f #fdf6e3 #dc322f
 focus_follows_mouse no
 
 
-exec xrdb .Xresources
+exec xrdb ~/.Xresources
 exec urxvtd -q -o
 exec setxkbmap -layout de -variant nodeadkeys -option compose:caps
 exec xset -b
