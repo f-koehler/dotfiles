@@ -28,6 +28,7 @@ alias v="vim"
 alias t="urxvtc"
 alias hi="pygmentize -g"
 alias open="xdg-open"
+alias ssh="TERM=xterm-256color ssh"
 
 
 function extract {
