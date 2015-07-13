@@ -4,7 +4,7 @@
 
 [general]
 metadata = ~/.offlineimap
-accounts = tudo
+accounts = tudo,gmail
 maxsyncaccounts = 1
 ui = basic
 pythonfile = ~/.offlineimap.py
@@ -30,10 +30,10 @@ sep = /
 
 [Repository gmail-remote]
 type = Gmail
-remoteuser = fabian2804
-remotepasseval = passwords["gmail"]
+remoteuser = fkoehler1024
+remotepasseval = mailpasswd("fkoehler1024@gmail.com") 
 spamfolder = spam
-cert_fingerprint = fb28fb2d7a043b18d051bd0cfddf22bfc14012fc
+cert_fingerprint = ce8f7fb8b2ed0cae4cb9a9855c2cbbae911a0b10
 maxconnections = 3
 realdelete = no
 
@@ -53,7 +53,7 @@ ssl = yes
 remotehost = unimail.uni-dortmund.de
 remoteport = 993
 remoteuser = smfakoeh
-remotepasseval = mailpasswd("tudo")
+remotepasseval = mailpasswd("fabian.koehler@udo.edu")
 cert_fingerprint = 8358e67ad8dd3426f2735729a2ad20ef259a3dc3
 maxconnections = 3
 
