@@ -14,14 +14,14 @@ set header_cache=~/.cache/mutt/tudo-headers
 
 # set mbox_type=Maildir
 # set folder=~/.mail
-# set realname="Fabian Köhler"
+set realname="Fabian Köhler"
 # set sendmail="/usr/bin/msmtp -a tudo"
 # set spoolfile=+tudo/INBOX
 # set record=+tudo/INBOX/sent
 # set postponed=+tudo/INBOX/drafts
 # set header_cache=~/.cache/mutt
-# set send_charset = "utf-8"
+set send_charset = "utf-8"
 
-# set date_format = "%y-%m-%d"
-
+set date_format = "%y-%m-%d"
+set sort = date
 #source ~/.colors.muttrc

@@ -4,7 +4,7 @@
 
 [general]
 metadata = ~/.offlineimap
-accounts = tudo,gmail
+accounts = tudo
 maxsyncaccounts = 1
 ui = basic
 pythonfile = ~/.offlineimap.py
