@@ -64,12 +64,7 @@ Bundle 'rhysd/vim-clang-format'
 
 " color scheme
 syntax enable
-let hour = strftime("%H")
-if 6 <= hour && hour < 18
-  set background=light
-else
-  set background=dark
-endif
+set background=dark
 colorscheme solarized
 
 " Syntastic configuration
@@ -128,9 +123,3 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-" noremap ö l
-" noremap k k
-" noremap l j
-" noremap j h
-" noremap h <NOP>
