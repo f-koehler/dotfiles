@@ -81,4 +81,4 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.profile
 
-source /etc/profile.d/modules.sh
+# source /etc/profile.d/modules.sh
