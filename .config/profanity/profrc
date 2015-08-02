@@ -1,0 +1,21 @@
+[ui]
+splash=false
+intype=true
+flash=false
+theme=forest
+
+[notifications]
+message=true
+typing=true
+invite=true
+sub=true
+
+[connection]
+autoping=60
+reconnect=5
+account=fkoehler@jabber.de
+
+[presence]
+autoaway.mode=away
+autoaway.time=10
+autoaway.message=Send me a carrier pidgeon as I am apparently afk
