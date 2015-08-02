@@ -2,7 +2,6 @@
 splash=false
 intype=true
 flash=false
-theme=forest
 
 [notifications]
 message=true
@@ -18,4 +17,8 @@ account=fkoehler@jabber.de
 [presence]
 autoaway.mode=away
 autoaway.time=10
-autoaway.message=Send me a carrier pidgeon as I am apparently afk
+autoaway.message=Send me a carrier pidgeon or smoke signals as I am apparently afk
+
+[logging]
+chlog=true
+grlog=true
