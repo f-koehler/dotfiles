@@ -37,6 +37,9 @@ set tabstop=4
 " will be reactivated after vundle is done
 filetype off
 
+" line breaks at words
+set linebreak
+
 " tab switching and moving key shortcuts
 noremap <C-j> :tabprevious<CR>
 noremap <C-k> :tabnext<CR>

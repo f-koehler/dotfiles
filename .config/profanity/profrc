@@ -3,6 +3,8 @@ splash=false
 intype=true
 flash=false
 
+beep=true
+
 [notifications]
 message=true
 typing=true
