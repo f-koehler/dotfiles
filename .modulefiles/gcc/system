@@ -1,0 +1,7 @@
+proc ModulesHelp { } {
+    puts stderr "Load the default version of gcc"
+    puts stderr ""
+}
+
+setenv CC "gcc"
+setenv CXX "g++"

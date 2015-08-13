@@ -116,8 +116,8 @@ set expandtab
 
 " file specific indentation
 autocmd FileType tex setlocal shiftwidth=2 tabstop=1
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
-autocmd FileType htm setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType html,htm,xml setlocal shiftwidth=2 tabstop=2 expandtab
+" autocmd FileType htm setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 expandtab
 "autocmd FileType py setlocal shiftwidth=4 tabstop=4
 "autocmd BufRead,BufNewFile CMakeLists.txt,*.cmake,*.cmake.in setlocal shiftwidth=1 tabstop=1

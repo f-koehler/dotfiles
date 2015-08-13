@@ -30,6 +30,8 @@ alias hi="pygmentize -g"
 alias open="xdg-open"
 alias ssh="TERM=xterm-256color ssh"
 
+export MODULEPATH=$MODULEPATH:$HOME/.modulefiles
+source /etc/profile.d/modules.sh
 
 function extract {
     if [ -z "$1" ]; then
