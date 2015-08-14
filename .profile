@@ -29,6 +29,7 @@ alias t="urxvtc"
 alias hi="pygmentize -g"
 alias open="xdg-open"
 alias ssh="TERM=xterm-256color ssh"
+alias startx="ssh-agent startx"
 
 export MODULEPATH=$MODULEPATH:$HOME/.modulefiles
 source /etc/profile.d/modules.sh
