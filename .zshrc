@@ -83,4 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+
 source ~/.profile
