@@ -18,12 +18,6 @@ if [[ -f "/usr/bin/ruby" ]]; then
     pathadd $GEMDIR
 fi
 
-pathadd /opt/intel/bin
-
-# set compilers
-export CC=clang
-export CXX=clang++
-
 alias v="vim"
 alias t="urxvtc"
 alias hi="pygmentize -g"
@@ -63,3 +57,19 @@ function extract {
         *)           echo "extract: Unhandled archive type of file \"$1\"" ;;
     esac
 }
+
+function use_clang {
+    export CC=clang
+    export CXX=clang++
+    export MPICH_CC=clang
+    export MPICH_CXX=clang++
+}
+
+function use_gcc {
+    export CC=gcc
+    export CXX=g++
+    export MPICH_CC=gcc
+    export MPICH_CXX=g++
+}
+
+use_clang
