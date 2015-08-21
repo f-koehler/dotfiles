@@ -1,15 +1,16 @@
 " basic configuration
-set background=dark   " use dark background
-set history=1000      " long command history
-set incsearch         " search while typing
-set linebreak         " when wrapping, break at words
-set nocompatible      " be IMproved
-set number            " line numbers
-set scrolloff=5       " show 5 lines before after cursor
-set showmatch         " hghlight matching braket
-set ttyfast           " fast terminal connection
-set wrap              " wrap long lines
-syntax on             " enable syntax highlighting
+set background=dark            " use dark background
+set history=1000               " long command history
+set incsearch                  " search while typing
+set linebreak                  " when wrapping, break at words
+set nocompatible               " be IMproved
+set number                     " line numbers
+set scrolloff=5                " show 5 lines before after cursor
+set showmatch                  " hghlight matching braket
+set ttyfast                    " fast terminal connection
+set wrap                       " wrap long lines
+syntax on                      " enable syntax highlighting
+set backspace=indent,eol,start " modify backspace behaviour
 
 " train yourself not to use the arrow keys
 noremap <Down>  <NOP>
@@ -38,6 +39,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-vinegar'
 Bundle 'valloric/YouCompleteMe'
 colorscheme solarized " use solarized color scheme
@@ -52,39 +54,16 @@ let g:syntastic_check_on_open = 1            " perform check if buffer is first 
 let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
 
 " YouCompleteMe configuration
-let g:ycm_seed_identifiers_with_syntax = 1 " seed syntastic database with language keywords
-let g:ycm_global_ycm_extra_conf = "~/.vim/ycm.py" " set a global default .ycm_extra_conf.py file
 let g:ycm_auto_trigger = 1 " automatically trigger completion
 let g:ycm_complete_in_comments = 0 " do not complete in comments
 let g:ycm_complete_in_strings = 0 " do not complete in strings
 let g:ycm_extra_conf_globlist = ["~/code/*"] " in these places .ycm_extra_conf.py files will be automatically loaded
+let g:ycm_global_ycm_extra_conf = "~/.vim/ycm.py" " set a global default .ycm_extra_conf.py file
+let g:ycm_seed_identifiers_with_syntax = 1 " seed syntastic database with language keywords
 
 " airline configuration
 set laststatus=2                               " give all windwos a status line
-let g:airline_powerline_fonts              = 1 " use the patched fonts
-let g:airline#extensions#tabline#enabled   = 1 " use enhanced tabline
 let g:airline#extensions#branch#enabled    = 1 " fugitive/lawrencium integration
 let g:airline#extensions#syntastic#enabled = 1 " enable syntastic integration
-
-" " influence the behaviour of backspace, delete etc.
-" set backspace=indent,eol,start
-
-" " do loads of scanning for completion
-" set complete=.,w,b,u,U,t,i,d
-
-" " will be reactivated after vundle is done
-" filetype off
-
-" " tab switching and moving key shortcuts
-" noremap <C-j> :tabprevious<CR>
-" noremap <C-k> :tabnext<CR>
-" " nnoremap <silent> <C-S-h> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-" " nnoremap <silent> <C-S-l> :execute 'silent! tabmove ' . tabpagenr()<CR>)
-
-" " show all buffers as tabs
-" let notabs = 1
-" nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-
-" " Load bundles
-" Bundle 'tpope/vim-surround'
-" Bundle 'rhysd/vim-clang-format'
+let g:airline#extensions#tabline#enabled   = 1 " use enhanced tabline
+let g:airline_powerline_fonts              = 1 " use the patched fonts
