@@ -1,5 +1,0 @@
-#!/bin/sh
-df -hPl $1 | awk '/\/.*/ {
-    print $4
-}
-'

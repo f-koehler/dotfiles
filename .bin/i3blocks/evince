@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ "$#" -lt 2 ]]; then
-    (evince &> /dev/null &)
-else
-    (evince $1 &> /dev/null &)
-fi

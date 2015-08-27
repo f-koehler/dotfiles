@@ -1,5 +1,0 @@
-#!/bin/bash
-
-git gc
-git prune
-git fsck

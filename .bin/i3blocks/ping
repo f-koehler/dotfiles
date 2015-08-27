@@ -1,2 +1,0 @@
-#!/bin/sh
-ping google.de -i 0.2 -c 3 | grep rtt | awk -F"/" '{ print $5" ms"}'
