@@ -4,3 +4,6 @@
 [submodule "xorg"]
 	path = xorg
 	url = git@github.com:f-koehler/vcsh-xorg.git
+[submodule "vcsh-modulefiles"]
+    path = vcsh-modulefiles
+    url = git@github.com:f-koehler/vcsh-vim.git
