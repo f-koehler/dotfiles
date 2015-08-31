@@ -17,3 +17,6 @@
 [submodule "modulefiles"]
 	path = modulefiles
 	url = git@github.com:f-koehler/vcsh-modulefiles.git
+[submodule "bash"]
+	path = bash
+	url = git@github.com:f-koehler/vcsh-bash.git
