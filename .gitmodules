@@ -20,3 +20,6 @@
 [submodule "bash"]
 	path = bash
 	url = git@github.com:f-koehler/vcsh-bash.git
+[submodule "systemd-user"]
+	path = systemd-user
+	url = git@github.com:f-koehler/vcsh-systemd-user.git
