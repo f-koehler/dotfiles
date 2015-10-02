@@ -1,0 +1,6 @@
+# vim
+.netrwhist
+*.pyc
+*.spl
+.vim/bundle/*
+!.vim/bundle/vundle
