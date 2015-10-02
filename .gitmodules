@@ -1,25 +1,3 @@
-[submodule "vim"]
-	path = vim
-	url = git@github.com:f-koehler/vcsh-vim.git
-[submodule "vim-mini"]
-	path = vim-mini
-	url = git@github.com:f-koehler/vcsh-vim.git
-	branch = mini
-[submodule "xorg"]
-	path = xorg
-	url = git@github.com:f-koehler/vcsh-xorg.git
 [submodule "vcsh-modulefiles"]
     path = modulefiles
     url = git@github.com:f-koehler/vcsh-vim.git
-[submodule "i3"]
-	path = i3
-	url = git@github.com:f-koehler/vcsh-i3.git
-[submodule "modulefiles"]
-	path = modulefiles
-	url = git@github.com:f-koehler/vcsh-modulefiles.git
-[submodule "bash"]
-	path = bash
-	url = git@github.com:f-koehler/vcsh-bash.git
-[submodule "systemd-user"]
-	path = systemd-user
-	url = git@github.com:f-koehler/vcsh-systemd-user.git
