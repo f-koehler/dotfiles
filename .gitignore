@@ -1,9 +1,18 @@
 *
 
+# gtk
 !.config/gtk-3.0/settings.ini
 !.gtkrc-2.0
+
+# i3
 !.i3
 !.i3/config
 !.i3blocks.conf
+
+# vim
 !.vim/
-!.vimrc
+.vimrc
+
+# zsh
+!.zshrc
+!.local.zsh
