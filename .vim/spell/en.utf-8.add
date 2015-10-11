@@ -25,6 +25,8 @@ alg
 analyse
 behaviour
 callees
+discretizations
+exaflop
 exascale
 gprof
 gprof2dot
@@ -36,5 +38,3 @@ pseudocode
 substep
 substepping
 substeps
-exaflop
-discretizations
