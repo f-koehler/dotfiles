@@ -10,8 +10,9 @@
 !.i3blocks.conf
 
 # vim
-!.vim/
-.vimrc
+!.vim/*
+!.vimrc
+.vim/bundle/*
 
 # zsh
 !.zshrc
