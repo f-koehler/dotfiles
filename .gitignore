@@ -1,5 +1,8 @@
 *
 
+# git
+!.gitconfig
+
 # gtk
 !.config/gtk-3.0/settings.ini
 !.gtkrc-2.0
@@ -13,6 +16,11 @@
 !.vim/*
 !.vimrc
 .vim/bundle/*
+
+# xorg
+!.Xresources
+!.XCompose
+!.xinitrc
 
 # zsh
 !.zshrc
