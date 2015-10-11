@@ -91,7 +91,8 @@ URxvt*cursorColor:                    #aeafad
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
 ! URxvt*font:                           xft:DejaVu Sans Mono for Powerline:pixelsize=13
-URxvt*font:                           xft:Droid Sans Mono for Powerline:pixelsize=13, xft:DejaVu Sans Mono for Powerline:pixelsize=13
+! URxvt*font:                           xft:Droid Sans Mono for Powerline:pixelsize=13, xft:DejaVu Sans Mono for Powerline:pixelsize=13
+URxvt*font:                           xft:Droid Sans Mono for Powerline:size=9
 ! URxvt*boldFont:                       fontname
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname

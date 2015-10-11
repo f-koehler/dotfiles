@@ -86,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey "^[Od" backward-word
 bindkey "^[Oc" forward-word
 
-source ~/.profile
+# source ~/.profile
 
 PS1_LINE=$'%{$fg[blue]%}${(r:$(expr $COLUMNS - 9)::\u2500:)} %*\n'
 PS1_PROMPT=$'%{$fg[green]%}%B%n@%m%b %{$fg[red]%}%~ %{$fg[green]%}$(git_prompt_info)%B%{$fg[green]%}\$%b %{$reset_color%}'
