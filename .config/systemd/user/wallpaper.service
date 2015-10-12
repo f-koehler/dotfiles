@@ -1,0 +1,10 @@
+[Unit]
+Description=Random wallpaper with feh
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=%h/.local/bin/wallpaper.py
+
+[Install]
+WantedBy=default.target

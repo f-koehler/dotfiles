@@ -23,6 +23,11 @@
 !.i3/config
 !.i3blocks.conf
 
+# local binaries
+!.local
+!.local/bin
+!.local/bin/*
+
 # systemd user
 !.config
 !.config/systemd
