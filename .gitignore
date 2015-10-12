@@ -2,7 +2,9 @@
 
 # bash
 !.bashrc
+!.bash_profile
 !.local.sh
+!.profile.sh
 
 # beets
 !.config
@@ -24,6 +26,7 @@
 # systemd user
 !.config
 !.config/systemd
+!.config/systemd/user
 !.config/systemd/user/*.service
 !.config/systemd/user/*.target
 !.config/systemd/user/*.timer
@@ -42,4 +45,5 @@
 
 # zsh
 !.zshrc
+!.zprofile
 !.local.zsh
