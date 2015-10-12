@@ -1,1 +1,1 @@
-exec ssh-agent i3
+exec i3
