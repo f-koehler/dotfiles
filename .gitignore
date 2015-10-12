@@ -21,6 +21,13 @@
 !.i3/config
 !.i3blocks.conf
 
+# systemd user
+!.config
+!.config/systemd
+!.config/systemd/user/*.service
+!.config/systemd/user/*.target
+!.config/systemd/user/*.timer
+
 # vim
 !.nvimrc
 !.nvim

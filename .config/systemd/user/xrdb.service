@@ -1,0 +1,10 @@
+[Unit]
+Description=Load ~/.Xresources
+Documentation=man:xrdb(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb -merge %h/.Xresources
+
+[Install]
+WantedBy=desktop.target
