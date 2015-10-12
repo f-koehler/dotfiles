@@ -17,6 +17,8 @@
 !.i3blocks.conf
 
 # vim
+!.nvimrc
+!.nvim
 !.vim/*
 !.vimrc
 .vim/bundle/*
