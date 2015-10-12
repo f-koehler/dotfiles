@@ -8,3 +8,5 @@ export PS1="\[$(tput bold)\]\[\033[38;5;2m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
+
+source .local.sh
