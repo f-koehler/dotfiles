@@ -158,3 +158,5 @@ bar {
 }
 
 focus_follows_mouse no
+
+exec --no-startup-id i3-msg "workspace 9; exec thunderbird; exec keepass"
