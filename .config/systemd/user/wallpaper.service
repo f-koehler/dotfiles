@@ -4,7 +4,7 @@ Description=Random wallpaper with feh
 [Service]
 Type=oneshot
 Environment=DISPLAY=:0
-ExecStart=%h/.local/bin/wallpaper.py
+ExecStart=/home/fabian/.local/bin/wallpaper
 
 [Install]
 WantedBy=default.target
