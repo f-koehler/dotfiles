@@ -7,4 +7,4 @@ export PS1=${PS1_LINE}${PS1_PROMPT}
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
-source .local.sh
+source ~/.local.sh
