@@ -11,6 +11,7 @@ export MANPATH=/usr/local/texlive/2015/texmf-dist/doc/man:${MANPATH}
 export PATH=/usr/local/lmod/lmod/libexec:${PATH}
 
 alias hi="pygmentize -O style=vim -f terminal -g"
+alias update_submodules="git submodule foreach --recursive 'git fetch origin; git checkout $(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'"
 
 function extract {
     if [ -z "$1" ]; then
