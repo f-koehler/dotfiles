@@ -158,3 +158,6 @@ bar {
 }
 
 focus_follows_mouse no
+
+exec xset b off
+exec xset b 0 0 0
