@@ -1,0 +1,11 @@
+[Unit]
+Description=Set X keyboard layout
+Documentation=man:setxkbmap(1)
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/setxkbmap -variant nodeadkeys de
+
+[Install]
+WantedBy=default.target

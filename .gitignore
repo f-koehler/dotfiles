@@ -1,5 +1,19 @@
 *
 
+# bash
+!.bashrc
+!.bash_profile
+!.local.sh
+!.profile.sh
+
+# beets
+!.config
+!.config/beets/
+!.config/beets/config.yaml
+
+# git
+!.gitconfig
+
 # gtk
 !.config/gtk-3.0/settings.ini
 !.gtkrc-2.0
@@ -9,10 +23,32 @@
 !.i3/config
 !.i3blocks.conf
 
+# local binaries
+!.local
+!.local/bin
+!.local/bin/*
+
+# systemd user
+!.config
+!.config/systemd
+!.config/systemd/user
+!.config/systemd/user/*.service
+!.config/systemd/user/*.target
+!.config/systemd/user/*.timer
+
 # vim
-!.vim/
-.vimrc
+!.nvimrc
+!.nvim
+!.vim/*
+!.vimrc
+.vim/bundle/*
+
+# xorg
+!.Xresources
+!.XCompose
+!.xinitrc
 
 # zsh
 !.zshrc
+!.zprofile
 !.local.zsh

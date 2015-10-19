@@ -1,0 +1,21 @@
+directory: /media/data/music
+library: ~/.local/share/beets/library.blb
+threaded: yes
+
+import:
+    move: yes
+
+paths:
+    default: $albumartist/$album%aunique{}/$track - $title
+    singleton: Non-Album/$artist/$title
+    comp: Compilations/$album%aunique{}/$track - $title
+    albumtype:soundtrack: Soundtracks/$album/$track - $title
+
+plugins: chroma discogs lyrics duplicates
+
+badfiles:
+    commands:
+        flac: flac --test --warnings-as-errors --silent
+
+chroma:
+    auto: yes

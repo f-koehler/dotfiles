@@ -159,5 +159,10 @@ bar {
 
 focus_follows_mouse no
 
+<<<<<<< HEAD
 exec xset b off
 exec xset b 0 0 0
+=======
+exec --no-startup-id i3-msg "workspace 9; exec thunderbird; exec keepass"
+exec --no-startup-id i3-msg "workspace 1; exec urxvt"
+>>>>>>> ffc4f18cb8b73751dfebe2df2790fca51b2acd83

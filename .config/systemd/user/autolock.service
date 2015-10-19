@@ -1,0 +1,8 @@
+[Unit]
+Description=Automatically lock screen
+
+[Service]
+ExecStart=/usr/bin/xautolock -time 5 -locker "i3lock"
+
+[Install]
+WantedBy=desktop.target
