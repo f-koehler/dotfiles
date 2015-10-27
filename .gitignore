@@ -28,6 +28,9 @@
 !.local/bin
 !.local/bin/*
 
+# neovim
+!.config/nvim
+
 # systemd user
 !.config
 !.config/systemd
@@ -37,11 +40,13 @@
 !.config/systemd/user/*.timer
 
 # vim
-!.nvimrc
-!.nvim
-!.vim/*
+!.vim/
+!.vim/ftplugin
+!.vim/ftplugin/*
+!.vim/init.vim
+!.vim/spell/
+!.vim/spell/*.add
 !.vimrc
-.vim/bundle/*
 
 # xorg
 !.Xresources
