@@ -11,11 +11,36 @@ paths:
     comp: Compilations/$album%aunique{}/$track - $title
     albumtype:soundtrack: Soundtracks/$album/$track - $title
 
-plugins: chroma discogs lyrics duplicates
+plugins:
+    - chroma
+    - discogs
+    - duplicates
+    - embedart
+    - fetchart
+    - lyrics
+    - missing
 
 badfiles:
     commands:
         flac: flac --test --warnings-as-errors --silent
 
+embedart:
+    auto: no
+
+fetchart:
+    auto: no
+    cautios: yes
+    minwith: 500
+    maxwidth: 20000
+    sources: wikipedia google *
+
 chroma:
     auto: yes
+
+lyrics:
+    auto: yes
+
+missing:
+    format: $albumartist - $album - $title
+    count: no
+    total: no
