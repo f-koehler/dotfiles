@@ -28,6 +28,9 @@
 !.local/bin
 !.local/bin/*
 
+# neovim
+!.config/nvim
+
 # systemd user
 !.config
 !.config/systemd
@@ -37,9 +40,10 @@
 !.config/systemd/user/*.timer
 
 # vim
-!.nvimrc
-!.nvim
-!.vim/*
+!.vim/
+!.vim/ftplugin
+!.vim/ftplugin/*
+!.vim/init.vim
 !.vimrc
 .vim/bundle/*
 
