@@ -43,6 +43,7 @@
 <Multi_key> <f> <e> : "∃" U2203 # THERE EXISTS
 <Multi_key> <f> <n> : "∇" U2206 # NABLA
 <Multi_key> <f> <i> : "∈" U2208 # ELEMENT OF
+<Multi_key> <f> <r> : "∘" U2218 # RING OPERATOR
 <Multi_key> <f> <u> : "∞" U221E # INFINITY
 
 # fields
