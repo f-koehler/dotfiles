@@ -39,18 +39,18 @@ autocmd BufRead,BufNewFile *.tikz set filetype=tex
 autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 
 " load plugins with vundle
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-vinegar'
-Bundle 'valloric/YouCompleteMe'
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'gmarik/vundle'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'valloric/YouCompleteMe'
+call plug#end()
 colorscheme solarized " use solarized color scheme
 
 " syntastic config
