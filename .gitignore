@@ -41,6 +41,8 @@
 
 # vim
 !.vim/
+!.vim/autoload
+!.vim/autoload/*.vim
 !.vim/ftplugin
 !.vim/ftplugin/*
 !.vim/init.vim
