@@ -38,13 +38,12 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *.tikz set filetype=tex
 autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 
-" load plugins with vundle
+" load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'gmarik/vundle'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
