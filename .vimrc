@@ -38,18 +38,25 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *.tikz set filetype=tex
 autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 
+" function that compiles YouCompleteMe
+function! BuildYouCompleteMe(info)
+    if a:info.status != 'unchanged' || a:info.force
+        !python2 ./install.py --clang-completer --system-libclang --system-boost
+    endif
+endfunction
+
 " load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
-Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'valloric/YouCompleteMe'
+Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 call plug#end()
 colorscheme solarized " use solarized color scheme
 
