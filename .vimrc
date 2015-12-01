@@ -41,7 +41,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang --system-boost
+        !python2 ./install.py --clang-completer --system-libclang
     endif
 endfunction
 
@@ -50,7 +50,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
