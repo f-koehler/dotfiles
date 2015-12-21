@@ -25,8 +25,8 @@
 
 # .local/bin
 !./local
-!./local/bin
-!./local/bin/*
+!./local/bin/
+!./local/bin/touchpad_toggle
 
 # neovim
 !.config/nvim
