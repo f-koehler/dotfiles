@@ -91,3 +91,7 @@ map <C-h> :bp<cr>
 map <C-l> :bn<cr>
 
 set spelllang=en
+
+" http://llvm.org/svn/llvm-project/cfe/tags/RELEASE_371/final/tools/clang-format/
+map <C-K> :pyf $HOME/.vim/clang-format.py<cr>
+imap <C-K> <c-o>:pyf $HOME/clang-format.py<cr>
