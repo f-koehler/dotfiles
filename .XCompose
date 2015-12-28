@@ -38,6 +38,8 @@
 <Multi_key> <h> <w> : "Ω" U03C9 # GREEK CAPITAL LETTER OMEGA
 
 # special characters
+<Multi_key> <f> <h> : "ℏ" U210F # PLANCK CONSTANT OVER TWO PI
+<Multi_key> <f> <d> : "⋅" U22C5 # DOT OPERATOR
 <Multi_key> <f> <f> : "∀" U2200 # FOR ALL
 <Multi_key> <f> <p> : "∂" U2202 # PARTIAL DIFFERENTIAL
 <Multi_key> <f> <e> : "∃" U2203 # THERE EXISTS
