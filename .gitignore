@@ -23,6 +23,11 @@
 !.i3/config
 !.i3blocks.conf
 
+# .local/bin
+!./local
+!./local/bin/
+!./local/bin/touchpad_toggle
+
 # neovim
 !.config/nvim
 
@@ -38,6 +43,7 @@
 !.vim/
 !.vim/autoload
 !.vim/autoload/*.vim
+!.vim/clang-format.py
 !.vim/ftplugin
 !.vim/ftplugin/*
 !.vim/init.vim
@@ -49,6 +55,7 @@
 !.Xresources
 !.XCompose
 !.xinitrc
+!.xbindkeysrc
 
 # zsh
 !.zshrc

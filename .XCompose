@@ -10,34 +10,37 @@
 # small greek letters
 <Multi_key> <g> <a> : "α" U03B1 # GREEK SMALL LETTER ALPHA
 <Multi_key> <g> <b> : "β" U03B2 # GREEK SMALL LETTER BETA
-<Multi_key> <g> <g> : "γ" U03B3 # GREEK SMALL LETTER GAMMA
 <Multi_key> <g> <d> : "δ" U03B4 # GREEK SMALL LETTER DELTA
 <Multi_key> <g> <e> : "ε" U03B5 # GREEK SMALL LETTER EPSILON
-<Multi_key> <g> <z> : "ζ" U03B6 # GREEK SMALL LETTER ZETA
+<Multi_key> <g> <g> : "γ" U03B3 # GREEK SMALL LETTER GAMMA
 <Multi_key> <g> <h> : "η" U03B7 # GREEK SMALL LETTER ETA
-<Multi_key> <g> <q> : "θ" U03B8 # GREEK SMALL LETTER THETA
 <Multi_key> <g> <i> : "ι" U03B9 # GREEK SMALL LETTER IOTA
 <Multi_key> <g> <k> : "κ" U03BA # GREEK SMALL LETTER KAPPA
 <Multi_key> <g> <l> : "λ" U03BB # GREEK SMALL LETTER LAMBDA
 <Multi_key> <g> <m> : "μ" U03BC # GREEK SMALL LETTER MU
 <Multi_key> <g> <n> : "ν" U03BD # GREEK SMALL LETTER NU
-<Multi_key> <g> <x> : "ξ" U03BE # GREEK SMALL LETTER XI
 <Multi_key> <g> <p> : "π" U03C0 # GREEK SMALL LETTER PI
+<Multi_key> <g> <q> : "θ" U03B8 # GREEK SMALL LETTER THETA
 <Multi_key> <g> <r> : "ρ" U03C1 # GREEK SMALL LETTER RHO
 <Multi_key> <g> <s> : "σ" U03C3 # GREEK SMALL LETTER SIGMA
 <Multi_key> <g> <t> : "τ" U03C4 # GREEK SMALL LETTER TAU
-<Multi_key> <g> <y> : "υ" U03A5 # GREEK SMALL LETTER YPSILON
 <Multi_key> <g> <w> : "ω" U03C9 # GREEK SMALL LETTER OMEGA
+<Multi_key> <g> <x> : "ξ" U03BE # GREEK SMALL LETTER XI
+<Multi_key> <g> <y> : "υ" U03A5 # GREEK SMALL LETTER YPSILON
+<Multi_key> <g> <z> : "ζ" U03B6 # GREEK SMALL LETTER ZETA
 
 # capital greek letters
 <Multi_key> <h> <d> : "Δ" U0394 # GREEK CAPITAL LETTER DELTA
-<Multi_key> <h> <q> : "Θ" U0398 # GREEK CAPITAL LETTER THETA
 <Multi_key> <h> <g> : "Γ" U0393 # GREEK CAPITAL LETTER GAMMA
 <Multi_key> <h> <p> : "Π" U03A0 # GREEK CAPITAL LETTER PI
+<Multi_key> <h> <q> : "Θ" U0398 # GREEK CAPITAL LETTER THETA
 <Multi_key> <h> <s> : "Σ" U03A3 # GREEK CAPITAL LETTER SIGMA
 <Multi_key> <h> <w> : "Ω" U03C9 # GREEK CAPITAL LETTER OMEGA
 
 # special characters
+<Multi_key> <f> <h> : "ℏ" U210F # PLANCK CONSTANT OVER TWO PI
+<Multi_key> <f> <c> : "†" U2020 # DAGGER
+<Multi_key> <f> <d> : "⋅" U22C5 # DOT OPERATOR
 <Multi_key> <f> <f> : "∀" U2200 # FOR ALL
 <Multi_key> <f> <p> : "∂" U2202 # PARTIAL DIFFERENTIAL
 <Multi_key> <f> <e> : "∃" U2203 # THERE EXISTS
@@ -50,3 +53,9 @@
 <Multi_key> <d> <c> : "ℂ" U2102 # DOUBLE-STRUCK CAPITAL C
 <Multi_key> <d> <n> : "ℕ" U2115 # DOUBLE-STRUCK CAPITAL N
 <Multi_key> <d> <r> : "ℝ" U211D # DOUBLE-STRUCK CAPITAL R
+
+# arrows
+<Multi_key> <a> <h> : "←" U2190 # LEFTWARDS ARROW
+<Multi_key> <a> <j> : "↓" U2193 # DOWNWARDS ARROW
+<Multi_key> <a> <k> : "↑" U2191 # UPWARDS ARROW
+<Multi_key> <a> <l> : "→" U2192 # RIGHTWARDS ARROW
