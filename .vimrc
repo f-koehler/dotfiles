@@ -49,7 +49,9 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -57,7 +59,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 call plug#end()
-colorscheme solarized " use solarized color scheme
 
 " syntastic config
 set statusline+=%#warningmsg#
@@ -83,6 +84,9 @@ let g:airline#extensions#syntastic#enabled = 1 " enable syntastic integration
 let g:airline#extensions#tabline#enabled   = 1 " use enhanced tabline
 let g:airline_powerline_fonts              = 1 " use the patched fonts
 
+" signify configuration
+let g:signify_vcs_list = [ 'git' ]
+
 " map <C-k> <C-w><Up>
 " map <C-j> <C-w><Down>
 " map <C-l> <C-w><Right>
@@ -95,3 +99,5 @@ set spelllang=en
 " http://llvm.org/svn/llvm-project/cfe/tags/RELEASE_371/final/tools/clang-format/
 map <C-K> :pyf $HOME/.vim/clang-format.py<cr>
 imap <C-K> <c-o>:pyf $HOME/clang-format.py<cr>
+
+colorscheme solarized " use solarized color scheme
