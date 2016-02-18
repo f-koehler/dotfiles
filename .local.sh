@@ -2,6 +2,9 @@
 export EDITOR=vim
 export VISUAL=gvim
 
+# add local software
+export PATH=${HOME}/.local/bin:${PATH}
+
 # add TeX Live paths
 export PATH=/usr/local/texlive/2015/bin/x86_64-linux:${PATH}
 export INFOPATH=/usr/local/texlive/2015/texmf-dist/doc/info:${INFOPATH}
