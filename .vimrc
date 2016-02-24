@@ -41,7 +41,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang
+        !git submodule foreach --recursive git checkout master && git submodule foreach git pull origin master && python2 ./install.py --clang-completer --system-libclang
     endif
 endfunction
 
@@ -69,6 +69,7 @@ let g:syntastic_always_populate_loc_list = 1 " automatically populate location l
 let g:syntastic_auto_loc_list = 1            " automatically open7close loc list
 let g:syntastic_check_on_open = 1            " perform check if buffer is first opened
 let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
+let g:syntastic_python_python_exec = "/usr/bin/python3"
 
 " YouCompleteMe configuration
 let g:ycm_auto_trigger = 1 " automatically trigger completion
@@ -77,6 +78,7 @@ let g:ycm_complete_in_strings = 0 " do not complete in strings
 let g:ycm_extra_conf_globlist = ["~/code/*"] " in these places .ycm_extra_conf.py files will be automatically loaded
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm.py" " set a global default .ycm_extra_conf.py file
 let g:ycm_seed_identifiers_with_syntax = 1 " seed syntastic database with language keywords
+let g:ycm_python_binary_path = "/usr/bin/python3"
 
 " airline configuration
 set laststatus=2                               " give all windwos a status line
