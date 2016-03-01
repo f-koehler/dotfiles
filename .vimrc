@@ -41,7 +41,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !git submodule foreach --recursive git checkout master && git submodule foreach git pull origin master && python2 ./install.py --clang-completer --system-libclang
+        !python2 ./install.py --clang-completer --system-libclang
     endif
 endfunction
 
