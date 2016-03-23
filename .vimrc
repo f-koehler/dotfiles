@@ -14,6 +14,8 @@ set wrap                       " wrap long lines
 syntax on                      " enable syntax highlighting
 set backspace=indent,eol,start " modify backspace behaviour
 set mouse=a
+set listchars=tab:▸\ ,eol:¬,trail:␣
+set list
 
 " train yourself not to use the arrow keys
 noremap <Down>  <NOP>
@@ -59,6 +61,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 " syntastic config
@@ -89,6 +92,15 @@ let g:airline_powerline_fonts              = 1 " use the patched fonts
 
 " signify configuration
 let g:signify_vcs_list = [ 'git' ]
+
+" indent-guides config
+let g:indent_guides_auto_colors           = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes     = ['help', 'nerdtree']
+let g:indent_guides_guide_size            = 1
+let g:indent_guides_start_level           = 2
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=0
 
 " map <C-k> <C-w><Up>
 " map <C-j> <C-w><Down>
