@@ -99,8 +99,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes     = ['help', 'nerdtree']
 let g:indent_guides_guide_size            = 1
 let g:indent_guides_start_level           = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
 " map <C-k> <C-w><Up>
 " map <C-j> <C-w><Down>
