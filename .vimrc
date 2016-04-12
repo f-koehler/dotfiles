@@ -43,7 +43,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang
+        !python2 ./install.py --clang-completer
     endif
 endfunction
 
