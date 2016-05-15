@@ -4,6 +4,9 @@ source ~/.zplug/init.zsh
 # enable proper prompt substitution
 setopt prompt_subst
 
+# let zplug manage itself
+zplug "zplug/zplug"
+
 # load stuff from oh-my-zsh
 zplug "lib/history", from:oh-my-zsh, nice:10
 zplug "lib/key-bindings", from:oh-my-zsh, nice:10
@@ -38,4 +41,4 @@ export PS1=${PS1_LINE}${PS1_PROMPT}
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
-source .local.sh
+source ~/.local.sh
