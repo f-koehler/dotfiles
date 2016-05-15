@@ -50,18 +50,19 @@ endfunction
 " load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
 Plug 'mhinz/vim-signify'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/syntastic'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " syntastic config
