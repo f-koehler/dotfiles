@@ -5,8 +5,10 @@ source ~/.zplug/init.zsh
 setopt prompt_subst
 
 # load stuff from oh-my-zsh
-zplug "plugins/git",   from:oh-my-zsh, nice:11, if:"(( $+commands[git] ))"
-zplug "themes/gentoo", from:oh-my-zsh, nice:12
+zplug "lib/history", from:oh-my-zsh, nice:10
+zplug "lib/key-bindings", from:oh-my-zsh, nice:10
+zplug "plugins/git",   from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
+zplug "themes/gentoo", from:oh-my-zsh, nice:11
 
 # load plugins from github
 zplug "marzocchi/zsh-notify"
