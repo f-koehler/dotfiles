@@ -11,6 +11,9 @@
 !.config/beets/
 !.config/beets/config.yaml
 
+# dircolors
+!.dircolors
+
 # git
 !.gitconfig
 
@@ -38,6 +41,9 @@
 !.config/systemd/user/*.service
 !.config/systemd/user/*.target
 !.config/systemd/user/*.timer
+
+# terminfo
+!.terminfo
 
 # vim
 !.vim/
