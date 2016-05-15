@@ -2,6 +2,10 @@
 export EDITOR=vim
 export VISUAL=gvim
 
+eval `dircolors ${HOME}/.dircolors`
+alias ls="ls --color=always"
+alias ll="ls -lh"
+
 # add local software
 export PATH=${HOME}/.local/bin:${PATH}
 
@@ -27,7 +31,7 @@ function extract {
     if [ ! -f $1 ] ; then
         echo "extract: File \"$1\" does not exist"
     fi
-    
+
     case $1 in
         *.tar.bz2)   tar xvjf $1    ;;
         *.tar.gz)    tar xvzf $1    ;;
