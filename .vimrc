@@ -90,6 +90,7 @@ let g:airline#extensions#branch#enabled    = 1 " fugitive/lawrencium integration
 let g:airline#extensions#syntastic#enabled = 1 " enable syntastic integration
 let g:airline#extensions#tabline#enabled   = 1 " use enhanced tabline
 let g:airline_powerline_fonts              = 1 " use the patched fonts
+let g:airline_solarized_normal_green       = 1 " use green in normal mode
 
 " signify configuration
 let g:signify_vcs_list = [ 'git' ]
