@@ -3,6 +3,7 @@ source ~/.zplug/init.zsh
 
 # enable proper prompt substitution
 setopt prompt_subst
+zstyle ':completion:*' menu select
 
 # let zplug manage itself
 zplug "zplug/zplug"
