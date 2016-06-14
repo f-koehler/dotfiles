@@ -27,3 +27,6 @@ $PAGER = "less"
 aliases["ll"] = "ls -lh"
 aliases["prettyjson"] = "python -m json.tool"
 aliases["dotfiles"] = "git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+
+$COMPLETIONS_DISPLAY = "multi"
+$COMPLETIONS_MENU_ROWS = 5

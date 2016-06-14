@@ -11,6 +11,10 @@
 !.config/beets/
 !.config/beets/config.yaml
 
+# fcron
+!.fcron/
+.fcron/log
+
 # dircolors
 !.dircolors
 

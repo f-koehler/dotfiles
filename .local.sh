@@ -51,3 +51,7 @@ function extract {
         *)           echo "extract: Unhandled archive type of file \"$1\"" ;;
     esac
 }
+
+function desktop {
+    `grep '^Exec' $1 | tail -1 | sed 's/^Exec=//' | sed 's/%.//'` &
+}

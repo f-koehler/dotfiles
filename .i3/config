@@ -159,7 +159,12 @@ bar {
 
 focus_follows_mouse no
 
+workspace 1  output HDMI-4
+workspace 10 output DVI-I-1
+
+exec xrdb /home/fabian/.Xresources
+exec /home/fabian/.local/bin/xkbmap
 exec xset b off
 exec xset b 0 0 0
-exec --no-startup-id i3-msg "workspace 9; exec thunderbird; exec keepass"
 exec --no-startup-id i3-msg "workspace 1; exec urxvt"
+exec --no-startup-id i3-msg "workspace 9; exec thunderbird; exec keepass"
