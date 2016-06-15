@@ -41,13 +41,39 @@ bindkey "^[Oc" forward-word
 
 setopt auto_cd
 
-# custom prompt
-function prompt_char {
+
+####################
+# PROMPT composition
+####################
+
+# set empty prompt
+PROMPT=""
+
+# set prompt char depending on user id
+prompt_char() {
     if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
 }
 
-PROMPT=$'%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::\u2500:)} %*\n''%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) '
+prompt_separator_and_status() {
+    PROMPT_RETVAL=$?
 
+    STATUS=""
+    if [[ $PROMPT_RETVAL -ne 0 ]]; then
+        STATUS+="%{$fg_no_bold[red]%}✘ "
+    else
+        STATUS+="%{$fg_no_bold[green]%}✓ "
+    fi
+    [[ $(jobs -l | wc -l) -gt 0 ]] && STATUS+="%{$fg_no_bold[cyan]%}⚙ "
+
+    echo "%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::─:)} %*"
+    echo "$STATUS"
+}
+PROMPT+=$'$(prompt_separator_and_status)'
+
+# add the main prompt
+PROMPT+=$'%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) '
+
+# add git info if git is installed
 if (( $+commands[git] )) ; then
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}(git:"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
@@ -55,6 +81,8 @@ if (( $+commands[git] )) ; then
     ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
     PROMPT+=$'$(git_prompt_info)'
 fi
+
+# add mercurial info if mercurial is installed
 if (( $+commands[hg] )) ; then
     ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}(hg:"
     ZSH_THEME_HG_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
@@ -62,6 +90,8 @@ if (( $+commands[hg] )) ; then
     ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
     PROMPT+=$'$(hg_prompt_info)'
 fi
+
+# add subversion info if subversion is installed
 if (( $+commands[svn] )) ; then
     ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[green]%}(svn:"
     ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
