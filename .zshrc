@@ -11,8 +11,10 @@ zplug "zplug/zplug"
 # load stuff from oh-my-zsh
 zplug "lib/history",       from:oh-my-zsh, nice:10
 zplug "lib/key-bindings",  from:oh-my-zsh, nice:10
+zplug "plugins/docker",    from:oh-my-zsh, nice:10, if:"(( $+commands[docker] ))"
 zplug "plugins/git",       from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
 zplug "plugins/mercurial", from:oh-my-zsh, nice:10, if:"(( $+commands[hg] ))"
+zplug "plugins/rsync",     from:oh-my-zsh, nice:10, if:"(( $+commands[rsync] ))"
 zplug "plugins/svn",       from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
 zplug "themes/gentoo",     from:oh-my-zsh, nice:11
 
