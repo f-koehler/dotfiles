@@ -19,7 +19,6 @@ zplug "plugins/svn",       from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
 zplug "themes/gentoo",     from:oh-my-zsh, nice:11
 
 # load plugins from github
-zplug "marzocchi/zsh-notify"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -75,28 +74,27 @@ PROMPT+=$'%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.
 
 # add git info if git is installed
 if (( $+commands[git] )) ; then
+    ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
+    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}(git:"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-    ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
     PROMPT+=$'$(git_prompt_info)'
 fi
 
 # add mercurial info if mercurial is installed
 if (( $+commands[hg] )) ; then
+    ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
+    ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
     ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}(hg:"
     ZSH_THEME_HG_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-    ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
     PROMPT+=$'$(hg_prompt_info)'
 fi
 
 # add subversion info if subversion is installed
 if (( $+commands[svn] )) ; then
+    ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
     ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[green]%}(svn:"
     ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-    ZSH_THEME_SVN_PROMPT_CLEAN=" ✓"
     PROMPT+=$'$(svn_prompt_info)'
 fi
 
