@@ -1,4 +1,5 @@
 # set tools
+export BROWSER=firefox
 export EDITOR=vim
 export VISUAL=gvim
 
