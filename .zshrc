@@ -11,9 +11,9 @@ zplug "zplug/zplug"
 # load stuff from oh-my-zsh
 zplug "lib/history",       from:oh-my-zsh, nice:10
 zplug "lib/key-bindings",  from:oh-my-zsh, nice:10
-zplug "plugins/git",       from:oh-my-zsh, nice:10
-zplug "plugins/mercurial", from:oh-my-zsh, nice:10
-zplug "plugins/svn",       from:oh-my-zsh, nice:10
+zplug "plugins/git",       from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
+zplug "plugins/mercurial", from:oh-my-zsh, nice:10, if:"(( $+commands[hg] ))"
+zplug "plugins/svn",       from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
 zplug "themes/gentoo",     from:oh-my-zsh, nice:11
 
 # load plugins from github
@@ -44,21 +44,30 @@ function prompt_char {
     if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
 }
 
-PROMPT=$'%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::\u2500:)} %*\n''%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) $(git_prompt_info)$(hg_prompt_info)$(svn_prompt_info) %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
+PROMPT=$'%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::\u2500:)} %*\n''%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) '
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
+if (( $+commands[git] )) ; then
+    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}(git:"
+    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
+    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡"
+    ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
+    PROMPT+=$'$(git_prompt_info)'
+fi
+if (( $+commands[hg] )) ; then
+    ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}(hg:"
+    ZSH_THEME_HG_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
+    ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[red]%} ⚡"
+    ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
+    PROMPT+=$'$(hg_prompt_info)'
+fi
+if (( $+commands[svn] )) ; then
+    ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[green]%}(svn:"
+    ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
+    ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ⚡"
+    ZSH_THEME_SVN_PROMPT_CLEAN=" ✓"
+    PROMPT+=$'$(svn_prompt_info)'
+fi
 
-ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}("
-ZSH_THEME_HG_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
-
-ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[green]%}("
-ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[red]%} ⚡"
-ZSH_THEME_SVN_PROMPT_CLEAN=" ✓"
+PROMPT+=$' %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
 source ~/.local.sh
