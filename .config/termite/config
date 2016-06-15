@@ -2,13 +2,14 @@
 
 [options]
 audible_bell = false
-font = Droid Sans Mono for Powerline 9
+font = Fira Mono for Powerline 9
 
 
 [colors]
 foreground = #839496
 foreground_bold = #eee8d5
-foreground_dim = #888888
+# foreground_dim = #888888
+foreground_dim = #ffffff
 background = #002b36
 cursor = #93a1a1
 
