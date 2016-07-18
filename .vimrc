@@ -43,7 +43,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer
+        !python2 ./install.py --clang-completer --system-libclang
     endif
 endfunction
 
@@ -73,6 +73,7 @@ let g:syntastic_always_populate_loc_list = 1 " automatically populate location l
 let g:syntastic_auto_loc_list = 1            " automatically open7close loc list
 let g:syntastic_check_on_open = 1            " perform check if buffer is first opened
 let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
+let g:syntastic_aggregate_errors = 1         " aggregate messages from multiple checkers
 let g:syntastic_python_python_exec = "/usr/bin/python3"
 
 " YouCompleteMe configuration
