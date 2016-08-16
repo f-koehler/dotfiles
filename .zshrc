@@ -9,14 +9,13 @@ zstyle ':completion:*' menu select
 zplug "zplug/zplug"
 
 # load stuff from oh-my-zsh
-zplug "lib/history",       from:oh-my-zsh, nice:10
-zplug "lib/key-bindings",  from:oh-my-zsh, nice:10
-zplug "plugins/docker",    from:oh-my-zsh, nice:10, if:"(( $+commands[docker] ))"
-zplug "plugins/git",       from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
-zplug "plugins/mercurial", from:oh-my-zsh, nice:10, if:"(( $+commands[hg] ))"
-zplug "plugins/rsync",     from:oh-my-zsh, nice:10, if:"(( $+commands[rsync] ))"
-zplug "plugins/svn",       from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
-zplug "themes/gentoo",     from:oh-my-zsh, nice:11
+zplug "lib/history",        from:oh-my-zsh, nice:10
+zplug "lib/key-bindings",   from:oh-my-zsh, nice:10
+zplug "plugins/docker",     from:oh-my-zsh, nice:10, if:"(( $+commands[docker] ))"
+zplug "plugins/git",        from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
+zplug "plugins/mercurial",  from:oh-my-zsh, nice:10, if:"(( $+commands[hg] ))"
+zplug "plugins/rsync",      from:oh-my-zsh, nice:10, if:"(( $+commands[rsync] ))"
+zplug "plugins/svn",        from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
 
 # load plugins from github
 zplug "zsh-users/zsh-autosuggestions"
@@ -39,12 +38,12 @@ bindkey "^[Od" backward-word
 bindkey "^[Oc" forward-word
 
 setopt auto_cd
+setopt PUSHD_IGNORE_DUPS
 
 
 ####################
 # PROMPT composition
 ####################
-
 # set empty prompt
 PROMPT=""
 
@@ -101,3 +100,5 @@ fi
 PROMPT+=$' %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
 source ~/.local.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

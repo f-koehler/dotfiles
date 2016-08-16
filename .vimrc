@@ -51,6 +51,8 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'

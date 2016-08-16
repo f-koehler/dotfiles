@@ -10,3 +10,5 @@ if [ -f /etc/bashrc ]; then
 fi
 
 source .local.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
