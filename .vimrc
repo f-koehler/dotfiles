@@ -47,14 +47,23 @@ function! BuildYouCompleteMe(info)
     endif
 endfunction
 
+" function that compiles color_coded
+function! BuildColorCoded(info)
+    if a:info.status != 'unchanged' || a:info.force
+        !${HOME}/.vim/compile_color_coded.sh
+    endif
+endfunction
+
 " load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
