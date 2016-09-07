@@ -3,5 +3,5 @@
 	name = Fabian Köhler
 	signingkey = 2F74A857
 
-[merge]
-    tool = meld
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
