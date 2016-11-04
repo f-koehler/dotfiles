@@ -7,9 +7,6 @@
 [submodule ".zsh/plugins/zsh-autosuggestions"]
 	path = .zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule ".config/emulationstation/themes/carbon"]
-	path = .config/emulationstation/themes/carbon
-	url = https://github.com/RetroPie/es-theme-carbon.git
 [submodule ".zsh/zsh-syntax-highlighting"]
 	path = .zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
