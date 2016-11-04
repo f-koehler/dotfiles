@@ -22,6 +22,7 @@ alias hi="pygmentize -O style=vim -f terminal -g"
 alias update_submodules="git submodule foreach --recursive 'git fetch origin; git checkout $(git rev-parse --abbrev-ref HEAD); git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); git submodule update --recursive; git clean -dfx'"
 
 alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
+alias etc='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
 
 function extract {
     if [ -z "$1" ]; then

@@ -6,7 +6,7 @@ setopt prompt_subst
 zstyle ':completion:*' menu select
 
 # let zplug manage itself
-zplug "zplug/zplug"
+# zplug "zplug/zplug"
 
 # load stuff from oh-my-zsh
 zplug "lib/history",        from:oh-my-zsh, nice:10
@@ -99,6 +99,6 @@ fi
 
 PROMPT+=$' %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
-source ~/.local.sh
+# source ~/.local.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

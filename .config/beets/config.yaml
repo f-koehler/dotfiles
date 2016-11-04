@@ -1,4 +1,4 @@
-directory: /media/data/audio/music
+directory: /media/external_01/audio/music
 library: ~/.local/share/beets/library.blb
 threaded: yes
 
