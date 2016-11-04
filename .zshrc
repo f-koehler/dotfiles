@@ -8,16 +8,7 @@ zstyle ':completion:*' menu select
 # let zplug manage itself
 # zplug "zplug/zplug"
 
-# load stuff from oh-my-zsh
-zplug "lib/history",        from:oh-my-zsh, nice:10
-zplug "lib/key-bindings",   from:oh-my-zsh, nice:10
-zplug "plugins/docker",     from:oh-my-zsh, nice:10, if:"(( $+commands[docker] ))"
-zplug "plugins/git",        from:oh-my-zsh, nice:10, if:"(( $+commands[git] ))"
-zplug "plugins/mercurial",  from:oh-my-zsh, nice:10, if:"(( $+commands[hg] ))"
-zplug "plugins/rsync",      from:oh-my-zsh, nice:10, if:"(( $+commands[rsync] ))"
-zplug "plugins/svn",        from:oh-my-zsh, nice:10, if:"(( $+commands[svn] ))"
-
-# load plugins from github
+# load the awesome zsh-users plugins
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -99,6 +90,11 @@ fi
 
 PROMPT+=$' %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
-# source ~/.local.sh
+#########
+# aliases
+########+
+alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
+alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
+setopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
