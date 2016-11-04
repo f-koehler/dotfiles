@@ -1,6 +1,9 @@
 # load zplug
 source ~/.zplug/init.zsh
 
+autoload compinit && compinit
+autoload colors && colors
+
 # enable proper prompt substitution
 setopt prompt_subst
 zstyle ':completion:*' menu select
@@ -35,9 +38,6 @@ setopt PUSHD_IGNORE_DUPS
 ####################
 # PROMPT composition
 ####################
-# set empty prompt
-PROMPT=""
-
 # set prompt char depending on user id
 prompt_char() {
     if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
@@ -57,42 +57,31 @@ prompt_separator_and_status() {
     echo "%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::─:)} %*"
     echo "$STATUS"
 }
-PROMPT+=$'$(prompt_separator_and_status)'
 
-# add the main prompt
-PROMPT+=$'%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) '
+# use vcs_info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git hg svn cvs bzr
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%{$fg[green]%}✔%{$reset_color%}"
+zstyle ':vcs_info:*' unstagedstr "%{$fg[yellow]%}⚡%{$reset_color%}"
+zstyle ':vcs_info:*' formats "%{$fg[green]%}(%s:%b)%{$reset_color%}%c %u"
+zstyle ':vcs_info:*' actionformats "%s→%b (%c%u) %a"
 
-# add git info if git is installed
-if (( $+commands[git] )) ; then
-    ZSH_THEME_GIT_PROMPT_CLEAN=" ✓"
-    ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
-    ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}(git:"
-    ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    PROMPT+=$'$(git_prompt_info)'
-fi
+build_prompt() {
+    PROMPT=$'$(prompt_separator_and_status)%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%{$fg_no_bold[red]%}%~%{$fg[green]%}) ${vcs_info_msg_0_}%_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
+}
 
-# add mercurial info if mercurial is installed
-if (( $+commands[hg] )) ; then
-    ZSH_THEME_HG_PROMPT_CLEAN=" ✓"
-    ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
-    ZSH_THEME_HG_PROMPT_PREFIX="%{$fg[green]%}(hg:"
-    ZSH_THEME_HG_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    PROMPT+=$'$(hg_prompt_info)'
-fi
+precmd() {
+    vcs_info
+    build_prompt
+}
 
-# add subversion info if subversion is installed
-if (( $+commands[svn] )) ; then
-    ZSH_THEME_SVN_PROMPT_DIRTY="%{$fg[yellow]%} ⚡"
-    ZSH_THEME_SVN_PROMPT_PREFIX="%{$fg[green]%}(svn:"
-    ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg[green]%})%{$reset_color%}"
-    PROMPT+=$'$(svn_prompt_info)'
-fi
-
-PROMPT+=$' %_%{$fg_bold[green]%}$(prompt_char)%{$reset_color%} '
 
 #########
 # aliases
-########+
+#########
+alias v='vim'
+alias ll="ls -l"
 alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
 alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
 setopt complete_aliases

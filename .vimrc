@@ -67,9 +67,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
@@ -81,7 +79,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1 " automatically populate location list with found errors
-let g:syntastic_auto_loc_list = 1            " automatically open7close loc list
+let g:syntastic_auto_loc_list = 1            " automatically open/close loc list
 let g:syntastic_check_on_open = 1            " perform check if buffer is first opened
 let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
 let g:syntastic_aggregate_errors = 1         " aggregate messages from multiple checkers
