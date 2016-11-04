@@ -1,5 +1,0 @@
-[Unit]
-Description=Desktop environment
-Requires=dbus.socket
-
-[Install]
