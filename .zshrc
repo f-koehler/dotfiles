@@ -12,6 +12,7 @@ alias ll="ls -lh --color=always"
 alias ls="ls --color=always"
 alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
 alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
+(( $+commands[pygmentize] )) && alias hi="pygmentize -O style=vim -f terminal -g"
 
 # manually set paths
 TEXLIVE_ROOT="/usr/local/texlive/2016"
