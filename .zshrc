@@ -8,9 +8,20 @@ export HISTSIZE=10000
 
 # aliases
 alias v='vim'
-alias ll="ls -l"
+alias ll="ls -lh --color=always"
+alias ls="ls --color=always"
 alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
 alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
+
+# manually set paths
+TEXLIVE_ROOT="/usr/local/texlive/2016"
+if [ -d $TEXLIVE_ROOT ]; then
+    PATH="$TEXLIVE_ROOT/bin/x86_64-linux:${PATH}"
+    INFOPATH="$TEXLIVE_ROOT/texmf-dist/doc/info:${INFOPATH}"
+    MANPATH="$TEXLIVE_ROOT/texmf-dist/doc/man:${MANPATH}"
+    alias tlmgr="sudo tlmgr"
+    alias tlupdate="tlmgr update --self --all"
+fi
 
 # options
 setopt auto_cd
@@ -58,6 +69,9 @@ bindkey "^[[1;5D" backward-word
 bindkey    "^[[3~"  delete-char
 bindkey    "^[3;5~" delete-char
 
+# fix home and end key
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
 
 ####################
 # PROMPT composition
