@@ -1,38 +1,62 @@
-# load zplug
-source ~/.zplug/init.zsh
+# common variables
+export EDITOR="vim"
+export LESS="-R"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=10000
 
+# aliases
+alias v='vim'
+alias ll="ls -l"
+alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
+alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
+
+# options
+setopt auto_cd
+setopt complete_aliases
+setopt correct
+setopt extendedglob
+setopt hashlistall
+setopt hist_ignore_space
+setopt nomatch
+setopt prompt_subst
+setopt pushd_ignore_dups
+unsetopt beep
+
+# load plugins
+[[ ! -d $HOME/.zsh/zsh-completions ]] && git submodule upate --init --recursive
+fpath=($HOME/.zsh/zsh-completions/src $fpath)
+source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 autoload compinit && compinit
 autoload colors && colors
+autoload -Uz vcs_info
 
-# enable proper prompt substitution
-setopt prompt_subst
+# configure completion
+zstyle ':compinstall' filename "$HOME/.zshrc"
+zstyle ':completion:*' cache-path ~/.zsh_cache
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select
-
-# let zplug manage itself
-# zplug "zplug/zplug"
-
-# load the awesome zsh-users plugins
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
-
-# perform plugin installation if plugins not available
-if ! zplug check; then
-    zplug install
-fi
-
-# load zplug plugins
-zplug load
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.pdf' '*.tar.*' '*.o' '.pyc'
+zstyle ':completion:*:commands' rehash 1
+zstyle ':completion::(^approximate):*:functions' ignored-patterns '_*'
 
 # fix zsh-autosuggestion for solarized theme
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 # bash like word jumping
-bindkey "^[Od" backward-word
-bindkey "^[Oc" forward-word
+bindkey "^[Oc"    forward-word
+bindkey "^[Od"    backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
-setopt auto_cd
-setopt PUSHD_IGNORE_DUPS
+# make sure delete key is mapped correctly
+bindkey    "^[[3~"  delete-char
+bindkey    "^[3;5~" delete-char
 
 
 ####################
@@ -59,7 +83,6 @@ prompt_separator_and_status() {
 }
 
 # use vcs_info
-autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git hg svn cvs bzr
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr "%{$fg[green]%}✔%{$reset_color%}"
@@ -75,15 +98,5 @@ precmd() {
     vcs_info
     build_prompt
 }
-
-
-#########
-# aliases
-#########
-alias v='vim'
-alias ll="ls -l"
-alias dotfiles='git --git-dir ~/.dotfiles/ --work-tree=$HOME'
-alias etcfiles='sudo git --git-dir ~/.etcfiles/ --work-tree=/etc'
-setopt complete_aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
