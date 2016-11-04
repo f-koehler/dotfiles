@@ -58,7 +58,6 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
@@ -72,6 +71,11 @@ Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+if $HOSTNAME != "aurora"
+    Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
+endif
+
 call plug#end()
 
 " syntastic config
