@@ -100,7 +100,7 @@ prompt_separator_and_status() {
 # use vcs_info
 zstyle ':vcs_info:*' enable git hg svn cvs bzr
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr "%{$fg[green]%}✔%{$reset_color%}"
+zstyle ':vcs_info:*' stagedstr "%{$fg[green]%} ⚑%{$reset_color%}"
 zstyle ':vcs_info:*' unstagedstr "%{$fg[yellow]%}⚡%{$reset_color%}"
 zstyle ':vcs_info:*' formats "%{$fg[green]%}(%s:%b)%{$reset_color%}%c %u"
 zstyle ':vcs_info:*' actionformats "%s→%b (%c%u) %a"
