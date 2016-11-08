@@ -1,0 +1,10 @@
+[Unit]
+Description=read Xresources
+Documentation=man:xrdb(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb %h/.Xresources
+
+[Install]
+WantedBy=default.target

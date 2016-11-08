@@ -1,0 +1,10 @@
+[Unit]
+Description=disable beeping in X
+Documentation=man:xset(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xset -b
+
+[Install]
+WantedBy=default.target

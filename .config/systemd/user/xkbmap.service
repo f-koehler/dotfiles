@@ -1,0 +1,9 @@
+[Unit]
+Description=set keyboard layout for X
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/setxkbmap -layout de -variant nodeadkeys -option compose:caps
+
+[Install]
+WantedBy=default.target

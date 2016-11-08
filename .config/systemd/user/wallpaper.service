@@ -1,0 +1,9 @@
+[Unit]
+Description=set wallpaper with feh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/feh --bg-fill /usr/share/wallpaper/numix-aurora.png
+
+[Install]
+WantedBy=default.target
