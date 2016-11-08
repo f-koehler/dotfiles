@@ -71,10 +71,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-if $HOSTNAME != "aurora"
-    Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
-endif
+Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 
 call plug#end()
 
