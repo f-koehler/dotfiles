@@ -1,6 +1,7 @@
 [Unit]
 Description=network manager applet
 Documentation=man:nm-applet(1)
+After=env-xorg.service
 
 [Service]
 ExecStart=/usr/bin/nm-applet

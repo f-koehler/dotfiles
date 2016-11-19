@@ -1,6 +1,7 @@
 [Unit]
 Description=read Xresources
 Documentation=man:xrdb(1)
+After=env-xorg.service
 
 [Service]
 Type=oneshot

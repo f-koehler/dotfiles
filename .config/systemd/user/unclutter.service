@@ -1,6 +1,7 @@
 [Unit]
 Description=Hide idle mouse cursor
 Documentation=man:unclutter(1)
+After=env-xorg.service
 
 [Service]
 ExecStart=/usr/bin/unclutter -root -jitter 5 -idle 3

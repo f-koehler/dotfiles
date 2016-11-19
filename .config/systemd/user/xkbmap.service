@@ -1,5 +1,7 @@
 [Unit]
 Description=set keyboard layout for X
+Documentation=man:setxkbmap(1)
+After=env-xorg.service
 
 [Service]
 Type=oneshot
