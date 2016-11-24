@@ -58,8 +58,7 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -71,8 +70,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
-
 call plug#end()
 
 " syntastic config

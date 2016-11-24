@@ -1,0 +1,8 @@
+[Unit]
+Description=Graphical desktop
+Requires=display-manager.service
+After=display-manager.service
+AllowIsolate=true
+
+[Install]
+Alias=default.target
