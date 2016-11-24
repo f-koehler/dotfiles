@@ -39,9 +39,14 @@ unsetopt beep
 
 # load plugins
 [[ ! -d $HOME/.zsh/zsh-completions ]] && git submodule upate --init --recursive
+
 fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fpath=($HOME/.zsh/oh-my-zsh/plugins/cpanm $fpath)
+fpath=($HOME/.zsh/oh-my-zsh/plugins/pip $fpath)
+
 source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.zsh/oh-my-zsh/plugins/nmap/nmap.plugin.zsh"
 autoload compinit && compinit
 autoload colors && colors
 autoload -Uz vcs_info
