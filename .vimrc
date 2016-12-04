@@ -43,7 +43,7 @@ autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang
+        !python2 ./install.py --clang-completer --system-libclang --racer-completer
     endif
 endfunction
 
@@ -62,10 +62,12 @@ Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
@@ -91,6 +93,7 @@ let g:ycm_extra_conf_globlist = ["~/code/*"] " in these places .ycm_extra_conf.p
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm.py" " set a global default .ycm_extra_conf.py file
 let g:ycm_seed_identifiers_with_syntax = 1 " seed syntastic database with language keywords
 let g:ycm_python_binary_path = "/usr/bin/python3"
+let g:ycm_rust_src_path = "~/.rust-src"
 
 " airline configuration
 set laststatus=2                               " give all windwos a status line
@@ -101,6 +104,9 @@ let g:airline_solarized_normal_green       = 1 " use green in normal mode
 let g:airline_powerline_fonts              = 0
 let g:airline_left_sep                     = ''
 let g:airline_right_sep                    = ''
+
+" rust-vim
+let g:rustfmt_autosave = 1
 
 " signify configuration
 let g:signify_vcs_list = [ 'git' ]
