@@ -16,3 +16,6 @@
 [submodule ".rust-src"]
 	path = .rust-src
 	url = https://github.com/rust-lang/rust.git
+[submodule ".fonts/nerd-fonts"]
+	path = .fonts/nerd-fonts
+	url = https://github.com/ryanoasis/nerd-fonts.git
