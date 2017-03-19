@@ -58,7 +58,7 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
+" Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
@@ -85,6 +85,9 @@ let g:syntastic_check_on_open = 1            " perform check if buffer is first 
 let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
 let g:syntastic_aggregate_errors = 1         " aggregate messages from multiple checkers
 let g:syntastic_python_python_exec = "/usr/bin/python3"
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["tex"] }
 
 " YouCompleteMe configuration
 let g:ycm_auto_trigger = 1 " automatically trigger completion

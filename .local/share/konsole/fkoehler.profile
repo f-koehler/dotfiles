@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Solarized Dark
-Font=Fira Code,10,-1,5,57,0,0,0,0,0
+Font=FuraCode Nerd Font,10,-1,0,57,0,0,0,0,0
 
 [General]
 Name=fkoehler
