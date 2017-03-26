@@ -13,9 +13,6 @@
 [submodule ".zsh/oh-my-zsh"]
 	path = .zsh/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".rust-src"]
-	path = .rust-src
-	url = https://github.com/rust-lang/rust.git
 [submodule ".fonts/nerd-fonts"]
 	path = .fonts/nerd-fonts
 	url = https://github.com/ryanoasis/nerd-fonts.git

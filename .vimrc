@@ -40,92 +40,11 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *.tikz set filetype=tex
 autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 
-" function that compiles YouCompleteMe
-function! BuildYouCompleteMe(info)
-    if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang --racer-completer
-    endif
-endfunction
-
-" function that compiles color_coded
-function! BuildColorCoded(info)
-    if a:info.status != 'unchanged' || a:info.force
-        !${HOME}/.vim/compile_color_coded.sh
-    endif
-endfunction
-
-" load plugins with vim-plug
-call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
-Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'jeaye/color_coded', { 'do': function('BuildColorCoded') }
-Plug 'mhinz/vim-signify'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'rust-lang/rust.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/syntastic'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
-Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-call plug#end()
-
-" syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1 " automatically populate location list with found errors
-let g:syntastic_auto_loc_list = 1            " automatically open/close loc list
-let g:syntastic_check_on_open = 1            " perform check if buffer is first opened
-let g:syntastic_check_on_wq   = 0            " skip checks if buffer is written with :wq
-let g:syntastic_aggregate_errors = 1         " aggregate messages from multiple checkers
-let g:syntastic_python_python_exec = "/usr/bin/python3"
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "passive_filetypes": ["tex"] }
-
-" YouCompleteMe configuration
-let g:ycm_auto_trigger = 1 " automatically trigger completion
-let g:ycm_complete_in_comments = 0 " do not complete in comments
-let g:ycm_complete_in_strings = 0 " do not complete in strings
-let g:ycm_extra_conf_globlist = ["~/code/*"] " in these places .ycm_extra_conf.py files will be automatically loaded
-let g:ycm_global_ycm_extra_conf = "~/.vim/ycm.py" " set a global default .ycm_extra_conf.py file
-let g:ycm_seed_identifiers_with_syntax = 1 " seed syntastic database with language keywords
-let g:ycm_python_binary_path = "/usr/bin/python3"
-let g:ycm_rust_src_path = "~/.rust-src"
-
-" airline configuration
-set laststatus=2                               " give all windows a status line
-let g:airline#extensions#branch#enabled       = 1 " fugitive/lawrencium integration
-let g:airline#extensions#syntastic#enabled    = 1 " enable syntastic integration
-" enhanced tabline
-let g:airline#extensions#tabline#enabled      = 1
-let g:airline#extensions#tabline#left_sep     = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_solarized_normal_green          = 1 " use green in normal mode
-let g:airline_powerline_fonts                 = 1
-let g:airline_left_sep                        = ''
-let g:airline_right_sep                       = ''
-
-" rust-vim
-let g:rustfmt_autosave = 1
+source $HOME/.vim/config/plugins.vim
 
 " signify configuration
 let g:signify_vcs_list = [ 'git' ]
 
-" indent-guides config
-let g:indent_guides_auto_colors           = 0
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_exclude_filetypes     = ['help', 'nerdtree']
-let g:indent_guides_guide_size            = 1
-let g:indent_guides_start_level           = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#073642 ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=0
 
 " map <C-k> <C-w><Up>
 " map <C-j> <C-w><Down>
