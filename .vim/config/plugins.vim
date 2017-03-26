@@ -1,7 +1,7 @@
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang --gocode-completer
+        !python2 ./install.py --clang-completer --system-libclang --gocode-completer --tern-completer --omnisharp-completer --racer-completer
     endif
 endfunction
 
