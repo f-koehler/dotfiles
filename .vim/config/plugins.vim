@@ -5,6 +5,8 @@ function! BuildYouCompleteMe(info)
     endif
 endfunction
 
+let g:use_ale = g:is_vim8 || g:is_nvim
+
 " load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
@@ -18,7 +20,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
-Plug 'scrooloose/syntastic'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -28,9 +29,21 @@ Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
+
+if g:use_ale
+    Plug 'w0rp/ale'
+else
+    Plug 'scrooloose/syntastic'
+endif
+
 call plug#end()
 
 source $HOME/.vim/config/plugins/airline.vim
 source $HOME/.vim/config/plugins/indent-guides.vim
-source $HOME/.vim/config/plugins/syntastic.vim
 source $HOME/.vim/config/plugins/you-complete-me.vim
+
+if g:use_ale
+    source $HOME/.vim/config/plugins/ale.vim
+else
+    source $HOME/.vim/config/plugins/syntastic.vim
+endif

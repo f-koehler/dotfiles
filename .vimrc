@@ -40,6 +40,7 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd BufRead,BufNewFile *.tikz set filetype=tex
 autocmd BufRead,BufNewFile *.pgfplot set filetype=tex
 
+source $HOME/.vim/config/features.vim
 source $HOME/.vim/config/plugins.vim
 
 " signify configuration
