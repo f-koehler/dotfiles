@@ -9,13 +9,17 @@ let g:use_ale = g:is_vim8 || g:is_nvim
 
 " load plugins with vim-plug
 call plug#begin('~/.vim/plugged')
+Plug 'MattesGroeger/vim-bookmarks'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'hecal3/vim-leader-guide'
 Plug 'itchyny/vim-cursorword'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/gv.vim'
+Plug 'lervag/vimtex'
+Plug 'mbbill/undotree'
 Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'ryanoasis/vim-devicons'
@@ -23,12 +27,12 @@ Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'lervag/vimtex'
 
 if g:use_ale
     Plug 'w0rp/ale'
@@ -40,6 +44,7 @@ call plug#end()
 
 source $HOME/.vim/config/plugins/airline.vim
 source $HOME/.vim/config/plugins/indent-guides.vim
+source $HOME/.vim/config/plugins/undotree.vim
 source $HOME/.vim/config/plugins/you-complete-me.vim
 
 if g:use_ale
