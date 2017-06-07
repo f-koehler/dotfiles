@@ -60,4 +60,8 @@ set spelllang=en
 map <C-K> :pyf $HOME/.vim/clang-format.py<cr>
 imap <C-K> <c-o>:pyf $HOME/clang-format.py<cr>
 
+set foldmethod=syntax
+nnoremap <Space> za
+set foldlevelstart=20
+
 colorscheme solarized " use solarized color scheme

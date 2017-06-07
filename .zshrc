@@ -27,7 +27,6 @@ fi
 
 # options
 setopt auto_cd
-setopt complete_aliases
 setopt correct
 setopt extendedglob
 setopt hashlistall
@@ -121,3 +120,4 @@ precmd() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.env ] && source ~/.env

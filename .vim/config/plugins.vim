@@ -1,7 +1,7 @@
 " function that compiles YouCompleteMe
 function! BuildYouCompleteMe(info)
     if a:info.status != 'unchanged' || a:info.force
-        !python2 ./install.py --clang-completer --system-libclang --gocode-completer --tern-completer --omnisharp-completer --racer-completer
+        !python2 ./install.py --clang-completer --system-libclang
     endif
 endfunction
 
@@ -34,11 +34,11 @@ Plug 'valloric/YouCompleteMe', { 'do': function('BuildYouCompleteMe') }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-if g:use_ale
-    Plug 'w0rp/ale'
-else
-    Plug 'scrooloose/syntastic'
-endif
+" if g:use_ale
+"     Plug 'w0rp/ale'
+" else
+Plug 'scrooloose/syntastic'
+" endif
 
 call plug#end()
 
@@ -47,8 +47,8 @@ source $HOME/.vim/config/plugins/indent-guides.vim
 source $HOME/.vim/config/plugins/undotree.vim
 source $HOME/.vim/config/plugins/you-complete-me.vim
 
-if g:use_ale
-    source $HOME/.vim/config/plugins/ale.vim
-else
-    source $HOME/.vim/config/plugins/syntastic.vim
-endif
+" if g:use_ale
+"     source $HOME/.vim/config/plugins/ale.vim
+" else
+source $HOME/.vim/config/plugins/syntastic.vim
+" endif
