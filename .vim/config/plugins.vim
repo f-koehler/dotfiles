@@ -11,6 +11,7 @@ let g:use_ale = g:is_vim8 || g:is_nvim
 call plug#begin('~/.vim/plugged')
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'hecal3/vim-leader-guide'

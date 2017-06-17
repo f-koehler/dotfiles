@@ -13,6 +13,15 @@
 [submodule ".zsh/oh-my-zsh"]
 	path = .zsh/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".fonts/nerd-fonts"]
-	path = .fonts/nerd-fonts
-	url = https://github.com/ryanoasis/nerd-fonts.git
+[submodule ".nord/dircolors"]
+	path = .nord/dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors.git
+[submodule ".nord/konsole"]
+	path = .nord/konsole
+	url = https://github.com/arcticicestudio/nord-konsole.git
+[submodule ".nord/xresources"]
+	path = .nord/xresources
+	url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule ".nord/tmux"]
+	path = .nord/tmux
+	url = https://github.com/arcticicestudio/nord-tmux.git

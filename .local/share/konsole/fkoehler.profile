@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Solarized Dark
+ColorScheme=nord
 Font=FuraCode Nerd Font,10,-1,0,57,0,0,0,0,0
 
 [General]

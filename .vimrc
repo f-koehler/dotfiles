@@ -64,4 +64,4 @@ set foldmethod=syntax
 nnoremap <Space> za
 set foldlevelstart=20
 
-colorscheme solarized " use solarized color scheme
+colorscheme nord
