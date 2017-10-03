@@ -1,3 +1,6 @@
+;; use tabs instead of whitespaces
+(setq-default indent-tabs-mode nil)
+
 ;; disable the clunky interface
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
