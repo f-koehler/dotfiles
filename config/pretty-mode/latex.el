@@ -1,3 +1,5 @@
+(defvar pretty-mode/latex/regex-post-cmd "[_^\\\n \t(){}]")
+
 (defun substitute-pattern-with-unicode (pattern symbol)
   (interactive)
   (font-lock-add-keywords
@@ -14,7 +16,41 @@
 	      (substitute-pattern-with-unicode (car x) (cdr x)))
 	  patterns))
 
-(defvar pretty-mode/latex/regex-post-cmd "[_^\\\n \t(){}]")
+(defun pretty-mode/latex/begin ()
+  (interactive)
+  (font-lock-add-keywords
+   nil `((, "\\(\\\\begin\\){"
+	    (0 (progn
+		 (compose-region
+		  (match-beginning 1)
+		  (match-end 1),
+		  "◸"
+		  'decompose-region)
+		 nil))))))
+
+(defun pretty-mode/latex/end ()
+  (interactive)
+  (font-lock-add-keywords
+   nil `((, "\\(\\\\end\\){"
+	    (0 (progn
+		 (compose-region
+		  (match-beginning 1)
+		  (match-end 1),
+		  "◺"
+		  'decompose-region)
+		 nil))))))
+
+(defun pretty-mode/latex/item ()
+  (interactive)
+  (font-lock-add-keywords
+   nil `((, "\\(\\\\item\\)[\n\t ]"
+	    (0 (progn
+		 (compose-region
+		  (match-beginning 1)
+		  (match-end 1),
+		  "‣"
+		  'decompose-region)
+		 nil))))))
 
 (defun pretty-mode/latex/simple-regex (cmd)
   (concat "\\(\\\\" cmd "\\)" pretty-mode/latex/regex-post-cmd))
@@ -427,9 +463,6 @@
   (substitute-patterns-with-unicode
    (pretty-mode/latex/simple-regexes
     (list
-     (cons "int\\\\int\\\\int\\\\int" ?⨌)
-     (cons "int\\\\int\\\\int" ?∭)
-     (cons "int\\\\int" ?∬)
      (cons "int" ?∫)
      (cons "iiiint" ?⨌)
      (cons "iiint" ?∭)
@@ -449,7 +482,11 @@
   (pretty-mode/latex/mathcal)
   (pretty-mode/latex/mathfrak)
   (pretty-mode/latex/misc)
-  (pretty-mode/latex/relations))
+  (pretty-mode/latex/relations)
+  (pretty-mode/latex/begin)
+  (pretty-mode/latex/end)
+  (pretty-mode/latex/item)
+  )
 
 (add-hook 'tex-mode-hook 'pretty-mode/latex)
 (add-hook 'latex-mode-hook 'pretty-mode/latex)
