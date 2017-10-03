@@ -14,20 +14,50 @@
 	      (substitute-pattern-with-unicode (car x) (cdr x)))
 	  patterns))
 
-(defun pretty-mode/latex/simple-cmd-regex (cmd)
+(defun pretty-mode/latex/simple-regex (cmd)
   (concat
    (concat "\\(\\\\" cmd)
-   "\\)[_^\\\n]"))
+   "\\)[_^\\\n \t]"))
 
-(defun pretty-mode/latex/simple-cmd-regexes (cmds)
+(defun pretty-mode/latex/simple-regexes (cmds)
   (mapcar #'(lambda (x)
-	      (cons (pretty-mode/latex/simple-cmd-regex (car x)) (cdr x)))
+	      (cons (pretty-mode/latex/simple-regex (car x)) (cdr x)))
 	  cmds))
+
+(defun pretty-mode/latex/mathcal-regex (letter)
+  (concat
+   (concat "\\(\\\\mathcal{" letter)
+   "}\\)[_^\\\n \t]"))
+
+(defun pretty-mode/latex/mathcal-regexes (letters)
+  (mapcar #'(lambda (x)
+	      (cons (pretty-mode/latex/mathcal-regex (car x)) (cdr x)))
+	  letters))
+
+(defun pretty-mode/latex/mathbb-regex (letter)
+  (concat
+   (concat "\\(\\\\mathbb{" letter)
+   "}\\)[_^\\\n \t]"))
+
+(defun pretty-mode/latex/mathbb-regexes (letters)
+  (mapcar #'(lambda (x)
+	      (cons (pretty-mode/latex/mathbb-regex (car x)) (cdr x)))
+	  letters))
+
+(defun pretty-mode/latex/mathfrak-regex (letter)
+  (concat
+   (concat "\\(\\\\mathfrak{" letter)
+   "}\\)[_^\\\n \t]"))
+
+(defun pretty-mode/latex/mathfrak-regexes (letters)
+  (mapcar #'(lambda (x)
+	      (cons (pretty-mode/latex/mathfrak-regex (car x)) (cdr x)))
+	  letters))
 
 (defun pretty-mode/latex/greek-small ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list (cons "alpha"   ?α)
 	  (cons "beta"    ?β)
 	  (cons "gamma"   ?γ)
@@ -57,7 +87,7 @@
 (defun pretty-mode/latex/greek-capital ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list (cons "Alpha"   ?Α)
 	  (cons "Beta"    ?Β)
 	  (cons "Gamma"   ?Γ)
@@ -83,10 +113,99 @@
 	  (cons "Psi"     ?Ψ)
 	  (cons "Omega"   ?Ω)))))
 
+(defun pretty-mode/latex/cal-small ()
+  (interactive)
+  (substitute-patterns-with-unicode
+   (pretty-mode/latex/mathcal-regexes
+    (list (cons "g" ?ℊ)
+	  (cons "l" ?ℓ)
+	  (cons "e" ?ℯ)))))
+
+(defun pretty-mode/latex/cal-capital ()
+  (interactive)
+  (substitute-patterns-with-unicode
+   (pretty-mode/latex/mathcal-regexes
+    (list (cons "B" ?ℬ)
+	  (cons "E" ?ℰ)
+	  (cons "F" ?ℱ)
+	  (cons "H" ?ℋ)
+	  (cons "I" ?ℐ)
+	  (cons "L" ?ℒ)
+	  (cons "M" ?ℳ)
+	  (cons "R" ?ℛ)
+	  (cons "V" ?Ʋ)))))
+
+(defun pretty-mode/latex/blackboard ()
+  (interactive)
+  (substitute-patterns-with-unicode
+   (pretty-mode/latex/mathbb-regexes
+    (list (cons "A" ?𝔸)
+	  (cons "B" ?𝔹)
+	  (cons "C" ?ℂ)
+	  (cons "D" ?𝔻)
+	  (cons "E" ?𝔼)
+	  (cons "F" ?𝔽)
+	  (cons "G" ?𝔾)
+	  (cons "H" ?ℍ)
+	  (cons "I" ?𝕀)
+	  (cons "J" ?𝕁)
+	  (cons "K" ?𝕂)
+	  (cons "L" ?𝕃)
+	  (cons "M" ?𝕄)
+	  (cons "N" ?ℕ)
+	  (cons "O" ?𝕆)
+	  (cons "P" ?ℙ)
+	  (cons "Q" ?ℚ)
+	  (cons "R" ?ℝ)
+	  (cons "S" ?𝕊)
+	  (cons "T" ?𝕋)
+	  (cons "U" ?𝕌)
+	  (cons "V" ?𝕍)
+	  (cons "W" ?𝕎)
+	  (cons "X" ?𝕏)
+	  (cons "X" ?𝕐)
+	  (cons "Z" ?ℤ)
+	  (cons "a" ?𝕒)
+	  (cons "b" ?𝕓)
+	  (cons "c" ?𝕔)
+	  (cons "d" ?𝕕)
+	  (cons "e" ?𝕖)
+	  (cons "f" ?𝕗)
+	  (cons "g" ?𝕘)
+	  (cons "h" ?𝕙)
+	  (cons "i" ?𝕚)
+	  (cons "j" ?𝕛)
+	  (cons "k" ?𝕜)
+	  (cons "l" ?𝕝)
+	  (cons "m" ?𝕞)
+	  (cons "n" ?𝕟)
+	  (cons "o" ?𝕠)
+	  (cons "p" ?𝕡)
+	  (cons "q" ?𝕢)
+	  (cons "r" ?𝕣)
+	  (cons "s" ?𝕤)
+	  (cons "t" ?𝕥)
+	  (cons "u" ?𝕦)
+	  (cons "v" ?𝕧)
+	  (cons "w" ?𝕨)
+	  (cons "x" ?𝕩)
+	  (cons "x" ?𝕪)
+	  (cons "z" ?𝕫)
+	  (cons "0" ?𝟘)
+	  (cons "1" ?𝟙)
+	  (cons "2" ?𝟚)
+	  (cons "3" ?𝟛)
+	  (cons "4" ?𝟜)
+	  (cons "5" ?𝟝)
+	  (cons "6" ?𝟞)
+	  (cons "7" ?𝟟)
+	  (cons "8" ?𝟠)
+	  (cons "9" ?𝟡))))
+
 (defun pretty-mode/latex/binary-operators ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list
      (cons "pm"              ?±)
      (cons "mp"              ?∓)
@@ -117,7 +236,7 @@
 (defun pretty-mode/latex/relations ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list
      (cons "leq"        ?≤)
      (cons "prec"       ?≺)
@@ -161,7 +280,7 @@
 (defun pretty-mode/latex/arrows ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list
      (cons "leftarrow"         ?←)
      (cons "rightarrow"        ?→)
@@ -193,7 +312,7 @@
 (defun pretty-mode/latex/misc ()
   (interactive)
   (substitute-patterns-with-unicode
-   (pretty-mode/latex/simple-cmd-regexes
+   (pretty-mode/latex/simple-regexes
     (list
      (cons "ldots"    ?…)
      (cons "cdots"    ?⋯)
@@ -215,17 +334,36 @@
      (cons "Box"      ?☐)
      (cons "int"      ?∫)
      (cons "sum"      ?∑)
-     ))))
+     (cons "prod"     ?∏)))))
+
+(defun pretty-mode/latex/integrals ()
+  (interactive)
+  (substitute-patterns-with-unicode
+   (pretty-mode/latex/simple-regexes
+    (list
+     (cons "int\\\\int\\\\int\\\\int" ?⨌)
+     (cons "int\\\\int\\\\int" ?∭)
+     (cons "int\\\\int" ?∬)
+     (cons "int" ?∫)
+     (cons "iiiint" ?⨌)
+     (cons "iiint" ?∭)
+     (cons "iint" ?∬)
+     (cons "oint" ?∮)
+     (cons "oiint" ?∯)))))
 
 
 (defun pretty-mode/latex ()
   "Prettify symbols in LaTex mode."
   (pretty-mode/latex/greek-small)
   (pretty-mode/latex/greek-capital)
+  (pretty-mode/latex/cal-small)
+  (pretty-mode/latex/cal-capital)
+  (pretty-mode/latex/blackboard)
   (pretty-mode/latex/binary-operators)
   (pretty-mode/latex/relations)
   (pretty-mode/latex/arrows)
-  (pretty-mode/latex/misc))
+  (pretty-mode/latex/misc)
+  (pretty-mode/latex/integrals))
 
 (add-hook 'tex-mode-hook 'pretty-mode/latex)
 (add-hook 'latex-mode-hook 'pretty-mode/latex)
