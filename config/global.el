@@ -45,3 +45,7 @@
 ;; change location of customizations and protect init.el
 (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
+
+;; wind move for window navigation
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))

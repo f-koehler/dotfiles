@@ -1,8 +1,10 @@
 *.eld
 *~
+\#*\#
 ac-comphist.dat
 auto-save-list
 custom.el
 elpa/
+irony
 network-security.data
 recentf
