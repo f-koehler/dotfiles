@@ -1,0 +1,67 @@
+% Created 2017-10-04 Wed 14:23
+% Intended LaTeX compiler: lualatex
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.1)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+(use-package org
+  :init (progn
+	  (setq-default org-highlight-latex-and-related '(latex script entities))
+	  (setq-default org-src-fontify-natively t)
+	  (setq-default org-latex-compiler "lualatex")
+	  (setq-default org-export-latex-listings t)))
+
+(use-package org-bullets
+  :after org
+  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+(use-package evil-org
+  :after org)
+
+(require 'ox-latex)
+(defvar latex-definitions
+  (mapconcat 'identity
+             '(
+               ;; "$\backslash$\DeclareDocumentCommand$\backslash$\diff{o}\{$\backslash$\IfNoValueTF{#1}\{$\backslash$\symup{d}\}\{$\backslash$\symup{d}\(^{\text{\#1}}\)\}\}"
+               )
+             " "))
+
+(add-to-list 'org-latex-classes
+             '("scrartcl"
+               (eval (concat "$\backslash$\documentclass{scrartcl}\n[PACKAGES]\n[EXTRA]" "$\backslash$\HelloWorld"))
+               ("$\backslash$\section{%s}" . "$\backslash$\section*{%s}")
+               ("$\backslash$\subsection{%s}" . "$\backslash$\subsection*{%s}")
+               ("$\backslash$\subsubsection{%s}" . "$\backslash$\subsubsection*{%s}")
+               ("$\backslash$\paragraph{%s}" . "$\backslash$\paragraph*{%s}")
+               ("$\backslash$\subparagraph{%s}" . "$\backslash$\subparagraph*{%s}")))
+
+(setq-default org-latex-default-packages-alist
+              '(
+                ("" "braket" t)
+                ("" "unicode-math" t)
+                ("" "xfrac" t)
+                ("" "xparse" t)
+                ))
+(setq-default org-latex-listings 'minted)
+(setq-default org-latex-default-class "scrartcl")
+\end{document}

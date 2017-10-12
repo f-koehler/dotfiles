@@ -1,6 +1,8 @@
+\#recentf\#
 *.eld
 *~
 ac-comphist.dat
+async-bytecomp.log
 auto-save-list
 custom.el
 elpa/
