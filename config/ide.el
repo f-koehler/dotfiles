@@ -1,5 +1,8 @@
 (use-package company
-  :config (global-company-mode))
+  :config (progn
+            (setq company-idle-delay 0)
+            (delete 'company-clang company-backends)
+            (global-company-mode)))
 
 (use-package company-quickhelp
   :after company
