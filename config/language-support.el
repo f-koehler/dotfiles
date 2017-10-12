@@ -16,6 +16,8 @@
 
 (use-package yaml-mode)
 
-(use-package elpy)
+(use-package elpy
+  :config
+  (elpy-enable))
 
 (use-package latex-preview-pane)
