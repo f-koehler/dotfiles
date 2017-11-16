@@ -1,11 +1,13 @@
-\#recentf\#
 *.eld
+*.swp
 *~
 \#*\#
+\#recentf\#
 ac-comphist.dat
 async-bytecomp.log
 auto-save-list
 custom.el
+el-get
 elpa/
 irony
 network-security.data

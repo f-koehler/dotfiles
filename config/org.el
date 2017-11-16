@@ -37,3 +37,7 @@
                 ))
 (setq-default org-latex-listings 'minted)
 (setq-default org-latex-default-class "scrartcl")
+
+(require 'org)
+(require 'ox)
+(require 'ox-html)
