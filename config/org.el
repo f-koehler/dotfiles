@@ -2,8 +2,9 @@
   :init (progn
 	  (setq-default org-highlight-latex-and-related '(latex script entities))
 	  (setq-default org-src-fontify-natively t)
-	  (setq-default org-latex-compiler "lualatex")
-	  (setq-default org-export-latex-listings t)))
+	  ;; (setq-default org-latex-compiler "lualatex")
+	  (setq-default org-export-latex-listings t)
+          (setq-default org-latex-pdf-process '("latexmk -lualatex -shell-escape %f"))))
 
 (use-package org-bullets
   :after org
@@ -30,10 +31,12 @@
 
 (setq-default org-latex-default-packages-alist
               '(
+                ("" "amsmath" t)
+                ("" "hyperref" t)
                 ("" "braket" t)
                 ("" "unicode-math" t)
                 ("" "xfrac" t)
                 ("" "xparse" t)
                 ))
 (setq-default org-latex-listings 'minted)
-(setq-default org-latex-default-class "scrartcl")
+;; (setq-default org-latex-default-class "scrartcl")

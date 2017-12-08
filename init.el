@@ -25,3 +25,5 @@
 (load-config "language-support.el")
 (load-config "visual.el")
 (load-config "ide.el")
+
+(set-face-attribute 'default nil :height 90)
