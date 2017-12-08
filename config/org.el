@@ -39,4 +39,3 @@
                 ("" "xparse" t)
                 ))
 (setq-default org-latex-listings 'minted)
-;; (setq-default org-latex-default-class "scrartcl")

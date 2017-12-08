@@ -67,3 +67,5 @@
   (progn
     (elpy-autopep8-fix-code)
     (elpy-yapf-fix-code)))
+
+(use-package ggtags)
