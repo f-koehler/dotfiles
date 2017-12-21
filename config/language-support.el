@@ -35,3 +35,12 @@
 (use-package latex-preview-pane)
 
 (use-package htmlize)
+
+
+; F90
+(setq-default f90-do-indent 4)
+(setq-default f90-if-indent 4)
+(setq-default f90-type-indent 4)
+(setq-default f90-program-indent 4)
+(setq-default f90-continuation-indent 4)
+(setq-default f90-smart-end 'blink)
