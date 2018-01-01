@@ -1,27 +1,12 @@
-(eval-when-compile
-  (add-to-list 'load-path "~/code/use-package")
-  (require 'use-package))
+(let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
+      (bootstrap-version 3))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; add package sources
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("elpy" . "https://jorgenschaefer.github.io/packages/"))
-(package-initialize)
-
-;; install use-package
-; (unless (package-installed-p 'use-package)
-;   (package-refresh-contents)
-;   (package-install 'use-package))
-(setq-default use-package-always-ensure t)
-
-(eval-when-compile
-  (require 'use-package))
-
-;; install paradox which enhances elpa
-(use-package paradox
-  :init (setq-default paradox-execute-asynchronously t)
-  :config (paradox-enable))
+(straight-use-package 'use-package)

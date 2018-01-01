@@ -1,4 +1,5 @@
 (use-package org
+  :straight t
   :init (progn
 	  (setq-default org-highlight-latex-and-related '(latex script entities))
 	  (setq-default org-src-fontify-natively t)
@@ -8,9 +9,11 @@
 
 (use-package org-bullets
   :after org
+  :straight t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 (use-package evil-org
-  :after org)
+  :after org
+  :straight t)
 
 (require 'ox-latex)
 (defvar latex-definitions

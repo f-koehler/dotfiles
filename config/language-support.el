@@ -1,18 +1,26 @@
-(use-package ansible)
+(use-package ansible
+  :straight t)
 
-(use-package gitconfig-mode)
+(use-package gitconfig-mode
+  :straight t)
 
-(use-package gitignore-mode)
+(use-package gitignore-mode
+  :straight t)
 
-(use-package go-mode)
+(use-package go-mode
+  :straight t)
 
-(use-package graphviz-dot-mode)
+(use-package graphviz-dot-mode
+  :straight t)
 
-(use-package haskell-mode)
+(use-package haskell-mode
+  :straight t)
 
-(use-package julia-mode)
+(use-package julia-mode
+  :straight t)
 
-(use-package web-mode)
+(use-package web-mode
+  :straight t)
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
@@ -26,15 +34,19 @@
             (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)))
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :straight t)
 
 (use-package elpy
+  :straight t
   :config
   (elpy-enable))
 
-(use-package latex-preview-pane)
+(use-package latex-preview-pane
+  :straight t)
 
-(use-package htmlize)
+(use-package htmlize
+  :straight t)
 
 
 ; F90

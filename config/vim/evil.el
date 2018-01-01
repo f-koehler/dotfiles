@@ -1,5 +1,6 @@
 ;; install evil
 (use-package evil
+  :straight t
   :init (progn
 	  (setq-default evil-want-C-d-scroll t)
 	  (setq-default evil-want-C-d-scroll t)
@@ -11,6 +12,7 @@
 
 (use-package evil-surround
   :after evil
+  :straight t
   :config (global-evil-surround-mode 1))
 
 ;; setup vim-like keybindings in the package menu
@@ -26,4 +28,5 @@
 
 ;; comment in and out like its vim
 (use-package evil-commentary
+  :straight t
   :config (evil-commentary-mode))
