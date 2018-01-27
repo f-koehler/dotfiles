@@ -49,6 +49,12 @@
   :straight t)
 
 
+; LaTeX
+(require 'tex)
+(add-hook 'LaTeX-mode-hook
+          (setq-default evil-shift-width 2))
+
+
 ; F90
 (setq-default f90-do-indent 4)
 (setq-default f90-if-indent 4)
