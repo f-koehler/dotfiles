@@ -39,6 +39,8 @@
 
 (use-package elpy
   :straight t
+  :init
+  (setq-default elpy-rpc-python-command "~/.local/opt/anaconda3/bin/python")
   :config
   (elpy-enable))
 
@@ -50,7 +52,6 @@
 
 
 ; LaTeX
-(require 'tex)
 (add-hook 'LaTeX-mode-hook
           (setq-default evil-shift-width 2))
 
