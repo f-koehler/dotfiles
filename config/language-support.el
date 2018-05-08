@@ -42,6 +42,11 @@
   :config
   (elpy-enable))
 
+(if (file-directory-p "~/.local/opt/python-emacs")
+    (pyvenv-activate "~/.local/opt/python-emacs")
+  (if (file-directory-p "~/.local/opt/anaconda3/bin/python3")
+      (setq-default elpy-rpc-python-command "~/.local/opt/anaconda3/bin/python3")))
+
 (use-package latex-preview-pane
   :straight t)
 

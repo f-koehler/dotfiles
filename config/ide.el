@@ -8,7 +8,7 @@
 (use-package company-quickhelp
   :after company
   :straight t
-  :config (company-quickhelp-mode 1))
+  :config (company-quickhelp-mode))
 
 (use-package dashboard
   :straight t
@@ -16,8 +16,10 @@
 
 (use-package flycheck
   :straight t
-  :init (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  :config (global-flycheck-mode))
+  :init (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc ))
+  :config (progn
+            (global-flycheck-mode)
+            (add-to-list 'flycheck-gfortran-args "-cpp")))
 
 (use-package projectile
   :straight t
