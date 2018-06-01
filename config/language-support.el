@@ -39,8 +39,6 @@
 
 (use-package elpy
   :straight t
-  :init
-  (setq-default elpy-rpc-python-command "~/.local/opt/anaconda3/bin/python")
   :config
   (elpy-enable))
 
