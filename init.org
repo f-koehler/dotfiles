@@ -1,0 +1,311 @@
++Title: GNU Emacs Configuration
+#+AUTHOR: Fabian Köhler
+#+BABEL: :cache yes
+#+PROPERTY: header-args :tangle yes
+
+#+BEGIN_SRC emacs-lisp
+(defun tangle-init ()
+ (when (equal (buffer-file-name)
+              (expand-file-name (concat user-emacs-directory "init.org")))
+   (let ((prog-mode-hook nil))
+     (org-babel-tangle)
+     (byte-compile-file (concat user-emacs-directory "init.el")))))
+
+(add-hook 'after-save-hook 'tangle-init)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(require 'cl-lib)
+(require 'package)
+(package-initialize)
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+(package-refresh-contents)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(let* ((package--builtins nil)
+          (packages
+           '(aggressive-indent
+             all-the-icons
+             all-the-icons-dired
+             ansible
+             beacon
+             clang-format
+             cmake-mode
+             cmake-font-lock
+             company
+             company-irony
+             company-quickhelp
+             dashboard
+             elpy
+             evil
+             evil-commentary
+             evil-org
+             flycheck
+             flycheck-irony
+             gitconfig-mode
+             gitignore-mode
+             go-mode
+             graphviz-dot-mode
+             haskell-mode
+             highlight-indent-guides
+             irony
+             irony-eldoc
+             julia-mode
+             monokai-theme
+             powerline
+             projectile
+             spaceline
+             spaceline-all-the-icons
+             web-mode
+             whitespace-cleanup-mode
+             yaml-mode
+             yasnippet)))
+     (ignore-errors ;; This package is only relevant for Mac OS X.
+       (when (memq window-system '(mac ns))
+         (push 'exec-path-from-shell packages)
+         (push 'reveal-in-osx-finder packages))
+       (let ((packages (remove-if 'package-installed-p packages)))
+         (when packages
+           ;; Install uninstalled packages
+           (package-refresh-contents)
+           (mapc 'package-install packages)))))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(dashboard-setup-startup-hook)
+#+END_SRC
+
+* Global
+   #+BEGIN_SRC emacs-lisp
+   ;; use tabs instead of whitespaces
+   (setq-default indent-tabs-mode nil)
+   
+   ;; disable the clunky interface
+   (menu-bar-mode -1)
+   (toggle-scroll-bar -1)
+   (tool-bar-mode -1)
+   
+   ;; treat camelcase as individual words
+   (add-hook 'prog-mode-hook 'subword-mode)
+   
+   ;; make scripts executable on save
+   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+   
+   ;; only run garbage collection every 64MB
+   (setq-default gc-cons-threshold 67108864)
+   
+   ;; determine how dired lists files
+   (setq-default dired-listing-switches "-lah")
+   
+   ;; do not ask yes/no but y/n
+   (fset 'yes-or-no-p 'y-or-n-p)
+   
+   ;; turn on syntax highlighting whenever it is possible
+   (global-font-lock-mode t)
+   
+   ;; always reload files that change
+   (global-auto-revert-mode t)
+   
+   ;; show matching parentheses immediately
+   (show-paren-mode 1)
+   (setq-default show-paren-delay 0.0)
+   
+   ;; highlight current line
+   (require 'hl-line)
+   (global-hl-line-mode)
+   
+   ;; show whitespaces and newlines
+   (require 'whitespace)
+   
+   ;; clipboard
+   (setq-default select-enable-clipboard t)
+   (setq-default interprogram-paste-function 'x-cut-buffer-or-selection-value)
+   
+   ;; change location of customizations and protect init.el
+   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+   (load custom-file 'noerror)
+   
+   ;; wind move for window navigation
+   (when (fboundp 'windmove-default-keybindings)
+     (windmove-default-keybindings))
+   #+END_SRC
+   
+** Editor Behavior
+   Automatically clean whitespaces on save.
+   #+BEGIN_SRC emacs-lisp
+   (require 'whitespace-cleanup-mode)
+   (global-whitespace-cleanup-mode)
+   #+END_SRC
+   
+   Automatically indent code, specify desired modes
+   #+BEGIN_SRC emacs-lisp
+   (require 'aggressive-indent)
+   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+   #+END_SRC
+
+* Vim-like Behavior
+  I am a vim user and want to work in a similar fashion with emacs as well.
+  #+BEGIN_SRC emacs-lisp
+  (require 'evil)
+  (evil-mode 1)
+  
+  ;; use escape key to cancel
+  (global-set-key [escape] 'keyboard-escape-quit)
+  #+END_SRC
+  
+  #+BEGIN_SRC emacs-lisp
+  (setq evil-want-C-d-scroll t)
+  (setq evil-want-C-u-scroll t)
+  #+END_SRC
+  
+** Comments
+   #+BEGIN_SRC emacs-lisp
+   (require 'evil-commentary)
+   (evil-commentary-mode)
+   #+END_SRC
+  
+** Org-Mode
+   #+BEGIN_SRC emacs-lisp
+   (require 'evil-org)
+   #+END_SRC
+  
+  #+BEGIN_SRC emacs-lisp
+  #+END_SRC
+  
+** Vinegar
+   #+BEGIN_SRC emacs-lisp
+   ;; vinegar
+   (defun vinegar/top ()
+     "Go to the top of the dired buffer"
+     (interactive)
+     (goto-char (point-min))
+     (dired-next-line 1))
+   
+   (defun vinegar/bottom ()
+     "Go to the bottom of the dired buffer"
+     (interactive)
+     (goto-char (point-max))
+     (dired-next-line -1))
+   
+   (defun vinegar/up ()
+     "Go one entry up in dired"
+     (interactive)
+     (dired-previous-line 1)
+     (if (bobp) (dired-next-line 1)))
+   
+   (defun vinegar/down ()
+     "Go one entry down in dired"
+     (interactive)
+     (dired-next-line 1)
+     (if (eobp) (dired-next-line -1)))
+   
+   (defun vinegar/parent-dir (&optional window)
+     "Jump to parent dir using dired"
+     (interactive "P")
+     (let* ((dir (dired-current-directory))
+   	 (orig (current-buffer))
+   	 (up (file-name-directory (directory-file-name dir))))
+       (or (dired-goto-file (directory-file-name dir))
+   	(and (cdr dired-subdir-alist)
+   	     (dired-goto-subdir up))
+   	(progn
+   	  (kill-buffer orig)
+   	  (dired up)
+   	  (dired-goto-file dir)))))
+   
+   (defun vinegar/init ()
+     "Setup vim-vinegar like keybindings for dired"
+     (define-key dired-mode-map (kbd "j") 'vinegar/down)
+     (define-key dired-mode-map (kbd "k") 'vinegar/up)
+     (define-key dired-mode-map (kbd "-") 'vinegar/parent-dir)
+     ;; (define-key dired-mode-map (kbd "g g") 'vinegar/top)
+     (define-key dired-mode-map (kbd "G") 'vinegar/bottom)
+     (define-key dired-mode-map (kbd "d") 'dired-create-directory)
+     (define-key dired-mode-map (kbd "% s") 'find-file))
+
+   (add-hook 'dired-mode-hook 'vinegar/init)
+   (define-key evil-normal-state-map (kbd "-") 'dired-jump)
+   #+END_SRC
+
+* Language Support
+  - Ansible YAML
+    #+BEGIN_SRC emacs-lisp
+    (require 'ansible)
+    #+END_SRC
+  - C/C++
+    #+BEGIN_SRC emacs-lisp
+    (require 'irony)
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'objc-mode-hook 'irony-mode)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+    #+END_SRC
+  - git files
+    #+BEGIN_SRC emacs-lisp
+    (require 'gitconfig-mode)
+    (require 'gitignore-mode)
+    #+END_SRC
+* Auto Completion
+  #+BEGIN_SRC emacs-lisp
+  (require 'company)
+  (require 'company-quickhelp)
+  
+  ;; do not wait to complete
+  (setq company-idle-delay 0)
+  
+  ;; do no use the clang backend
+  ;; we will use irony-mode instead
+  (delete 'company-clang company-backends)
+  
+  ;; enable company globally
+  (global-company-mode)
+  #+END_SRC
+  
+  - C++
+    #+BEGIN_SRC emacs-lisp
+    (require 'company-irony)
+    (add-to-list 'company-backends 'company-irony)
+    #+END_SRC
+  
+* Visuals
+** Theme
+   #+BEGIN_SRC emacs-lisp
+   (load-theme 'monokai t)
+   #+END_SRC
+  
+** Beacon
+   #+BEGIN_SRC emacs-lisp
+   (require 'beacon)
+   
+   (setq beacon-color "#657b83")
+   (setq beacon-size 30)
+   (setq beacon-blink-duration 0.1)
+   (setq beacon-blink-duration 0.05)
+   (beacon-mode 1)
+   #+END_SRC
+
+** All the Icons
+   #+BEGIN_SRC emacs-lisp
+   (require 'all-the-icons)
+   (require 'all-the-icons-dired)
+   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+   #+END_SRC
+   
+** Powerline
+   #+BEGIN_SRC emacs-lisp
+   (require 'powerline)
+   (require 'spaceline)
+   (require 'spaceline-all-the-icons)
+   (setq spaceline-all-the-icons-separator-type 'wave)
+   (spaceline-all-the-icons-theme)
+   #+END_SRC
+** Indent Guides
+   #+BEGIN_SRC emacs-lisp
+   (require 'highlight-indent-guides)
+   (setq highlight-indent-guides-method 'column)
+   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+   #+END_SRC
