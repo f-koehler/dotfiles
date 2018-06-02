@@ -1,3 +1,9 @@
 auto-save-list
 elpa
 network-security.data
+custom.el
+custom.el~
+recentf
+recentf~
+*.elc
+irony

@@ -1,4 +1,4 @@
-+Title: GNU Emacs Configuration
+#+Title: GNU Emacs Configuration
 #+AUTHOR: Fabian Köhler
 #+BABEL: :cache yes
 #+PROPERTY: header-args :tangle yes
@@ -15,7 +15,7 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(require 'cl-lib)
+(require 'cl)
 (require 'package)
 (package-initialize)
 (setq package-archives
@@ -28,7 +28,8 @@
 #+BEGIN_SRC emacs-lisp
 (let* ((package--builtins nil)
           (packages
-           '(aggressive-indent
+           '(
+            aggressive-indent
              all-the-icons
              all-the-icons-dired
              ansible
@@ -43,6 +44,7 @@
              elpy
              evil
              evil-commentary
+             evil-magit
              evil-org
              flycheck
              flycheck-irony
@@ -51,11 +53,18 @@
              go-mode
              graphviz-dot-mode
              haskell-mode
+             helm
+             helm-ls-git
+             helm-ls-hg
+             helm-ls-svn
+             helm-projectile
              highlight-indent-guides
              irony
              irony-eldoc
              julia-mode
+             magit
              monokai-theme
+             org-bullets
              powerline
              projectile
              spaceline
@@ -63,7 +72,8 @@
              web-mode
              whitespace-cleanup-mode
              yaml-mode
-             yasnippet)))
+             yasnippet
+             )))
      (ignore-errors ;; This package is only relevant for Mac OS X.
        (when (memq window-system '(mac ns))
          (push 'exec-path-from-shell packages)
@@ -76,6 +86,7 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
+(require 'dashboard)
 (dashboard-setup-startup-hook)
 #+END_SRC
 
@@ -231,6 +242,11 @@
    (define-key evil-normal-state-map (kbd "-") 'dired-jump)
    #+END_SRC
 
+* Version Control
+  #+BEGIN_SRC emacs-lisp
+  (require 'magit)
+  (require 'evil-magit)  
+  #+END_SRC
 * Language Support
   - Ansible YAML
     #+BEGIN_SRC emacs-lisp
@@ -244,11 +260,66 @@
     (add-hook 'objc-mode-hook 'irony-mode)
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
     #+END_SRC
+  - Fortran
+    #+BEGIN_SRC emacs-lisp
+    (setq-default f90-do-indent 4)
+    (setq-default f90-if-indent 4)
+    (setq-default f90-type-indent 4)
+    (setq-default f90-program-indent 4)
+    (setq-default f90-continuation-indent 4)
+    (setq-default f90-smart-end 'blink)
+    #+END_SRC
   - git files
     #+BEGIN_SRC emacs-lisp
     (require 'gitconfig-mode)
     (require 'gitignore-mode)
     #+END_SRC
+  - go
+    #+BEGIN_SRC emacs-lisp
+    (require 'go-mode)
+    #+END_SRC
+  - graphviz
+    #+BEGIN_SRC emacs-lisp
+    (require 'graphviz-dot-mode)
+    #+END_SRC
+  - haskell
+    #+BEGIN_SRC emacs-lisp
+    (require 'haskell-mode)
+    #+END_SRC
+  - julia
+    #+BEGIN_SRC emacs-lisp
+    (require 'julia-mode)
+    #+END_SRC
+  - LaTeX
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'LaTeX-mode-hook
+              (setq evil-shift-width 2))
+    #+END_SRC
+  - python
+    #+BEGIN_SRC emacs-lisp
+    (require 'elpy)
+    (elpy-enable)
+    #+END_SRC
+  - web
+    #+BEGIN_SRC emacs-lisp
+    (require 'web-mode)
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+    (add-hook 'web-mode-hook
+              (lambda ()
+                (setq evil-shift-width 2)
+                (setq indent-tabs-mode nil)
+                (setq web-mode-markup-indent-offset 2)
+                (setq web-mode-css-indent-offset 2)
+                (setq web-mode-code-indent-offset 2)))
+    #+END_SRC
+    - yaml
+      #+BEGIN_SRC emacs-lisp
+      (require 'yaml-mode)
+      #+END_SRC
 * Auto Completion
   #+BEGIN_SRC emacs-lisp
   (require 'company)
@@ -271,6 +342,15 @@
     (add-to-list 'company-backends 'company-irony)
     #+END_SRC
   
+* Linting
+  #+BEGIN_SRC emacs-lisp
+    (require 'flycheck)
+    (global-flycheck-mode)
+  #+END_SRC
+  - C/C++
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+    #+END_SRC
 * Visuals
 ** Theme
    #+BEGIN_SRC emacs-lisp
@@ -309,3 +389,111 @@
    (setq highlight-indent-guides-method 'column)
    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
    #+END_SRC
+** Org-Mode
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'org-mode-hook (lambda () (org-bullets-mode)))
+   #+END_SRC
+   
+** Pretty Mode
+   #+BEGIN_SRC emacs-lisp
+   (setq prettify-symbols-unprettify-at-point 'right-edge)
+   (global-prettify-symbols-mode +1)
+   #+END_SRC
+
+*** C++
+    #+BEGIN_SRC emacs-lisp
+    (defun pretty-mode/c ()
+      "Prettify symbols in C mode."
+      (setq prettify-symbols-alist
+            (append prettify-symbols-alist
+                    '(("!=" . ?≠)
+                      ("<=" . ?≤)
+                      (">=" . ?≥)
+                      ("&&" . ?∧)
+                      ("||" . ?∨)
+                      ("<<" . ?≪)
+                      (">>" . ?≫)))))
+
+    (defun pretty-mode/c++ ()
+      "Prettify symbols in C++ mode."
+      (pretty-mode/c))
+
+    (add-hook 'c-mode 'pretty-mode/c)
+    (add-hook 'c++-mode 'pretty-mode/c++)
+    #+END_SRC
+*** Emacs Lisp
+    #+BEGIN_SRC emacs-lisp
+    (defun pretty-mode/emacs-lisp ()
+      "Prettify symbols in Emacs Lisp mode."
+      (setq prettify-symbols-alist
+            '(("lambda" . ?λ)
+              ("defun"  . ?ϝ)
+              ("!="     . ?≠)
+              ("<="     . ?≤)
+              (">="     . ?≥))))
+
+    (add-hook 'emacs-lisp-mode-hook 'pretty-mode/emacs-lisp)
+    #+END_SRC
+*** Python
+    #+BEGIN_SRC emacs-lisp
+    (defun pretty-mode/add-greek ()
+      " add prettified versions of greek letters"
+      (setq prettify-symbols-alist
+            (append prettify-symbols-alist
+                    '(("alpha"   . ?α)
+                      ("beta"    . ?β)
+                      ("gamma"   . ?γ)
+                      ("delta"   . ?δ)
+                      ("epsilon" . ?ε)
+                      ("zeta"    . ?ζ)
+                      ("eta"     . ?η)
+                      ("theta"   . ?θ)))))
+
+    (defun pretty-mode/python ()
+      "Prettify symbols in python mode."
+      (progn
+        (setq prettify-symbols-alist
+              '(("lambda" . ?λ)
+                ("def"    . ?ϝ)
+                ("!="     . ?≠)
+                ("<="     . ?≤)
+                (">="     . ?≥)
+                ("in"     . ?∈)
+                ("not in" . ?∉)
+                ("for"    . ?∀)
+                ("or"     . ?∨)
+                ("and"    . ?∧)))
+        (pretty-mode/add-greek)))
+
+    (add-hook 'python-mode-hook 'pretty-mode/python)
+    #+END_SRC
+* Playerctl
+  #+BEGIN_SRC emacs-lisp
+  (defun playerctl/command (command message)
+    "Call playerctl asynchronously and display a message."
+    (if (executable-find "playerctl")
+        (progn
+          (start-process "elplayerctl" nil "playerctl" command)
+          (message message))
+      (message "playerctl not available")))
+
+  (defun song-pause()
+    "Pause playback using playerctl"
+    (interactive)
+    (playerctl/command "play-pause" "Toggle playback"))
+
+  (defun song-next()
+    "Skip to next song using playerctl"
+    (interactive)
+    (playerctl/command "next" "Next song"))
+
+  (defun song-prev()
+    "Go back to previous song using playerctl"
+    (interactive)
+    (playerctl/command "previous" "Previous song"))
+
+  (defun song-stop()
+    "Stop playback using playerctl"
+    (interactive)
+    (playerctl/command "stop" "Stop music"))
+  #+END_SRC
