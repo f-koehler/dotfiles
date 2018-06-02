@@ -1,9 +1,10 @@
+*.elc
 auto-save-list
-elpa
-network-security.data
 custom.el
 custom.el~
+elpa
+elpy
+irony
+network-security.data
 recentf
 recentf~
-*.elc
-irony

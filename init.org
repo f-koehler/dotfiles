@@ -64,9 +64,11 @@
              julia-mode
              magit
              monokai-theme
+             nlinum
              org-bullets
              powerline
              projectile
+             pyenv
              spaceline
              spaceline-all-the-icons
              web-mode
@@ -161,16 +163,18 @@
 * Vim-like Behavior
   I am a vim user and want to work in a similar fashion with emacs as well.
   #+BEGIN_SRC emacs-lisp
+  (setq evil-want-C-d-scroll t)
+  (setq evil-want-C-u-scroll t)
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
   (require 'evil)
   (evil-mode 1)
   
   ;; use escape key to cancel
   (global-set-key [escape] 'keyboard-escape-quit)
-  #+END_SRC
-  
-  #+BEGIN_SRC emacs-lisp
-  (setq evil-want-C-d-scroll t)
-  (setq evil-want-C-u-scroll t)
+  (define-key isearch-mode-map [escape] 'isearch-abort)
+  (define-key isearch-mode-map "\e" 'isearch-abort)
   #+END_SRC
   
 ** Comments
@@ -242,6 +246,13 @@
    (define-key evil-normal-state-map (kbd "-") 'dired-jump)
    #+END_SRC
 
+** Line Numbers
+   #+BEGIN_SRC emacs-lisp
+   (require 'nlinum)
+   (setq nlinum-format "%4d\u2502")
+   (setq nlinum-highlight-current-line 1)
+   (global-nlinum-mode)
+   #+END_SRC
 * Version Control
   #+BEGIN_SRC emacs-lisp
   (require 'magit)
@@ -298,7 +309,44 @@
   - python
     #+BEGIN_SRC emacs-lisp
     (require 'elpy)
+    (require 'pyvenv)
+
+    (defvar elpy-python-env)
+    (setq elpy-python-env (concat user-emacs-directory "elpy/env"))
+
+    (defvar elpy-python-env-packages)
+    (setq elpy-python-env-packages
+          '(
+            "autopep8==1.3.5"
+            "black==18.5b1"
+            "flake8==3.5.0"
+            "jedi==0.12.0"
+            "matplotlib==2.2.2"
+            "numpy==1.14.3"
+            "pandas==0.23.0"
+            "scipy==1.1.0"
+            "rope==0.10.7"
+            "yapf==0.22.0"
+            ))
+
+    (defun install-pip-package (package)
+      (progn
+        (message (concat "Install python package " package))
+        (shell-command (concat "pip install --upgrade " package))))
+
+    (defun create-elpy-python-env ()
+      (if (not (file-directory-p elpy-python-env))
+          (if (not (executable-find "virtualenv"))
+              (message "Error: cannot find virtualenv executable")
+            (progn
+              (shell-command (concat "virtualenv " elpy-python-env))
+              (pyvenv-activate elpy-python-env)
+              (mapc 'install-pip-package elpy-python-env-packages)))))
+
     (elpy-enable)
+    (if (file-directory-p elpy-python-env)
+        (pyvenv-activate elpy-python-env)
+(create-elpy-python-env))
     #+END_SRC
   - web
     #+BEGIN_SRC emacs-lisp
@@ -434,6 +482,75 @@
 
     (add-hook 'emacs-lisp-mode-hook 'pretty-mode/emacs-lisp)
     #+END_SRC
+*** Haskell
+    #+BEGIN_SRC emacs-lisp
+    (defun pretty-mode/haskell ()
+      (setq prettify-symbols-alist
+            '(
+              ("&&" . ?∧)
+              ("++" . ?⧺)
+              ("+++" . ?⧻)
+              ("-->" . ?⟶)
+              ("->" . ?→)
+              ("..." . ?…)
+              ("/<" . ?≮)
+              ("/=" . ?≠)
+              ("/>" . ?≯)
+              ("::" . ?∷)
+              (":=" . ?≔)
+              ("<*>" . ?⊛)
+              ("<-" . ?←)
+              ("<--" . ?⟵)
+              ("<-->" . ?⟷)
+              ("<->" . ?↔)
+              ("<<" . ?≪)
+              ("<<<" . ?⋘)
+              ("<=" . ?≤)
+              ("<==" . ?⟸)
+              ("<==>" . ?⟺)
+              ("<=>" . ?⇔)
+              ("<|" . ?⊲)
+              ("=:" . ?≕)
+              ("==" . ?≡)
+              ("==>" . ?⟹)
+              ("=>" . ?⇒)
+              ("=?" . ?≟)
+              ("=def" . ?≝)
+              ("><" . ?⋈)
+              (">=" . ?≥)
+              (">>" . ?≫)
+              (">>>" . ?⋙)
+              ("elem" . ?∈)
+              ("empty" . ?∅)
+              ("intersection" . ?∩)
+              ("isProperSubsetOf" . ?⊂)
+              ("isSubsetOf" . ?⊆)
+              ("mappend" . ?⊕)
+              ("member" . ?∈)
+              ("mempty" . ?∅)
+              ("not" . ?¬)
+              ("notElem" . ?∉)
+              ("notMember" . ?∉)
+              ("undefined" . ?⊥)
+              ("union" . ?∪)
+              ("|>" . ?⊳)
+              ("||" . ?∨)
+              )))
+
+    (add-hook 'haskell-mode-hook 'pretty-mode/haskell)
+    #+END_SRC
+*** Fortran
+    #+BEGIN_SRC emacs-lisp
+    (defun pretty-mode/f90 ()
+      "Prettify symbols in Fortran mode."
+      (setq prettify-symbols-alist
+            (append prettify-symbols-alist
+                    '((".not." . ?¬)
+                      (".and." . ?∧)
+                      (".or."  . ?∨)))))
+
+    (add-hook 'f90-mode-hook 'pretty-mode/f90)
+    #+END_SRC
 *** Python
     #+BEGIN_SRC emacs-lisp
     (defun pretty-mode/add-greek ()
@@ -462,7 +579,8 @@
                 ("not in" . ?∉)
                 ("for"    . ?∀)
                 ("or"     . ?∨)
-                ("and"    . ?∧)))
+                ("and"    . ?∧)
+                ("not"    . ?¬)))
         (pretty-mode/add-greek)))
 
     (add-hook 'python-mode-hook 'pretty-mode/python)
