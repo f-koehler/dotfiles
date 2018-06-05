@@ -26,65 +26,68 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(let* ((package--builtins nil)
-          (packages
-           '(
-            aggressive-indent
-             all-the-icons
-             all-the-icons-dired
-             ansible
-             beacon
-             clang-format
-             cmake-mode
-             cmake-font-lock
-             company
-             company-irony
-             company-quickhelp
-             dashboard
-             elpy
-             evil
-             evil-commentary
-             evil-magit
-             evil-org
-             flycheck
-             flycheck-irony
-             gitconfig-mode
-             gitignore-mode
-             go-mode
-             graphviz-dot-mode
-             haskell-mode
-             helm
-             helm-ls-git
-             helm-ls-hg
-             helm-ls-svn
-             helm-projectile
-             highlight-indent-guides
-             irony
-             irony-eldoc
-             julia-mode
-             magit
-             monokai-theme
-             nlinum
-             org-bullets
-             powerline
-             projectile
-             pyenv
-             spaceline
-             spaceline-all-the-icons
-             web-mode
-             whitespace-cleanup-mode
-             yaml-mode
-             yasnippet
-             )))
-     (ignore-errors ;; This package is only relevant for Mac OS X.
-       (when (memq window-system '(mac ns))
-         (push 'exec-path-from-shell packages)
-         (push 'reveal-in-osx-finder packages))
-       (let ((packages (remove-if 'package-installed-p packages)))
-         (when packages
-           ;; Install uninstalled packages
-           (package-refresh-contents)
-           (mapc 'package-install packages)))))
+(setq packages '(
+          aggressive-indent
+          all-the-icons
+          all-the-icons-dired
+          ansible
+          auto-package-update
+          beacon
+          clang-format
+          cmake-mode
+          cmake-font-lock
+          company
+          company-irony
+          company-quickhelp
+          dashboard
+          elpy
+          evil
+          evil-commentary
+          evil-magit
+          evil-org
+          flycheck
+          flycheck-irony
+          ggtags
+          gitconfig-mode
+          gitignore-mode
+          go-mode
+          graphviz-dot-mode
+          haskell-mode
+          helm
+          helm-ls-git
+          helm-ls-hg
+          helm-ls-svn
+          helm-projectile
+          highlight-indent-guides
+          irony
+          irony-eldoc
+          julia-mode
+          magit
+          monokai-theme
+          nlinum
+          org-bullets
+          powerline
+          projectile
+          pyvenv
+          spaceline
+          spaceline-all-the-icons
+          web-mode
+          whitespace-cleanup-mode
+          yaml-mode
+          yasnippet
+          ))
+(dolist (package packages)
+  (unless (package-installed-p package)
+    (package-install package)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (require 'auto-package-update)
+  (setq auto-package-update-interval 2)
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-prompt-before-update t)
+  (add-hook 'auto-package-update-before-hook
+            (lambda () (message "Run scheduled update of emacs packages")))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
