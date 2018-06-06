@@ -41,6 +41,7 @@
           company-quickhelp
           dashboard
           elpy
+          esup
           evil
           evil-commentary
           evil-magit
@@ -64,6 +65,7 @@
           julia-mode
           magit
           monokai-theme
+          neotree
           nlinum
           org-bullets
           powerline
@@ -96,59 +98,65 @@
 #+END_SRC
 
 * Global
-   #+BEGIN_SRC emacs-lisp
-   ;; use tabs instead of whitespaces
-   (setq-default indent-tabs-mode nil)
-   
-   ;; disable the clunky interface
-   (menu-bar-mode -1)
-   (toggle-scroll-bar -1)
-   (tool-bar-mode -1)
-   
-   ;; treat camelcase as individual words
-   (add-hook 'prog-mode-hook 'subword-mode)
-   
-   ;; make scripts executable on save
-   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-   
-   ;; only run garbage collection every 64MB
-   (setq-default gc-cons-threshold 67108864)
-   
-   ;; determine how dired lists files
-   (setq-default dired-listing-switches "-lah")
-   
-   ;; do not ask yes/no but y/n
-   (fset 'yes-or-no-p 'y-or-n-p)
-   
-   ;; turn on syntax highlighting whenever it is possible
-   (global-font-lock-mode t)
-   
-   ;; always reload files that change
-   (global-auto-revert-mode t)
-   
-   ;; show matching parentheses immediately
-   (show-paren-mode 1)
-   (setq-default show-paren-delay 0.0)
-   
-   ;; highlight current line
-   (require 'hl-line)
-   (global-hl-line-mode)
-   
-   ;; show whitespaces and newlines
-   (require 'whitespace)
-   
-   ;; clipboard
-   (setq-default select-enable-clipboard t)
-   (setq-default interprogram-paste-function 'x-cut-buffer-or-selection-value)
-   
-   ;; change location of customizations and protect init.el
-   (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-   (load custom-file 'noerror)
-   
-   ;; wind move for window navigation
-   (when (fboundp 'windmove-default-keybindings)
-     (windmove-default-keybindings))
-   #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  ;; use tabs instead of whitespaces
+  (setq-default indent-tabs-mode nil)
+  
+  ;; disable the clunky interface
+  (menu-bar-mode -1)
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
+  
+  ;; treat camelcase as individual words
+  (add-hook 'prog-mode-hook 'subword-mode)
+  
+  ;; make scripts executable on save
+  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+  
+  ;; only run garbage collection every 64MB
+  (setq-default gc-cons-threshold 67108864)
+  
+  ;; determine how dired lists files
+  (setq-default dired-listing-switches "-lah")
+  
+  ;; do not ask yes/no but y/n
+  (fset 'yes-or-no-p 'y-or-n-p)
+  
+  ;; turn on syntax highlighting whenever it is possible
+  (global-font-lock-mode t)
+  
+  ;; always reload files that change
+  (global-auto-revert-mode t)
+  
+  ;; show matching parentheses immediately
+  (show-paren-mode 1)
+  (setq-default show-paren-delay 0.0)
+  
+  ;; highlight current line
+  (require 'hl-line)
+  (global-hl-line-mode)
+  
+  ;; show whitespaces and newlines
+  (require 'whitespace)
+  
+  ;; clipboard
+  (setq-default select-enable-clipboard t)
+  (setq-default interprogram-paste-function 'x-cut-buffer-or-selection-value)
+  
+  ;; change location of customizations and protect init.el
+  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file 'noerror)
+  
+  ;; wind move for window navigation
+  (when (fboundp 'windmove-default-keybindings)
+    (windmove-default-keybindings))
+  #+END_SRC
+  
+  #+BEGIN_SRC emacs-lisp
+    (setq save-interprogram-paste-before-kill t)
+    (setq mouse-yank-at-point t)
+    (setq require-final-newline t)
+  #+END_SRC
    
 ** Editor Behavior
    Automatically clean whitespaces on save.
@@ -385,6 +393,9 @@
   
   ;; enable company globally
   (global-company-mode)
+  
+  ;; enable company-quickhelp globally
+  (company-quickhelp-mode)
   #+END_SRC
   
   - C++
@@ -618,3 +629,21 @@
     (interactive)
     (playerctl/command "stop" "Stop music"))
   #+END_SRC
+
+* Helm
+
+#+BEGIN_SRC emacs-lisp
+(require 'helm)
+(define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
+#+END_SRC
+
+* Neotree
+#+BEGIN_SRC emacs-lisp
+(require 'neotree)
+(setq-default neo-theme (if (display-graphic-p) 'icons 'arrow))
+(global-set-key [f8] 'neotree-toggle)
+(evil-define-key 'normal neotree-mode-amp (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-amp (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-amp (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-amp (kbd "RET") 'neotree-enter)
+#+END_SRC
