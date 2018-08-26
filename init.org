@@ -87,6 +87,10 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
+(set-face-attribute 'default nil :height 90)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
   (require 'auto-package-update)
   (setq auto-package-update-interval 2)
   (setq auto-package-update-delete-old-versions t)
