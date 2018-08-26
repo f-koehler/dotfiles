@@ -31,16 +31,19 @@
           all-the-icons
           all-the-icons-dired
           ansible
+          ;; auctex
           auto-package-update
           beacon
           clang-format
           cmake-mode
           cmake-font-lock
           company
+          ;; company-auctex
           company-irony
           company-quickhelp
           dashboard
           elpy
+          ess
           esup
           evil
           evil-commentary
@@ -62,7 +65,6 @@
           highlight-indent-guides
           irony
           irony-eldoc
-          julia-mode
           magit
           monokai-theme
           neotree
@@ -73,6 +75,7 @@
           pyvenv
           spaceline
           spaceline-all-the-icons
+          undo-tree
           web-mode
           whitespace-cleanup-mode
           yaml-mode
@@ -310,12 +313,21 @@
     #+END_SRC
   - julia
     #+BEGIN_SRC emacs-lisp
-    (require 'julia-mode)
+      ;; (require 'julia-mode)
+      (require 'ess-site)
+      (require 'ess-julia)
     #+END_SRC
   - LaTeX
     #+BEGIN_SRC emacs-lisp
-    (add-hook 'LaTeX-mode-hook
-              (setq evil-shift-width 2))
+    ;; (require 'auctex)
+    ;; (require 'company-auctex)
+    ;; (setq TeX-auto-save t)
+    ;; (setq TeX-parse-self t)
+    ;; (setq-default TeX-master nil)
+    ;; (add-hook 'LaTeX-mode-hook
+    ;;           (progn
+    ;;             (company-auctex-init)
+    ;;             (setq evil-shift-width 2)))
     #+END_SRC
   - python
     #+BEGIN_SRC emacs-lisp
@@ -329,9 +341,9 @@
     (setq elpy-python-env-packages
           '(
             "autopep8==1.3.5"
-            "black==18.5b1"
+            "black==18.5b4"
             "flake8==3.5.0"
-            "jedi==0.12.0"
+            "jedi==0.12.1"
             "matplotlib==2.2.2"
             "numpy==1.14.3"
             "pandas==0.23.0"
@@ -402,6 +414,19 @@
     #+BEGIN_SRC emacs-lisp
     (require 'company-irony)
     (add-to-list 'company-backends 'company-irony)
+    #+END_SRC
+    
+  - Julia
+    #+BEGIN_SRC emacs-lisp
+    (setq ess-use-company t) 
+    (add-to-list 'company-dabbrev-code-modes 'ess-mode)
+    #+END_SRC 
+    
+  - Python
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'python-mode-hook
+              (lambda ()
+                (set (make-local-variable 'company-backends) '(elpy-company-backend))))
     #+END_SRC
   
 * Linting
