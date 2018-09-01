@@ -7,3 +7,7 @@ setopt nomatch
 setopt prompt_subst
 setopt pushd_ignore_dups
 unsetopt beep
+
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE="$HOME/.zsh_history"

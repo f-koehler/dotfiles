@@ -9,7 +9,19 @@ source $HOME/.zsh.d/options.zsh
 # prompt
 source $HOME/.zsh.d/prompt.zsh
 
+# key bindings
+source $HOME/.zsh.d/keybindings.zsh
+
 # load plugins
+if [ -d $HOME/.zsh/zsh-completions/src ]; then
+  fpath=($HOME/.zsh/zsh-completions/src $fpath)
+fi
+
+if [ -d $HOME/.zsh/oh-my-zsh/plugins/ ]; then
+  fpath=($HOME/.zsh/oh-my-zsh/plugins/cpanm $fpath)
+  fpath=($HOME/.zsh/oh-my-zsh/plugins/pip $fpath)
+fi
+
 if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     source $HOME/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
@@ -21,3 +33,5 @@ fi
 if [ -f /usr/share/fzf/key-bindings.zsh  ]; then
     source /usr/share/fzf/key-bindings.zsh
 fi
+
+autoload compinit && compinit

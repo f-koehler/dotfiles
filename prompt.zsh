@@ -1,3 +1,6 @@
+autoload colors && colors
+autoload -Uz vcs_info
+
 prompt_char() {
     if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
 }
