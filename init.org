@@ -318,8 +318,8 @@
   - julia
     #+BEGIN_SRC emacs-lisp
       ;; (require 'julia-mode)
-      (require 'ess-site)
-      (require 'ess-julia)
+      ;; (require 'ess-site)
+      ;; (require 'ess-julia)
     #+END_SRC
   - LaTeX
     #+BEGIN_SRC emacs-lisp
