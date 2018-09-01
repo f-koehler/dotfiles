@@ -1,2 +1,0 @@
-#!/bin/bash
-exec setxkbmap -layout de -variant nodeadkeys -option compose:caps
