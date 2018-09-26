@@ -1,5 +1,4 @@
 *~
-*~
 abbrev_defs
 auto-save-list
 custom.el
@@ -7,6 +6,7 @@ elpa
 elpy
 init.elc
 irony
+logs
 network-security.data
 recentf
 tramp

@@ -14,6 +14,7 @@
 (add-hook 'after-save-hook 'tangle-init)
 #+END_SRC
 
+* Packages
 #+BEGIN_SRC emacs-lisp
 (require 'cl)
 (require 'package)
@@ -65,7 +66,6 @@
           irony
           irony-eldoc
 	  lsp-mode
-	  lsp-python
           lsp-ui
           magit
           monokai-theme
@@ -286,6 +286,7 @@
 
       (add-hook 'lsp-mode-hook 'lsp-ui-mode)
       (setq-default lsp-message-project-root-warning t)
+
     #+END_SRC
 
 ** Company
@@ -335,14 +336,22 @@
   #+END_SRC
   
 ** Fortran
-  #+BEGIN_SRC emacs-lisp
-  (setq-default f90-do-indent 4)
-  (setq-default f90-if-indent 4)
-  (setq-default f90-type-indent 4)
-  (setq-default f90-program-indent 4)
-  (setq-default f90-continuation-indent 4)
-  (setq-default f90-smart-end 'blink)
-  #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (require 'projectile)
+
+     (lsp-define-stdio-client fortls "fortran"
+                              #'projectile-project-root
+                              (list "fortls" "--lowercase_intrinsics"))
+     (add-hook 'f90-mode #'fortls-enable)
+   #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+     (setq-default f90-do-indent 4)
+     (setq-default f90-if-indent 4)
+     (setq-default f90-type-indent 4)
+     (setq-default f90-program-indent 4)
+     (setq-default f90-continuation-indent 4)
+     (setq-default f90-smart-end 'blink)
+   #+END_SRC
   
 ** Git
   #+BEGIN_SRC emacs-lisp
@@ -386,55 +395,44 @@
   #+END_SRC
   
 ** Python
+   
+   #+BEGIN_SRC emacs-lisp
+     (let ((anaconda-bin-path (expand-file-name "~/.local/opt/anaconda3/bin")))
+       (if (file-directory-p anaconda-bin-path)
+           (progn
+             (setenv "PATH" (concat anaconda-bin-path ":" (getenv "PATH")))
+             (push anaconda-bin-path exec-path))))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (require 'pyvenv)
+
+     (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs")))
+       (if (file-directory-p anaconda-env-path)
+           (setenv "WORKON_HOME" anaconda-env-path)))
+
+     (pyvenv-mode 1)
+   #+END_SRC
+   
+   #+BEGIN_SRC emacs-lisp
+     (defvar lsp-python-log-dir)
+     (setq lsp-python-log-dir (expand-file-name "~/.emacs.d/logs/lsp-python"))
+
+     (defvar lsp-python-log-file)
+     (setq lsp-python-log-file (concat lsp-python-log-dir "/pyls.log"))
+
+     (make-directory lsp-python-log-dir t)
+   #+END_SRC
+
   #+BEGIN_SRC emacs-lisp
-    (require 'lsp-mode)
-    (require 'lsp-python)
     (require 'projectile)
-    ;; (add-hook 'python-mode-hook #'lsp-python-enable)
+
     (lsp-define-stdio-client lsp-python "python"
                              #'projectile-project-root
-                             '("pyls"))
-    (add-hook 'python-mode-hook #'lsp-python-enable)
-    ;;     (require 'elpy)
-    ;;     (require 'pyvenv)
-
-    ;;     (defvar elpy-python-env)
-    ;;     (setq elpy-python-env (concat user-emacs-directory "elpy/env"))
-
-    ;;     (defvar elpy-python-env-packages)
-    ;;     (setq elpy-python-env-packages
-    ;;           '(
-    ;;             "autopep8==1.3.5"
-    ;;             "black==18.5b4"
-    ;;             "flake8==3.5.0"
-    ;;             "jedi==0.12.1"
-    ;;             "matplotlib==2.2.2"
-    ;;             "numpy==1.14.3"
-    ;;             "pandas==0.23.0"
-    ;;             "scipy==1.1.0"
-    ;;             "rope==0.10.7"
-    ;;             "yapf==0.22.0"
-    ;;             ))
-
-    ;;     (defun install-pip-package (package)
-    ;;       (progn
-    ;;         (message (concat "Install python package " package))
-    ;;         (shell-command (concat "pip install --upgrade " package))))
-
-    ;;     (defun create-elpy-python-env ()
-    ;;       (if (not (file-directory-p elpy-python-env))
-    ;;           (if (not (executable-find "virtualenv"))
-    ;;               (message "Error: cannot find virtualenv executable")
-    ;;             (progn
-    ;;               (shell-command (concat "virtualenv " elpy-python-env))
-    ;;               (pyvenv-activate elpy-python-env)
-    ;;               (mapc 'install-pip-package elpy-python-env-packages)))))
-
-    ;;     (elpy-enable)
-    ;;     (if (file-directory-p elpy-python-env)
-    ;;         (pyvenv-activate elpy-python-env)
-    ;; (create-elpy-python-env))
+                             (list "pyls" "--log-file" lsp-python-log-file))
+    (add-hook 'python-mode #'lsp-python-enable)
   #+END_SRC
+
   
 ** Web
   #+BEGIN_SRC emacs-lisp
