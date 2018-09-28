@@ -427,10 +427,10 @@
   #+BEGIN_SRC emacs-lisp
     (require 'projectile)
 
-    (lsp-define-stdio-client lsp-python "python"
-                             #'projectile-project-root
-                             (list "pyls" "--log-file" lsp-python-log-file))
-    (add-hook 'python-mode #'lsp-python-enable)
+    (lsp-define-stdio-client pyls "python"
+                             'projectile-project-root
+                             '("pyls"))
+    (add-hook 'python-mode #'pyls-enable)
   #+END_SRC
 
   
