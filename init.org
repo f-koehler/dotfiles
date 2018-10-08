@@ -66,6 +66,7 @@
           irony
           irony-eldoc
 	  lsp-mode
+          lsp-python
           lsp-ui
           magit
           monokai-theme
@@ -278,6 +279,12 @@
   (require 'magit)
   (require 'evil-magit)  
   #+END_SRC
+  
+* Project
+  #+BEGIN_SRC emacs-lisp
+    (require 'projectile)
+    (projectile-mode)
+  #+END_SRC
 * Language Support
 ** Language Server Protocol
     #+BEGIN_SRC emacs-lisp
@@ -337,12 +344,12 @@
   
 ** Fortran
    #+BEGIN_SRC emacs-lisp
-     (require 'projectile)
+     ;; (require 'projectile)
 
-     (lsp-define-stdio-client fortls "fortran"
-                              #'projectile-project-root
-                              (list "fortls" "--lowercase_intrinsics"))
-     (add-hook 'f90-mode #'fortls-enable)
+     ;; (lsp-define-stdio-client fortls "fortran"
+     ;;                          #'projectile-project-root
+     ;;                          (list "fortls" "--lowercase_intrinsics"))
+     ;; (add-hook 'f90-mode #'fortls-enable)
    #+END_SRC
    #+BEGIN_SRC emacs-lisp
      (setq-default f90-do-indent 4)
@@ -425,12 +432,9 @@
    #+END_SRC
 
   #+BEGIN_SRC emacs-lisp
-    (require 'projectile)
-
-    (lsp-define-stdio-client pyls "python"
-                             'projectile-project-root
-                             '("pyls"))
-    (add-hook 'python-mode #'pyls-enable)
+    (require 'lsp-mode)
+    (require 'lsp-python)
+    (add-hook 'python-mode-hook #'lsp-python-enable)
   #+END_SRC
 
   
@@ -668,7 +672,8 @@
                 ("for"    . ?∀)
                 ("or"     . ?∨)
                 ("and"    . ?∧)
-                ("not"    . ?¬)))
+                ("not"    . ?¬)
+                ("->"     . ?→)))
         (pretty-mode/add-greek)))
 
     (add-hook 'python-mode-hook 'pretty-mode/python)
@@ -708,8 +713,10 @@
 * Helm
 
 #+BEGIN_SRC emacs-lisp
-(require 'helm)
-(define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
+  (require 'helm)
+  (setq projectile-completion-system 'helm)
+  (helm-projectile-on)
+  (define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
 #+END_SRC
 
 * Neotree
