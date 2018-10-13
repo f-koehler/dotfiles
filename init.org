@@ -42,6 +42,7 @@
           company-lsp
           company-quickhelp
           cquery
+          csharp-mode
           dashboard
           ess
           esup
@@ -72,6 +73,7 @@
           monokai-theme
           neotree
           nlinum
+          omnisharp
           org-bullets
           powerline
           projectile
@@ -348,6 +350,32 @@
     (add-hook 'c++-mode-hook #'cquery/enable)
   #+END_SRC
   
+** C#
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load
+    'company
+    '(add-to-list 'company-backends #'company-omnisharp))
+
+  (defun my-csharp-mode-setup ()
+    (omnisharp-mode)
+    (company-mode)
+    (flycheck-mode)
+
+    (setq indent-tabs-mode nil)
+    (setq c-syntactic-indentation t)
+    (c-set-style "ellemtel")
+    (setq c-basic-offset 4)
+    (setq truncate-lines t)
+    (setq tab-width 4)
+    (setq evil-shift-width 4)
+
+    (electric-pair-local-mode 1) ;; Emacs 25
+
+    (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+    (local-set-key (kbd "C-c C-c") 'recompile))
+
+  (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
+#+END_SRC
 ** Fortran
    #+BEGIN_SRC emacs-lisp
      ;; (require 'projectile)
@@ -448,8 +476,8 @@
   #+BEGIN_SRC emacs-lisp
   (require 'web-mode)
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
   (add-hook 'web-mode-hook
