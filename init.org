@@ -107,6 +107,12 @@
 (dashboard-setup-startup-hook)
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (setq initial-buffer-choice
+        (lambda ()
+          (switch-to-buffer "*dashboard*")))
+#+END_SRC
+
 * Global
   #+BEGIN_SRC emacs-lisp
   ;; use tabs instead of whitespaces
