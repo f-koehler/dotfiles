@@ -71,7 +71,6 @@
           lsp-ui
           magit
           monokai-theme
-          neotree
           nlinum
           omnisharp
           org-bullets
@@ -116,29 +115,44 @@
 #+END_SRC
 
 * Global
+  I know it is an eternal discussion, but I use whitespaces instead of tabs.
   #+BEGIN_SRC emacs-lisp
-  ;; use tabs instead of whitespaces
   (setq-default indent-tabs-mode nil)
+  #+END_SRC
   
-  ;; disable the clunky interface
+  Next, I disable the clunky interface of emacs, i.e. the menu bar, the scroll bar and the tool bar.
+  #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
+  #+END_SRC
   
-  ;; treat camelcase as individual words
+  When jumping words using the =w= and =b= keys in command mode, I like to also jump within a word/variable that uses camelcase.
+  #+BEGIN_SRC emacs-lisp
   (add-hook 'prog-mode-hook 'subword-mode)
-  
-  ;; make scripts executable on save
+  #+END_SRC
+
+  Emacs has a nice feature to mark scripts executable when saving.
+  It will automatically detect whether a [[https://en.wikipedia.org/wiki/Shebang_(Unix)][shebang]] is present and set the corresponding flag.
+  #+BEGIN_SRC emacs-lisp
   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+  #+END_SRC
   
-  ;; only run garbage collection every 64MB
+  On a modern computer with a lot of memory, it can be benefitial for the editor performance when the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage collection]] is not run so often.
+  The next statement will start it only every =64MB=.
+  #+BEGIN_SRC emacs-lisp
   (setq-default gc-cons-threshold 67108864)
+  #+END_SRC
   
+  When asking for confirmation there are both questions where you have to type =yes= / =no= and ones where =y= / =n= is sufficient.
+  Due to laziness I prefer the second kind.
+  #+BEGIN_SRC emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+  #+END_SRC
+
+  #+BEGIN_SRC emacs-lisp
   ;; determine how dired lists files
   (setq-default dired-listing-switches "-lah")
-  
-  ;; do not ask yes/no but y/n
-  (fset 'yes-or-no-p 'y-or-n-p)
   
   ;; turn on syntax highlighting whenever it is possible
   (global-font-lock-mode t)
@@ -207,6 +221,9 @@
   #+END_SRC
   
 ** Comments
+   The [[https://github.com/linktohack/evil-commentary][evil-commentary]] package is a port of [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-commentary][vim-commentary]] plugin and allows for easy commenting and uncommenting of code.
+   Type =gcc= to toggle the comment status of the current line when in command mode.
+   =gc= does the same for visual mode.
    #+BEGIN_SRC emacs-lisp
    (require 'evil-commentary)
    (evil-commentary-mode)
@@ -217,12 +234,12 @@
    (require 'evil-org)
    #+END_SRC
   
-  #+BEGIN_SRC emacs-lisp
-  #+END_SRC
-  
 ** Vinegar
+   Next, we implement something to resemble [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-vinegar][vim-vinegar]] plugin.
+   This makes navigating the filesystem in =dired= much easier and renders plugins like [[https://github.com/jaypei/emacs-neotree][neotree]] useless.
+   Press =-= when in command mode to open dired for the current directory, press =-= again to go one directory up.
+   We also bind the vim navigation keys to work correctly in dired.
    #+BEGIN_SRC emacs-lisp
-   ;; vinegar
    (defun vinegar/top ()
      "Go to the top of the dired buffer"
      (interactive)
@@ -283,6 +300,8 @@
    (global-nlinum-mode)
    #+END_SRC
 * Version Control
+  The [[https://github.com/magit/magit][magit]] plugin is a nice tool to work with the [[https://git-scm.com/][git]] version control system from within emacs.
+  For now we just install it and also throw [[https://github.com/emacs-evil/evil-magit][evil-magit]] into the mix, which makes it play nicely with [[https://github.com/emacs-evil/evil][evil-mode]].
   #+BEGIN_SRC emacs-lisp
   (require 'magit)
   (require 'evil-magit)  
@@ -753,13 +772,3 @@
   (define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
 #+END_SRC
 
-* Neotree
-#+BEGIN_SRC emacs-lisp
-(require 'neotree)
-(setq-default neo-theme (if (display-graphic-p) 'icons 'arrow))
-(global-set-key [f8] 'neotree-toggle)
-(evil-define-key 'normal neotree-mode-amp (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-amp (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-amp (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-amp (kbd "RET") 'neotree-enter)
-#+END_SRC

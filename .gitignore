@@ -1,10 +1,13 @@
+*.elc
+*.eld
 *~
+.cache
 abbrev_defs
 auto-save-list
 custom.el
 elpa
 elpy
-init.elc
+init.emacs-list
 irony
 logs
 network-security.data
