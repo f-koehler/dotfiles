@@ -44,6 +44,7 @@
           cquery
           csharp-mode
           dashboard
+          dockerfile-mode
           ess
           esup
           evil
@@ -394,6 +395,12 @@
     (local-set-key (kbd "C-c C-c") 'recompile))
 
   (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
+#+END_SRC
+** Docker
+#+BEGIN_SRC emacs-lisp
+  (require 'dockerfile-mode)
+  (add-to-list 'auto-mode-alist
+               '("Dockerfile\\'" . dockerfile-mode))
 #+END_SRC
 ** Fortran
    #+BEGIN_SRC emacs-lisp
