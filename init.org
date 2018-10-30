@@ -475,6 +475,12 @@
    #+END_SRC
    
    #+BEGIN_SRC emacs-lisp
+     (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs/pyls")))
+       (if (file-directory-p anaconda-env-path)
+           (pyvenv-workon "pyls")))
+   #+END_SRC
+   
+   #+BEGIN_SRC emacs-lisp
      (defvar lsp-python-log-dir)
      (setq lsp-python-log-dir (expand-file-name "~/.emacs.d/logs/lsp-python"))
 
