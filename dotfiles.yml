@@ -1,0 +1,38 @@
+- hosts: localhost
+  tasks:
+    - name: Clone emacs config
+      git:
+        accept_hostkey: yes
+        repo: git@github.com:f-koehler/config-emacs.git
+        dest: ~/.emacs.d
+
+    - name: Daemonize emacs
+      service:
+        name: emacs
+        enabled: yes
+        daemon_reload: yes
+        state: started
+        user: yes
+
+    - name: Clone zsh config
+      git:
+        accept_hostkey: yes
+        repo: git@github.com:f-koehler/config-zsh.git
+        dest: ~/.zsh.d
+
+    - name: Symlink zsh init
+      file:
+        state: link
+        path: ~/.zshrc
+        src: ~/.zsh.d/init.zsh
+
+    - name: Clone kitty config
+      git:
+        accept_hostkey: yes
+        repo: git@github.com:f-koehler/config-kitty.git
+        dest: ~/.config/kitty
+
+    - name: Copy Xresources
+      copy:
+        src: Xresources
+        dest: ~/.Xresources
