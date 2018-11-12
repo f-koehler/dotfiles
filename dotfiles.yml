@@ -6,13 +6,13 @@
         repo: git@github.com:f-koehler/config-emacs.git
         dest: ~/.emacs.d
 
-    - name: Daemonize emacs
-      service:
-        name: emacs
-        enabled: yes
-        daemon_reload: yes
-        state: started
-        user: yes
+    # - name: Daemonize emacs
+    #   service:
+    #     name: emacs
+    #     enabled: yes
+    #     daemon_reload: yes
+    #     state: started
+    #     user: yes
 
     - name: Clone zsh config
       git:
