@@ -1,0 +1,9 @@
+- name: include main playbook
+  import_playbook: dotfiles.yml
+
+- hosts: localhost
+  tasks:
+    - name: copy polybar config
+      copy:
+        src: polybar-landau
+        dest: ~/.config/polybar/config
