@@ -1,0 +1,9 @@
+- name: include main playbook
+  import_playbook: dotfiles.yml
+
+- hosts: localhost
+  tasks:
+    - name: copy polybar config
+      copy:
+        src: polybar-majorana
+        dest: ~/.config/polybar/config
