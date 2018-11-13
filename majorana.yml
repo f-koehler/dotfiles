@@ -3,10 +3,18 @@
 
 - hosts: localhost
   tasks:
+    - name: create polybar config dir
+      file:
+        path: ~/.config/polybar
+        state: directory
     - name: copy polybar config
       copy:
         src: polybar-majorana
         dest: ~/.config/polybar/config
+    - name: create i3 config dir
+      file:
+        path: ~/.config/i3
+        state: directory
     - name: copy i3 config
       copy:
         src: i3-majorana
