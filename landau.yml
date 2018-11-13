@@ -5,6 +5,7 @@
   tasks:
     - name: create polybar config dir
       file:
+        path: ~/.config/polybar
         state: directory
         recurse: yes
     - name: copy polybar config
@@ -13,6 +14,7 @@
         dest: ~/.config/polybar/config
     - name: create i3 config dir
       file:
+        path: ~/.config/i3
         state: directory
         recurse: yes
     - name: copy i3 config
