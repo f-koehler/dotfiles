@@ -13,7 +13,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/majorana-primary]
-monitor = ${env:MONITOR:HDMI-0}
+monitor = ${env:MONITOR:LVDS1}
 width = 100%
 height = 20
 ;offset-x = 1%
