@@ -7,3 +7,7 @@
       copy:
         src: polybar-majorana
         dest: ~/.config/polybar/config
+    - name: copy i3 config
+      copy:
+        src: i3-majorana
+        dest: ~/.config/i3/config

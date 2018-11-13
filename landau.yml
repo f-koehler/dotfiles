@@ -7,3 +7,7 @@
       copy:
         src: polybar-landau
         dest: ~/.config/polybar/config
+    - name: copy i3 config
+      copy:
+        src: i3-landau
+        dest: ~/.config/i3/config
