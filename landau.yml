@@ -3,10 +3,18 @@
 
 - hosts: localhost
   tasks:
+    - name: create polybar config dir
+      file:
+        state: directory
+        recurse: yes
     - name: copy polybar config
       copy:
         src: polybar-landau
         dest: ~/.config/polybar/config
+    - name: create i3 config dir
+      file:
+        state: directory
+        recurse: yes
     - name: copy i3 config
       copy:
         src: i3-landau
