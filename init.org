@@ -21,7 +21,6 @@
 (package-initialize)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("marmalade" . "https://marmalade-repo.org/packages/")
         ("melpa" . "https://melpa.org/packages/")))
 (package-refresh-contents)
 #+END_SRC
@@ -72,6 +71,7 @@
           lsp-ui
           magit
           monokai-theme
+          ninja-mode
           nlinum
           omnisharp
           org-bullets
