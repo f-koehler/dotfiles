@@ -16,103 +16,44 @@
 
 * Packages
 #+BEGIN_SRC emacs-lisp
-(require 'cl)
-(require 'package)
-(package-initialize)
-(setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
-(package-refresh-contents)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(setq packages '(
-          aggressive-indent
-          all-the-icons
-          all-the-icons-dired
-          ansible
-          auto-package-update
-          beacon
-          clang-format
-          cmake-mode
-          cmake-font-lock
-          company
-          company-irony
-          company-lsp
-          company-quickhelp
-          cquery
-          csharp-mode
-          dashboard
-          dockerfile-mode
-          ess
-          esup
-          evil
-          evil-commentary
-          evil-magit
-          evil-org
-          flycheck
-          flycheck-irony
-          ggtags
-          gitconfig-mode
-          gitignore-mode
-          go-mode
-          graphviz-dot-mode
-          haskell-mode
-          helm
-          helm-ls-git
-          helm-ls-hg
-          helm-ls-svn
-          helm-projectile
-          highlight-indent-guides
-          irony
-          irony-eldoc
-	  lsp-mode
-          lsp-python
-          lsp-ui
-          magit
-          monokai-theme
-          ninja-mode
-          nlinum
-          omnisharp
-          org-bullets
-          powerline
-          projectile
-          pyvenv
-          spaceline
-          spaceline-all-the-icons
-          undo-tree
-          web-mode
-          whitespace-cleanup-mode
-          yaml-mode
-          yasnippet
-          ))
-(dolist (package packages)
-  (unless (package-installed-p package)
-    (package-install package)))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (set-face-attribute 'default nil :height 90)
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-  (require 'auto-package-update)
-  (setq auto-package-update-interval 2)
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-prompt-before-update t)
-  (add-hook 'auto-package-update-before-hook
-            (lambda () (message "Run scheduled update of emacs packages")))
-#+END_SRC
+# #+BEGIN_SRC emacs-lisp
+#   (require 'auto-package-update)
+#   (setq auto-package-update-interval 2)
+#   (setq auto-package-update-delete-old-versions t)
+#   (setq auto-package-update-prompt-before-update t)
+#   (add-hook 'auto-package-update-before-hook
+#             (lambda () (message "Run scheduled update of emacs packages")))
+# #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  (setq initial-buffer-choice
-        (lambda ()
-          (switch-to-buffer "*dashboard*")))
+(use-package dashboard
+  :config
+  (setq initial-buffer-choice (lambda () (switch-to-buffer "*dashboard*")))
+  :init
+  (dashboard-setup-startup-hook))
 #+END_SRC
 
 * Global
@@ -194,27 +135,28 @@
 ** Editor Behavior
    Automatically clean whitespaces on save.
    #+BEGIN_SRC emacs-lisp
-   (require 'whitespace-cleanup-mode)
-   (global-whitespace-cleanup-mode)
+   (use-package whitespace-cleanup-mode
+     :init (global-whitespace-cleanup-mode))
    #+END_SRC
    
    Automatically indent code, specify desired modes
    #+BEGIN_SRC emacs-lisp
-   (require 'aggressive-indent)
-   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+   (use-package aggressive-indent
+     :hook (emacs-lisp-mode-hook . aggressive-indent-mode))
    #+END_SRC
-
+# 
 * Vim-like Behavior
   I am a vim user and want to work in a similar fashion with emacs as well.
   #+BEGIN_SRC emacs-lisp
-  (setq evil-want-C-d-scroll t)
-  (setq evil-want-C-u-scroll t)
+  (use-package evil
+    :config
+    (setq evil-want-C-d-scroll t)
+    (setq evil-want-C-u-scroll t)
+    :init (evil-mode 1)
+  )
   #+END_SRC
 
   #+BEGIN_SRC emacs-lisp
-  (require 'evil)
-  (evil-mode 1)
-  
   ;; use escape key to cancel
   (global-set-key [escape] 'keyboard-escape-quit)
   (define-key isearch-mode-map [escape] 'isearch-abort)
@@ -225,14 +167,14 @@
    The [[https://github.com/linktohack/evil-commentary][evil-commentary]] package is a port of [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-commentary][vim-commentary]] plugin and allows for easy commenting and uncommenting of code.
    Type =gcc= to toggle the comment status of the current line when in command mode.
    =gc= does the same for visual mode.
-   #+BEGIN_SRC emacs-lisp
-   (require 'evil-commentary)
-   (evil-commentary-mode)
-   #+END_SRC
+   # #+BEGIN_SRC emacs-lisp
+   # (use-package evil-commentary
+   #   :init (evil-commentary-mode))
+   # #+END_SRC
   
 ** Org-Mode
    #+BEGIN_SRC emacs-lisp
-   (require 'evil-org)
+   (use-package evil-org)
    #+END_SRC
   
 ** Vinegar
@@ -295,112 +237,106 @@
 
 ** Line Numbers
    #+BEGIN_SRC emacs-lisp
-   (require 'nlinum)
-   (setq nlinum-format "%4d\u2502")
-   (setq nlinum-highlight-current-line 1)
-   (global-nlinum-mode)
+   (use-package nlinum
+     :config
+     (setq nlinum-format "%4d\u2502")
+     (setq nlinum-highlight-current-line 1)
+     :init
+     (global-nlinum-mode))
    #+END_SRC
+
 * Version Control
   The [[https://github.com/magit/magit][magit]] plugin is a nice tool to work with the [[https://git-scm.com/][git]] version control system from within emacs.
   For now we just install it and also throw [[https://github.com/emacs-evil/evil-magit][evil-magit]] into the mix, which makes it play nicely with [[https://github.com/emacs-evil/evil][evil-mode]].
   #+BEGIN_SRC emacs-lisp
-  (require 'magit)
-  (require 'evil-magit)  
+  (use-package magit)
+  (use-package evil-magit)
   #+END_SRC
   
 * Project
   #+BEGIN_SRC emacs-lisp
-    (require 'projectile)
-    (projectile-mode)
+    (use-package projectile
+      :init (projectile-mode))
   #+END_SRC
 * Language Support
 ** Language Server Protocol
     #+BEGIN_SRC emacs-lisp
-      (require 'lsp-mode)
-      (require 'lsp-ui)
+      (use-package lsp-mode
+        :config (setq lsp-message-project-root-warning t))
 
-      (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-      (setq-default lsp-message-project-root-warning t)
-
+      (use-package lsp-ui
+        :hook (lsp-mode-hook . lsp-ui-mode))
     #+END_SRC
 
 ** Company
   #+BEGIN_SRC emacs-lisp
-  (require 'company)
-  (require 'company-quickhelp)
-  
-  ;; do not wait to complete
-  (setq company-idle-delay 0)
-  
-  ;; do no use the clang backend
-  ;; we will use irony-mode instead
-  (delete 'company-clang company-backends)
-  
+  (use-package company
+    :config
+    ;; do not wait to complete
+    (setq company-idle-delay 0)
+    :init
+    (global-company-mode))
+
+  (use-package company-quickhelp
+    :init
+    (company-quickhelp-mode))
+ 
   ;; use language server protocol in company-mode
-  (require 'company-lsp)
-  (push 'company-lsp company-backends)
-  
-  ;; enable company globally
-  (global-company-mode)
-  
-  ;; enable company-quickhelp globally
-  (company-quickhelp-mode)
+  (use-package company-lsp
+    :init
+    (push 'company-lsp company-backends))
   #+END_SRC
+
 ** Ansible YAML
   #+BEGIN_SRC emacs-lisp
-  (require 'ansible)
+  (use-package ansible)
   #+END_SRC
-  
+ 
 ** C/C++
   #+BEGIN_SRC emacs-lisp
-    ;;(require 'irony)
-    ;;(add-hook 'c++-mode-hook 'irony-mode)
-    ;;(add-hook 'c-mode-hook 'irony-mode)
-    ;;(add-hook 'objc-mode-hook 'irony-mode)
-    ;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-    (require 'cquery)
-    (defun cquery/enable ()
-      (condition-case nil
-          (lsp-cquery-enable)
-        (user-error nil)))
-        
-    (setq cquery-executable "/usr/bin/cquery")
-
-    (add-hook 'c-mode-hook #'cquery/enable)
-    (add-hook 'c++-mode-hook #'cquery/enable)
+    (use-package cquery
+      :config
+      (defun cquery/enable ()
+        (condition-case nil
+            (lsp-cquery-enable)
+          (user-error nil)))
+      (setq cquery-executable "/usr/bin/cquery")
+      :hook ((c-mode . cquery/enable)
+             (c++-mode . cquery/enable)))
   #+END_SRC
-  
+ 
 ** C#
 #+BEGIN_SRC emacs-lisp
-  (eval-after-load
-    'company
-    '(add-to-list 'company-backends #'company-omnisharp))
+  (use-package omnisharp
+    :init
+    '(add-to-list 'company-backends #'company-omnisharp)
+    (defun my-csharp-mode-setup ()
+      (omnisharp-mode)
+      (company-mode)
+      (flycheck-mode)
 
-  (defun my-csharp-mode-setup ()
-    (omnisharp-mode)
-    (company-mode)
-    (flycheck-mode)
+      (setq indent-tabs-mode nil)
+      (setq c-syntactic-indentation t)
+      (c-set-style "ellemtel")
+      (setq c-basic-offset 4)
+      (setq truncate-lines t)
+      (setq tab-width 4)
+      (setq evil-shift-width 4)
 
-    (setq indent-tabs-mode nil)
-    (setq c-syntactic-indentation t)
-    (c-set-style "ellemtel")
-    (setq c-basic-offset 4)
-    (setq truncate-lines t)
-    (setq tab-width 4)
-    (setq evil-shift-width 4)
+      (electric-pair-local-mode 1) ;; Emacs 25
 
-    (electric-pair-local-mode 1) ;; Emacs 25
-
-    (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-    (local-set-key (kbd "C-c C-c") 'recompile))
-
-  (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t)
+      (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+      (local-set-key (kbd "C-c C-c") 'recompile))
+      (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
 #+END_SRC
+
 ** Docker
 #+BEGIN_SRC emacs-lisp
-  (require 'dockerfile-mode)
-  (add-to-list 'auto-mode-alist
-               '("Dockerfile\\'" . dockerfile-mode))
+  (use-package dockerfile-mode
+    :config
+    (add-to-list 'auto-mode-alist
+                 '("Dockerfile\\'" . dockerfile-mode))
+
 #+END_SRC
 ** Fortran
    #+BEGIN_SRC emacs-lisp
@@ -419,28 +355,28 @@
      (setq-default f90-continuation-indent 4)
      (setq-default f90-smart-end 'blink)
    #+END_SRC
-  
+ 
 ** Git
   #+BEGIN_SRC emacs-lisp
-  (require 'gitconfig-mode)
-  (require 'gitignore-mode)
+  (use-package gitconfig-mode)
+  (use-package gitignore-mode)
   #+END_SRC
-  
+ 
 ** Go
   #+BEGIN_SRC emacs-lisp
-  (require 'go-mode)
+  (use-package go-mode)
   #+END_SRC
-  
+ 
 ** Graphviz
   #+BEGIN_SRC emacs-lisp
-  (require 'graphviz-dot-mode)
+  (use-package graphviz-dot-mode)
   #+END_SRC
-  
+ 
 ** Haskell
   #+BEGIN_SRC emacs-lisp
-  (require 'haskell-mode)
+  (use-package haskell-mode)
   #+END_SRC
-  
+ 
 ** Julia
   #+BEGIN_SRC emacs-lisp
     ;; (require 'julia-mode)
@@ -460,9 +396,8 @@
   ;;             (company-auctex-init)
   ;;             (setq evil-shift-width 2)))
   #+END_SRC
-  
+ 
 ** Python
-   
    #+BEGIN_SRC emacs-lisp
      (let ((anaconda-bin-path (expand-file-name "~/.local/opt/anaconda3/bin")))
        (if (file-directory-p anaconda-bin-path)
@@ -472,21 +407,21 @@
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
-     (require 'pyvenv)
-
      (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs")))
        (if (file-directory-p anaconda-env-path)
            (setenv "WORKON_HOME" anaconda-env-path)))
 
-     (pyvenv-mode 1)
+     (use-package pyvenv
+       :init
+       (pyvenv-mode 1))
    #+END_SRC
-   
+  
    #+BEGIN_SRC emacs-lisp
      (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs/pyls")))
        (if (file-directory-p anaconda-env-path)
            (pyvenv-workon "pyls")))
    #+END_SRC
-   
+  
    #+BEGIN_SRC emacs-lisp
      (defvar lsp-python-log-dir)
      (setq lsp-python-log-dir (expand-file-name "~/.emacs.d/logs/lsp-python"))
@@ -498,80 +433,58 @@
    #+END_SRC
 
   #+BEGIN_SRC emacs-lisp
-    (require 'lsp-mode)
-    (require 'lsp-python)
-    (add-hook 'python-mode-hook #'lsp-python-enable)
+    (use-package lsp-python
+      :hook (python-mode . lsp-python-enable))
   #+END_SRC
 
   
 ** Web
   #+BEGIN_SRC emacs-lisp
-  (require 'web-mode)
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (setq evil-shift-width 2)
-              (setq indent-tabs-mode nil)
-              (setq web-mode-markup-indent-offset 2)
-              (setq web-mode-css-indent-offset 2)
-              (setq web-mode-code-indent-offset 2)))
+  (use-package web-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+    :init
+    (add-hook 'web-mode-hook
+              (lambda ()
+                (setq evil-shift-width 2)
+                (setq indent-tabs-mode nil)
+                (setq web-mode-markup-indent-offset 2)
+                (setq web-mode-css-indent-offset 2)
+                (setq web-mode-code-indent-offset 2))))
   #+END_SRC
-  
+ 
 ** YAML
   #+BEGIN_SRC emacs-lisp
-  (require 'yaml-mode)
+  (use-package yaml-mode)
   #+END_SRC
-      
-* Auto Completion
-  
-  # - C++
-  #   #+BEGIN_SRC emacs-lisp
-  #   (require 'company-irony)
-  #   (add-to-list 'company-backends 'company-irony)
-  #   #+END_SRC
-    
-  # - Julia
-  #   #+BEGIN_SRC emacs-lisp
-  #   (setq ess-use-company t) 
-  #   (add-to-list 'company-dabbrev-code-modes 'ess-mode)
-  #   #+END_SRC 
-    
-  # - Python
-  #   #+BEGIN_SRC emacs-lisp
-  #   (add-hook 'python-mode-hook
-  #             (lambda ()
-  #               (set (make-local-variable 'company-backends) '(elpy-company-backend))))
-  #   #+END_SRC
-  
+     
 * Linting
   #+BEGIN_SRC emacs-lisp
-    (require 'flycheck)
-    (global-flycheck-mode)
+    (use-package flycheck
+      :init (global-flycheck-mode))
   #+END_SRC
-#   - C/C++
-#     #+BEGIN_SRC emacs-lisp
-#     (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
-#     #+END_SRC
 
 * Visuals
 ** Theme
    #+BEGIN_SRC emacs-lisp
-   (load-theme 'monokai t)
+   (use-package monokai-theme)
+     :config (load-theme 'monokai t nil))
    #+END_SRC
   
 ** Beacon
    #+BEGIN_SRC emacs-lisp
-   (require 'beacon)
-   
-   (setq beacon-color "#657b83")
-   (setq beacon-size 30)
-   (setq beacon-blink-duration 0.1)
-   (setq beacon-blink-duration 0.05)
-   (beacon-mode 1)
+   (use-package beacon
+     :config
+     (setq beacon-color "#657b83")
+     (setq beacon-size 30)
+     (setq beacon-blink-duration 0.1)
+     (setq beacon-blink-duration 0.05)
+     :init
+     (beacon-mode 1))
    #+END_SRC
 
 ** All the Icons
@@ -580,7 +493,7 @@
    # (require 'all-the-icons-dired)
    # (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
    # #+END_SRC
-   
+  
 ** Powerline
    #+BEGIN_SRC emacs-lisp
    ;;(require 'powerline)
@@ -591,15 +504,19 @@
    #+END_SRC
 ** Indent Guides
    #+BEGIN_SRC emacs-lisp
-   (require 'highlight-indent-guides)
-   (setq highlight-indent-guides-method 'column)
-   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+   (use-package highlight-indent-guides
+     :config
+     (setq highlight-indent-guides-method 'column)
+     :hook (prog-mode . highlight-indent-guides-mode))
    #+END_SRC
+
 ** Org-Mode
    #+BEGIN_SRC emacs-lisp
-   (add-hook 'org-mode-hook (lambda () (org-bullets-mode)))
+   (use-package org)
+   (use-package org-bullets
+     :hook (org-mode . org-bullets-mode))
    #+END_SRC
-   
+  
 ** Pretty Mode
    #+BEGIN_SRC emacs-lisp
    (setq prettify-symbols-unprettify-at-point 'right-edge)
@@ -779,9 +696,12 @@
 * Helm
 
 #+BEGIN_SRC emacs-lisp
-  (require 'helm)
-  (setq projectile-completion-system 'helm)
-  (helm-projectile-on)
-  (define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
+  (use-package helm)
+  (use-package helm-projectile
+    :config
+    (setq projectile-completion-system 'helm)
+    (define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
+    :init
+    (helm-projectile-on))
 #+END_SRC
 
