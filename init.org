@@ -162,10 +162,10 @@
    The [[https://github.com/linktohack/evil-commentary][evil-commentary]] package is a port of [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-commentary][vim-commentary]] plugin and allows for easy commenting and uncommenting of code.
    Type =gcc= to toggle the comment status of the current line when in command mode.
    =gc= does the same for visual mode.
-   # #+BEGIN_SRC emacs-lisp
-   # (use-package evil-commentary
-   #   :init (evil-commentary-mode))
-   # #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+   (use-package evil-commentary
+     :init (evil-commentary-mode))
+   #+END_SRC
   
 ** Org-Mode
    #+BEGIN_SRC emacs-lisp
