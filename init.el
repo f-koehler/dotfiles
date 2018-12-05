@@ -1,4 +1,6 @@
-;; this file will be replace with the actual config from init.org
+;; this file will be replaced with the actual config from init.org
+
+(add-to-list 'load-path (concat user-emacs-directory "org-bootstrap"))
 
 ;; make sure that org-mode is available
 (require 'org)
