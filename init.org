@@ -36,17 +36,12 @@
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :height 90)
+(use-package org)
 #+END_SRC
 
-# #+BEGIN_SRC emacs-lisp
-#   (require 'auto-package-update)
-#   (setq auto-package-update-interval 2)
-#   (setq auto-package-update-delete-old-versions t)
-#   (setq auto-package-update-prompt-before-update t)
-#   (add-hook 'auto-package-update-before-hook
-#             (lambda () (message "Run scheduled update of emacs packages")))
-# #+END_SRC
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'default nil :height 90)
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (use-package dashboard
@@ -512,7 +507,6 @@
 
 ** Org-Mode
    #+BEGIN_SRC emacs-lisp
-   (use-package org)
    (use-package org-bullets
      :hook (org-mode . org-bullets-mode))
    #+END_SRC
