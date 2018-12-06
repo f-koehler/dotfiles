@@ -137,7 +137,9 @@
    Automatically indent code, specify desired modes
    #+BEGIN_SRC emacs-lisp
    (use-package aggressive-indent
-     :hook (emacs-lisp-mode-hook . aggressive-indent-mode))
+     :hook ((emacs-lisp-mode . aggressive-indent-mode)
+            (css-mode . aggressive-indent-mode)
+            (html-mode . aggressive-indent-mode)))
    #+END_SRC
 # 
 * Vim-like Behavior
