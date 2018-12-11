@@ -500,6 +500,12 @@
      (beacon-mode 1))
    #+END_SRC
 
+** Emojis
+    #+BEGIN_SRC emacs-lisp
+    (use-package emojify
+      :config
+      (add-hook 'after-init-hook #'global-emojify-mode))
+    #+END_SRC
 ** All the Icons
    # #+BEGIN_SRC emacs-lisp
    #   (use-package all-the-icons)
