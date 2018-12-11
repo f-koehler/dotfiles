@@ -35,3 +35,12 @@ if [ -f /usr/share/fzf/key-bindings.zsh  ]; then
 fi
 
 autoload compinit && compinit
+
+
+# Linuxbrew
+function install_linuxbrew() {
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+}
+if [ -f $HOME/.linuxbrew/bin/brew ]; then
+    eval $(/home/fkoehler/.linuxbrew/bin/brew shellenv)
+fi
