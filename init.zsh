@@ -37,6 +37,11 @@ fi
 autoload compinit && compinit
 
 
+# Anaconda3
+if [ -f $HOME/.local/opt/anaconda3/bin/conda ]; then
+    export PATH="$HOME/.local/opt/anaconda3/bin:$PATH"
+fi
+
 # Linuxbrew
 function install_linuxbrew() {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
