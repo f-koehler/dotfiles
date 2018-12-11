@@ -332,6 +332,10 @@
       (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
 #+END_SRC
 
+** CMake
+#+BEGIN_SRC emacs-lisp
+(use-package cmake-mode)
+#+END_SRC
 ** Docker
 #+BEGIN_SRC emacs-lisp
   (use-package dockerfile-mode
