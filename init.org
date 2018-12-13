@@ -139,9 +139,9 @@
    (use-package aggressive-indent
      :hook ((emacs-lisp-mode . aggressive-indent-mode)
             (css-mode . aggressive-indent-mode)
-            (html-mode . aggressive-indent-mode)))
+            (html-mode . aggressive-indent-mode)
+            (latex-mode . aggressive-indent-mode)))
    #+END_SRC
-# 
 * Vim-like Behavior
   I am a vim user and want to work in a similar fashion with emacs as well.
   #+BEGIN_SRC emacs-lisp
@@ -348,7 +348,7 @@
   (use-package dockerfile-mode
     :config
     (add-to-list 'auto-mode-alist
-                 '("Dockerfile\\'" . dockerfile-mode))
+                 '("Dockerfile\\'" . dockerfile-mode)))
 
 #+END_SRC
 ** Fortran
@@ -408,6 +408,12 @@
   ;;           (progn
   ;;             (company-auctex-init)
   ;;             (setq evil-shift-width 2)))
+  (defun set-latex-evil-shift-width ()
+    "set the correct shift width for evil in latex-mode"
+    (interactive)
+    (setq evil-shift-width 2))
+  (add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
+  (add-hook 'latex-mode-hook 'set-latex-evil-shift-width)
   #+END_SRC
  
 ** Python
@@ -484,7 +490,7 @@
 * Visuals
 ** Theme
    #+BEGIN_SRC emacs-lisp
-   (use-package monokai-theme)
+   (use-package monokai-theme
      :config (load-theme 'monokai t nil))
    #+END_SRC
   
