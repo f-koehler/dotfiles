@@ -258,8 +258,11 @@
 * Project
   #+BEGIN_SRC emacs-lisp
     (use-package projectile
-      :init (projectile-global-mode))
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+      :init
+      (setq projectile-project-search-path '("~/code/"))
+      :config
+      (projectile-global-mode)
+      (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
   #+END_SRC
   
 ** Version Control
@@ -728,10 +731,10 @@
 #+BEGIN_SRC emacs-lisp
   (use-package helm)
   (use-package helm-projectile
-    :config
-    (setq projectile-completion-system 'helm)
-    (define-key evil-normal-state-map (kbd "C-p") 'helm-browse-project)
     :init
+    (setq projectile-completion-system 'helm)
+    (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
+    :config
     (helm-projectile-on))
 #+END_SRC
 

@@ -7,10 +7,12 @@ auto-save-list
 custom.el
 elpa
 elpy
+emojis
 init.emacs-list
 irony
 logs
 network-security.data
+projectile.cache
 recentf
-tramp
 straight
+tramp
