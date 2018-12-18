@@ -258,7 +258,7 @@
 * Project
   #+BEGIN_SRC emacs-lisp
     (use-package projectile
-      :init (projectile-mode +1))
+      :init (projectile-global-mode))
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   #+END_SRC
   
