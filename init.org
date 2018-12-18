@@ -255,17 +255,19 @@
    #+END_SRC
 
 * Version Control
+* Project
+  #+BEGIN_SRC emacs-lisp
+    (use-package projectile
+      :init (projectile-mode +1))
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  #+END_SRC
+  
+** Version Control
   The [[https://github.com/magit/magit][magit]] plugin is a nice tool to work with the [[https://git-scm.com/][git]] version control system from within emacs.
   For now we just install it and also throw [[https://github.com/emacs-evil/evil-magit][evil-magit]] into the mix, which makes it play nicely with [[https://github.com/emacs-evil/evil][evil-mode]].
   #+BEGIN_SRC emacs-lisp
   (use-package magit)
   (use-package evil-magit)
-  #+END_SRC
-  
-* Project
-  #+BEGIN_SRC emacs-lisp
-    (use-package projectile
-      :init (projectile-mode))
   #+END_SRC
 * Language Support
 ** Language Server Protocol
@@ -303,15 +305,8 @@
  
 ** C/C++
   #+BEGIN_SRC emacs-lisp
-    (use-package cquery
-      :config
-      (defun cquery/enable ()
-        (condition-case nil
-            (lsp-cquery-enable)
-          (user-error nil)))
-      (setq cquery-executable "/usr/bin/cquery")
-      :hook ((c-mode . cquery/enable)
-             (c++-mode . cquery/enable)))
+  (use-package cquery
+    :config (setq cquery-executable "/usr/bin/cquery"))
   #+END_SRC
  
 ** C#
