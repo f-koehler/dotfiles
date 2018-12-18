@@ -308,16 +308,19 @@
  
 ** C/C++
   #+BEGIN_SRC emacs-lisp
-    (defun cquery//enable ()
-      (condition-case nil
-          (lsp)
-          ;; (lsp-cquery-enable)
-        (user-error nil)))
+    ;; (defun cquery//enable ()
+    ;;   (condition-case nil
+    ;;       (lsp)
+    ;;       ;; (lsp-cquery-enable)
+    ;;     (user-error nil)))
 
-    (use-package cquery
-      :config (setq cquery-executable "/usr/bin/cquery")
-      :init (add-hook 'c-mode-hook #'cquery//enable)
-            (add-hook 'c++-mode-hook #'cquery//enable))
+    ;; (use-package cquery
+    ;;   :config (setq cquery-executable "/usr/bin/cquery")
+    ;;   :init (add-hook 'c-mode-hook #'cquery//enable)
+    ;;         (add-hook 'c++-mode-hook #'cquery//enable))
+    (use-package ccls
+     :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (cl-pushnew #'company-lsp company-backends) (require 'ccls) (lsp))))
   #+END_SRC
  
 ** C#
