@@ -476,6 +476,12 @@
   (use-package yaml-mode)
   #+END_SRC
      
+* Tools
+** systemd
+    #+BEGIN_SRC emacs-lisp
+    (use-package systemd)
+    #+END_SRC emacs-lisp
+
 * Linting
   #+BEGIN_SRC emacs-lisp
     (use-package flycheck
