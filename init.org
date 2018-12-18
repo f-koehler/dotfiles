@@ -308,8 +308,16 @@
  
 ** C/C++
   #+BEGIN_SRC emacs-lisp
+  (defun cquery//enable ()
+    (condition-case nil
+        (lsp-cquery-enable)
+        (user-error nil)))
+    
   (use-package cquery
-    :config (setq cquery-executable "/usr/bin/cquery"))
+    :commands lsp-cquery-enable
+    :config (setq cquery-executable "/usr/bin/cquery")
+    :init (add-hook 'c-mode-hook #'cquery//enable)
+          (add-hook 'c++-mode-hook #'cquery//enable))
   #+END_SRC
  
 ** C#
