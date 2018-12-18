@@ -1,7 +1,7 @@
-#+Title: GNU Emacs Configuration
-#+AUTHOR: Fabian Köhler
-#+BABEL: :cache yes
-#+PROPERTY: header-args :tangle yes
+#+title: GNU Emacs Configuration
+#+author: Fabian Köhler
+#+babel: :cache yes
+#+property: header-args :tangle yes
 
 #+begin_src emacs-lisp
 (defun tangle-init ()
