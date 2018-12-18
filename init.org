@@ -261,7 +261,7 @@
       :init
       (setq projectile-project-search-path '("~/code/"))
       :config
-      (projectile-global-mode)
+      (projectile-mode +1)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
   #+END_SRC
   
@@ -308,16 +308,16 @@
  
 ** C/C++
   #+BEGIN_SRC emacs-lisp
-  (defun cquery//enable ()
-    (condition-case nil
-        (lsp-cquery-enable)
+    (defun cquery//enable ()
+      (condition-case nil
+          (lsp)
+          ;; (lsp-cquery-enable)
         (user-error nil)))
-    
-  (use-package cquery
-    :commands lsp-cquery-enable
-    :config (setq cquery-executable "/usr/bin/cquery")
-    :init (add-hook 'c-mode-hook #'cquery//enable)
-          (add-hook 'c++-mode-hook #'cquery//enable))
+
+    (use-package cquery
+      :config (setq cquery-executable "/usr/bin/cquery")
+      :init (add-hook 'c-mode-hook #'cquery//enable)
+            (add-hook 'c++-mode-hook #'cquery//enable))
   #+END_SRC
  
 ** C#
