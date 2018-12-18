@@ -3,7 +3,7 @@
 #+BABEL: :cache yes
 #+PROPERTY: header-args :tangle yes
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (defun tangle-init ()
  (when (equal (buffer-file-name)
               (expand-file-name (concat user-emacs-directory "init.org")))
@@ -12,10 +12,10 @@
      (byte-compile-file (concat user-emacs-directory "init.el")))))
 
 (add-hook 'after-save-hook 'tangle-init)
-#+END_SRC
+#+end_src
 
 * Packages
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -28,66 +28,66 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package org)
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (set-face-attribute 'default nil :height 90)
-#+END_SRC
+#+end_src
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package dashboard
   :config
   (setq initial-buffer-choice (lambda () (switch-to-buffer "*dashboard*")))
   :init
   (dashboard-setup-startup-hook))
-#+END_SRC
+#+end_src
 
 * Global
   I know it is an eternal discussion, but I use whitespaces instead of tabs.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (setq-default indent-tabs-mode nil)
-  #+END_SRC
+  #+end_src
   
   Next, I disable the clunky interface of emacs, i.e. the menu bar, the scroll bar and the tool bar.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (menu-bar-mode -1)
   (toggle-scroll-bar -1)
   (tool-bar-mode -1)
-  #+END_SRC
+  #+end_src
   
   When jumping words using the =w= and =b= keys in command mode, I like to also jump within a word/variable that uses camelcase.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (add-hook 'prog-mode-hook 'subword-mode)
-  #+END_SRC
+  #+end_src
 
   Emacs has a nice feature to mark scripts executable when saving.
   It will automatically detect whether a [[https://en.wikipedia.org/wiki/Shebang_(Unix)][shebang]] is present and set the corresponding flag.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-  #+END_SRC
+  #+end_src
   
   On a modern computer with a lot of memory, it can be benefitial for the editor performance when the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage collection]] is not run so often.
   The next statement will start it only every =64MB=.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (setq-default gc-cons-threshold 67108864)
-  #+END_SRC
+  #+end_src
   
   When asking for confirmation there are both questions where you have to type =yes= / =no= and ones where =y= / =n= is sufficient.
   Due to laziness I prefer the second kind.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
-  #+END_SRC
+  #+end_src
 
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   ;; determine how dired lists files
   (setq-default dired-listing-switches "-lah")
   
@@ -119,32 +119,32 @@
   ;; wind move for window navigation
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
-  #+END_SRC
+  #+end_src
   
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     (setq save-interprogram-paste-before-kill t)
     (setq mouse-yank-at-point t)
     (setq require-final-newline t)
-  #+END_SRC
+  #+end_src
    
 ** Editor Behavior
    Automatically clean whitespaces on save.
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package whitespace-cleanup-mode
      :init (global-whitespace-cleanup-mode))
-   #+END_SRC
+   #+end_src
    
    Automatically indent code, specify desired modes
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package aggressive-indent
      :hook ((emacs-lisp-mode . aggressive-indent-mode)
             (css-mode . aggressive-indent-mode)
             (html-mode . aggressive-indent-mode)
             (latex-mode . aggressive-indent-mode)))
-   #+END_SRC
+   #+end_src
 * Vim-like Behavior
   I am a vim user and want to work in a similar fashion with emacs as well.
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package evil
     :config
     (setq evil-want-C-d-scroll t)
@@ -156,26 +156,26 @@
         (interactive)
         (evil-delete (point-at-bol) (point))))
     :init (evil-mode 1))
-  #+END_SRC
+  #+end_src
 
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   ;; use escape key to cancel
   (global-set-key [escape] 'keyboard-escape-quit)
   (define-key isearch-mode-map [escape] 'isearch-abort)
   (define-key isearch-mode-map "\e" 'isearch-abort)
-  #+END_SRC
+  #+end_src
   
 ** Comments
    The [[https://github.com/linktohack/evil-commentary][evil-commentary]] package is a port of [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-commentary][vim-commentary]] plugin and allows for easy commenting and uncommenting of code.
    Type =gcc= to toggle the comment status of the current line when in command mode.
    =gc= does the same for visual mode.
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package evil-commentary
      :init (evil-commentary-mode))
-   #+END_SRC
+   #+end_src
   
 ** Org-Mode
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      (use-package evil-org
        :config
        (add-hook 'org-mode-hook 'evil-org-mode)
@@ -183,15 +183,16 @@
                  (lambda ()
                    (evil-org-set-key-theme)))
        (require 'evil-org-agenda)
-       (evil-org-agenda-set-keys))
-   #+END_SRC
+       (evil-org-agenda-set-keys)
+       (add-to-list 'org-modules 'org-tempo))
+   #+end_src
   
 ** Vinegar
    Next, we implement something to resemble [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-vinegar][vim-vinegar]] plugin.
    This makes navigating the filesystem in =dired= much easier and renders plugins like [[https://github.com/jaypei/emacs-neotree][neotree]] useless.
    Press =-= when in command mode to open dired for the current directory, press =-= again to go one directory up.
    We also bind the vim navigation keys to work correctly in dired.
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (defun vinegar/top ()
      "Go to the top of the dired buffer"
      (interactive)
@@ -242,48 +243,48 @@
 
    (add-hook 'dired-mode-hook 'vinegar/init)
    (define-key evil-normal-state-map (kbd "-") 'dired-jump)
-   #+END_SRC
+   #+end_src
 
 ** Line Numbers
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package nlinum
      :config
      (setq nlinum-format "%4d\u2502")
      (setq nlinum-highlight-current-line 1)
      :init
      (global-nlinum-mode))
-   #+END_SRC
+   #+end_src
 
 * Version Control
 * Project
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     (use-package projectile
       :init
       (setq projectile-project-search-path '("~/code/"))
       :config
       (projectile-mode +1)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-  #+END_SRC
+  #+end_src
   
 ** Version Control
   The [[https://github.com/magit/magit][magit]] plugin is a nice tool to work with the [[https://git-scm.com/][git]] version control system from within emacs.
   For now we just install it and also throw [[https://github.com/emacs-evil/evil-magit][evil-magit]] into the mix, which makes it play nicely with [[https://github.com/emacs-evil/evil][evil-mode]].
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package magit)
   (use-package evil-magit)
-  #+END_SRC
+  #+end_src
 * Language Support
 ** Language Server Protocol
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
       (use-package lsp-mode
         :config (setq lsp-message-project-root-warning t))
 
       (use-package lsp-ui
         :hook (lsp-mode-hook . lsp-ui-mode))
-    #+END_SRC
+    #+end_src
 
 ** Company
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package company
     :config
     ;; do not wait to complete
@@ -299,15 +300,15 @@
   (use-package company-lsp
     :init
     (push 'company-lsp company-backends))
-  #+END_SRC
+  #+end_src
 
 ** Ansible YAML
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package ansible)
-  #+END_SRC
+  #+end_src
  
 ** C/C++
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     ;; (defun cquery//enable ()
     ;;   (condition-case nil
     ;;       (lsp)
@@ -321,10 +322,10 @@
     (use-package ccls
      :hook ((c-mode c++-mode objc-mode) .
          (lambda () (cl-pushnew #'company-lsp company-backends) (require 'ccls) (lsp))))
-  #+END_SRC
+  #+end_src
  
 ** C#
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package omnisharp
     :init
     '(add-to-list 'company-backends #'company-omnisharp)
@@ -346,68 +347,68 @@
       (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
       (local-set-key (kbd "C-c C-c") 'recompile))
       (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
-#+END_SRC
+#+end_src
 
 ** CMake
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
 (use-package cmake-mode)
-#+END_SRC
+#+end_src
 ** Docker
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package dockerfile-mode
     :config
     (add-to-list 'auto-mode-alist
                  '("Dockerfile\\'" . dockerfile-mode)))
 
-#+END_SRC
+#+end_src
 ** Fortran
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      ;; (require 'projectile)
 
      ;; (lsp-define-stdio-client fortls "fortran"
      ;;                          #'projectile-project-root
      ;;                          (list "fortls" "--lowercase_intrinsics"))
      ;; (add-hook 'f90-mode #'fortls-enable)
-   #+END_SRC
-   #+BEGIN_SRC emacs-lisp
+   #+end_src
+   #+begin_src emacs-lisp
      (setq-default f90-do-indent 4)
      (setq-default f90-if-indent 4)
      (setq-default f90-type-indent 4)
      (setq-default f90-program-indent 4)
      (setq-default f90-continuation-indent 4)
      (setq-default f90-smart-end 'blink)
-   #+END_SRC
+   #+end_src
  
 ** Git
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package gitconfig-mode)
   (use-package gitignore-mode)
-  #+END_SRC
+  #+end_src
  
 ** Go
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package go-mode)
-  #+END_SRC
+  #+end_src
  
 ** Graphviz
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package graphviz-dot-mode)
-  #+END_SRC
+  #+end_src
  
 ** Haskell
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package haskell-mode)
-  #+END_SRC
+  #+end_src
  
 ** Julia
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     ;; (require 'julia-mode)
     ;; (require 'ess-site)
     ;; (require 'ess-julia)
-  #+END_SRC
+  #+end_src
 
 ** LaTeX
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   ;; (require 'auctex)
   ;; (require 'company-auctex)
   ;; (setq TeX-auto-save t)
@@ -423,18 +424,18 @@
     (setq evil-shift-width 2))
   (add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
   (add-hook 'latex-mode-hook 'set-latex-evil-shift-width)
-  #+END_SRC
+  #+end_src
  
 ** Python
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      (let ((anaconda-bin-path (expand-file-name "~/.local/opt/anaconda3/bin")))
        (if (file-directory-p anaconda-bin-path)
            (progn
              (setenv "PATH" (concat anaconda-bin-path ":" (getenv "PATH")))
              (push anaconda-bin-path exec-path))))
-   #+END_SRC
+   #+end_src
 
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs")))
        (if (file-directory-p anaconda-env-path)
            (setenv "WORKON_HOME" anaconda-env-path)))
@@ -442,15 +443,15 @@
      (use-package pyvenv
        :init
        (pyvenv-mode 1))
-   #+END_SRC
+   #+end_src
   
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      (let ((anaconda-env-path (expand-file-name "~/.local/opt/anaconda3/envs/pyls")))
        (if (file-directory-p anaconda-env-path)
            (pyvenv-workon "pyls")))
-   #+END_SRC
+   #+end_src
   
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
      (defvar lsp-python-log-dir)
      (setq lsp-python-log-dir (expand-file-name "~/.emacs.d/logs/lsp-python"))
 
@@ -458,16 +459,16 @@
      (setq lsp-python-log-file (concat lsp-python-log-dir "/pyls.log"))
 
      (make-directory lsp-python-log-dir t)
-   #+END_SRC
+   #+end_src
 
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     (use-package lsp-python
       :hook (python-mode . lsp-python-enable))
-  #+END_SRC
+  #+end_src
 
   
 ** Web
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package web-mode
     :config
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -483,39 +484,39 @@
                 (setq web-mode-markup-indent-offset 2)
                 (setq web-mode-css-indent-offset 2)
                 (setq web-mode-code-indent-offset 2))))
-  #+END_SRC
+  #+end_src
  
 ** YAML
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (use-package yaml-mode)
-  #+END_SRC
+  #+end_src
      
 * Tools
 ** Spotify
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package spotify)
    (use-package helm-spotify-plus)
-   #+END_SRC
+   #+end_src
 ** systemd
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package systemd)
-    #+END_SRC emacs-lisp
+    #+end_src emacs-lisp
 
 * Linting
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
     (use-package flycheck
       :init (global-flycheck-mode))
-  #+END_SRC
+  #+end_src
 
 * Visuals
 ** Theme
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package monokai-theme
      :config (load-theme 'monokai t nil))
-   #+END_SRC
+   #+end_src
   
 ** Beacon
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package beacon
      :config
      (setq beacon-color "#657b83")
@@ -524,51 +525,51 @@
      (setq beacon-blink-duration 0.05)
      :init
      (beacon-mode 1))
-   #+END_SRC
+   #+end_src
 
 ** Emojis
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (use-package emojify
       :config
       (add-hook 'after-init-hook #'global-emojify-mode))
-    #+END_SRC
+    #+end_src
 ** All the Icons
-   # #+BEGIN_SRC emacs-lisp
+   # #+begin_src emacs-lisp
    #   (use-package all-the-icons)
    #   (use-package all-the-icons-dired
    #     :hook (dired-mode . all-the-icons-dired-mode))
-   # #+END_SRC
+   # #+end_src
   
 ** Powerline
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    ;;(require 'powerline)
    ;;(require 'spaceline)
    ;;(require 'spaceline-all-the-icons)
    ;;(setq spaceline-all-the-icons-separator-type 'wave)
    ;;(spaceline-all-the-icons-theme)
-   #+END_SRC
+   #+end_src
 ** Indent Guides
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package highlight-indent-guides
      :config
      (setq highlight-indent-guides-method 'column)
      :hook (prog-mode . highlight-indent-guides-mode))
-   #+END_SRC
+   #+end_src
 
 ** Org-Mode
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (use-package org-bullets
      :hook (org-mode . org-bullets-mode))
-   #+END_SRC
+   #+end_src
   
 ** Pretty Mode
-   #+BEGIN_SRC emacs-lisp
+   #+begin_src emacs-lisp
    (setq prettify-symbols-unprettify-at-point 'right-edge)
    (global-prettify-symbols-mode +1)
-   #+END_SRC
+   #+end_src
 
 *** C++
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (defun pretty-mode/c ()
       "Prettify symbols in C mode."
       (setq prettify-symbols-alist
@@ -587,9 +588,9 @@
 
     (add-hook 'c-mode 'pretty-mode/c)
     (add-hook 'c++-mode 'pretty-mode/c++)
-    #+END_SRC
+    #+end_src
 *** Emacs Lisp
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (defun pretty-mode/emacs-lisp ()
       "Prettify symbols in Emacs Lisp mode."
       (setq prettify-symbols-alist
@@ -600,9 +601,9 @@
               (">="     . ?≥))))
 
     (add-hook 'emacs-lisp-mode-hook 'pretty-mode/emacs-lisp)
-    #+END_SRC
+    #+end_src
 *** Haskell
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (defun pretty-mode/haskell ()
       (setq prettify-symbols-alist
             '(
@@ -657,9 +658,9 @@
               )))
 
     (add-hook 'haskell-mode-hook 'pretty-mode/haskell)
-    #+END_SRC
+    #+end_src
 *** Fortran
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (defun pretty-mode/f90 ()
       "Prettify symbols in Fortran mode."
       (setq prettify-symbols-alist
@@ -669,9 +670,9 @@
                       (".or."  . ?∨)))))
 
     (add-hook 'f90-mode-hook 'pretty-mode/f90)
-    #+END_SRC
+    #+end_src
 *** Python
-    #+BEGIN_SRC emacs-lisp
+    #+begin_src emacs-lisp
     (defun pretty-mode/add-greek ()
       " add prettified versions of greek letters"
       (setq prettify-symbols-alist
@@ -704,10 +705,10 @@
         (pretty-mode/add-greek)))
 
     (add-hook 'python-mode-hook 'pretty-mode/python)
-    #+END_SRC
+    #+end_src
 
 * Playerctl
-  #+BEGIN_SRC emacs-lisp
+  #+begin_src emacs-lisp
   (defun playerctl/command (command message)
     "Call playerctl asynchronously and display a message."
     (if (executable-find "playerctl")
@@ -735,11 +736,11 @@
     "Stop playback using playerctl"
     (interactive)
     (playerctl/command "stop" "Stop music"))
-  #+END_SRC
+  #+end_src
 
 * Helm
 
-#+BEGIN_SRC emacs-lisp
+#+begin_src emacs-lisp
   (use-package helm)
   (use-package helm-projectile
     :init
@@ -747,5 +748,4 @@
     (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
     :config
     (helm-projectile-on))
-#+END_SRC
-
+#+end_src
