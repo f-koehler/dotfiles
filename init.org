@@ -277,7 +277,8 @@
 ** Language Server Protocol
     #+begin_src emacs-lisp
       (use-package lsp-mode
-        :config (setq lsp-message-project-root-warning t))
+        :config (setq lsp-message-project-root-warning t)
+        :init (require 'lsp-clients))
 
       (use-package lsp-ui
         :hook (lsp-mode-hook . lsp-ui-mode))
@@ -460,11 +461,11 @@
 
      (make-directory lsp-python-log-dir t)
    #+end_src
-
-  #+begin_src emacs-lisp
-    (use-package lsp-python
-      :hook (python-mode . lsp-python-enable))
-  #+end_src
+   
+   #+begin_src emacs-lisp
+     (if (executable-find "pyls")
+       (add-hook 'python-mode-hook 'lsp))
+   #+end_src
 
   
 ** Web
