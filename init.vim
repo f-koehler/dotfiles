@@ -62,6 +62,12 @@ if has("syntax")
     syntax enable
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/python"
+let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -72,9 +78,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
 
 Plug 'erichdongubler/vim-sublime-monokai'
+Plug 'tomasr/molokai'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -93,12 +100,33 @@ let g:indent_guides_enable_on_vim_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LanguageClient
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:LanguageClient_serverCommands = {
-    \ 'c': ['cquery', '--log-file=/tmp/vim-cquery-c.log'],
-    \ 'c++': ['cquery', '--log-file=/tmp/vim-cquery-c++.log'],
-    \ 'fortran': ['fortls', '--lowercase-intrinsics'],
-    \ 'python': ['/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/pyls'],
-    \ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {}
+
+" C/C++
+if executable('cquery')
+    let g:LanguageClient_serverCommands.c = ['cquery', '--log-file=/tmp/cquery-c.log', '--init={"cacheDirectory":"/tmp/cquery/"}']
+    let g:LanguageClient_serverCommands.cpp = ['cquery', '--log-file=/tmp/cquery-cpp.log', '--init={"cacheDirectory":"/tmp/cquery/"}']
+endif
+
+" Fortran
+if executable('fortls')
+    let g:LanguageClient_serverCommands.fortran = ['fortls']
+endif
+
+" Javascript
+if executable('javascript-typescript-stdio')
+    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+endif
+
+" Pyrhon
+if executable('pyls')
+    let g:LanguageClient_serverCommands.python = ['pyls']
+endif
+
+nnoremap <F8> :call LanguageClient#textDocument_formatting()<CR>
+
+nnoremap <C-p> :Files<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " deoplete
@@ -111,11 +139,6 @@ call deoplete#custom#option({
 
 " set colorscheme
 if has("syntax")
-    colorscheme sublimemonokai
+    " colorscheme sublimemonokai
+    colorscheme molokai
 endif
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/python"
