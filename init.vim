@@ -137,6 +137,11 @@ call deoplete#custom#option({
     \ "auto_complete_delay": 0,
     \ })
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gitgutter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set updatetime=100
+
 " set colorscheme
 if has("syntax")
     " colorscheme sublimemonokai
