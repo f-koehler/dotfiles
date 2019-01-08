@@ -79,6 +79,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf.vim'
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
+Plug 'pearofducks/ansible-vim'
 
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'tomasr/molokai'
@@ -119,9 +121,14 @@ if executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
 endif
 
-" Pyrhon
+" Python
 if executable('pyls')
     let g:LanguageClient_serverCommands.python = ['pyls']
+endif
+
+" Graphviz
+if executable('dot-language-server')
+    let g:LanguageClient_serverCommands.dot = ['dot-language-server', '--stdio']
 endif
 
 nnoremap <F8> :call LanguageClient#textDocument_formatting()<CR>
@@ -147,3 +154,5 @@ if has("syntax")
     " colorscheme sublimemonokai
     colorscheme molokai
 endif
+
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
