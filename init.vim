@@ -34,6 +34,8 @@ set smarttab
 " copy indent from previous line
 set autoindent
 
+let mapleader = "\<Space>"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -81,6 +83,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf.vim'
 Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
 Plug 'pearofducks/ansible-vim'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
 
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'tomasr/molokai'
