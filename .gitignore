@@ -2,6 +2,7 @@
 *.eld
 *~
 .cache
+.yas-compiled-snippets.el
 abbrev_defs
 auto-save-list
 custom.el

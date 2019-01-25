@@ -491,6 +491,14 @@
   (use-package yaml-mode)
   #+end_src
      
+* Snippets
+  #+begin_src emacs-lisp
+  (use-package yasnippet
+      :config (progn
+                  (yas-global-mode 1)
+                  (global-set-key (kbd "C-i") 'yas-insert-snippet)))
+  (use-package yasnippet-snippets)
+  #+end_src
 * Spell Checking
   #+begin_src emacs-lisp
   (defun enable-flyspell ()
