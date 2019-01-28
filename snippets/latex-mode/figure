@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# contributor: Fabian Köhler <fkoehler1024@googlemail.com>
+# name: figure
+# key: fig
+# --
+\begin{figure}[ht]
+  \centering
+  \includegraphics[${1:options}]{${2:path.pdf}}
+  \caption{\label{fig:${3:label}} $0}
+\end{figure}
