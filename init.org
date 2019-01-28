@@ -409,6 +409,15 @@
 
 ** LaTeX
   #+begin_src emacs-lisp
+  (setq straight-recipes-gnu-elpa-use-mirror t)
+  (use-package tex
+    :straight auctex
+    :defer t)
+  (use-package company-auctex
+    :config (company-auctex-init))
+  #+end_src
+  
+  #+begin_src emacs-lisp
   ;; (require 'auctex)
   ;; (require 'company-auctex)
   ;; (setq TeX-auto-save t)
