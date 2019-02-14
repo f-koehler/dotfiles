@@ -83,8 +83,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'tomasr/molokai'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'sbdchd/neoformat'
+Plug 'stephpy/vim-yaml'
+
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -114,12 +116,17 @@ if executable('fortls')
     let g:LanguageClient_serverCommands.fortran = ['fortls']
 endif
 
+" Go
+if executable('bingo')
+    let g:LanguageClient_serverCommands.go = ['bingo']
+endif
+
 " Javascript
 if executable('javascript-typescript-stdio')
     let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
 endif
 
-" Pyrhon
+" Python
 if executable('pyls')
     let g:LanguageClient_serverCommands.python = ['pyls']
 endif
