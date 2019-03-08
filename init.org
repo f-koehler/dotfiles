@@ -4,174 +4,173 @@
 #+property: header-args :tangle yes
 
 #+begin_src emacs-lisp
-(defun tangle-init ()
- (when (equal (buffer-file-name)
-              (expand-file-name (concat user-emacs-directory "init.org")))
-   (let ((prog-mode-hook nil))
-     (org-babel-tangle)
-     (byte-compile-file (concat user-emacs-directory "init.el")))))
+  (defun tangle-init ()
+   (when (equal (buffer-file-name)
+                (expand-file-name (concat user-emacs-directory "init.org")))
+     (let ((prog-mode-hook nil))
+       (org-babel-tangle)
+       (byte-compile-file (concat user-emacs-directory "init.el")))))
 
-(add-hook 'after-save-hook 'tangle-init)
+  (add-hook 'after-save-hook 'tangle-init)
 #+end_src
 
 * Packages
-#+begin_src emacs-lisp
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-#+end_src
-
-#+begin_src emacs-lisp
-(straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package org)
-#+end_src
-
-#+begin_src emacs-lisp
-(set-face-attribute 'default nil :height 90)
-#+end_src
-
-#+begin_src emacs-lisp
-(use-package dashboard
-  :config
-  (setq initial-buffer-choice (lambda () (switch-to-buffer "*dashboard*")))
-  :init
-  (dashboard-setup-startup-hook))
-#+end_src
+   #+begin_src emacs-lisp
+     (defvar bootstrap-version)
+     (let ((bootstrap-file
+            (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+           (bootstrap-version 5))
+       (unless (file-exists-p bootstrap-file)
+         (with-current-buffer
+             (url-retrieve-synchronously
+              "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+              'silent 'inhibit-cookies)
+           (goto-char (point-max))
+           (eval-print-last-sexp)))
+       (load bootstrap-file nil 'nomessage))
+   #+end_src
+   
+   #+begin_src emacs-lisp
+     (straight-use-package 'use-package)
+     (setq straight-use-package-by-default t)
+   #+end_src
+   
+   #+begin_src emacs-lisp
+     (use-package org)
+   #+end_src
+   
+   #+begin_src emacs-lisp
+     (set-face-attribute 'default nil :height 90)
+   #+end_src
+   
+   #+begin_src emacs-lisp
+     (use-package dashboard
+       :config
+       (setq initial-buffer-choice (lambda () (switch-to-buffer "*dashboard*")))
+       :init
+       (dashboard-setup-startup-hook))
+   #+end_src
 
 * Global
-  I know it is an eternal discussion, but I use whitespaces instead of tabs.
-  #+begin_src emacs-lisp
-  (setq-default indent-tabs-mode nil)
-  #+end_src
-  
-  Next, I disable the clunky interface of emacs, i.e. the menu bar, the scroll bar and the tool bar.
-  #+begin_src emacs-lisp
-  (menu-bar-mode -1)
-  (toggle-scroll-bar -1)
-  (tool-bar-mode -1)
-  #+end_src
-  
-  When jumping words using the =w= and =b= keys in command mode, I like to also jump within a word/variable that uses camelcase.
-  #+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'subword-mode)
-  #+end_src
+   I know it is an eternal discussion, but I use whitespaces instead of tabs.
+   #+begin_src emacs-lisp
+     (setq-default indent-tabs-mode nil)
+   #+end_src
+   
+   Next, I disable the clunky interface of emacs, i.e. the menu bar, the scroll bar and the tool bar.
+   #+begin_src emacs-lisp
+     (menu-bar-mode -1)
+     (toggle-scroll-bar -1)
+     (tool-bar-mode -1)
+   #+end_src
+   
+   When jumping words using the =w= and =b= keys in command mode, I like to also jump within a word/variable that uses camelcase.
+   #+begin_src emacs-lisp
+     (add-hook 'prog-mode-hook 'subword-mode)
+   #+end_src
 
-  Emacs has a nice feature to mark scripts executable when saving.
-  It will automatically detect whether a [[https://en.wikipedia.org/wiki/Shebang_(Unix)][shebang]] is present and set the corresponding flag.
-  #+begin_src emacs-lisp
-  (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-  #+end_src
-  
-  On a modern computer with a lot of memory, it can be benefitial for the editor performance when the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage collection]] is not run so often.
-  The next statement will start it only every =64MB=.
-  #+begin_src emacs-lisp
-  (setq-default gc-cons-threshold 67108864)
-  #+end_src
-  
-  When asking for confirmation there are both questions where you have to type =yes= / =no= and ones where =y= / =n= is sufficient.
-  Due to laziness I prefer the second kind.
-  #+begin_src emacs-lisp
-  (fset 'yes-or-no-p 'y-or-n-p)
-  #+end_src
+   Emacs has a nice feature to mark scripts executable when saving.
+   It will automatically detect whether a [[https://en.wikipedia.org/wiki/Shebang_(Unix)][shebang]] is present and set the corresponding flag.
+   #+begin_src emacs-lisp
+     (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+   #+end_src
+   
+   On a modern computer with a lot of memory, it can be benefitial for the editor performance when the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage collection]] is not run so often.
+   The next statement will start it only every =64MB=.
+   #+begin_src emacs-lisp
+     (setq-default gc-cons-threshold 67108864)
+   #+end_src
+   
+   When asking for confirmation there are both questions where you have to type =yes= / =no= and ones where =y= / =n= is sufficient.
+   Due to laziness I prefer the second kind.
+   #+begin_src emacs-lisp
+     (fset 'yes-or-no-p 'y-or-n-p)
+   #+end_src
 
-  #+begin_src emacs-lisp
-  ;; determine how dired lists files
-  (setq-default dired-listing-switches "-lah")
-  
-  ;; turn on syntax highlighting whenever it is possible
-  (global-font-lock-mode t)
-  
-  ;; always reload files that change
-  (global-auto-revert-mode t)
-  
-  ;; show matching parentheses immediately
-  (show-paren-mode 1)
-  (setq-default show-paren-delay 0.0)
-  
-  ;; highlight current line
-  (require 'hl-line)
-  (global-hl-line-mode)
-  
-  ;; show whitespaces and newlines
-  (require 'whitespace)
-  
-  ;; clipboard
-  (setq-default select-enable-clipboard t)
-  (setq-default interprogram-paste-function 'x-cut-buffer-or-selection-value)
-  
-  ;; change location of customizations and protect init.el
-  (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file 'noerror)
-  
-  ;; wind move for window navigation
-  (when (fboundp 'windmove-default-keybindings)
-    (windmove-default-keybindings))
-  #+end_src
-  
-  #+begin_src emacs-lisp
-    (setq save-interprogram-paste-before-kill t)
-    (setq mouse-yank-at-point t)
-    (setq require-final-newline t)
-  #+end_src
+   #+begin_src emacs-lisp
+     ;; determine how dired lists files
+     (setq-default dired-listing-switches "-lah")
+
+     ;; turn on syntax highlighting whenever it is possible
+     (global-font-lock-mode t)
+
+     ;; always reload files that change
+     (global-auto-revert-mode t)
+
+     ;; show matching parentheses immediately
+     (show-paren-mode 1)
+     (setq-default show-paren-delay 0.0)
+
+     ;; highlight current line
+     (require 'hl-line)
+     (global-hl-line-mode)
+
+     ;; show whitespaces and newlines
+     (require 'whitespace)
+
+     ;; clipboard
+     (setq-default select-enable-clipboard t)
+     (setq-default interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+     ;; change location of customizations and protect init.el
+     (setq-default custom-file (expand-file-name "custom.el" user-emacs-directory))
+     (load custom-file 'noerror)
+
+     ;; wind move for window navigation
+     (when (fboundp 'windmove-default-keybindings)
+       (windmove-default-keybindings))
+   #+end_src
+   
+   #+begin_src emacs-lisp
+     (setq save-interprogram-paste-before-kill t)
+     (setq mouse-yank-at-point t)
+     (setq require-final-newline t)
+   #+end_src
    
 ** Editor Behavior
    Automatically clean whitespaces on save.
    #+begin_src emacs-lisp
-   (use-package whitespace-cleanup-mode
-     :init (global-whitespace-cleanup-mode))
+     (use-package whitespace-cleanup-mode
+       :init (global-whitespace-cleanup-mode))
    #+end_src
    
    Automatically indent code, specify desired modes
    #+begin_src emacs-lisp
-   (use-package aggressive-indent
-     :hook ((emacs-lisp-mode . aggressive-indent-mode)
-            (css-mode . aggressive-indent-mode)
-            (html-mode . aggressive-indent-mode)
-            (latex-mode . aggressive-indent-mode)))
+     (use-package aggressive-indent
+       :hook ((emacs-lisp-mode . aggressive-indent-mode)
+              (css-mode . aggressive-indent-mode)
+              (html-mode . aggressive-indent-mode)))
    #+end_src
 * Vim-like Behavior
-  I am a vim user and want to work in a similar fashion with emacs as well.
-  #+begin_src emacs-lisp
-  (use-package evil
-    :config
-    (setq evil-want-C-d-scroll t)
-    (setq evil-want-C-u-scroll t)
-    (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-    (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-    (define-key evil-insert-state-map (kbd "C-u")
-      (lambda ()
-        (interactive)
-        (evil-delete (point-at-bol) (point))))
-    :init (evil-mode 1))
-  #+end_src
+   I am a vim user and want to work in a similar fashion with emacs as well.
+   #+begin_src emacs-lisp
+     (use-package evil
+       :config
+       (setq evil-want-C-d-scroll t)
+       (setq evil-want-C-u-scroll t)
+       (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+       (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+       (define-key evil-insert-state-map (kbd "C-u")
+         (lambda ()
+           (interactive)
+           (evil-delete (point-at-bol) (point))))
+       :init (evil-mode 1))
+   #+end_src
 
-  #+begin_src emacs-lisp
-  ;; use escape key to cancel
-  (global-set-key [escape] 'keyboard-escape-quit)
-  (define-key isearch-mode-map [escape] 'isearch-abort)
-  (define-key isearch-mode-map "\e" 'isearch-abort)
-  #+end_src
+   #+begin_src emacs-lisp
+     ;; use escape key to cancel
+     (global-set-key [escape] 'keyboard-escape-quit)
+     (define-key isearch-mode-map [escape] 'isearch-abort)
+     (define-key isearch-mode-map "\e" 'isearch-abort)
+   #+end_src
   
 ** Comments
    The [[https://github.com/linktohack/evil-commentary][evil-commentary]] package is a port of [[https://github.com/tpope][tpope]]'s awesome [[https://github.com/tpope/vim-commentary][vim-commentary]] plugin and allows for easy commenting and uncommenting of code.
    Type =gcc= to toggle the comment status of the current line when in command mode.
    =gc= does the same for visual mode.
    #+begin_src emacs-lisp
-   (use-package evil-commentary
-     :init (evil-commentary-mode))
+     (use-package evil-commentary
+       :init (evil-commentary-mode))
    #+end_src
   
 ** Org-Mode
@@ -193,69 +192,68 @@
    Press =-= when in command mode to open dired for the current directory, press =-= again to go one directory up.
    We also bind the vim navigation keys to work correctly in dired.
    #+begin_src emacs-lisp
-   (defun vinegar/top ()
-     "Go to the top of the dired buffer"
-     (interactive)
-     (goto-char (point-min))
-     (dired-next-line 1))
-   
-   (defun vinegar/bottom ()
-     "Go to the bottom of the dired buffer"
-     (interactive)
-     (goto-char (point-max))
-     (dired-next-line -1))
-   
-   (defun vinegar/up ()
-     "Go one entry up in dired"
-     (interactive)
-     (dired-previous-line 1)
-     (if (bobp) (dired-next-line 1)))
-   
-   (defun vinegar/down ()
-     "Go one entry down in dired"
-     (interactive)
-     (dired-next-line 1)
-     (if (eobp) (dired-next-line -1)))
-   
-   (defun vinegar/parent-dir (&optional window)
-     "Jump to parent dir using dired"
-     (interactive "P")
-     (let* ((dir (dired-current-directory))
-   	 (orig (current-buffer))
-   	 (up (file-name-directory (directory-file-name dir))))
-       (or (dired-goto-file (directory-file-name dir))
-   	(and (cdr dired-subdir-alist)
-   	     (dired-goto-subdir up))
-   	(progn
-   	  (kill-buffer orig)
-   	  (dired up)
-   	  (dired-goto-file dir)))))
-   
-   (defun vinegar/init ()
-     "Setup vim-vinegar like keybindings for dired"
-     (define-key dired-mode-map (kbd "j") 'vinegar/down)
-     (define-key dired-mode-map (kbd "k") 'vinegar/up)
-     (define-key dired-mode-map (kbd "-") 'vinegar/parent-dir)
-     ;; (define-key dired-mode-map (kbd "g g") 'vinegar/top)
-     (define-key dired-mode-map (kbd "G") 'vinegar/bottom)
-     (define-key dired-mode-map (kbd "d") 'dired-create-directory)
-     (define-key dired-mode-map (kbd "% s") 'find-file))
+     (defun vinegar/top ()
+       "Go to the top of the dired buffer"
+       (interactive)
+       (goto-char (point-min))
+       (dired-next-line 1))
 
-   (add-hook 'dired-mode-hook 'vinegar/init)
-   (define-key evil-normal-state-map (kbd "-") 'dired-jump)
+     (defun vinegar/bottom ()
+       "Go to the bottom of the dired buffer"
+       (interactive)
+       (goto-char (point-max))
+       (dired-next-line -1))
+
+     (defun vinegar/up ()
+       "Go one entry up in dired"
+       (interactive)
+       (dired-previous-line 1)
+       (if (bobp) (dired-next-line 1)))
+
+     (defun vinegar/down ()
+       "Go one entry down in dired"
+       (interactive)
+       (dired-next-line 1)
+       (if (eobp) (dired-next-line -1)))
+
+     (defun vinegar/parent-dir (&optional window)
+       "Jump to parent dir using dired"
+       (interactive "P")
+       (let* ((dir (dired-current-directory))
+           (orig (current-buffer))
+           (up (file-name-directory (directory-file-name dir))))
+         (or (dired-goto-file (directory-file-name dir))
+          (and (cdr dired-subdir-alist)
+               (dired-goto-subdir up))
+          (progn
+            (kill-buffer orig)
+            (dired up)
+            (dired-goto-file dir)))))
+
+     (defun vinegar/init ()
+       "Setup vim-vinegar like keybindings for dired"
+       (define-key dired-mode-map (kbd "j") 'vinegar/down)
+       (define-key dired-mode-map (kbd "k") 'vinegar/up)
+       (define-key dired-mode-map (kbd "-") 'vinegar/parent-dir)
+       ;; (define-key dired-mode-map (kbd "g g") 'vinegar/top)
+       (define-key dired-mode-map (kbd "G") 'vinegar/bottom)
+       (define-key dired-mode-map (kbd "d") 'dired-create-directory)
+       (define-key dired-mode-map (kbd "% s") 'find-file))
+
+     (add-hook 'dired-mode-hook 'vinegar/init)
+     (define-key evil-normal-state-map (kbd "-") 'dired-jump)
    #+end_src
 
 ** Line Numbers
    #+begin_src emacs-lisp
-   (use-package nlinum
-     :config
-     (setq nlinum-format "%4d\u2502")
-     (setq nlinum-highlight-current-line 1)
-     :init
-     (global-nlinum-mode))
+     (use-package nlinum
+       :config
+       (setq nlinum-format "%4d\u2502")
+       (setq nlinum-highlight-current-line 1)
+       :init
+       (global-nlinum-mode))
    #+end_src
 
-* Version Control
 * Project
   #+begin_src emacs-lisp
     (use-package projectile
@@ -270,8 +268,8 @@
   The [[https://github.com/magit/magit][magit]] plugin is a nice tool to work with the [[https://git-scm.com/][git]] version control system from within emacs.
   For now we just install it and also throw [[https://github.com/emacs-evil/evil-magit][evil-magit]] into the mix, which makes it play nicely with [[https://github.com/emacs-evil/evil][evil-mode]].
   #+begin_src emacs-lisp
-  (use-package magit)
-  (use-package evil-magit)
+    (use-package magit)
+    (use-package evil-magit)
   #+end_src
 * Language Support
 ** Language Server Protocol
@@ -286,26 +284,26 @@
 
 ** Company
   #+begin_src emacs-lisp
-  (use-package company
-    :config
-    ;; do not wait to complete
-    (setq company-idle-delay 0)
-    :init
-    (global-company-mode))
+    (use-package company
+      :config
+      ;; do not wait to complete
+      (setq company-idle-delay 0)
+      :init
+      (global-company-mode))
 
-  (use-package company-quickhelp
-    :init
-    (company-quickhelp-mode))
- 
-  ;; use language server protocol in company-mode
-  (use-package company-lsp
-    :init
-    (push 'company-lsp company-backends))
+    (use-package company-quickhelp
+      :init
+      (company-quickhelp-mode))
+
+    ;; use language server protocol in company-mode
+    (use-package company-lsp
+      :init
+      (push 'company-lsp company-backends))
   #+end_src
 
 ** Ansible YAML
   #+begin_src emacs-lisp
-  (use-package ansible)
+    (use-package ansible)
   #+end_src
  
 ** C/C++
@@ -326,79 +324,79 @@
   #+end_src
  
 ** C#
-#+begin_src emacs-lisp
-  (use-package omnisharp
-    :init
-    '(add-to-list 'company-backends #'company-omnisharp)
-    (defun my-csharp-mode-setup ()
-      (omnisharp-mode)
-      (company-mode)
-      (flycheck-mode)
+  #+begin_src emacs-lisp
+    (use-package omnisharp
+      :init
+      '(add-to-list 'company-backends #'company-omnisharp)
+      (defun my-csharp-mode-setup ()
+        (omnisharp-mode)
+        (company-mode)
+        (flycheck-mode)
 
-      (setq indent-tabs-mode nil)
-      (setq c-syntactic-indentation t)
-      (c-set-style "ellemtel")
-      (setq c-basic-offset 4)
-      (setq truncate-lines t)
-      (setq tab-width 4)
-      (setq evil-shift-width 4)
+        (setq indent-tabs-mode nil)
+        (setq c-syntactic-indentation t)
+        (c-set-style "ellemtel")
+        (setq c-basic-offset 4)
+        (setq truncate-lines t)
+        (setq tab-width 4)
+        (setq evil-shift-width 4)
 
-      (electric-pair-local-mode 1) ;; Emacs 25
+        (electric-pair-local-mode 1) ;; Emacs 25
 
-      (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
-      (local-set-key (kbd "C-c C-c") 'recompile))
+        (local-set-key (kbd "C-c r r") 'omnisharp-run-code-action-refactoring)
+        (local-set-key (kbd "C-c C-c") 'recompile))
       (add-hook 'csharp-mode-hook 'my-csharp-mode-setup t))
-#+end_src
+  #+end_src
 
 ** CMake
-#+begin_src emacs-lisp
-(use-package cmake-mode)
-#+end_src
+  #+begin_src emacs-lisp
+    (use-package cmake-mode)
+  #+end_src
 ** Docker
-#+begin_src emacs-lisp
-  (use-package dockerfile-mode
-    :config
-    (add-to-list 'auto-mode-alist
-                 '("Dockerfile\\'" . dockerfile-mode)))
+  #+begin_src emacs-lisp
+    (use-package dockerfile-mode
+      :config
+      (add-to-list 'auto-mode-alist
+                   '("Dockerfile\\'" . dockerfile-mode)))
 
-#+end_src
+  #+end_src
 ** Fortran
-   #+begin_src emacs-lisp
-     ;; (require 'projectile)
+  #+begin_src emacs-lisp
+    ;; (require 'projectile)
 
-     ;; (lsp-define-stdio-client fortls "fortran"
-     ;;                          #'projectile-project-root
-     ;;                          (list "fortls" "--lowercase_intrinsics"))
-     ;; (add-hook 'f90-mode #'fortls-enable)
-   #+end_src
-   #+begin_src emacs-lisp
-     (setq-default f90-do-indent 4)
-     (setq-default f90-if-indent 4)
-     (setq-default f90-type-indent 4)
-     (setq-default f90-program-indent 4)
-     (setq-default f90-continuation-indent 4)
-     (setq-default f90-smart-end 'blink)
-   #+end_src
+    ;; (lsp-define-stdio-client fortls "fortran"
+    ;;                          #'projectile-project-root
+    ;;                          (list "fortls" "--lowercase_intrinsics"))
+    ;; (add-hook 'f90-mode #'fortls-enable)
+  #+end_src
+  #+begin_src emacs-lisp
+    (setq-default f90-do-indent 4)
+    (setq-default f90-if-indent 4)
+    (setq-default f90-type-indent 4)
+    (setq-default f90-program-indent 4)
+    (setq-default f90-continuation-indent 4)
+    (setq-default f90-smart-end 'blink)
+  #+end_src
  
 ** Git
   #+begin_src emacs-lisp
-  (use-package gitconfig-mode)
-  (use-package gitignore-mode)
+    (use-package gitconfig-mode)
+    (use-package gitignore-mode)
   #+end_src
  
 ** Go
   #+begin_src emacs-lisp
-  (use-package go-mode)
+    (use-package go-mode)
   #+end_src
  
 ** Graphviz
   #+begin_src emacs-lisp
-  (use-package graphviz-dot-mode)
+    (use-package graphviz-dot-mode)
   #+end_src
  
 ** Haskell
   #+begin_src emacs-lisp
-  (use-package haskell-mode)
+    (use-package haskell-mode)
   #+end_src
  
 ** Julia
@@ -410,21 +408,26 @@
 
 ** LaTeX
   #+begin_src emacs-lisp
-  ;; (require 'auctex)
-  ;; (require 'company-auctex)
-  ;; (setq TeX-auto-save t)
-  ;; (setq TeX-parse-self t)
-  ;; (setq-default TeX-master nil)
-  ;; (add-hook 'LaTeX-mode-hook
-  ;;           (progn
-  ;;             (company-auctex-init)
-  ;;             (setq evil-shift-width 2)))
-  (defun set-latex-evil-shift-width ()
-    "set the correct shift width for evil in latex-mode"
-    (interactive)
-    (setq evil-shift-width 2))
-  (add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
-  (add-hook 'latex-mode-hook 'set-latex-evil-shift-width)
+    (setq straight-recipes-gnu-elpa-use-mirror t)
+    (use-package tex
+      :straight auctex
+      :defer t)
+    (use-package company-auctex
+      :config (company-auctex-init))
+  #+end_src
+  
+  #+begin_src emacs-lisp
+    ;; (require 'auctex)
+    ;; (require 'company-auctex)
+    ;; (setq TeX-auto-save t)
+    ;; (setq TeX-parse-self t)
+    ;; (setq-default TeX-master nil)
+    ;; (add-hook 'LaTeX-mode-hook
+    ;;           (progn
+    ;;             (company-auctex-init)
+    ;;             (setq evil-shift-width 2)))
+    (add-to-list 'auto-mode-alist '("\\.tex\\'" . latex-mode))
+    (add-hook 'LaTeX-mode-hook (lambda () (setq-local evil-shift-width 2)))
   #+end_src
  
 ** Python
@@ -467,40 +470,63 @@
        (add-hook 'python-mode-hook 'lsp))
    #+end_src
 
-  
 ** Web
   #+begin_src emacs-lisp
-  (use-package web-mode
-    :config
-    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-    :init
-    (add-hook 'web-mode-hook
-              (lambda ()
-                (setq evil-shift-width 2)
-                (setq indent-tabs-mode nil)
-                (setq web-mode-markup-indent-offset 2)
-                (setq web-mode-css-indent-offset 2)
-                (setq web-mode-code-indent-offset 2))))
+    (use-package web-mode
+      :config
+      (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+      (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+      :init
+      (add-hook 'web-mode-hook
+                (lambda ()
+                  (setq evil-shift-width 2)
+                  (setq indent-tabs-mode nil)
+                  (setq web-mode-markup-indent-offset 2)
+                  (setq web-mode-css-indent-offset 2)
+                  (setq web-mode-code-indent-offset 2))))
   #+end_src
  
 ** YAML
   #+begin_src emacs-lisp
-  (use-package yaml-mode)
+    (use-package yaml-mode)
   #+end_src
      
+* Snippets
+  #+begin_src emacs-lisp
+    (use-package yasnippet
+        :config (progn
+                    (yas-global-mode 1)
+                    (global-set-key (kbd "C-i") 'yas-insert-snippet)))
+    (use-package yasnippet-snippets)
+  #+end_src
+* Spell Checking
+  #+begin_src emacs-lisp
+    (defun enable-flyspell ()
+        (flyspell-mode 1))
+    (defun disable-flyspell ()
+        (flyspell-mode -1))
+    (if (executable-find "aspell")
+        (progn
+          (setq ispell-program-name "aspell")
+          (setq ispell-extra-args '("--sug-mode=ultra" "--lang=en_US"))
+          (dolist (hook '(text-mode-hook latex-mode-hook))
+              (add-hook hook 'enable-flyspell))
+          (dolist (hook '(log-edit-mode-hook))
+              (add-hook hook 'disable-flyspell))
+          ))
+  #+end_src
 * Tools
 ** Spotify
    #+begin_src emacs-lisp
-   (use-package spotify)
-   (use-package helm-spotify-plus)
+     (use-package spotify)
+     (use-package helm-spotify-plus)
    #+end_src
 ** systemd
     #+begin_src emacs-lisp
-    (use-package systemd)
+      (use-package systemd)
     #+end_src emacs-lisp
 
 * Linting
@@ -511,29 +537,23 @@
 
 * Visuals
 ** Theme
-   #+begin_src emacs-lisp
-   (use-package monokai-theme
-     :config (load-theme 'monokai t nil))
-   #+end_src
+  #+begin_src emacs-lisp
+    (use-package monokai-theme
+      :config (load-theme 'monokai t nil))
+  #+end_src
   
 ** Beacon
-   #+begin_src emacs-lisp
-   (use-package beacon
-     :config
-     (setq beacon-color "#657b83")
-     (setq beacon-size 30)
-     (setq beacon-blink-duration 0.1)
-     (setq beacon-blink-duration 0.05)
-     :init
-     (beacon-mode 1))
-   #+end_src
-
-** Emojis
-    #+begin_src emacs-lisp
-    (use-package emojify
+  #+begin_src emacs-lisp
+    (use-package beacon
       :config
-      (add-hook 'after-init-hook #'global-emojify-mode))
-    #+end_src
+      (setq beacon-color "#657b83")
+      (setq beacon-size 30)
+      (setq beacon-blink-duration 0.1)
+      (setq beacon-blink-duration 0.05)
+      :init
+      (beacon-mode 1))
+  #+end_src
+
 ** All the Icons
    # #+begin_src emacs-lisp
    #   (use-package all-the-icons)
@@ -550,17 +570,17 @@
    ;;(spaceline-all-the-icons-theme)
    #+end_src
 ** Indent Guides
-   #+begin_src emacs-lisp
-   (use-package highlight-indent-guides
-     :config
-     (setq highlight-indent-guides-method 'column)
-     :hook (prog-mode . highlight-indent-guides-mode))
-   #+end_src
+  #+begin_src emacs-lisp
+    (use-package highlight-indent-guides
+      :config
+      (setq highlight-indent-guides-method 'column)
+      :hook (prog-mode . highlight-indent-guides-mode))
+  #+end_src
 
 ** Org-Mode
    #+begin_src emacs-lisp
-   (use-package org-bullets
-     :hook (org-mode . org-bullets-mode))
+     (use-package org-bullets
+       :hook (org-mode . org-bullets-mode))
    #+end_src
   
 ** Pretty Mode
@@ -571,172 +591,175 @@
 
 *** C++
     #+begin_src emacs-lisp
-    (defun pretty-mode/c ()
-      "Prettify symbols in C mode."
-      (setq prettify-symbols-alist
-            (append prettify-symbols-alist
-                    '(("!=" . ?≠)
-                      ("<=" . ?≤)
-                      (">=" . ?≥)
-                      ("&&" . ?∧)
-                      ("||" . ?∨)
-                      ("<<" . ?≪)
-                      (">>" . ?≫)))))
+      (defun pretty-mode/c ()
+        "Prettify symbols in C mode."
+        (setq prettify-symbols-alist
+              (append prettify-symbols-alist
+                      '(("!=" . ?≠)
+                        ("<=" . ?≤)
+                        (">=" . ?≥)
+                        ("&&" . ?∧)
+                        ("||" . ?∨)
+                        ("<<" . ?≪)
+                        (">>" . ?≫)))))
 
-    (defun pretty-mode/c++ ()
-      "Prettify symbols in C++ mode."
-      (pretty-mode/c))
+      (defun pretty-mode/c++ ()
+        "Prettify symbols in C++ mode."
+        (pretty-mode/c))
 
-    (add-hook 'c-mode 'pretty-mode/c)
-    (add-hook 'c++-mode 'pretty-mode/c++)
+      (add-hook 'c-mode 'pretty-mode/c)
+      (add-hook 'c++-mode 'pretty-mode/c++)
     #+end_src
 *** Emacs Lisp
     #+begin_src emacs-lisp
-    (defun pretty-mode/emacs-lisp ()
-      "Prettify symbols in Emacs Lisp mode."
-      (setq prettify-symbols-alist
-            '(("lambda" . ?λ)
-              ("defun"  . ?ϝ)
-              ("!="     . ?≠)
-              ("<="     . ?≤)
-              (">="     . ?≥))))
+      (defun pretty-mode/emacs-lisp ()
+        "Prettify symbols in Emacs Lisp mode."
+        (setq prettify-symbols-alist
+              '(("lambda" . ?λ)
+                ("defun"  . ?ϝ)
+                ("!="     . ?≠)
+                ("<="     . ?≤)
+                (">="     . ?≥))))
 
-    (add-hook 'emacs-lisp-mode-hook 'pretty-mode/emacs-lisp)
+      (add-hook 'emacs-lisp-mode-hook 'pretty-mode/emacs-lisp)
     #+end_src
 *** Haskell
     #+begin_src emacs-lisp
-    (defun pretty-mode/haskell ()
-      (setq prettify-symbols-alist
-            '(
-              ("&&" . ?∧)
-              ("++" . ?⧺)
-              ("+++" . ?⧻)
-              ("-->" . ?⟶)
-              ("->" . ?→)
-              ("..." . ?…)
-              ("/<" . ?≮)
-              ("/=" . ?≠)
-              ("/>" . ?≯)
-              ("::" . ?∷)
-              (":=" . ?≔)
-              ("<*>" . ?⊛)
-              ("<-" . ?←)
-              ("<--" . ?⟵)
-              ("<-->" . ?⟷)
-              ("<->" . ?↔)
-              ("<<" . ?≪)
-              ("<<<" . ?⋘)
-              ("<=" . ?≤)
-              ("<==" . ?⟸)
-              ("<==>" . ?⟺)
-              ("<=>" . ?⇔)
-              ("<|" . ?⊲)
-              ("=:" . ?≕)
-              ("==" . ?≡)
-              ("==>" . ?⟹)
-              ("=>" . ?⇒)
-              ("=?" . ?≟)
-              ("=def" . ?≝)
-              ("><" . ?⋈)
-              (">=" . ?≥)
-              (">>" . ?≫)
-              (">>>" . ?⋙)
-              ("elem" . ?∈)
-              ("empty" . ?∅)
-              ("intersection" . ?∩)
-              ("isProperSubsetOf" . ?⊂)
-              ("isSubsetOf" . ?⊆)
-              ("mappend" . ?⊕)
-              ("member" . ?∈)
-              ("mempty" . ?∅)
-              ("not" . ?¬)
-              ("notElem" . ?∉)
-              ("notMember" . ?∉)
-              ("undefined" . ?⊥)
-              ("union" . ?∪)
-              ("|>" . ?⊳)
-              ("||" . ?∨)
-              )))
+      (defun pretty-mode/haskell ()
+        (setq prettify-symbols-alist
+              '(
+                ("&&" . ?∧)
+                ("++" . ?⧺)
+                ("+++" . ?⧻)
+                ("-->" . ?⟶)
+                ("->" . ?→)
+                ("..." . ?…)
+                ("/<" . ?≮)
+                ("/=" . ?≠)
+                ("/>" . ?≯)
+                ("::" . ?∷)
+                (":=" . ?≔)
+                ("<*>" . ?⊛)
+                ("<-" . ?←)
+                ("<--" . ?⟵)
+                ("<-->" . ?⟷)
+                ("<->" . ?↔)
+                ("<<" . ?≪)
+                ("<<<" . ?⋘)
+                ("<=" . ?≤)
+                ("<==" . ?⟸)
+                ("<==>" . ?⟺)
+                ("<=>" . ?⇔)
+                ("<|" . ?⊲)
+                ("=:" . ?≕)
+                ("==" . ?≡)
+                ("==>" . ?⟹)
+                ("=>" . ?⇒)
+                ("=?" . ?≟)
+                ("=def" . ?≝)
+                ("><" . ?⋈)
+                (">=" . ?≥)
+                (">>" . ?≫)
+                (">>>" . ?⋙)
+                ("elem" . ?∈)
+                ("empty" . ?∅)
+                ("intersection" . ?∩)
+                ("isProperSubsetOf" . ?⊂)
+                ("isSubsetOf" . ?⊆)
+                ("mappend" . ?⊕)
+                ("member" . ?∈)
+                ("mempty" . ?∅)
+                ("not" . ?¬)
+                ("notElem" . ?∉)
+                ("notMember" . ?∉)
+                ("undefined" . ?⊥)
+                ("union" . ?∪)
+                ("|>" . ?⊳)
+                ("||" . ?∨)
+                )))
 
-    (add-hook 'haskell-mode-hook 'pretty-mode/haskell)
+      (add-hook 'haskell-mode-hook 'pretty-mode/haskell)
     #+end_src
 *** Fortran
     #+begin_src emacs-lisp
-    (defun pretty-mode/f90 ()
-      "Prettify symbols in Fortran mode."
-      (setq prettify-symbols-alist
-            (append prettify-symbols-alist
-                    '((".not." . ?¬)
-                      (".and." . ?∧)
-                      (".or."  . ?∨)))))
+      (defun pretty-mode/f90 ()
+        "Prettify symbols in Fortran mode."
+        (setq prettify-symbols-alist
+              (append prettify-symbols-alist
+                      '((".not." . ?¬)
+                        (".and." . ?∧)
+                        (".or."  . ?∨)))))
 
-    (add-hook 'f90-mode-hook 'pretty-mode/f90)
+      (add-hook 'f90-mode-hook 'pretty-mode/f90)
+    #+end_src
+*** LaTeX
+    #+begin_src emacs-lisp
+      (add-hook 'TeX-mode-hook 'prettify-symbols-mode)
     #+end_src
 *** Python
     #+begin_src emacs-lisp
-    (defun pretty-mode/add-greek ()
-      " add prettified versions of greek letters"
-      (setq prettify-symbols-alist
-            (append prettify-symbols-alist
-                    '(("alpha"   . ?α)
-                      ("beta"    . ?β)
-                      ("gamma"   . ?γ)
-                      ("delta"   . ?δ)
-                      ("epsilon" . ?ε)
-                      ("zeta"    . ?ζ)
-                      ("eta"     . ?η)
-                      ("theta"   . ?θ)))))
-
-    (defun pretty-mode/python ()
-      "Prettify symbols in python mode."
-      (progn
+      (defun pretty-mode/add-greek ()
+        " add prettified versions of greek letters"
         (setq prettify-symbols-alist
-              '(("lambda" . ?λ)
-                ("def"    . ?ϝ)
-                ("!="     . ?≠)
-                ("<="     . ?≤)
-                (">="     . ?≥)
-                ("in"     . ?∈)
-                ("not in" . ?∉)
-                ("for"    . ?∀)
-                ("or"     . ?∨)
-                ("and"    . ?∧)
-                ("not"    . ?¬)
-                ("->"     . ?→)))
-        (pretty-mode/add-greek)))
+              (append prettify-symbols-alist
+                      '(("alpha"   . ?α)
+                        ("beta"    . ?β)
+                        ("gamma"   . ?γ)
+                        ("delta"   . ?δ)
+                        ("epsilon" . ?ε)
+                        ("zeta"    . ?ζ)
+                        ("eta"     . ?η)
+                        ("theta"   . ?θ)))))
 
-    (add-hook 'python-mode-hook 'pretty-mode/python)
+      (defun pretty-mode/python ()
+        "Prettify symbols in python mode."
+        (progn
+          (setq prettify-symbols-alist
+                '(("lambda" . ?λ)
+                  ("def"    . ?ϝ)
+                  ("!="     . ?≠)
+                  ("<="     . ?≤)
+                  (">="     . ?≥)
+                  ("in"     . ?∈)
+                  ("not in" . ?∉)
+                  ("for"    . ?∀)
+                  ("or"     . ?∨)
+                  ("and"    . ?∧)
+                  ("not"    . ?¬)
+                  ("->"     . ?→)))
+          (pretty-mode/add-greek)))
+
+      (add-hook 'python-mode-hook 'pretty-mode/python)
     #+end_src
-
 * Playerctl
   #+begin_src emacs-lisp
-  (defun playerctl/command (command message)
-    "Call playerctl asynchronously and display a message."
-    (if (executable-find "playerctl")
-        (progn
-          (start-process "elplayerctl" nil "playerctl" command)
-          (message message))
-      (message "playerctl not available")))
+    (defun playerctl/command (command message)
+      "Call playerctl asynchronously and display a message."
+      (if (executable-find "playerctl")
+          (progn
+            (start-process "elplayerctl" nil "playerctl" command)
+            (message message))
+        (message "playerctl not available")))
 
-  (defun song-pause()
-    "Pause playback using playerctl"
-    (interactive)
-    (playerctl/command "play-pause" "Toggle playback"))
+    (defun song-pause()
+      "Pause playback using playerctl"
+      (interactive)
+      (playerctl/command "play-pause" "Toggle playback"))
 
-  (defun song-next()
-    "Skip to next song using playerctl"
-    (interactive)
-    (playerctl/command "next" "Next song"))
+    (defun song-next()
+      "Skip to next song using playerctl"
+      (interactive)
+      (playerctl/command "next" "Next song"))
 
-  (defun song-prev()
-    "Go back to previous song using playerctl"
-    (interactive)
-    (playerctl/command "previous" "Previous song"))
+    (defun song-prev()
+      "Go back to previous song using playerctl"
+      (interactive)
+      (playerctl/command "previous" "Previous song"))
 
-  (defun song-stop()
-    "Stop playback using playerctl"
-    (interactive)
-    (playerctl/command "stop" "Stop music"))
+    (defun song-stop()
+      "Stop playback using playerctl"
+      (interactive)
+      (playerctl/command "stop" "Stop music"))
   #+end_src
 
 * Helm
