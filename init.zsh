@@ -1,3 +1,5 @@
+[ ! -f ~/.zsh_clean_env ] && export > ~/.zsh_clean_env
+
 export EDITOR="vim"
 
 # aliases
@@ -42,10 +44,4 @@ if [ -f $HOME/.local/opt/anaconda3/bin/conda ]; then
     export PATH="$HOME/.local/opt/anaconda3/bin:$PATH"
 fi
 
-# Linuxbrew
-function install_linuxbrew() {
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-}
-if [ -f $HOME/.linuxbrew/bin/brew ]; then
-    eval $(/home/fkoehler/.linuxbrew/bin/brew shellenv)
-fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
