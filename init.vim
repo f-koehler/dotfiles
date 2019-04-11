@@ -71,10 +71,6 @@ let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/pyt
 let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'junegunn/fzf'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
@@ -85,6 +81,11 @@ Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
 Plug 'pearofducks/ansible-vim'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'lervag/vimtex'
+
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'tomasr/molokai'
@@ -92,68 +93,29 @@ Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sbdchd/neoformat'
 Plug 'stephpy/vim-yaml'
-
-
-if has("nvim")
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
+
 
 let g:indent_guides_enable_on_vim_startup = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LanguageClient
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
-" C/C++
-if executable('cquery')
-    let g:LanguageClient_serverCommands.c = ['cquery', '--log-file=/tmp/cquery-c.log', '--init={"cacheDirectory":"/tmp/cquery/"}']
-    let g:LanguageClient_serverCommands.cpp = ['cquery', '--log-file=/tmp/cquery-cpp.log', '--init={"cacheDirectory":"/tmp/cquery/"}']
-endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-svg", "coc-vimtex"]
 
-" Fortran
-if executable('fortls')
-    let g:LanguageClient_serverCommands.fortran = ['fortls']
-endif
-
-" Go
-if executable('bingo')
-    let g:LanguageClient_serverCommands.go = ['bingo']
-endif
-
-" Javascript
-if executable('javascript-typescript-stdio')
-    let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-endif
-
-" Python
-if executable('pyls')
-    let g:LanguageClient_serverCommands.python = ['pyls']
-endif
-
-" Graphviz
-if executable('dot-language-server')
-    let g:LanguageClient_serverCommands.dot = ['dot-language-server', '--stdio']
-endif
-
-nnoremap <F8> :call LanguageClient#textDocument_formatting()<CR>
-
-nnoremap <C-p> :Files<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-    \ "auto_complete": v:true,
-    \ "auto_complete_delay": 0,
-    \ })
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gitgutter
