@@ -13,6 +13,18 @@ set cursorline
 " always show statusline
 set laststatus=2
 
+" automatically set working directory
+autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+
+" show two lines in command line
+set cmdheight=2
+
+" dont show |ins-completion-menu| messages
+set shortmess+=c 
+
+" always show signcolumns
+set signcolumn=yes
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation and <TAB>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,7 +97,7 @@ Plug 'lervag/vimtex'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'tomasr/molokai'
@@ -94,6 +106,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sbdchd/neoformat'
 Plug 'stephpy/vim-yaml'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'pboettch/vim-cmake-syntax'
 call plug#end()
 
 
@@ -107,9 +120,44 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COC
+" CoC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-svg", "coc-vimtex"]
+
+" specify coc extensions
+let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+
+" use <tab> to navigate completions
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" add mappings for goto functions
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" command to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+nmap <silent> <F2> :Format<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline
@@ -129,3 +177,8 @@ if has("syntax")
 endif
 
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+
+
+let g:tex_flavor='latex'
+autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
