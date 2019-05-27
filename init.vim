@@ -94,6 +94,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
+Plug 'cespare/vim-toml'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
