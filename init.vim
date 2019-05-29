@@ -25,6 +25,12 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+" set encoding to UTF-8
+set encoding=UTF-8
+
+" set font
+set guifont=Ubuntu\ Mono\ Nerd\ Font:h11
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation and <TAB>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,6 +101,7 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'lervag/vimtex'
 Plug 'cespare/vim-toml'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
@@ -108,6 +115,8 @@ Plug 'sbdchd/neoformat'
 Plug 'stephpy/vim-yaml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'scrooloose/nerdtree'
+Plug 'mhinz/vim-startify'
 call plug#end()
 
 
@@ -176,6 +185,35 @@ if has("syntax")
     " colorscheme sublimemonokai
     colorscheme molokai
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <F8> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" devicons
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable devicons
+let g:webdevicons_enable = 1
+
+" enable in NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" enable in airline
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+
+" enable for ctrlp
+let g:webdevicons_enable_ctrlp = 1
+
+" enable for vim-startify
+let g:webdevicons_enable_startify = 1
+
 
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
