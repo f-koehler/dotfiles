@@ -85,7 +85,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/python"
+let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/bin/python"
 let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
 
 call plug#begin('~/.config/nvim/plugged')
