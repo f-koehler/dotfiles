@@ -89,34 +89,33 @@ let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/bin/python"
 let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'junegunn/fzf'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf.vim'
-Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
-Plug 'pearofducks/ansible-vim'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'lervag/vimtex'
-Plug 'cespare/vim-toml'
-Plug 'ryanoasis/vim-devicons'
-
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'erichdongubler/vim-sublime-monokai'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
+Plug 'mhinz/vim-startify'
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-
-Plug 'erichdongubler/vim-sublime-monokai'
-Plug 'tomasr/molokai'
-Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sbdchd/neoformat'
-Plug 'stephpy/vim-yaml'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'pearofducks/ansible-vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree'
-Plug 'mhinz/vim-startify'
+Plug 'stephpy/vim-yaml'
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
@@ -134,7 +133,10 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " specify coc extensions
-let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+
+" highlight current symbol
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " use <tab> to navigate completions
 inoremap <silent><expr> <TAB>

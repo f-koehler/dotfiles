@@ -1,4 +1,5 @@
 {
+    "coc.preferences.colorSupport": true,
     "coc.source.vimtex.enable": true,
     "html.enable": true,
     "html.format.enable": true,
@@ -20,5 +21,7 @@
         ".pyenv",
         ".direnv",
         "~/.local/opt/anaconda3/envs/"
-    ]
+    ],
+    "tsserver.enable": true,
+    "tsserver.log": "verbose"
 }
