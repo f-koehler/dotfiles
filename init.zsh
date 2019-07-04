@@ -38,10 +38,29 @@ fi
 
 autoload compinit && compinit
 
+# useful commands
+function copy-terminfo {
+    infocmp $TERM | ssh "$@" "mkdir -p .terminfo && cat >/tmp/ti && tic /tmp/ti"
+}
 
-# Anaconda3
-if [ -f $HOME/.local/opt/anaconda3/bin/conda ]; then
-    export PATH="$HOME/.local/opt/anaconda3/bin:$PATH"
-fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=$HOME/.local/bin:$PATH
+
+source /opt/spack/share/spack/setup-env.sh
+
+source /opt/intel/compilers_and_libraries_2019.3.199/linux/bin/compilervars.sh intel64
+
+export MODULEPATH="$HOME/.local/share/modulefiles:$MODULEPATH"
+
+
+if [ -f /etc/profile.d/modules.sh ]; then
+    source /etc/profile.d/modules.sh
+    if [ -f $HOME/.local/share/modulefiles/anaconda/3 ]; then
+        module load anaconda/3
+    fi
+fi
+alias anaconda3="module swap anaconda/2 anaconda/3"
+alias anaconda2="module swap anaconda/3 anaconda/2"
+export QT_API="pyside2"
