@@ -61,6 +61,7 @@ if [ -f /etc/profile.d/modules.sh ]; then
         module load anaconda/3
     fi
 fi
-alias anaconda3="module swap anaconda/2 anaconda/3"
-alias anaconda2="module swap anaconda/3 anaconda/2"
 export QT_API="pyside2"
+
+source $HOME/.zsh.d/android.zsh
+source $HOME/.zsh.d/cocos2d-x.zsh
