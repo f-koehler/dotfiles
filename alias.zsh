@@ -34,3 +34,5 @@ if [ ! -x "$(command -v wget)" ]; then
         alias wget="$PREFIX/wget"
     fi
 fi
+
+[ -e "$HOME/.local/bin/install_exa" ] && source "$HOME/.local/bin/install_exa"
