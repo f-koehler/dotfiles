@@ -20,5 +20,6 @@
         ".pyenv",
         ".direnv",
         "~/.local/opt/anaconda3/envs/"
-    ]
+    ],
+    "python.jediEnabled": true
 }
