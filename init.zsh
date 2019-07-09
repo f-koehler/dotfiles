@@ -43,6 +43,15 @@ function copy-terminfo {
     infocmp $TERM | ssh "$@" "mkdir -p .terminfo && cat >/tmp/ti && tic /tmp/ti"
 }
 
+function update-zsh-modules {
+    OLD_PWD=`pwd`
+    for module in oh-my-zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting; do
+        cd $HOME/.zsh.d/$module/
+        git pull origin master
+    done
+    cd $OLD_PWD
+}
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
