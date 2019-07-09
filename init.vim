@@ -25,6 +25,12 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+" set encoding to UTF-8
+set encoding=UTF-8
+
+" set font
+set guifont=Ubuntu\ Mono\ Nerd\ Font:h11
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation and <TAB>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,35 +85,37 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/envs/pyls/bin/python"
+let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/bin/python"
 let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'junegunn/fzf'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf.vim'
-Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
-Plug 'pearofducks/ansible-vim'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'lervag/vimtex'
-Plug 'cespare/vim-toml'
-
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'erichdongubler/vim-sublime-monokai'
+Plug 'godlygeek/tabular'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
+Plug 'mhinz/vim-startify'
+Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-
-Plug 'erichdongubler/vim-sublime-monokai'
-Plug 'tomasr/molokai'
-Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'sbdchd/neoformat'
-Plug 'stephpy/vim-yaml'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'pearofducks/ansible-vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sbdchd/neoformat'
+" Plug 'scrooloose/nerdtree'
+Plug 'stephpy/vim-yaml'
+Plug 'tomasr/molokai'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
@@ -125,7 +133,10 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " specify coc extensions
-let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+
+" highlight current symbol
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " use <tab> to navigate completions
 inoremap <silent><expr> <TAB>
@@ -176,6 +187,35 @@ if has("syntax")
     " colorscheme sublimemonokai
     colorscheme molokai
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <F8> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" devicons
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable devicons
+let g:webdevicons_enable = 1
+
+" enable in NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" enable in airline
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+
+" enable for ctrlp
+let g:webdevicons_enable_ctrlp = 1
+
+" enable for vim-startify
+let g:webdevicons_enable_startify = 1
+
 
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
