@@ -64,6 +64,10 @@ if [ -f ~/.fzf.zsh ]; then
     source ~/.fzf.zsh
 fi
 
+function plumber {
+ 	: | fzf --multi --preview='bash -c {q}' --preview-window=up:90%
+}
+
 export PATH=$HOME/.local/bin:$PATH
 
 source /opt/spack/share/spack/setup-env.sh
