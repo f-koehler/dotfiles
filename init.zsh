@@ -32,10 +32,6 @@ if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh ]; then
     source $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh
 fi
 
-if [ -f /usr/share/fzf/key-bindings.zsh  ]; then
-    source /usr/share/fzf/key-bindings.zsh
-fi
-
 autoload compinit && compinit
 
 # useful commands
@@ -53,7 +49,20 @@ function update-zsh-modules {
 }
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ]; then
+	export FZF_DEFAULT_COMMAND='
+      (git ls-tree -r --name-only HEAD ||
+             find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+                   sed s/^..//) 2> /dev/null'
+    export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+	export FZF_CTRL_T_OPTS="--preview-window wrap --preview '
+		if [[ -f {} ]]; then
+			file --mime {} | grep -q \"text\/.*;\" && cat {} || (tput setaf 1; file --mime {})
+		elif [[ -d {} ]]; then
+			exa -l --color always {}
+		fi'"
+    source ~/.fzf.zsh
+fi
 
 export PATH=$HOME/.local/bin:$PATH
 
