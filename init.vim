@@ -116,6 +116,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 
