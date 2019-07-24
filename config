@@ -1,0 +1,151 @@
+# vim: ft=dosini
+[colors]
+darkgray = #303030
+gray = #595959
+green = #34A853
+yellow = #FBBC05
+red = #EA4335
+black = #1B1B1B
+white = #C6C6C6
+brightwhite = #FFFFFF
+blue = #4285F4
+
+[bar/landau-primary]
+background = ${colors.black}
+bottom = true
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;2"
+font-1 = "Dejavu Sans Mono:pixelsize=12;1"
+foreground = ${colors.white}
+height = 20
+line-size = 3
+module-margin = 2
+modules-center = pulseaudio wired-network filesystem cpu memory
+modules-left = i3
+modules-right = date
+monitor = HDMI-0
+scroll-down = i3wm-wsnext
+scroll-up = i3wm-wsnext
+tray-maxsize = 16
+tray-padding = 4
+tray-position = right
+width = 100%
+
+[bar/landau-secondary]
+background = ${colors.black}
+bottom = true
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;3"
+font-1 = "Dejavu Sans Mono:pixelsize=12"
+foreground = ${colors.white}
+height = 20
+line-size = 3
+module-margin = 2
+modules-center = wired-network filesystem cpu memory
+modules-left = i3
+modules-right = date
+monitor = DVI-D-0
+scroll-down = i3wm-wsnext
+scroll-up = i3wm-wsnext
+width = 100%
+
+[module/cpu]
+type = internal/cpu
+
+format = <label> <ramp-coreload>
+interval = 1.0
+label =  %percentage%%
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+ramp-coreload-spacing = 0
+ramp-coreload-0-foreground = ${colors.green}
+ramp-coreload-1-foreground = ${colors.green}
+ramp-coreload-2-foreground = ${colors.green}
+ramp-coreload-3-foreground = ${colors.yellow}
+ramp-coreload-4-foreground = ${colors.yellow}
+ramp-coreload-5-foreground = ${colors.yellow}
+ramp-coreload-6-foreground = ${colors.red}
+ramp-coreload-7-foreground = ${colors.red}
+
+[module/date]
+date = %Y-%m-%d%
+format = <label>
+interval = 1.0
+label =  %date%   %time%
+label-font = 3
+time = %H:%M
+type = internal/date
+
+[module/filesystem]
+type = internal/fs
+
+fixed-values = true
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+interval = 10
+label-mounted =  %mountpoint%: %used%/%total% (%percentage_used%%)
+label-unmounted =  %mountpoint%: offline
+mount-0 = /
+spacing = 4
+
+[module/i3]
+type = internal/i3
+
+enable-click = true
+index-sort = true
+label-focused = %index%
+label-focused-background = ${colors.darkgray}
+label-focused-foreground = ${colors.brightwhite}
+label-focused-padding = 1
+label-focused-underline = ${colors.blue}
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-urgent = %index%
+label-urgent-padding = 1
+label-urgent-underline = ${colors.red}
+label-visible = %index%
+label-visible-padding = 1
+pin-workspaces = true
+
+[module/memory]
+type = internal/memory
+
+format = <label> <ramp-used>
+interval = 1
+label =  %gb_used%/%gb_free%
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+ramp-used-0-foreground = ${colors.green}
+ramp-used-1-foreground = ${colors.green}
+ramp-used-2-foreground = ${colors.green}
+ramp-used-3-foreground = ${colors.yellow}
+ramp-used-4-foreground = ${colors.yellow}
+ramp-used-5-foreground = ${colors.yellow}
+ramp-used-6-foreground = ${colors.red}
+ramp-used-7-foreground = ${colors.red}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+interval = 5
+label-muted = 婢 muted
+label-volume = 墳 %percentage%%
+format-volume = <label-volume>
+format-muted = <label-muted>
+
+[module/wired-network]
+type = internal/network
+
+interface = enp6s0
+interval = 5
+label-connected =  %ifname%: %local_ip% (%linkspeed%)
