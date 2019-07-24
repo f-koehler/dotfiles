@@ -9,3 +9,7 @@ fi
 if (( $+commands[bat] )); then
     alias cat="bat --color=\"always\" --italic-text=\"always\" --plain"
 fi
+
+if (( $+commands[pikaur] )); then
+    alias pacman="pikaur"
+fi
