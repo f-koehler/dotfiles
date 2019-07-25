@@ -82,9 +82,6 @@ modules-right = date
 monitor = DP1
 scroll-down = i3wm-wsnext
 scroll-up = i3wm-wsnext
-tray-maxsize = 16
-tray-padding = 4
-tray-position = right
 width = 100%
 
 [bar/zoq45-right]
@@ -102,9 +99,6 @@ modules-right = date
 monitor = DP2
 scroll-down = i3wm-wsnext
 scroll-up = i3wm-wsnext
-tray-maxsize = 16
-tray-padding = 4
-tray-position = right
 width = 100%
 
 [module/cpu]
