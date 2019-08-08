@@ -15,13 +15,14 @@ source $HOME/.zsh.d/prompt.zsh
 source $HOME/.zsh.d/keybindings.zsh
 
 # load plugins
-if [ -d $HOME/.zsh/zsh-completions/src ]; then
-  fpath=($HOME/.zsh/zsh-completions/src $fpath)
+if [ -d $HOME/.zsh.d/zsh-completions/src ]; then
+  fpath=($HOME/.zsh.d/zsh-completions/src $fpath)
 fi
 
-if [ -d $HOME/.zsh/oh-my-zsh/plugins/ ]; then
-  fpath=($HOME/.zsh/oh-my-zsh/plugins/cpanm $fpath)
-  fpath=($HOME/.zsh/oh-my-zsh/plugins/pip $fpath)
+if [ -d $HOME/.zsh.d/oh-my-zsh/plugins/ ]; then
+  fpath=($HOME/.zsh.d/oh-my-zsh/plugins/cpanm $fpath)
+  fpath=($HOME/.zsh.d/oh-my-zsh/plugins/pip $fpath)
+  source $HOME/.zsh.d/oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
 fi
 
 if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
@@ -72,7 +73,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 source /opt/spack/share/spack/setup-env.sh
 
-source /opt/intel/compilers_and_libraries_2019.3.199/linux/bin/compilervars.sh intel64
+source /opt/intel/compilers_and_libraries_2019.4.243/linux/bin/compilervars.sh intel64
 
 export MODULEPATH="$HOME/.local/share/modulefiles:$MODULEPATH"
 
