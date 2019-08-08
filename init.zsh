@@ -8,9 +8,6 @@ source $HOME/.zsh.d/alias.zsh
 # options
 source $HOME/.zsh.d/options.zsh
 
-# prompt
-source $HOME/.zsh.d/prompt.zsh
-
 # key bindings
 source $HOME/.zsh.d/keybindings.zsh
 
@@ -20,9 +17,11 @@ if [ -d $HOME/.zsh.d/zsh-completions/src ]; then
 fi
 
 if [ -d $HOME/.zsh.d/oh-my-zsh/plugins/ ]; then
-  fpath=($HOME/.zsh.d/oh-my-zsh/plugins/cpanm $fpath)
-  fpath=($HOME/.zsh.d/oh-my-zsh/plugins/pip $fpath)
+  # fpath=($HOME/.zsh.d/oh-my-zsh/plugins/cpanm $fpath)
+  # fpath=($HOME/.zsh.d/oh-my-zsh/plugins/pip $fpath)
   source $HOME/.zsh.d/oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+  source $HOME/.zsh.d/oh-my-zsh/plugins/systemd/systemd.plugin.zsh
+  source $HOME/.zsh.d/oh-my-zsh/plugins/z/z.plugin.zsh
 fi
 
 if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
@@ -34,6 +33,9 @@ if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh ]; then
 fi
 
 autoload compinit && compinit
+
+# prompt
+source $HOME/.zsh.d/prompt.zsh
 
 # useful commands
 function copy-terminfo {
