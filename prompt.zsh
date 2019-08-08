@@ -5,6 +5,11 @@ prompt_char() {
     if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
 }
 
+function prompt_venv() {
+    [[ -n ${VIRTUAL_ENV} ]] || return
+    echo "${ZSH_THEME_VIRTUALENV_PREFIX:=[}${VIRTUAL_ENV:t}${ZSH_THEME_VIRTUALENV_SUFFIX:=]} "
+}
+
 prompt_separator_and_status() {
     PROMPT_RETVAL=$?
 
@@ -15,6 +20,7 @@ prompt_separator_and_status() {
         STATUS+="%{$fg_no_bold[green]%}✓ "
     fi
     [[ $(jobs -l | wc -l) -gt 0 ]] && STATUS+="%{$fg_no_bold[cyan]%}⚙ "
+    STATUS+=%{$fg[green]%}`prompt_venv`
 
     echo "%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::─:)} %*"
     echo "$STATUS"
