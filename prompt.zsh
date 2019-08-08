@@ -20,7 +20,7 @@ prompt_separator_and_status() {
         STATUS+="%{$fg_no_bold[green]%}✓ "
     fi
     [[ $(jobs -l | wc -l) -gt 0 ]] && STATUS+="%{$fg_no_bold[cyan]%}⚙ "
-    STATUS+=`prompt_venv`
+    STATUS+=%{$fg[green]%}`prompt_venv`
 
     echo "%{$fg[yellow]%}${(r:$(expr $COLUMNS - 9)::─:)} %*"
     echo "$STATUS"
