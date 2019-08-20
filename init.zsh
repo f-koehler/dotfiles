@@ -32,6 +32,9 @@ if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh ]; then
     source $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh
 fi
 
+# XDG directories
+source $HOME/.zsh.d/xdg.zsh
+
 autoload compinit && compinit
 
 # prompt
