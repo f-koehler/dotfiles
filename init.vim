@@ -82,11 +82,6 @@ if has("syntax")
     syntax enable
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:python3_host_prog = "/home/fkoehler/.local/opt/anaconda3/bin/python"
-let g:python_host_prog = "/home/fkoehler/.local/opt/anaconda2/bin/python"
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'HerringtonDarkholme/yats.vim'
@@ -117,6 +112,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jceb/vim-orgmode'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 
@@ -134,10 +132,10 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " specify coc extensions
-let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-vimtex", "coc-yaml", "coc-yank"]
+let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-ultisnips", "coc-vimtex", "coc-yaml", "coc-yank"]
 
 " highlight current symbol
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " use <tab> to navigate completions
 inoremap <silent><expr> <TAB>
