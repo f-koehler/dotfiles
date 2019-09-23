@@ -25,10 +25,9 @@
         "envs",
         ".pyenv",
         ".direnv",
-        "~/.local/opt/anaconda3/envs/",
-        "~/.cache/pypoetry"
+        ".local/opt/anaconda3/envs/",
+        ".cache/pypoetry/virtualenvs/"
     ],
-    "python.jediEnabled": true,
     "tsserver.enable": true,
     "tsserver.log": "verbose"
 }
