@@ -32,6 +32,8 @@ if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh ]; then
     source $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh
 fi
 
+fpath+=~/.zsh.d/completions
+
 # XDG directories
 source $HOME/.zsh.d/xdg.zsh
 
