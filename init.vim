@@ -115,6 +115,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jceb/vim-orgmode'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 
@@ -184,7 +185,8 @@ set updatetime=100
 " set colorscheme
 if has("syntax")
     " colorscheme sublimemonokai
-    colorscheme molokai
+    " colorscheme molokai
+    colorscheme wal
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
