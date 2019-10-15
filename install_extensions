@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euf -o pipefail
+
+for extension in $(cat extensions.txt); do
+    code --install-extension $extension
+done
