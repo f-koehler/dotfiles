@@ -19,7 +19,7 @@ foreground = ${colors.white}
 height = 20
 line-size = 3
 module-margin = 2
-modules-center = pulseaudio wired-network filesystem cpu memory
+modules-center = pulseaudio wired-network-enp6s0 filesystem cpu memory
 modules-left = i3
 modules-right = date
 monitor = HDMI-0
@@ -33,8 +33,8 @@ width = 100%
 [bar/landau-secondary]
 background = ${colors.black}
 bottom = true
-font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;3"
-font-1 = "Dejavu Sans Mono:pixelsize=12"
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;2"
+font-1 = "Dejavu Sans Mono:pixelsize=12;1"
 foreground = ${colors.white}
 height = 20
 line-size = 3
@@ -43,6 +43,60 @@ modules-center = filesystem cpu memory
 modules-left = i3
 modules-right = date
 monitor = DVI-D-0
+scroll-down = i3wm-wsnext
+scroll-up = i3wm-wsnext
+width = 100%
+
+[bar/zoq45-center]
+background = ${colors.black}
+bottom = true
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;2"
+font-1 = "Dejavu Sans Mono:pixelsize=12;1"
+foreground = ${colors.white}
+height = 20
+line-size = 3
+module-margin = 2
+modules-center = pulseaudio wired-network-enp0s31f6 filesystem cpu memory
+modules-left = i3
+modules-right = date
+monitor = HDMI1
+scroll-down = i3wm-wsnext
+scroll-up = i3wm-wsnext
+tray-maxsize = 16
+tray-padding = 4
+tray-position = right
+width = 100%
+
+[bar/zoq45-left]
+background = ${colors.black}
+bottom = true
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;2"
+font-1 = "Dejavu Sans Mono:pixelsize=12;1"
+foreground = ${colors.white}
+height = 20
+line-size = 3
+module-margin = 2
+modules-center = pulseaudio filesystem cpu memory
+modules-left = i3
+modules-right = date
+monitor = DP1
+scroll-down = i3wm-wsnext
+scroll-up = i3wm-wsnext
+width = 100%
+
+[bar/zoq45-right]
+background = ${colors.black}
+bottom = true
+font-0 = "Ubuntu Mono Nerd Font:pixelsize=12;2"
+font-1 = "Dejavu Sans Mono:pixelsize=12;1"
+foreground = ${colors.white}
+height = 20
+line-size = 3
+module-margin = 2
+modules-center = pulseaudio filesystem cpu memory
+modules-left = i3
+modules-right = date
+monitor = DP2
 scroll-down = i3wm-wsnext
 scroll-up = i3wm-wsnext
 width = 100%
@@ -116,7 +170,7 @@ type = internal/memory
 
 format = <label> <ramp-used>
 interval = 1
-label =  %gb_used%/%gb_free%
+label =  %gb_used%/%gb_total%
 ramp-used-0 = ▁
 ramp-used-1 = ▂
 ramp-used-2 = ▃
@@ -143,9 +197,16 @@ label-volume = 墳 %percentage%%
 format-volume = <label-volume>
 format-muted = <label-muted>
 
-[module/wired-network]
+[module/wired-network-enp6s0]
 type = internal/network
 
 interface = enp6s0
+interval = 5
+label-connected =  %ifname%: %local_ip% (%linkspeed%)
+
+[module/wired-network-enp0s31f6]
+type = internal/network
+
+interface = enp0s31f6
 interval = 5
 label-connected =  %ifname%: %local_ip% (%linkspeed%)
