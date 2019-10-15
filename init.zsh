@@ -78,9 +78,7 @@ function plumber {
 
 export PATH=$HOME/.local/bin:$PATH
 
-source /opt/spack/share/spack/setup-env.sh
-
-source /opt/intel/compilers_and_libraries_2019.4.243/linux/bin/compilervars.sh intel64
+source /opt/intel/compilers_and_libraries_2019.5.281/linux/bin/compilervars.sh intel64
 
 export MODULEPATH="$HOME/.local/share/modulefiles:$MODULEPATH"
 
@@ -95,19 +93,3 @@ export QT_API="pyside2"
 
 source $HOME/.zsh.d/android.zsh
 source $HOME/.zsh.d/cocos2d-x.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/fkoehler/.local/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/fkoehler/.local/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/fkoehler/.local/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/fkoehler/.local/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
