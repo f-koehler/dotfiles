@@ -1,60 +1,31 @@
-- hosts: localhost
+# vim: ft=yaml.ansible
+- hosts: targets
   tasks:
-    - name: Clone emacs config
-      git:
-        accept_hostkey: yes
-        repo: git@github.com:f-koehler/config-emacs.git
-        dest: ~/.emacs.d
+    - block:
+      - name: Obtain zsh config
+        git:
+          accept_hostkey: yes
+          dest: ~/.zsh.d
+          recursive: yes
+          repo: "git@github.com:f-koehler/config-zsh.git"
+      - name: Symlink .zshrc file
+        file:
+          dest: ~/.zshrc
+          src: ~/.zsh.d/init.zsh
+          state: link
 
-    # - name: Daemonize emacs
-    #   service:
-    #     name: emacs
-    #     enabled: yes
-    #     daemon_reload: yes
-    #     state: started
-    #     user: yes
+    - block:
+      - name: Obtain neovim config
+        git:
+          accept_hostkey: yes
+          dest: ~/.config/nvim/
+          recursive: yes
+          repo: "git@github.com:f-koehler/config-vim.git"
 
-    - name: Clone zsh config
-      git:
-        accept_hostkey: yes
-        repo: git@github.com:f-koehler/config-zsh.git
-        dest: ~/.zsh.d
+    - block:
+        - name: Obtain polybar config
+          git:
+            accept_hostkey: yes
+            dest: ~/.config/polybar
+            repo: "git@github.com:f-koehler/config-polybar.git"
 
-    - name: Symlink zsh init
-      file:
-        state: link
-        path: ~/.zshrc
-        src: ~/.zsh.d/init.zsh
-
-    - name: Clone kitty config
-      git:
-        accept_hostkey: yes
-        repo: git@github.com:f-koehler/config-kitty.git
-        dest: ~/.config/kitty
-
-    - name: Copy Xresources
-      copy:
-        src: Xresources
-        dest: ~/.Xresources
-
-    - name: Check if Anaconda present
-      stat:
-        path: ~/.local/opt/anaconda3/bin/conda
-      register: anaconda_stat
-
-    - name: Install Anaconda
-      block:
-        - get_url:
-            url: https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh
-            dest: ~/Anaconda3.sh
-            checksum: sha256:cfbf5fe70dd1b797ec677e63c61f8efc92dad930fd1c94d60390bb07fdc09959
-        - file:
-            path: ~/Anaconda3.sh
-            mode: a+x
-        - command: ~/Anaconda3.sh -b -p ~/.local/opt/anaconda3
-          args:
-            creates: ~/.local/opt/anaconda3/bin/conda
-        - file:
-            path: ~/Anaconda3.sh
-            state: absent
-      when: anaconda_stat.stat.exists == False
