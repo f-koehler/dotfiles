@@ -84,13 +84,20 @@ endif
 
 
 call plug#begin('~/.config/nvim/plugged')
+" Plug 'scrooloose/nerdtree'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
+Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'bkad/CamelCaseMotion'
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dylanaraps/wal.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
@@ -103,7 +110,6 @@ Plug 'pboettch/vim-cmake-syntax'
 Plug 'pearofducks/ansible-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
-" Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
@@ -111,11 +117,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'jceb/vim-orgmode'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 
@@ -133,7 +134,7 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " specify coc extensions
-let g:coc_global_extensions = ["coc-css", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-ultisnips", "coc-vimtex", "coc-yaml", "coc-yank"]
+let g:coc_global_extensions = ["coc-css", "coc-git", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-ultisnips", "coc-vimtex", "coc-yaml", "coc-yank"]
 
 " highlight current symbol
 "autocmd CursorHold * silent call CocActionAsync('highlight')
