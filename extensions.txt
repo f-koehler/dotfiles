@@ -1,7 +1,9 @@
+cschlosser.doxdocgen
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
 ecmel.vscode-html-css
+EditorConfig.EditorConfig
 firefox-devtools.vscode-firefox-debug
 formulahendry.auto-close-tag
 foxundermoon.shell-format
@@ -10,6 +12,7 @@ hansec.fortran-ls
 James-Yu.latex-workshop
 johnstoncode.svn-scm
 julialang.language-julia
+krvajalm.linter-gfortran
 mads-hartmann.bash-ide-vscode
 mrcrowl.hg
 ms-azuretools.vscode-docker
