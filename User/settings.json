@@ -18,4 +18,19 @@
     "sync.gist": "95d9cdc9cd05d296059baed6b4e2ef70",
     "platformio-ide.activateOnlyOnPlatformIOProject": true,
     "platformio-ide.disablePIOHomeStartup": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "[latex]": {
+        
+    },
+    "cmake.generator": "Unix Makefiles",
+    "fortran-ls.lowercaseIntrinsics": true,
+    "files.exclude": {
+        "*.mod": true
+    },
+    "files.watcherExclude": {
+        "*.mod": true
+    },
+    "search.exclude": {
+        "*.mod": true
+    },
 }
