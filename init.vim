@@ -8,7 +8,7 @@ set mouse=a
 set ruler
 
 " highlight current line
-set cursorline
+" set cursorline
 
 " always show statusline
 set laststatus=2
@@ -103,7 +103,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-startify'
 Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'pboettch/vim-cmake-syntax'
@@ -120,7 +120,7 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
-let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_enable_on_vim_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
