@@ -28,6 +28,7 @@
         ".local/opt/anaconda3/envs/",
         ".cache/pypoetry/virtualenvs/"
     ],
+    "rust-client.updateOnStartup": true,
     "tsserver.enable": true,
-    "tsserver.log": "verbose"
+    "tsserver.log": "verbose",
 }
