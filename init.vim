@@ -83,6 +83,9 @@ if has("syntax")
 endif
 
 
+let g:python3_host_prog = "/usr/bin/python"
+
+
 call plug#begin('~/.config/nvim/plugged')
 " Plug 'scrooloose/nerdtree'
 Plug 'HerringtonDarkholme/yats.vim'

@@ -17,6 +17,7 @@
             "filetypes": ["fortran"]
         }
     },
+    "python.jediEnabled": false,
     "python.formatting.provider": "yapf",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": true,
