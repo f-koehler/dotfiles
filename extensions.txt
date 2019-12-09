@@ -1,9 +1,11 @@
+bungcip.better-toml
 cschlosser.doxdocgen
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
 ecmel.vscode-html-css
 EditorConfig.EditorConfig
+fcrespo82.markdown-table-formatter
 firefox-devtools.vscode-firefox-debug
 formulahendry.auto-close-tag
 foxundermoon.shell-format
@@ -17,6 +19,7 @@ mads-hartmann.bash-ide-vscode
 mrcrowl.hg
 ms-azuretools.vscode-docker
 ms-python.python
+ms-vscode.cmake-tools
 ms-vscode.cpptools
 ms-vscode.csharp
 ms-vscode.Go
@@ -25,9 +28,9 @@ platformio.platformio-ide
 redhat.vscode-yaml
 rogalmic.bash-debug
 rust-lang.rust
+seanwu.vscode-qt-for-python
 timonwong.shellcheck
 twxs.cmake
-vector-of-bool.cmake-tools
 VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
 vscodevim.vim

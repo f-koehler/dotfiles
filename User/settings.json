@@ -19,9 +19,7 @@
     "platformio-ide.activateOnlyOnPlatformIOProject": true,
     "platformio-ide.disablePIOHomeStartup": true,
     "latex-workshop.intellisense.package.enabled": true,
-    "[latex]": {
-        
-    },
+    "[latex]": {},
     "cmake.generator": "Unix Makefiles",
     "fortran-ls.lowercaseIntrinsics": true,
     "files.exclude": {
@@ -33,4 +31,28 @@
     "search.exclude": {
         "*.mod": true
     },
+    "explorer.confirmDragAndDrop": false,
+    "[markdown]": {
+        "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+    ],
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "C_Cpp.updateChannel": "Insiders",
+    "python.condaPath": "/home/fkoehler/.local/opt/anaconda3/bin/conda",
+    "python.pythonPath": "/home/fkoehler/.local/opt/anaconda3/envs/mlxtk/bin/python",
+    "terminal.integrated.inheritEnv": false,
+    "fortran-ls.executablePath": "/home/fkoehler/.local/share/virtualenvs/fkoehler-8txPZ2rs/bin/fortls",
 }
