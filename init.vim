@@ -8,7 +8,7 @@ set mouse=a
 set ruler
 
 " highlight current line
-" set cursorline
+set cursorline
 
 " always show statusline
 set laststatus=2
@@ -87,13 +87,13 @@ let g:python3_host_prog = "/usr/bin/python"
 
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'scrooloose/nerdtree'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/CamelCaseMotion'
 Plug 'cespare/vim-toml'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dylanaraps/wal.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -106,11 +106,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-startify'
 Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
-" Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'pearofducks/ansible-vim'
+Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
 Plug 'stephpy/vim-yaml'
@@ -120,10 +120,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'yggdroot/indentline'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
-
-" let g:indent_guides_enable_on_vim_startup = 1
+let g:indentLine_char = "│"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
@@ -189,17 +190,18 @@ set updatetime=100
 " set colorscheme
 if has("syntax")
     " colorscheme sublimemonokai
-    " colorscheme molokai
-    colorscheme wal
+    colorscheme molokai
+    " colorscheme wal
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <F8> :NERDTreeToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
