@@ -1,4 +1,6 @@
+budparr.language-hugo-vscode
 bungcip.better-toml
+chrislajoie.vscode-modelines
 cschlosser.doxdocgen
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
@@ -7,9 +9,11 @@ ecmel.vscode-html-css
 EditorConfig.EditorConfig
 fcrespo82.markdown-table-formatter
 firefox-devtools.vscode-firefox-debug
+fivethree.vscode-hugo-snippets
 formulahendry.auto-close-tag
 foxundermoon.shell-format
 Gimly81.matlab
+haaaad.ansible
 hansec.fortran-ls
 James-Yu.latex-workshop
 johnstoncode.svn-scm
@@ -27,8 +31,11 @@ ms-vscode.vscode-typescript-tslint-plugin
 platformio.platformio-ide
 redhat.vscode-yaml
 rogalmic.bash-debug
+rusnasonov.vscode-hugo
 rust-lang.rust
 seanwu.vscode-qt-for-python
+SonarSource.sonarlint-vscode
+timonwong.ansible-autocomplete
 timonwong.shellcheck
 twxs.cmake
 VisualStudioExptTeam.vscodeintellicode
