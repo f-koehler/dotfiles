@@ -1,0 +1,7 @@
+# vim: ft=yaml.ansible
+- hosts: targets
+  roles:
+    - kitty
+    - neovim
+    - polybar
+    - pikaur
