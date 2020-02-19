@@ -1,13 +1,14 @@
 # vim: ft=yaml.ansible
 - hosts: targets
   roles:
+    - alacritty
+    - fzf
+    - htop
+    - keepassxc
     - kitty
     - neovim
-    - polybar
     - pikaur
-    - fzf
+    - polybar
     - tmux
-    - zsh
     - vscode
-    - keepassxc
-    - htop
+    - zsh
