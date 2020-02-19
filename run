@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euf -o pipefail
+
+HOST="$(hostname)"
+CONFIG="${HOST}.yml"
+
+if [ ! -f ${CONFIG} ]; then
+    echo "Missing config \"${CONFIG}\"!"
+    exit 1
+fi
+
+ansible-playbook -i targets ${CONFIG}
