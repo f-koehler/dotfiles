@@ -22,9 +22,6 @@
     "[latex]": {},
     "cmake.generator": "Unix Makefiles",
     "fortran-ls.lowercaseIntrinsics": true,
-    "files.exclude": {
-        "*.mod": true
-    },
     "files.watcherExclude": {
         "*.mod": true
     },
@@ -55,4 +52,9 @@
     "python.pythonPath": "/home/fkoehler/.local/opt/anaconda3/envs/mlxtk/bin/python",
     "terminal.integrated.inheritEnv": false,
     "fortran-ls.executablePath": "/home/fkoehler/.local/share/virtualenvs/fkoehler-8txPZ2rs/bin/fortls",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "vscode-neovim.neovimInitPath": "/home/fkoehler/vscode.vim",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "git.confirmSync": false,
 }
