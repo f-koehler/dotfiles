@@ -13,3 +13,5 @@ fi
 if (( $+commands[pikaur] )); then
     alias pacman="pikaur"
 fi
+
+alias commits-since-tag="git log $(git describe --tags --abbrev=0)..HEAD --oneline"

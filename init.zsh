@@ -32,6 +32,11 @@ if [ -f $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh ]; then
     source $HOME/.zsh.d/zsh-autosuggestions/zsh-syntax-highlighting.zsh
 fi
 
+fpath+=~/.zsh.d/completions
+
+# XDG directories
+source $HOME/.zsh.d/xdg.zsh
+
 autoload compinit && compinit
 
 # prompt
@@ -74,14 +79,9 @@ function plumber {
 export PATH=$HOME/.local/bin:$PATH
 
 source /opt/spack/share/spack/setup-env.sh
-
 source /opt/intel/compilers_and_libraries_2020.0.166/linux/bin/compilervars.sh intel64
 
 export MODULEPATH="$HOME/.local/share/modulefiles:$MODULEPATH"
 
 
 export QT_API="pyside2"
-
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-# source "${VIRTUAL_ENV}/bin/activate"  # commented out by conda initialize
-fi
