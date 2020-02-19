@@ -1,0 +1,7 @@
+- name: obtain fzf
+  git:
+    accept_hostkey: yes
+    repo: "https://github.com/junegunn/fzf.git"
+    dest: ~/.fzf
+  notify:
+    - install fzf
