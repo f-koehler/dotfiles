@@ -1,0 +1,7 @@
+- name: configure vscode
+  git:
+    accept_hostkey: yes
+    repo: "git@github.com:f-koehler/config-vscode.git"
+    dest: "~/.config/Code - OSS"
+  notify:
+    - install vscode extensions

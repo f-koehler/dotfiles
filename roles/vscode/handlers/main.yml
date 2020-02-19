@@ -1,0 +1,4 @@
+- name: install vscode extensions
+  command: ./install_extensions
+  args:
+    chdir: "~/.config/Code - OSS"
