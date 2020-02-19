@@ -1,0 +1,12 @@
+- name: obtain zsh config
+  git:
+    accept_hostkey: yes
+    repo: "git@github.com:f-koehler/config-zsh.git"
+    dest: ~/.zsh.d
+    recursive: yes
+
+- name: symlink zsh config
+  file:
+    src: ~/.zsh.d/init.zsh
+    dest: ~/.zshrc
+    state: link
