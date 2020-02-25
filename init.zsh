@@ -31,9 +31,14 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     cargo
+    django
+    docker
+    docker-compose
     fzf
     git
+    github
     rust
+    ufw
     zsh-autosuggestions
     zsh-completions
     zsh-syntax-highlighting
