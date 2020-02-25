@@ -67,5 +67,9 @@ source "$ZSHD/fzf.zsh"
 # Set editor to vim
 export EDITOR=vim
 
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
+
 # load p10k customizations
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
