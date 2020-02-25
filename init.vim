@@ -100,7 +100,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'cespare/vim-toml'
 Plug 'christoomey/vim-tmux-navigator'
@@ -130,7 +132,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 let g:indentLine_char = "│"
@@ -201,8 +202,9 @@ set updatetime=100
 " set colorscheme
 if has("syntax")
     " colorscheme sublimemonokai
-    colorscheme molokai
+    " colorscheme molokai
     " colorscheme wal
+    colorscheme nord
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
