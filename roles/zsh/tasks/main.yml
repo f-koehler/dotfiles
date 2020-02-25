@@ -10,3 +10,9 @@
     src: ~/.zsh.d/init.zsh
     dest: ~/.zshrc
     state: link
+
+- name: symlink p10k config
+  file:
+    src: ~/.zsh.d/p10k.zsh
+    dest: ~/.p10k.zsh
+    state: link
