@@ -16,3 +16,6 @@
 [submodule "custom/plugins/zsh-z"]
 	path = custom/plugins/zsh-z
 	url = https://github.com/agkozak/zsh-z.git
+[submodule "custom/plugins/zsh-rustup-completion"]
+	path = custom/plugins/zsh-rustup-completion
+	url = https://github.com/pkulev/zsh-rustup-completion.git
