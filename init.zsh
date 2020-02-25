@@ -55,6 +55,9 @@ source $ZSH/oh-my-zsh.sh
 # Configure fzf plugin
 export FZF_BASE=$HOME/.fzf
 
+# Load my keybindings
+source "$ZSHD/keybindings.zsh"
+
 # Load my aliases
 source "$ZSHD/aliases.zsh"
 
