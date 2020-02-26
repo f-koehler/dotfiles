@@ -1,3 +1,11 @@
+- name: configure vscodium 
+  file:
+    src: "~/.config/Code - OSS"
+    dest: "~/.config/VSCodium"
+    state: link
+    force: yes
+    follow: no
+
 - name: configure vscode
   git:
     accept_hostkey: yes
@@ -5,3 +13,4 @@
     dest: "~/.config/Code - OSS"
   notify:
     - install vscode extensions
+
