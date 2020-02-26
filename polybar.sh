@@ -11,7 +11,6 @@ case "$(hostname)" in
         nice -n 19 polybar -r landau-secondary &
         ;;
     *)
-        echo "No screen configuration for host \"$(hostname)\"."
-        xrandr --auto
+        echo "No polybar configuration for host \"$(hostname)\"."
         ;;
 esac
