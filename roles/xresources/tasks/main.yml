@@ -1,0 +1,9 @@
+- name: get xresources
+  get_url:
+    dest: ~/.Xresources
+    url: https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord
+
+- name: get xdefaults
+  get_url:
+    dest: ~/.Xdefaults
+    url: https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord
