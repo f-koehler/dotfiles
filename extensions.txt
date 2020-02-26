@@ -1,3 +1,4 @@
+arcticicestudio.nord-visual-studio-code
 budparr.language-hugo-vscode
 bungcip.better-toml
 chrislajoie.vscode-modelines

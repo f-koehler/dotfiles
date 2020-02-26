@@ -4,7 +4,7 @@
     "python.venvFolders": [
         ".cache/pypoetry/virtualenvs"
     ],
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Nord",
     "git.enableCommitSigning": true,
     "git.autofetch": true,
     "editor.fontSize": 12,
