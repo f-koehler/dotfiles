@@ -74,5 +74,7 @@ if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # load p10k customizations
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
