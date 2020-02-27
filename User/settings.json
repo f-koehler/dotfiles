@@ -43,7 +43,7 @@
                 "-file-line-error",
                 "%DOC%"
             ]
-        },
+        }
     ],
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -57,4 +57,5 @@
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/bin/nvim",
     "git.confirmSync": false,
+    "editor.fontFamily": "Hack Nerd Font"
 }
