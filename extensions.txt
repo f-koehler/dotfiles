@@ -23,6 +23,7 @@ krvajalm.linter-gfortran
 mads-hartmann.bash-ide-vscode
 mrcrowl.hg
 ms-azuretools.vscode-docker
+ms-dotnettools.csharp
 ms-python.python
 ms-vscode.cmake-tools
 ms-vscode.cpptools
@@ -34,7 +35,6 @@ rogalmic.bash-debug
 rusnasonov.vscode-hugo
 rust-lang.rust
 seanwu.vscode-qt-for-python
-SonarSource.sonarlint-vscode
 timonwong.ansible-autocomplete
 timonwong.shellcheck
 twxs.cmake

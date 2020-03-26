@@ -2,7 +2,8 @@
     "workbench.iconTheme": "vscode-icons",
     "python.formatting.provider": "yapf",
     "python.venvFolders": [
-        ".cache/pypoetry/virtualenvs"
+        ".cache/pypoetry/virtualenvs",
+        "${workspaceFolder}/.venv"
     ],
     "workbench.colorTheme": "Nord",
     "git.enableCommitSigning": true,
@@ -51,11 +52,17 @@
     "python.condaPath": "/home/fkoehler/.local/opt/anaconda3/bin/conda",
     "python.pythonPath": "/home/fkoehler/.local/opt/anaconda3/envs/mlxtk/bin/python",
     "terminal.integrated.inheritEnv": false,
-    "fortran-ls.executablePath": "/home/fkoehler/.local/share/virtualenvs/fkoehler-8txPZ2rs/bin/fortls",
+    "fortran-ls.executablePath": "/usr/bin/fortls",
     "latex-workshop.latex.autoBuild.run": "never",
     "vscode-neovim.neovimInitPath": "/home/fkoehler/vscode.vim",
     "vim.enableNeovim": true,
     "vim.neovimPath": "/usr/bin/nvim",
     "git.confirmSync": false,
-    "editor.fontFamily": "Hack Nerd Font"
+    "editor.fontFamily": "Hack Nerd Font",
+    "fortran-ls.hoverSignature": true,
+    "fortran-ls.enableCodeActions": true,
+    "fortran-ls.notifyInit": true,
+    "fortran-ls.variableHover": true,
+    "fortran-ls.autocompletePrefix": true,
+    "python.jediEnabled": false
 }

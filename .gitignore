@@ -7,9 +7,12 @@ Cookies
 Cookies-journal
 GPUCache/
 Network Persistent State
+Session Storage/
+TransportSecurity
 User/globalStorage/
 User/syncLocalSettings.json
 User/workspaceStorage/
+Workspaces/
 languagepacks.json
 logs/
 machineid
