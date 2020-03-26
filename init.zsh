@@ -78,3 +78,13 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # load p10k customizations
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[[ -f /etc/profile.d/modules.sh ]] && source /etc/profile.d/modules.sh
+
+if [ -f /opt/spack/share/spack/setup-env.sh ]; then
+    export SPACK_ROOT=/opt/spack
+    source $SPACK_ROOT/share/spack/setup-env.sh
+fi
+
+[[ -f /opt/intel/compilers_and_libraries_2020.0.166/linux/bin/compilervars.sh ]] && source /opt/intel/compilers_and_libraries_2020.0.166/linux/bin/compilervars.sh -arch intel64 -platform linux &> /dev/null
+export QT_API=pyside2
