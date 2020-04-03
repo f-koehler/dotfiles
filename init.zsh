@@ -31,6 +31,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     cargo
+    colored-man-pages
     django
     docker
     docker-compose
