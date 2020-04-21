@@ -11,7 +11,7 @@
     "editor.fontSize": 12,
     "cmake.configureOnOpen": false,
     "python.jediMemoryLimit": 2048,
-    "editor.renderWhitespace": "none",
+    "editor.renderWhitespace": "all",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "python.linting.mypyEnabled": true,
@@ -64,5 +64,8 @@
     "fortran-ls.notifyInit": true,
     "fortran-ls.variableHover": true,
     "fortran-ls.autocompletePrefix": true,
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": true,
+    "editor.renderControlCharacters": true
 }
