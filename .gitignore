@@ -18,3 +18,4 @@ logs/
 machineid
 rapid_render.json
 storage.json
+.org.chromium.Chromium.*
