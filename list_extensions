@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euf -o pipefail
 
-code --list-extensions > extensions.txt
+code --list-extensions | sort | uniq > extensions.txt
