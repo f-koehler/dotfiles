@@ -76,6 +76,7 @@ if (( $+commands[direnv] )); then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+[[ -f $HOME/.profile ]] && source $HOME/.profile
 
 # load p10k customizations
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
