@@ -42,6 +42,7 @@ rogalmic.bash-debug
 rusnasonov.vscode-hugo
 rust-lang.rust
 seanwu.vscode-qt-for-python
+streetsidesoftware.code-spell-checker
 timonwong.ansible-autocomplete
 timonwong.shellcheck
 twxs.cmake

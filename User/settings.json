@@ -67,5 +67,9 @@
     "python.jediEnabled": false,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": true,
-    "editor.renderControlCharacters": true
+    "editor.renderControlCharacters": true,
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "cSpell.enableFiletypes": [
+        "LaTeX"
+    ]
 }
