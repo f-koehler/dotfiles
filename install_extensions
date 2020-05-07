@@ -1,6 +1,10 @@
 #!/bin/bash
 set -euf -o pipefail
 
+code --install-extension $(cat extensions.txt)
+ARGUMENTS=""
 for extension in $(cat extensions.txt); do
-    code --install-extension $extension
+    ARGUMENTS="${ARGUMENTS} --install-extension ${extension}"
 done
+
+code ${ARGUMENTS}
