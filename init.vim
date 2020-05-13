@@ -118,7 +118,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'mhinz/vim-startify'
-Plug 'moby/moby' , {'rtp': '/contrib/syntax/vim/'}
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'pboettch/vim-cmake-syntax'
