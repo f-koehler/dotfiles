@@ -148,7 +148,26 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " specify coc extensions
-let g:coc_global_extensions = ["coc-css", "coc-git", "coc-gocode", "coc-highlight", "coc-html", "coc-json", "coc-omni", "coc-pairs", "coc-python", "coc-rls", "coc-sh", "coc-svg", "coc-tslint-plugin", "coc-tsserver", "coc-ultisnips", "coc-vimtex", "coc-yaml", "coc-yank"]
+let g:coc_global_extensions = [
+            \"coc-css",
+            \"coc-git",
+            \"coc-gocode",
+            \"coc-highlight",
+            \"coc-html",
+            \"coc-json",
+            \"coc-omni",
+            \"coc-pairs",
+            \"coc-python",
+            \"coc-rls",
+            \"coc-sh",
+            \"coc-svg",
+            \"coc-tslint-plugin",
+            \"coc-tsserver",
+            \"coc-ultisnips",
+            \"coc-vimtex",
+            \"coc-yaml",
+            \"coc-yank"
+            \]
 
 " highlight current symbol
 "autocmd CursorHold * silent call CocActionAsync('highlight')
