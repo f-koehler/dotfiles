@@ -1,35 +1,11 @@
 {
     "coc.preferences.colorSupport": true,
-    "coc.source.vimtex.enable": true,
-    "html.enable": true,
-    "html.format.enable": true,
-    "html.suggest.html5": true,
     "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": ["compile_commands.json", ".git/", ".hg/", ".svn/", "compile_flags.txt"],
-            "filetypes": ["c", "cpp", "objc", "objcpp"]
-        },
         "fortls": {
             "command": "fortls",
             "args": ["--variable_hover", "--lowercase_intrinsics"],
             "rootPatterns": [".git/", ".hg/", "compile_commands.json"],
             "filetypes": ["fortran"]
         }
-    },
-    "python.jediEnabled": false,
-    "python.formatting.provider": "yapf",
-    "python.linting.mypyEnabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.condaPath": "~/.local/opt/anaconda3/bin/conda",
-    "python.venvFolders": [
-        "envs",
-        ".pyenv",
-        ".direnv",
-        ".local/opt/anaconda3/envs/",
-        ".cache/pypoetry/virtualenvs/"
-    ],
-    "rust-client.updateOnStartup": true,
-    "tsserver.enable": true,
-    "tsserver.log": "verbose",
+    }
 }

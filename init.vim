@@ -116,7 +116,6 @@ Plug 'honza/vim-snippets'
 Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -149,22 +148,30 @@ let g:ctrlp_working_path_mode = 'ra'
 
 " specify coc extensions
 let g:coc_global_extensions = [
+            \"coc-clangd",
+            \"coc-cmake",
             \"coc-css",
             \"coc-git",
-            \"coc-gocode",
+            \"coc-go",
             \"coc-highlight",
             \"coc-html",
             \"coc-json",
-            \"coc-omni",
+            \"coc-markdownlint",
+            \"coc-omnisharp",
             \"coc-pairs",
+            \"coc-pyright",
             \"coc-python",
+            \"coc-r-lsp",
             \"coc-rls",
+            \"coc-rust-analyzer",
             \"coc-sh",
             \"coc-svg",
+            \"coc-texlab",
             \"coc-tslint-plugin",
             \"coc-tsserver",
             \"coc-ultisnips",
-            \"coc-vimtex",
+            \"coc-vimlsp",
+            \"coc-xml",
             \"coc-yaml",
             \"coc-yank"
             \]
