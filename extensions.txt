@@ -51,3 +51,4 @@ VisualStudioExptTeam.vscodeintellicode
 vscode-icons-team.vscode-icons
 vscodevim.vim
 vscoss.vscode-ansible
+william-voyek.vscode-nginx
