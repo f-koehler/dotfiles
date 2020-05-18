@@ -25,6 +25,7 @@ mads-hartmann.bash-ide-vscode
 mrcrowl.hg
 ms-azuretools.vscode-docker
 ms-dotnettools.csharp
+ms-pyright.pyright
 ms-python.anaconda-extension-pack
 ms-python.python
 ms-vscode.cmake-tools
