@@ -71,5 +71,11 @@
     "terminal.integrated.shell.linux": "/bin/zsh",
     "cSpell.enableFiletypes": [
         "LaTeX"
-    ]
+    ],
+    "cSpell.userWords": [
+        "eigenbasis"
+    ],
+    "gitlens.advanced.telemetry.enabled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
 }
