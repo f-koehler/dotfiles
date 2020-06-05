@@ -15,6 +15,7 @@ fivethree.vscode-hugo-snippets
 formulahendry.auto-close-tag
 foxundermoon.shell-format
 Gimly81.matlab
+GitHub.vscode-pull-request-github
 haaaad.ansible
 hansec.fortran-ls
 James-Yu.latex-workshop
