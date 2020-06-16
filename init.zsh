@@ -27,6 +27,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # change format for history stamps
 HIST_STAMPS="yyyy-mm-dd"
+setopt HIST_IGNORE_ALL_DUPS
 
 
 plugins=(
@@ -92,3 +93,5 @@ fi
 export QT_API=pyside2
 
 export GPG_TTY=$(tty)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
