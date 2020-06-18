@@ -1,3 +1,9 @@
+- name: create font directory
+  file:
+    path: ~/.local/share/fonts
+    recurse: yes
+    state: directory
+
 - name: install Hack Nerd Font
   unarchive:
     remote_src: yes
