@@ -1,0 +1,14 @@
+# vim: ft=yaml.ansible
+- hosts: targets
+  roles:
+    - alacritty
+    - fzf
+    - htop
+    - kitty
+    - neovim
+    - pikaur
+    - tmux
+    - vscode
+    - xresources
+    - zsh
+    - nerd-fonts
