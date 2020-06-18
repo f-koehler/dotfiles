@@ -118,7 +118,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc-neco'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'pearofducks/ansible-vim'
 Plug 'ryanoasis/vim-devicons'
