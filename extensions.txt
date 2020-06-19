@@ -16,6 +16,7 @@ formulahendry.auto-close-tag
 foxundermoon.shell-format
 Gimly81.matlab
 GitHub.vscode-pull-request-github
+golang.Go
 haaaad.ansible
 hansec.fortran-ls
 James-Yu.latex-workshop
@@ -31,7 +32,6 @@ ms-python.anaconda-extension-pack
 ms-python.python
 ms-vscode.cmake-tools
 ms-vscode.cpptools
-ms-vscode.Go
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
