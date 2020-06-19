@@ -95,3 +95,7 @@ export QT_API=pyside2
 export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -d "$HOME/code/scripts" ]; then
+    export PATH="$HOME/code/scripts:$PATH"
+fi
