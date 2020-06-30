@@ -143,6 +143,8 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'yggdroot/indentline'
     Plug 'tpope/vim-rhubarb'
     Plug 'unblevable/quick-scope'
+    Plug 'junegunn/goyo.vim'
+    Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " load plugin configs
