@@ -25,11 +25,13 @@ let g:which_key_map.g = {
 
 let g:which_key_map.l = {
             \ "name": "+lsp",
-            \ "d": ["<Plug>(coc-definition)",      "definition"],
-            \ "D": ["<Plug>(coc-declaration)",     "declaration"],
-            \ "f": ["<Plug>(coc-format-selected)", "format selected"],
-            \ "F": ["<Plug>(coc-format)",          "format"],
-            \ "v": [":Vista!!",                    "view tags"],
+            \ "a": ["<Plug>(coc-codeaction)",          "code action (line)"],
+            \ "A": ["<Plug>(coc-codeaction-selected)", "code action (selection)"],
+            \ "d": ["<Plug>(coc-definition)",          "definition"],
+            \ "D": ["<Plug>(coc-declaration)",         "declaration"],
+            \ "f": ["<Plug>(coc-format-selected)",     "format selected"],
+            \ "F": ["<Plug>(coc-format)",              "format"],
+            \ "v": [":Vista!!",                        "view tags"],
             \ }
 
 let g:which_key_map.t = {
