@@ -100,6 +100,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Shougo/neco-vim'
 Plug 'SirVer/ultisnips'
+Plug 'TaDaa/vimade'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'arcticicestudio/nord-vim'
@@ -117,6 +118,8 @@ Plug 'iamcco/markdown-preview.nvim'
 Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'kassio/neoterm'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -132,7 +135,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline'
-Plug 'kassio/neoterm'
 call plug#end()
 
 let g:indentLine_char = "│"
@@ -272,3 +274,20 @@ let g:tex_flavor='latex'
 let g:tex_conceal=''
 autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+
+
+" replace netrw with ranger
+let g:rnvimr_enable_ex = 1
+
+" close ranger after selecting something
+let g:rnvimr_enable_picker = 1 
+
+" customize the layout of the ranger overlay
+let g:rnvimr_layout = {
+    \ 'relative': 'editor',
+    \ 'width': float2nr(round(0.8 * &columns)),
+    \ 'height': float2nr(round(0.8 * &lines)),
+    \ 'col': float2nr(round(0.1 * &columns)),
+    \ 'row': float2nr(round(0.1 * &lines)),
+    \ 'style': 'minimal'
+    \}
