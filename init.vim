@@ -116,7 +116,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'honza/vim-snippets'
     Plug 'iamcco/markdown-preview.nvim'
     Plug 'jceb/vim-orgmode'
-    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
     Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
