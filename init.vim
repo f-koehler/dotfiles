@@ -107,8 +107,6 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'airblade/vim-gitgutter'
     Plug 'arcticicestudio/nord-vim'
     Plug 'bkad/CamelCaseMotion'
-    Plug 'cespare/vim-toml'
-    Plug 'chr4/nginx.vim'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'dylanaraps/wal.vim'
@@ -120,6 +118,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'jceb/vim-orgmode'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/goyo.vim'
     Plug 'kassio/neoterm'
     Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     Plug 'liuchengxu/vim-which-key'
@@ -127,24 +126,20 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'pboettch/vim-cmake-syntax'
-    Plug 'pearofducks/ansible-vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'sbdchd/neoformat'
-    Plug 'stephpy/vim-yaml'
+    Plug 'sheerun/vim-polyglot'
     Plug 'tomasr/molokai'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
     Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-vinegar'
+    Plug 'unblevable/quick-scope'
     Plug 'vim-airline/vim-airline'
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'unblevable/quick-scope'
-    Plug 'junegunn/goyo.vim'
-    Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " load plugin configs
@@ -159,7 +154,6 @@ if has("syntax")
     colorscheme nord
 endif
 
-au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
 let g:tex_flavor='latex'
 let g:tex_conceal=''
