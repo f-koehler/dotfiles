@@ -34,7 +34,7 @@ set guifont=Ubuntu\ Mono\ Nerd\ Font:h11
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Indentation and <TAB>
+" indentation and <TAB>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " expand <TAB> to spaces
 set expandtab
@@ -57,6 +57,8 @@ set autoindent
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ","
 
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " netrw
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,7 +68,7 @@ let g:netrw_liststyle = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Terminal
+" terminal
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " timeout
 if !has("nvim") && &ttimeoutlen == -1
@@ -133,12 +135,16 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'tomasr/molokai'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-speeddating'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-vinegar'
     Plug 'vim-airline/vim-airline'
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
+    Plug 'tpope/vim-rhubarb'
 call plug#end()
+
+" load plugin configs
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
     exe 'source' f
 endfor
