@@ -12,3 +12,8 @@ fi
 if (( $+commands[bat] )); then
     alias cat="bat --color=\"always\" --italic-text=\"always\" --plain"
 fi
+
+# Abbreviate ranger if installed
+if (( $+commands[ranger] )); then
+    alias r="ranger"
+fi
