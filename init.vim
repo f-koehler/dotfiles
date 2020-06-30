@@ -113,6 +113,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'erichdongubler/vim-sublime-monokai'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
+Plug 'iamcco/markdown-preview.nvim'
 Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -131,6 +132,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'yggdroot/indentline'
+Plug 'kassio/neoterm'
 call plug#end()
 
 let g:indentLine_char = "│"
