@@ -21,8 +21,11 @@ let g:which_key_map.t = {
 
 let g:which_key_map.l = {
             \ "name": "+lsp",
-            \ "f" : ["<Plug>(coc-format-selected)", "format selected"],
-            \ "F" : ["<Plug>(coc-format)",          "format"],
+            \ "d": ["<Plug>(coc-definition)",      "definition"],
+            \ "D": ["<Plug>(coc-declaration)",     "declaration"],
+            \ "f": ["<Plug>(coc-format-selected)", "format selected"],
+            \ "F": ["<Plug>(coc-format)",          "format"],
+            \ "v": [":Vista!!",                    "view tags"],
             \ }
 
 
