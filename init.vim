@@ -142,6 +142,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
     Plug 'tpope/vim-rhubarb'
+    Plug 'unblevable/quick-scope'
 call plug#end()
 
 " load plugin configs
