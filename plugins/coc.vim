@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
             \"coc-markdownlint",
             \"coc-omnisharp",
             \"coc-pairs",
+            \"coc-prettier",
             \"coc-pyright",
             \"coc-python",
             \"coc-r-lsp",
