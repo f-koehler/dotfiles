@@ -15,8 +15,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 let g:which_key_map.g = {
             \ "name": "+git",
             \ "a": [":Git add %",     "stage current file"],
-            \ "c": [":Git commit -s", "commit (signed)"],
-            \ "C": [":Git commit -s", "commit"],
+            \ "c": [":Git commit",    "commit"],
             \ "d": [":Git diff",      "diff"],
             \ "l": [":Git log",       "log"],
             \ "p": [":Git push",      "push"],
