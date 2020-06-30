@@ -135,6 +135,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-vinegar'
     Plug 'vim-airline/vim-airline'
+    Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
 call plug#end()
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
