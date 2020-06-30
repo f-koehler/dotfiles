@@ -19,6 +19,8 @@ let g:which_key_map.g = {
             \ "C": [":Git commit -s", "commit"],
             \ "d": [":Git diff",      "diff"],
             \ "l": [":Git log",       "log"],
+            \ "p": [":Git push",      "push"],
+            \ "P": [":Git pull",      "pull"],
             \ "s": [":Git status",    "status"],
             \ }
 
