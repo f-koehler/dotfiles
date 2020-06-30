@@ -12,4 +12,4 @@ let g:rnvimr_layout = {
     \ 'col': float2nr(round(0.1 * &columns)),
     \ 'row': float2nr(round(0.1 * &lines)),
     \ 'style': 'minimal'
-    \}
+    \ }
