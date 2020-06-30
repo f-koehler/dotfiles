@@ -54,7 +54,8 @@ set smarttab
 " copy indent from previous line
 set autoindent
 
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " netrw
@@ -119,6 +120,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
     Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+    Plug 'liuchengxu/vim-which-key'
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
