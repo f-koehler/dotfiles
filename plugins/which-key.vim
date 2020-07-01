@@ -30,6 +30,7 @@ let g:which_key_map.l = {
             \ "f": ["<Plug>(coc-format-selected)", "format selected"],
             \ "F": ["<Plug>(coc-format)",          "format"],
             \ "v": [":Vista!!",                    "view tags"],
+            \ "r": ["<Plug>(coc-rename)",          "rename"],
             \ "s": [":CocList snippets",           "snippets"],
             \ }
 
