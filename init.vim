@@ -102,7 +102,6 @@ let g:python3_host_prog = "/usr/bin/python"
 call plug#begin('~/.cache/vim-plug')
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Shougo/neco-vim'
-    Plug 'SirVer/ultisnips'
     Plug 'TaDaa/vimade'
     Plug 'airblade/vim-gitgutter'
     Plug 'arcticicestudio/nord-vim'
