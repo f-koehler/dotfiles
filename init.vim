@@ -124,6 +124,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'mhinz/vim-startify'
     Plug 'neoclide/coc-neco'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neomake/neomake'
     Plug 'ryanoasis/vim-devicons'
     Plug 'sbdchd/neoformat'
     Plug 'sheerun/vim-polyglot'

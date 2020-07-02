@@ -32,6 +32,7 @@ let g:which_key_map.l = {
             \ "d": ["<Plug>(coc-definition)",          "definition"],
             \ "f": ["<Plug>(coc-format)",              "format"],
             \ "r": ["<Plug>(coc-rename)",              "rename"],
+            \ "m": [":make",                           "make"],
             \ "s": [":CocList snippets",               "snippets"],
             \ "v": [":Vista!!",                        "view tags"],
             \ }
