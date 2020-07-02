@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
             \ "coc-cmake",
             \ "coc-css",
             \ "coc-cssmodules",
+            \ "coc-dictionary",
             \ "coc-emoji",
             \ "coc-explorer",
             \ "coc-floaterm",
@@ -25,15 +26,18 @@ let g:coc_global_extensions = [
             \ "coc-rls",
             \ "coc-rust-analyzer",
             \ "coc-sh",
+            \ "coc-snippets",
             \ "coc-svg",
+            \ "coc-syntax",
+            \ "coc-tag",
             \ "coc-texlab",
             \ "coc-tslint-plugin",
             \ "coc-tsserver",
-            \ "coc-ultisnips",
             \ "coc-vimlsp",
+            \ "coc-word",
             \ "coc-xml",
             \ "coc-yaml",
-            \ "coc-yank"
+            \ "coc-yank",
             \ ]
 
 " highlight current symbol
