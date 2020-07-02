@@ -7,5 +7,10 @@
     "rust",
     "typescript"
   ],
-  "python.formatting.provider": "yapf"
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--target-version", "py38"],
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true
 }
