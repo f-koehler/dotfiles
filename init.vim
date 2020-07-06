@@ -100,6 +100,7 @@ let g:python3_host_prog = "/usr/bin/python"
 
 
 call plug#begin('~/.cache/vim-plug')
+    Plug 'airblade/vim-rooter'
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Shougo/neco-vim'
     Plug 'TaDaa/vimade'
