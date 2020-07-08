@@ -17,3 +17,7 @@ fi
 if (( $+commands[ranger] )); then
     alias r="ranger"
 fi
+
+if (( $+commands[ikhal] )); then
+    alias ikhal="ikhal -a personal -a work -a contact_birthdays"
+fi
