@@ -96,7 +96,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -126,6 +125,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Leave i3 session' -b 'Yes!' 'i3-msg exit'"
+
+bindsym $mod+Shift+t exec "physlock"
 
 # resize window (you can also use the mouse for that)
 mode "⇱ Resize" {
@@ -164,12 +165,20 @@ client.background       #2e3440
 for_window [class="^.*"] border pixel 4
 workspace_auto_back_and_forth yes
 
+workspace 1 output HDMI1
+workspace 7 output DP1
+workspace 9 output DP2
+
 # start tools to configure X
 exec --no-startup-id xset b off
 exec --no-startup-id xset b 0 0 0
 exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
 exec --no-startup-id ~/.config/i3/screen.sh
 exec --no-startup-id ~/.config/i3/polybar.sh
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id thunderbird
+exec --no-startup-id nextcloud
 
 # background porgrams
 exec --no-startup-id keepassxc
+exec --no-startup-id protonmail-bridge
