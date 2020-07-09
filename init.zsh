@@ -105,3 +105,6 @@ export GPG_TTY=$(tty)
 if [ -d "$HOME/code/scripts" ]; then
     export PATH="$HOME/code/scripts:$PATH"
 fi
+
+source "/home/fkoehler/.local/share/dephell/_dephell_zsh_autocomplete"
+eval "$(register-python-argcomplete pipx)"
