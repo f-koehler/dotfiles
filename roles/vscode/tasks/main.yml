@@ -1,7 +1,15 @@
 - name: configure vscodium 
   file:
-    src: "~/.config/Code - OSS"
+    src: "~/.config/Code"
     dest: "~/.config/VSCodium"
+    state: link
+    force: yes
+    follow: no
+
+- name: configure vscode (OSS)
+  file:
+    src: "~/.config/Code"
+    dest: "~/.config/Code - OSS"
     state: link
     force: yes
     follow: no
@@ -10,7 +18,7 @@
   git:
     accept_hostkey: yes
     repo: "git@github.com:f-koehler/config-vscode.git"
-    dest: "~/.config/Code - OSS"
+    dest: "~/.config/Code"
   notify:
     - install vscode extensions
 
