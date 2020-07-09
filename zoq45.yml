@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 - hosts: targets
   roles:
-    # - alacritty
+    - alacritty
     - fzf
     - htop
     - keepassxc
@@ -15,3 +15,6 @@
     - zsh
     - i3
     - nerd-fonts
+    - rofi
+    - vdirsyncer
+    - ranger
