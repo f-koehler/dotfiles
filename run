@@ -6,7 +6,8 @@ CONFIG="${HOST}.yml"
 
 if [ ! -f ${CONFIG} ]; then
     echo "Missing config \"${CONFIG}\"!"
-    exit 1
+    echo "Use default.yml"
+    CONFIG="default.yml"
 fi
 
 ansible-playbook -i targets ${CONFIG}

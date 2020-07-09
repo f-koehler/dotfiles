@@ -1,0 +1,11 @@
+# vim: ft=yaml.ansible
+- hosts: targets
+  roles:
+    - fzf
+    - htop
+    - neovim
+    - tmux
+    - xresources
+    - zsh
+    - rofi
+    - ranger
