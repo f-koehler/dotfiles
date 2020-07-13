@@ -19,3 +19,19 @@ url = "https://nextcloud.fkoehler.xyz/remote.php/caldav/"
 username.fetch = ["command", "~/.config/vdirsyncer/nextcloud_username.sh"]
 password.fetch = ["command", "~/.config/vdirsyncer/nextcloud_password.sh"]
 verify_fingerprint = "99:7C:65:64:22:3C:6A:54:89:BC:94:D3:A7:56:85:11:F2:A0:B2:EF"
+
+[pair contacts]
+a = "contacts_local"
+b = "contacts_remote"
+collections = ["from a", "from b"]
+
+[storage contacts_local]
+type = "filesystem"
+path = "~/.contacts"
+fileext = ".vcf"
+
+[storage contacts_remote]
+type = "carddav"
+url = "https://nextcloud.fkoehler.xyz/remote.php/carddav/"
+username.fetch = ["command", "~/.config/vdirsyncer/nextcloud_username.sh"]
+password.fetch = ["command", "~/.config/vdirsyncer/nextcloud_password.sh"]
