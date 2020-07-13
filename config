@@ -1,0 +1,26 @@
+[default]
+default_calendar = personal
+highlight_event_days = True
+days = 7
+
+[calendars]
+[[personal]]
+path = ~/.calendars/personal
+color = dark red
+
+[[work]]
+path = ~/.calendars/work
+color = dark magenta
+
+[[contact_birthdays]]
+path = ~/.calendars/contact_birthdays
+color = dark green
+
+[locale]
+local_timezone= Europe/Berlin
+default_timezone= Europe/Berlin
+timeformat= %H:%M
+dateformat= %d.%m.
+longdateformat= %d.%m.%Y
+datetimeformat= %d.%m. %H:%M
+longdatetimeformat= %d.%m.%Y %H:%M
