@@ -1,0 +1,55 @@
+# vim: set ft=dosini:
+
+[general]
+accounts = Protonmail, Physnet
+pythonfile = ~/.config/offlineimap/offlineimap.py
+
+[Account Protonmail]
+localrepository = ProtonmailLocal
+remoterepository = ProtonmailRemote
+
+[Repository ProtonmailLocal]
+type = Maildir
+localfolders = ~/.mail/protonmail
+sync_deletes = yes
+
+[Repository ProtonmailRemote]
+type = IMAP
+
+remotehost = 127.0.0.1
+remoteport = 1143
+remoteusereval = get_username("protonmail-bridge")
+remotepasseval = get_password("protonmail-bridge")
+keepalive = 60
+holdconnectionopen = yes
+# TODO: SSL seems to be broken, but we only communicate locally anyway will
+# see if I can fix this in the future
+ssl = no
+; starttls = yes
+; cert_fingerprint = 72:4F:90:B7:9C:18:3D:E4:A2:B5:8E:2F:05:04:1A:02:EC:E1:FD:14
+
+expunge = yes
+
+[Account Physnet]
+localrepository = PhysnetLocal
+remoterepository = PhysnetRemote
+
+[Repository PhysnetLocal]
+type = Maildir
+localfolders = ~/.mail/physnet
+sync_deletes = yes
+
+[Repository PhysnetRemote]
+type = IMAP
+
+remotehost = imap.physnet.uni-hamburg.de
+remoteport = 143
+remoteusereval = get_username("physnet-mail")
+remotepasseval = get_password("physnet-mail")
+keepalive = 60
+holdconnectionopen = yes
+starttls = yes
+ssl = no
+cert_fingerprint = 3B:0F:D0:75:E0:85:BE:19:52:5A:0F:65:9E:A3:D2:E7:57:32:43:EB
+
+expunge = yes
