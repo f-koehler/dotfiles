@@ -22,11 +22,9 @@ remoteusereval = get_username("protonmail-bridge")
 remotepasseval = get_password("protonmail-bridge")
 keepalive = 60
 holdconnectionopen = yes
-# TODO: SSL seems to be broken, but we only communicate locally anyway will
-# see if I can fix this in the future
+starttls = yes
 ssl = no
-; starttls = yes
-; cert_fingerprint = 72:4F:90:B7:9C:18:3D:E4:A2:B5:8E:2F:05:04:1A:02:EC:E1:FD:14
+cert_fingerprint = 72:4F:90:B7:9C:18:3D:E4:A2:B5:8E:2F:05:04:1A:02:EC:E1:FD:14
 
 expunge = yes
 
