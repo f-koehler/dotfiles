@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euf -o pipefail
 
-HOST="$(hostname)"
+HOST="$(cat /proc/sys/kernel/hostname)"
 CONFIG="${HOST}.yml"
 
 if [ ! -f ${CONFIG} ]; then
