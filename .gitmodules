@@ -34,3 +34,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "xresources"]
+	path = xresources
+	url = https://github.com/arcticicestudio/nord-xresources.git
