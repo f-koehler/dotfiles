@@ -1,16 +1,5 @@
-- name: obtain oh-my-tmux
-  git:
-    accept_hostkey: yes
-    repo: "https://github.com/gpakosz/.tmux.git"
-    dest: ~/.tmux
-
-- name: symlink oh-my-tmux
+- name: configure tmux
   file:
-    src: ~/.tmux/.tmux.conf
-    dest: ~/.tmux.conf
+    src: ~/.dotfiles/tmux
+    dest: ~/.config/tmux
     state: link
-
-- name: add local tmux config
-  copy:
-    src: .tmux.conf.local
-    dest: ~/.tmux.conf.local
