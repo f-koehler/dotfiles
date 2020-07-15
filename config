@@ -1,0 +1,42 @@
+# vim: ft=dosini
+[colors]
+include-file = ~/.config/polybar/colors.conf
+
+[bar/landau-primary]
+include-file = ~/.config/polybar/bar/landau-primary.conf
+
+[bar/landau-secondary]
+include-file = ~/.config/polybar/bar/landau-secondary.conf
+
+[bar/zoq45-center]
+include-file = ~/.config/polybar/bar/zoq45-center.conf
+
+[bar/zoq45-left]
+include-file = ~/.config/polybar/bar/zoq45-left.conf
+
+[bar/zoq45-right]
+include-file = ~/.config/polybar/bar/zoq45-right.conf
+
+[module/cpu]
+include-file = ~/.config/polybar/module/cpu.conf
+
+[module/date]
+include-file = ~/.config/polybar/module/date.conf
+
+[module/filesystem]
+include-file = ~/.config/polybar/module/filesystem.conf
+
+[module/i3]
+include-file = ~/.config/polybar/module/i3.conf
+
+[module/memory]
+include-file = ~/.config/polybar/module/memory.conf
+
+[module/pulseaudio]
+include-file = ~/.config/polybar/module/pulseaudio.conf
+
+[module/wired-network-enp6s0]
+include-file = ~/.config/polybar/module/wired-network-enp6s0.conf
+
+[module/wired-network-enp0s31f6]
+include-file = ~/.config/polybar/module/wired-network-enp0s31f6.conf
