@@ -3,15 +3,21 @@
     src: ~/.dotfiles/zsh
     dest: ~/.zsh.d
     state: link
+    force: yes
+    follow: no
 
 - name: symlink zsh config
   file:
     src: ~/.zsh.d/init.zsh
     dest: ~/.zshrc
     state: link
+    force: yes
+    follow: no
 
 - name: symlink p10k config
   file:
     src: ~/.zsh.d/p10k.zsh
     dest: ~/.p10k.zsh
     state: link
+    force: yes
+    follow: no

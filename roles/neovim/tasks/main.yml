@@ -3,3 +3,5 @@
     src: ~/.dotfiles/vim
     dest: ~/.config/nvim
     state: link
+    force: yes
+    follow: no

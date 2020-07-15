@@ -3,3 +3,5 @@
     src: ~/.dotfiles/kitty
     dest: ~/.config/kitty
     state: link
+    force: yes
+    follow: no

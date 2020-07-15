@@ -3,9 +3,13 @@
     src: ~/.dotfiles/xresources/src/nord
     dest: ~/.Xresources
     state: link
+    force: yes
+    follow: no
 
 - name: configure xdefaults
   file:
     src: ~/.dotfiles/xresources/src/nord
     dest: ~/.Xdefaults
     state: link
+    force: yes
+    follow: no

@@ -3,3 +3,5 @@
     src: ~/.dotfiles/tmux
     dest: ~/.config/tmux
     state: link
+    force: yes
+    follow: no

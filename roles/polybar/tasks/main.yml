@@ -3,3 +3,5 @@
     src: ~/.dotfiles/polybar
     dest: ~/.config/polybar
     state: link
+    force: yes
+    follow: no

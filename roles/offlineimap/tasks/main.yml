@@ -3,3 +3,5 @@
     src: ~/.dotfiles/offlineimap
     dest: ~/.config/offlineimap
     state: link
+    force: yes
+    follow: no

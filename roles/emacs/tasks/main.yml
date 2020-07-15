@@ -3,3 +3,5 @@
     src: ~/.dotfiles/emacs
     dest: ~/.emacs.d
     state: link
+    force: yes
+    follow: no

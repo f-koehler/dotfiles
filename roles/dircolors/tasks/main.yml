@@ -3,3 +3,5 @@
     src: ~/.dotfiles/dircolors/src/dir_colors
     dest: ~/.dircolors
     state: link
+    force: yes
+    follow: no

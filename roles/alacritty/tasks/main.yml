@@ -3,3 +3,7 @@
     src: ~/.dotfiles/alacritty
     dest: ~/.config/alacritty
     state: link
+    force: yes
+    follow: no
+    force: yes
+    follow: no
