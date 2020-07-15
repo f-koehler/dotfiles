@@ -28,3 +28,6 @@
 [submodule "org-bootstrap"]
 	path = emacs/org-bootstrap
 	url = https://code.orgmode.org/bzg/org-mode.git
+[submodule "dircolors"]
+	path = dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors
