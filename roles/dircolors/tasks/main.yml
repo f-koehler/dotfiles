@@ -1,0 +1,5 @@
+- name: configure dircolors
+  file:
+    src: ~/.dotfiles/dircolors/src/dir_colors
+    dest: ~/.dircolors
+    state: link
