@@ -10,7 +10,7 @@ fi
 
 # Replace cat with bat if installed
 if (( $+commands[bat] )); then
-    alias cat="bat --color=\"always\" --italic-text=\"always\" --plain"
+    alias cat="bat --color=always --italic-text=always --theme=Nord --plain"
 fi
 
 # Abbreviate ranger if installed
