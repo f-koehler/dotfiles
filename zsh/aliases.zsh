@@ -1,8 +1,8 @@
 # Replace ls with exa if installed
 # Change defaults for ls otherwise
 if (( $+commands[exa] )); then
-    alias ll="exa -lh"
-    alias ls="exa"
+    alias ll="exa -lh --color=auto --icons"
+    alias ls="exa --color=auto --icons"
 else
     alias ll="ls -lh --color=always"
     alias ls="ls --color=always"
