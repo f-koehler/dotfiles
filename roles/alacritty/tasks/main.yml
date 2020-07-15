@@ -1,5 +1,5 @@
 - name: configure alacritty
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-alacritty.git"
+  file:
+    src: ~/.dotfiles/alacritty
     dest: ~/.config/alacritty
+    state: link

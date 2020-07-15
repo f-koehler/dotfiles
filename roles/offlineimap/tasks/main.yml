@@ -1,6 +1,5 @@
-- name: configure vdirsyncer
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-offlineimap.git"
-    recursive: yes
-    dest: ~/.config/offlineimap/
+- name: configure offlineimap
+  file:
+    src: ~/.dotfiles/offlineimap
+    dest: ~/.config/offlineimap
+    state: link

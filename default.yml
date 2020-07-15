@@ -1,11 +1,21 @@
 # vim: ft=yaml.ansible
 - hosts: targets
   roles:
-    - fzf
+    - dotfiles
+
+    - alacritty
+    - emacs
     - htop
+    # - i3
+    - khal
+    - kitty
     - neovim
+    - nerd-fonts
+    - offlineimap
+    - polybar
+    - ranger
+    - rofi
     - tmux
+    - vdirsyncer
     - xresources
     - zsh
-    - rofi
-    - ranger

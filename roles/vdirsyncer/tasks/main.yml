@@ -1,6 +1,5 @@
 - name: configure vdirsyncer
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-vdirsyncer.git"
-    recursive: yes
-    dest: ~/.config/vdirsyncer/
+  file:
+    src: ~/.dotfiles/vdirsyncer
+    dest: ~/.config/vdirsyncer
+    state: link

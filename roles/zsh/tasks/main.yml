@@ -1,9 +1,8 @@
-- name: obtain zsh config
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-zsh.git"
+- name: symlink zsh config directory
+  file:
+    src: ~/.dotfiles/zsh
     dest: ~/.zsh.d
-    recursive: yes
+    state: link
 
 - name: symlink zsh config
   file:

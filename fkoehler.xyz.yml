@@ -1,9 +1,0 @@
-# vim: ft=yaml.ansible
-- hosts: targets
-  roles:
-    - fzf
-    - htop
-    - neovim
-    - pikaur
-    - tmux
-    - zsh

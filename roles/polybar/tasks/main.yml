@@ -1,5 +1,5 @@
 - name: configure polybar
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-polybar.git"
+  file:
+    src: ~/.dotfiles/polybar
     dest: ~/.config/polybar
+    state: link

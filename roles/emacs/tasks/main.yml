@@ -1,0 +1,5 @@
+- name: configure emacs
+  file:
+    src: ~/.dotfiles/emacs
+    dest: ~/.emacs.d
+    state: link

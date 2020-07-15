@@ -1,6 +1,5 @@
 - name: configure rofi
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-rofi.git"
-    recursive: yes
-    dest: ~/.config/rofi/
+  file:
+    src: ~/.dotfiles/rofi
+    dest: ~/.config/rofi
+    state: link

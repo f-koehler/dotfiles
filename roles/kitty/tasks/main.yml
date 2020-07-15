@@ -1,5 +1,5 @@
 - name: configure kitty
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-kitty.git"
+  file:
+    src: ~/.dotfiles/kitty
     dest: ~/.config/kitty
+    state: link

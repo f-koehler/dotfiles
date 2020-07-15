@@ -1,6 +1,5 @@
 - name: configure neovim
-  git:
-    accept_hostkey: yes
-    repo: "git@github.com:f-koehler/config-vim.git"
-    recursive: yes
-    dest: ~/.config/nvim/
+  file:
+    src: ~/.dotfiles/vim
+    dest: ~/.config/nvim
+    state: link
