@@ -100,11 +100,11 @@ let g:python3_host_prog = "/usr/bin/python"
 
 
 call plug#begin('~/.cache/vim-plug')
-    Plug 'airblade/vim-rooter'
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'Shougo/neco-vim'
     Plug 'TaDaa/vimade'
     Plug 'airblade/vim-gitgutter'
+    Plug 'airblade/vim-rooter'
     Plug 'arcticicestudio/nord-vim'
     Plug 'bkad/CamelCaseMotion'
     Plug 'christoomey/vim-tmux-navigator'
@@ -124,9 +124,11 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neomake/neomake'
     Plug 'neomutt/neomutt.vim'
+    Plug 'roxma/vim-tmux-clipboard'
     Plug 'ryanoasis/vim-devicons'
     Plug 'sbdchd/neoformat'
     Plug 'sheerun/vim-polyglot'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
