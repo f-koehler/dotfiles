@@ -1,0 +1,22 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "javascript",
+    "json",
+    "python",
+    "rust",
+    "typescript"
+  ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--target-version", "py38"],
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true,
+  "python.venvFolders": [
+    "envs",
+    ".pyenv",
+    ".direnv",
+    ".cache/pypoetry/virtualenvs"
+  ]
+}
