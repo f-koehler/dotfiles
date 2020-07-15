@@ -20,5 +20,5 @@
 	path = zsh/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "vim-plug"]
-	path = vim-plug
+	path = vim/vim-plug
 	url = https://github.com/junegunn/vim-plug
