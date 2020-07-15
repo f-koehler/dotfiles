@@ -1,0 +1,2 @@
+#!/bin/bash
+rofi -modi drun -sort -sorting-method fzf -matching fuzzy -no-lazy-grab -show drun -theme ~/.config/rofi/themes/drun.rasi

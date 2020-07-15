@@ -1,0 +1,2 @@
+#!/bin/bash
+rofi -modi ssh -sort -sorting-method fzf -matching fuzzy -no-lazy-grab -show ssh -theme ~/.config/rofi/themes/ssh.rasi
