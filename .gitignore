@@ -1,0 +1,21 @@
+Backups/
+Cache/
+CachedData/
+CachedExtensions
+Code Cache/
+Cookies
+Cookies-journal
+GPUCache/
+Network Persistent State
+Session Storage/
+TransportSecurity
+User/globalStorage/
+User/syncLocalSettings.json
+User/workspaceStorage/
+Workspaces/
+languagepacks.json
+logs/
+machineid
+rapid_render.json
+storage.json
+.org.chromium.Chromium.*

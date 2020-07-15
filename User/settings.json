@@ -1,0 +1,81 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "python.formatting.provider": "yapf",
+    "python.venvFolders": [
+        ".cache/pypoetry/virtualenvs",
+        "${workspaceFolder}/.venv"
+    ],
+    "workbench.colorTheme": "Nord",
+    "git.enableCommitSigning": true,
+    "git.autofetch": true,
+    "editor.fontSize": 12,
+    "cmake.configureOnOpen": false,
+    "python.jediMemoryLimit": 2048,
+    "editor.renderWhitespace": "all",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "python.linting.mypyEnabled": true,
+    "svn.enableProposedApi": "none",
+    "sync.gist": "95d9cdc9cd05d296059baed6b4e2ef70",
+    "platformio-ide.activateOnlyOnPlatformIOProject": true,
+    "platformio-ide.disablePIOHomeStartup": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "[latex]": {},
+    "cmake.generator": "Unix Makefiles",
+    "fortran-ls.lowercaseIntrinsics": true,
+    "files.watcherExclude": {
+        "*.mod": true
+    },
+    "search.exclude": {
+        "*.mod": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "[markdown]": {
+        "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-lualatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
+    ],
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "C_Cpp.updateChannel": "Insiders",
+    "python.condaPath": "/home/fkoehler/.local/opt/anaconda3/bin/conda",
+    "python.pythonPath": "/home/fkoehler/.local/opt/anaconda3/envs/mlxtk/bin/python",
+    "terminal.integrated.inheritEnv": false,
+    "fortran-ls.executablePath": "/usr/bin/fortls",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "vscode-neovim.neovimInitPath": "/home/fkoehler/vscode.vim",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "git.confirmSync": false,
+    "editor.fontFamily": "Hack Nerd Font",
+    "fortran-ls.hoverSignature": true,
+    "fortran-ls.enableCodeActions": true,
+    "fortran-ls.notifyInit": true,
+    "fortran-ls.variableHover": true,
+    "fortran-ls.autocompletePrefix": true,
+    "python.jediEnabled": false,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": true,
+    "editor.renderControlCharacters": true,
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "cSpell.enableFiletypes": [
+        "LaTeX"
+    ],
+    "cSpell.userWords": [
+        "eigenbasis"
+    ],
+    "gitlens.advanced.telemetry.enabled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
+}
