@@ -1,9 +1,11 @@
-- name: get xresources
-  get_url:
+- name: configure xresources
+  file:
+    src: ~/.dotfiles/xresources/src/nord
     dest: ~/.Xresources
-    url: https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord
+    state: link
 
-- name: get xdefaults
-  get_url:
+- name: configure xdefaults
+  file:
+    src: ~/.dotfiles/xresources/src/nord
     dest: ~/.Xdefaults
-    url: https://raw.githubusercontent.com/arcticicestudio/nord-xresources/develop/src/nord
+    state: link
