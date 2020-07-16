@@ -1,0 +1,3 @@
+#!/bin/bash
+set -euf -o pipefail
+infocmp $TERM | ssh "$@" "mkdir -p .terminfo && cat >/tmp/ti && tic /tmp/ti"
