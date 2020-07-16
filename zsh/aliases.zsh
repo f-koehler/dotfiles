@@ -21,3 +21,7 @@ fi
 if (( $+commands[ikhal] )); then
     alias ikhal="ikhal -a personal -a work -a contact_birthdays"
 fi
+
+if (( $+commands[nproc] )); then
+    alias ncore="nproc --all"
+fi
