@@ -37,3 +37,6 @@
 [submodule "xresources"]
 	path = xresources
 	url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule "scripts"]
+	path = scripts
+	url = git@github.com:f-koehler/scripts.git
