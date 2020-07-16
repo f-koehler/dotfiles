@@ -3,3 +3,5 @@
     src: ~/.dotfiles/rofi
     dest: ~/.config/rofi
     state: link
+    force: yes
+    follow: no
