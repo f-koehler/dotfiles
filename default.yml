@@ -15,6 +15,7 @@
     - polybar
     - ranger
     - rofi
+    - scripts
     - tmux
     - vdirsyncer
     - xresources
