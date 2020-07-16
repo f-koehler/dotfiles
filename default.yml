@@ -5,6 +5,7 @@
 
     - alacritty
     - emacs
+    - fzf
     - htop
     # - i3
     - khal
