@@ -106,5 +106,8 @@ if [ -d "$HOME/code/scripts" ]; then
     export PATH="$HOME/code/scripts:$PATH"
 fi
 
-source "/home/fkoehler/.local/share/dephell/_dephell_zsh_autocomplete"
-eval "$(register-python-argcomplete pipx)"
+[[ -f "~/.local/share/dephell/_dephell_zsh_autocomplete" ]] && source "~/.local/share/dephell/_dephell_zsh_autocomplete"
+
+if (( $+commands[pipx] )); then
+    eval "$(register-python-argcomplete pipx)"
+fi
