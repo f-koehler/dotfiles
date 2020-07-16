@@ -4,6 +4,7 @@
     - dotfiles
 
     - alacritty
+    - dircolors
     - emacs
     - fzf
     - htop
