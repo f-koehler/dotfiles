@@ -11,8 +11,16 @@ if [ -f ~/.fzf.zsh ]; then
 			exa -l --color always {}
 		fi'"
     source ~/.fzf.zsh
-fi
 
-function plumber {
- 	: | fzf --multi --preview='bash -c {q}' --preview-window=up:90%
-}
+    function plumber {
+        : | fzf --multi --preview='bash -c {q}' --preview-window=up:90%
+    }
+
+    function packages {
+        pacman -Slq | fzf --multi --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' | xargs -ro sudo pacman -S
+    }
+
+    function aur_packages {
+        yay -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro yay -S
+    }
+fi

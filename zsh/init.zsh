@@ -67,7 +67,7 @@ source "$ZSHD/aliases.zsh"
 source "$ZSHD/functions.zsh"
 
 # Load my fzf tweaks
-source "$ZSHD/fzf.zsh"
+[ -f ~/.fzf.zsh ] && source "$ZSHD/fzf.zsh"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
@@ -99,8 +99,6 @@ fi
 export QT_API=pyside2
 
 export GPG_TTY=$(tty)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d "$HOME/code/scripts" ]; then
     export PATH="$HOME/code/scripts:$PATH"
