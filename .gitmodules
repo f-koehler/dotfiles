@@ -1,42 +1,42 @@
-[submodule "powerlevel10k"]
-	path = zsh/custom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
-[submodule "custom/plugins/zsh-syntax-highlighting"]
-	path = zsh/custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "custom/plugins/zsh-completions"]
-	path = zsh/custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
 [submodule "custom/plugins/zsh-autosuggestions"]
-	path = zsh/custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "custom/plugins/zsh-z"]
-	path = zsh/custom/plugins/zsh-z
-	url = https://github.com/agkozak/zsh-z.git
+	 path = zsh/custom/plugins/zsh-autosuggestions
+	 url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "custom/plugins/zsh-completions"]
+	 path = zsh/custom/plugins/zsh-completions
+	 url = https://github.com/zsh-users/zsh-completions
 [submodule "custom/plugins/zsh-rustup-completion"]
-	path = zsh/custom/plugins/zsh-rustup-completion
-	url = https://github.com/pkulev/zsh-rustup-completion.git
-[submodule "ohmyzsh"]
-	path = zsh/ohmyzsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
-[submodule "vim-plug"]
-	path = vim/vim-plug
-	url = https://github.com/junegunn/vim-plug
-[submodule "plugins/ranger_devicons"]
-	path = ranger/plugins/ranger_devicons
-	url = https://github.com/alexanderjeurissen/ranger_devicons
-[submodule "org-bootstrap"]
-	path = emacs/org-bootstrap
-	url = https://code.orgmode.org/bzg/org-mode.git
+	 path = zsh/custom/plugins/zsh-rustup-completion
+	 url = https://github.com/pkulev/zsh-rustup-completion.git
+[submodule "custom/plugins/zsh-syntax-highlighting"]
+	 path = zsh/custom/plugins/zsh-syntax-highlighting
+	 url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "custom/plugins/zsh-z"]
+	 path = zsh/custom/plugins/zsh-z
+	 url = https://github.com/agkozak/zsh-z.git
 [submodule "dircolors"]
-	path = dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "xresources"]
-	path = xresources
-	url = https://github.com/arcticicestudio/nord-xresources.git
+	 path = dircolors
+	 url = https://github.com/arcticicestudio/nord-dircolors
+[submodule "ohmyzsh"]
+	 path = zsh/ohmyzsh
+	 url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "org-bootstrap"]
+	 path = emacs/org-bootstrap
+	 url = https://code.orgmode.org/bzg/org-mode.git
+[submodule "plugins/ranger_devicons"]
+	 path = ranger/plugins/ranger_devicons
+	 url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule "powerlevel10k"]
+	 path = zsh/custom/themes/powerlevel10k
+	 url = https://github.com/romkatv/powerlevel10k.git
 [submodule "scripts"]
-	path = scripts
-	url = git@github.com:f-koehler/scripts.git
+	 path = scripts
+	 url = git@github.com:f-koehler/scripts.git
+[submodule "tmux/plugins/tpm"]
+	 path = tmux/plugins/tpm
+	 url = https://github.com/tmux-plugins/tpm
+[submodule "vim-plug"]
+	 path = vim/vim-plug
+	 url = https://github.com/junegunn/vim-plug
+[submodule "xresources"]
+	 path = xresources
+	 url = https://github.com/arcticicestudio/nord-xresources.git
