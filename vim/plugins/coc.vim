@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
             \ "coc-svg",
             \ "coc-syntax",
             \ "coc-tag",
+            \ "coc-template",
             \ "coc-texlab",
             \ "coc-tslint-plugin",
             \ "coc-tsserver",
