@@ -116,7 +116,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'junegunn/fzf.vim'
     Plug 'junegunn/goyo.vim'
     Plug 'kassio/neoterm'
-    Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+    Plug 'kevinhwang91/rnvimr'
     Plug 'liuchengxu/vim-which-key'
     Plug 'liuchengxu/vista.vim'
     Plug 'mhinz/vim-startify'
