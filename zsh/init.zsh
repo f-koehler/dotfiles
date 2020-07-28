@@ -109,3 +109,7 @@ fi
 if (( $+commands[pipx] )); then
     eval "$(register-python-argcomplete pipx)"
 fi
+
+if (( $+commands[wgadmin] )); then
+    eval "$(register-python-argcomplete wgadmin)"
+fi
