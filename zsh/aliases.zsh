@@ -25,3 +25,7 @@ fi
 if (( $+commands[nproc] )); then
     alias ncore="nproc --all"
 fi
+
+if (( $+commands[nvim] )); then
+    alias vim="nvim"
+fi
