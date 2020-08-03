@@ -39,6 +39,7 @@ plugins=(
     fzf
     git
     github
+    pass
     rust
     ufw
     zsh-autosuggestions
