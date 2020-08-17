@@ -159,3 +159,5 @@ let g:tex_conceal=''
 autocmd FileType tex setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd BufRead,BufNewFile *.tikz set ft=tex
+
+set spellfile=~/.config/nvim/spell/en.utf-8.add
