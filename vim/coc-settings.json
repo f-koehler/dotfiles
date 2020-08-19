@@ -7,6 +7,14 @@
     "rust",
     "typescript"
   ],
+  "languageserver": {
+    "fortls": {
+      "command": "fortls",
+      "args": ["--notify_init", "--lowercase_intrinsics"],
+      "filetypes": ["fortran"],
+      "rootPatterns": [".fortls", ".git/"]
+    }
+  },
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--target-version", "py38"],
   "python.linting.mypyEnabled": true,
