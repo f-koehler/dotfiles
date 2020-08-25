@@ -33,6 +33,7 @@ setopt HIST_IGNORE_ALL_DUPS
 plugins=(
     cargo
     colored-man-pages
+    direnv
     django
     docker
     docker-compose
@@ -79,10 +80,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 
 # Set editor to vim
 export EDITOR=vim
-
-if (( $+commands[direnv] )); then
-    eval "$(direnv hook zsh)"
-fi
 
 export PATH="$HOME/.local/bin:$PATH"
 [[ -f $HOME/.profile ]] && source $HOME/.profile
