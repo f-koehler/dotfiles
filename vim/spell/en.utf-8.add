@@ -1,10 +1,11 @@
-ultracold
-collider
-ansatz
-eigenbasis
 Feshbach
-initio
+Gaussians
+ansatz
 bosonic
+collider
+delocalized
+eigenbasis
+initio
 interparticle
 pseudopotential
-Gaussians
+ultracold
