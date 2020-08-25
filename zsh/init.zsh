@@ -44,6 +44,7 @@ plugins=(
     ufw
     zsh-autosuggestions
     zsh-completions
+    zsh_reload
     zsh-syntax-highlighting
     zsh-z
 )
