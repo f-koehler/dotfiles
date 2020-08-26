@@ -43,6 +43,7 @@ plugins=(
     pass
     rust
     ufw
+    yarn
     zsh-autosuggestions
     zsh-completions
     zsh_reload
