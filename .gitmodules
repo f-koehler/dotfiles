@@ -19,9 +19,6 @@
 [submodule "ohmyzsh"]
 	 path = zsh/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git
-[submodule "org-bootstrap"]
-	 path = emacs/org-bootstrap
-	 url = https://code.orgmode.org/bzg/org-mode.git
 [submodule "plugins/ranger_devicons"]
 	 path = ranger/plugins/ranger_devicons
 	 url = https://github.com/alexanderjeurissen/ranger_devicons
@@ -40,3 +37,6 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule "emacs"]
+	path = emacs
+	url = https://github.com/syl20bnr/spacemacs
