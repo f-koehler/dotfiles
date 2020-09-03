@@ -16,6 +16,9 @@
 [submodule "dircolors"]
 	 path = dircolors
 	 url = https://github.com/arcticicestudio/nord-dircolors
+[submodule "emacs"]
+	 path = emacs
+	 url = https://github.com/syl20bnr/spacemacs
 [submodule "ohmyzsh"]
 	 path = zsh/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git
@@ -37,6 +40,3 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
-[submodule "emacs"]
-	path = emacs
-	url = https://github.com/syl20bnr/spacemacs
