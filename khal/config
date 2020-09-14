@@ -1,7 +1,6 @@
 [default]
 default_calendar = personal
 highlight_event_days = True
-days = 7
 
 [calendars]
 [[personal]]
