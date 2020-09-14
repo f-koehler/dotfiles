@@ -100,8 +100,8 @@ export QT_API=pyside2
 
 export GPG_TTY=$(tty)
 
-if [ -d "$HOME/code/scripts" ]; then
-    export PATH="$HOME/code/scripts:$PATH"
+if [ -d "$HOME/.scripts" ]; then
+    export PATH="$HOME/.scripts:$PATH"
 fi
 
 [[ -f "~/.local/share/dephell/_dephell_zsh_autocomplete" ]] && source "~/.local/share/dephell/_dephell_zsh_autocomplete"
