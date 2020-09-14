@@ -7,7 +7,7 @@
         dest: ~/.dotfiles
     - name: symlinks in ~/.config/
       file:
-        src: "~/.dotfiles/{{ item }}"
+        src: "~/.dotfiles/.config/{{ item }}"
         dest: "~/.config/{{ item }}"
         state: link
         force: yes
@@ -24,24 +24,22 @@
         - ranger
         - rofi
         - vdirsyncer
+    - name: symlinks in ~/
+      file:
+        src: "~/.dotfiles/{{ item }}"
+        dest: "~/{{ item }}"
+        state: link
+        force: yes
+        follow: no
+      loop:
+        - .emacs.d
+        - .scripts
+        - .zsh.d
+
     - name: configure dircolors
       file:
         src: ~/.dotfiles/dircolors/src/dir_colors
         dest: ~/.dircolors
-        state: link
-        force: yes
-        follow: no
-    - name: configure emacs
-      file:
-        src: ~/.dotfiles/emacs
-        dest: ~/.emacs.d
-        state: link
-        force: yes
-        follow: no
-    - name: symlink zsh config directory
-      file:
-        src: ~/.dotfiles/zsh
-        dest: ~/.zsh.d
         state: link
         force: yes
         follow: no
@@ -70,13 +68,6 @@
       file:
         src: ~/.dotfiles/xresources/src/nord
         dest: ~/.Xdefaults
-        state: link
-        force: yes
-        follow: no
-    - name: configure scripts
-      file:
-        src: ~/.dotfiles/scripts
-        dest: ~/.scripts
         state: link
         force: yes
         follow: no
