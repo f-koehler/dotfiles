@@ -23,7 +23,7 @@
 	 path = zsh/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "plugins/ranger_devicons"]
-	 path = ranger/plugins/ranger_devicons
+	path = .config/ranger/plugins/ranger_devicons
 	 url = https://github.com/alexanderjeurissen/ranger_devicons
 [submodule "powerlevel10k"]
 	 path = zsh/custom/themes/powerlevel10k
@@ -35,7 +35,7 @@
 	 path = tmux/plugins/tpm
 	 url = https://github.com/tmux-plugins/tpm
 [submodule "vim-plug"]
-	path = nvim/vim-plug
+	path = .config/nvim/vim-plug
 	 url = https://github.com/junegunn/vim-plug
 [submodule "xresources"]
 	 path = xresources
