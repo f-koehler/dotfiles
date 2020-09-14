@@ -17,6 +17,7 @@
         - htop
         - khal
         - kitty
+        - nvim
         - offlineimap
         - plasma-workspace
         - polybar
@@ -34,13 +35,6 @@
       file:
         src: ~/.dotfiles/emacs
         dest: ~/.emacs.d
-        state: link
-        force: yes
-        follow: no
-    - name: configure neovim
-      file:
-        src: ~/.dotfiles/vim
-        dest: ~/.config/nvim
         state: link
         force: yes
         follow: no
