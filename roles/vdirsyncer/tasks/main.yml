@@ -1,7 +1,0 @@
-- name: configure vdirsyncer
-  file:
-    src: ~/.dotfiles/vdirsyncer
-    dest: ~/.config/vdirsyncer
-    state: link
-    force: yes
-    follow: no

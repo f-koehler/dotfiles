@@ -1,9 +1,0 @@
-- name: create htop config dir
-  file:
-    path: ~/.config/htop
-    state: directory
-
-- name: copy htop config
-  copy:
-    src: htoprc
-    dest: ~/.config/htop/htoprc

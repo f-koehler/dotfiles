@@ -1,7 +1,0 @@
-- name: configure khal
-  file:
-    src: ~/.dotfiles/khal
-    dest: ~/.config/khal
-    state: link
-    force: yes
-    follow: no

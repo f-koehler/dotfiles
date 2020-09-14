@@ -1,5 +1,0 @@
-- name: fetch dotfiles
-  git:
-    accept_hostkey: yes
-    repo: git@github.com:f-koehler/dotfiles.git
-    dest: ~/.dotfiles

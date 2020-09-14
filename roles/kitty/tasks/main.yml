@@ -1,7 +1,0 @@
-- name: configure kitty
-  file:
-    src: ~/.dotfiles/kitty
-    dest: ~/.config/kitty
-    state: link
-    force: yes
-    follow: no
