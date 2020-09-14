@@ -1,13 +1,3 @@
 #!/bin/bash
 set -euf -o pipefail
-
-HOST="$(cat /proc/sys/kernel/hostname)"
-CONFIG="${HOST}.yml"
-
-if [ ! -f ${CONFIG} ]; then
-    echo "Missing config \"${CONFIG}\"!"
-    echo "Use default.yml"
-    CONFIG="default.yml"
-fi
-
-ansible-playbook -i targets ${CONFIG}
+ansible-playbook -i targets default.yml
