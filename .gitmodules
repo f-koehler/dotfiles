@@ -35,7 +35,7 @@
 	 path = tmux/plugins/tpm
 	 url = https://github.com/tmux-plugins/tpm
 [submodule "vim-plug"]
-	 path = vim/vim-plug
+	path = nvim/vim-plug
 	 url = https://github.com/junegunn/vim-plug
 [submodule "xresources"]
 	 path = xresources
