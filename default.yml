@@ -18,6 +18,7 @@
         - khal
         - kitty
         - offlineimap
+        - plasma-workspace
         - polybar
         - ranger
         - rofi
