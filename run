@@ -1,0 +1,3 @@
+#!/bin/bash
+set -euf -o pipefail
+ansible-playbook -i targets default.yml
