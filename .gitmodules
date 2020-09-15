@@ -19,6 +19,9 @@
 [submodule "emacs"]
 	 path = .emacs.d
 	 url = https://github.com/syl20bnr/spacemacs
+[submodule ".fzf"]
+	 path = .fzf
+	 url = https://github.com/junegunn/fzf.git
 [submodule "ohmyzsh"]
 	 path = .zsh.d/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git
