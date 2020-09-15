@@ -1,5 +1,0 @@
-- name: configure i3
-  git:
-    accept_hostkey: yes
-    repo: git@github.com:f-koehler/config-i3.git
-    dest: ~/.config/i3
