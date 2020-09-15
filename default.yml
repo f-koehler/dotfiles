@@ -113,8 +113,3 @@
         state: link
         force: yes
         follow: no
-  handlers:
-    - name: install vscode extensions
-      command: ./install_extensions
-      args:
-        chdir: "~/.config/Code - OSS"
