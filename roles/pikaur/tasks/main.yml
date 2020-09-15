@@ -1,4 +1,0 @@
-- name: configure pikaur
-  copy:
-    src: pikaur.conf
-    dest: ~/.config/pikaur.conf

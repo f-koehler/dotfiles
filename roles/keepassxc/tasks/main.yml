@@ -1,9 +1,0 @@
-- name: create keepassxc config directory
-  file:
-    path: ~/.config/keepassxc
-    state: directory
-
-- name: copy keepassxc config
-  copy:
-    src: keepassxc.ini
-    dest: ~/.config/keepassxc/keepassxc.ini
