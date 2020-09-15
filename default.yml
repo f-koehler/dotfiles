@@ -26,6 +26,7 @@
         - ranger
         - rofi
         - vdirsyncer
+        - kglobalshortcutsrc
     - name: symlinks in ~/
       file:
         src: "~/.dotfiles/{{ item }}"
