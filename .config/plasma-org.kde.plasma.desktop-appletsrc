@@ -54,7 +54,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][2][Applets][6][Configuration]
-PreloadWeight=95
+PreloadWeight=100
 SystrayContainmentId=7
 
 [Containments][2][Applets][8]
@@ -108,6 +108,9 @@ wallpaperplugin=org.kde.image
 immutability=1
 plugin=org.kde.plasma.clipboard
 
+[Containments][7][Applets][10][Configuration]
+PreloadWeight=55
+
 [Containments][7][Applets][11]
 immutability=1
 plugin=org.kde.plasma.devicenotifier
@@ -159,6 +162,9 @@ plugin=org.kde.ktp-contactlist
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
+[Containments][7][Applets][26][Configuration]
+PreloadWeight=55
+
 [Containments][7][Applets][26][Configuration][ConfigDialog]
 DialogHeight=540
 DialogWidth=720
@@ -166,6 +172,13 @@ DialogWidth=720
 [Containments][7][Applets][9]
 immutability=1
 plugin=org.kde.plasma.volume
+
+[Containments][7][Applets][9][Configuration]
+PreloadWeight=65
+
+[Containments][7][Applets][9][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][7][General]
 extraItems=org.kde.plasma.bluetooth,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.volume,org.kde.plasma.vault,org.kde.discovernotifier,org.kde.kdeconnect,org.kde.plasma.keyboardindicator,org.kde.plasma.nightcolorcontrol,org.kde.plasma.printmanager,org.kde.ktp-contactlist
