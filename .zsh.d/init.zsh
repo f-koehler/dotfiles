@@ -46,6 +46,7 @@ plugins=(
     yarn
     zsh-autosuggestions
     zsh-completions
+    zsh-interactive-cd
     zsh_reload
     zsh-syntax-highlighting
     zsh-z
