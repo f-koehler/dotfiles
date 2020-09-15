@@ -15,10 +15,12 @@
       loop:
         - alacritty
         - htop
+        - i3
         - khal
         - kitty
         - nvim
         - offlineimap
+        - plasma-org.kde.plasma.desktop-appletsrc
         - plasma-workspace
         - polybar
         - ranger
