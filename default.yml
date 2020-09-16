@@ -20,13 +20,10 @@
         - kitty
         - nvim
         - offlineimap
-        - plasma-org.kde.plasma.desktop-appletsrc
-        - plasma-workspace
         - polybar
         - ranger
         - rofi
         - vdirsyncer
-        - kglobalshortcutsrc
     - name: symlinks in ~/
       file:
         src: "~/.dotfiles/{{ item }}"
