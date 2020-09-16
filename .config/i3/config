@@ -173,6 +173,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+focus_follows_mouse no
+mouse_warping none
+
 exec --no-startup-id xrandr --output DP1 --mode 1920x1200 --pos 0x0 --rotate left --output DP2 --mode 1920x1200 --pos 3120x0 --rotate left --output DP3 --off --output HDMI1 --primary --mode 1920x1200 --pos 1200x500 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
 exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
 exec --no-startup-id polybar zoq45-left
