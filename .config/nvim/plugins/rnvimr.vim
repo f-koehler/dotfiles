@@ -4,6 +4,9 @@ let g:rnvimr_enable_ex = 1
 " close ranger after selecting something
 let g:rnvimr_enable_picker = 1 
 
+" ignore files like git would
+let g:rnvimr_hide_gitignore = 1
+
 " customize the layout of the ranger overlay
 let g:rnvimr_layout = {
     \ 'relative': 'editor',
