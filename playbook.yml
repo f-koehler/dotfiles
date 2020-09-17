@@ -32,19 +32,13 @@
         force: yes
         follow: no
       loop:
+        - .dir_colors
         - .emacs.d
         - .fzf
         - .mozilla
         - .scripts
         - .zsh.d
 
-    - name: configure dircolors
-      file:
-        src: ~/.dotfiles/dircolors/src/dir_colors
-        dest: ~/.dircolors
-        state: link
-        force: yes
-        follow: no
     - name: symlink zsh config
       file:
         src: ~/.zsh.d/init.zsh
