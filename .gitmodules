@@ -31,9 +31,6 @@
 [submodule "powerlevel10k"]
 	 path = .zsh.d/custom/themes/powerlevel10k
 	 url = https://github.com/romkatv/powerlevel10k.git
-[submodule "scripts"]
-	 path = .scripts
-	 url = git@github.com:f-koehler/scripts.git
 [submodule "tmux/plugins/tpm"]
 	 path = tmux/plugins/tpm
 	 url = https://github.com/tmux-plugins/tpm
