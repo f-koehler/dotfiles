@@ -1,0 +1,9 @@
+#!/bin/sh
+
+DATE=$(TZ=Europe/Berlin date +%Y%m%d%H%M)
+echo $DATE
+
+UUID=$(uuidgen)
+wget "https://www.niederschlagsradar.de/image.ashx?type=regioloop&regio=ham&j=&m=&d=&mi=&uhr=&bliksem=1&voor=&srt=loop1stunde&tijdid=${DATE}" -O /tmp/${UUID}.gif
+mpv --loop=inf /tmp/${UUID}.gif
+rm -f /tmp/${UUID}.gif
