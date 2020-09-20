@@ -1,0 +1,8 @@
+[user]
+	signingkey = C5DC80511469AD81C84E3564D55A35AFB2900A11
+	email = fabian.koehler@protonmail.ch
+	name = Fabian Köhler
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

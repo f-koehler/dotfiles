@@ -35,6 +35,7 @@
         - .dir_colors
         - .emacs.d
         - .fzf
+        - .gitconfig
         - .mozilla
         - .scripts
         - .zsh.d
