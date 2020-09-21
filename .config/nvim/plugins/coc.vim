@@ -73,10 +73,4 @@ function! s:show_documentation()
   endif
 endfunction
 
-" command to format current buffer
-command! -nargs=0 Format :call CocActionAsync('format')
-command! -nargs=0 JumpDefinition :call CocActionAsync('jumpDefinition')
-nmap <silent> <F8> :Format<CR>
-nmap <silent> <F12> :JumpDefinition<CR>
-
 autocmd BufWrite *.py :CocCommand python.sortImports
