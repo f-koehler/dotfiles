@@ -11,6 +11,7 @@ SecurityPreloadState.txt
 SiteSecurityServiceState.txt
 Telemetry.ShutdownTime.txt
 addons.json
+bookmarkbackups
 broadcast-listeners.json
 compatibility.ini
 crashes/
