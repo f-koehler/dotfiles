@@ -9,3 +9,9 @@ user_pref(
 
 // set startup page
 user_pref("browser.startup.homepage", "https://hckrnews.com");
+
+// point firefox to my custom sync server
+user_pref(
+  "identity.sync.tokenserver.uri",
+  "https://firefox.fkoehler.xyz/token/1.0/sync/1.5"
+);

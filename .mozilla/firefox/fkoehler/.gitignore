@@ -20,6 +20,8 @@ extensions.json
 extensions/
 gmp-gmpopenh264/
 lock
+logins-backup.json
+logins.json
 minidumps/
 pkcs11.txt
 prefs.js
@@ -29,6 +31,7 @@ sessionCheckpoints.json
 sessionstore-backups/
 sessionstore.jsonlz4
 shield-preference-experiments.json
+signedInUser.json
 storage/
 times.json
 weave/
