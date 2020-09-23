@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euf -o pipefail
+
+notify-send "dotfiles" "Starting to update dotfile submodules" --icon=system-software-install
+
+cd ~/.dotfiles
+~/.scripts/git-update-submodules
+
+if [ -z "$(git status --porcelain)" ]; then
+    notify-send "dotfiles" "Dotfile repository is clean" --icon=dialog-information
+else
+    notify-send "dotfiles" "Untracked changes in dotfile repo, manual action required" --icon=dialog-warning
+fi
