@@ -123,11 +123,10 @@
             - poetry
             - pre-commit
             - pylint
-            - remind-caldav
             - tmuxp
             - vdirsyncer
         - name: install fortran-language-server
           command:
             cmd: pipx install fortran-language-server
-            creates: "~/.local/fortls"
+            creates: "~/.local/bin/fortls"
       when: pipx_result.stat.exists
