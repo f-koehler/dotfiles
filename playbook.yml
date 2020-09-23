@@ -137,7 +137,10 @@
       when: pipx_result.stat.exists
     - name: Enable systemd user units
       systemd:
-        name: gnirehtet.service
+        name: "{{ item }}"
         enabled: yes
         state: started
         scope: user
+      loop:
+        - gnirehtet.service
+        - update-dotfiles-submodules.timer

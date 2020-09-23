@@ -1,0 +1,9 @@
+[Unit]
+Description=Update submodules in ~/.dotfiles daily
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
