@@ -9,6 +9,7 @@
         follow: no
       loop:
         - alacritty
+        - dunst
         - htop
         - i3
         - khal
@@ -33,6 +34,7 @@
         - .gitconfig
         - .mozilla
         - .scripts
+        - .xinitrc
         - .zsh.d
 
     - name: symlink zsh config
