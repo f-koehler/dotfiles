@@ -40,3 +40,6 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule ".config/spicetify/Themes"]
+	path = .config/spicetify/Themes
+	url = https://github.com/morpheusthewhite/spicetify-themes.git

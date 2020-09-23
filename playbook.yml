@@ -20,6 +20,7 @@
         - polybar
         - ranger
         - rofi
+        - spicetify
         - systemd
         - vdirsyncer
     - name: symlinks in ~/
