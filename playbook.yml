@@ -122,6 +122,7 @@
             - isort
             - khal
             - mypy
+            - notify-send.py
             - poetry
             - pre-commit
             - pylint
