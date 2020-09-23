@@ -1,13 +1,18 @@
 #!/bin/bash
 set -euf -o pipefail
 
-notify-send "dotfiles" "Starting to update dotfile submodules" --icon=system-software-install
+NOTIFICATION=$(notify-send.py "Dotfiles" "Update git submodules in ~/.dotfiles" \
+    --hint string:image-path:system-software-update)
 
 cd ~/.dotfiles
 ~/.scripts/git-update-submodules
 
 if [ -z "$(git status --porcelain)" ]; then
-    notify-send "dotfiles" "Dotfile repository is clean" --icon=dialog-information
+    notify-send.py "Dotfiles" "~/.dotfiles is in a clean state" \
+        --hint string:image-path:dialog-information \
+        --replaces-id $NOTIFICATION > /dev/null
 else
-    notify-send "dotfiles" "Untracked changes in dotfile repo, manual action required" --icon=dialog-warning
+    notify-send.py "Dotfiles" "~/.dotfiles is in a dirty state, manual intervention required" \
+        --hint string:image-path:dialog-warning \
+        --replaces-id $NOTIFICATION > /dev/null
 fi
