@@ -20,6 +20,7 @@
         - polybar
         - ranger
         - rofi
+        - systemd
         - vdirsyncer
     - name: symlinks in ~/
       file:
@@ -134,3 +135,9 @@
             cmd: pipx install fortran-language-server
             creates: "~/.local/bin/fortls"
       when: pipx_result.stat.exists
+    - name: Enable systemd user units
+      systemd:
+        name: gnirehtet.service
+        enabled: yes
+        state: started
+        scope: user
