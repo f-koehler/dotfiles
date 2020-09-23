@@ -24,6 +24,6 @@ else
     fi
 fi
 
-NOT=$(~/.local/bin/notify-send.py "Volume" "$VOLUME" \
+~/.local/bin/notify-send.py "Volume" "$VOLUME" \
     --hint string:image-path:$ICON boolean:transient:true \
-    --replaces-process "volume-popup")
+    --replaces-process "volume-popup" &
