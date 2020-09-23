@@ -1,10 +1,5 @@
 - hosts: targets
   tasks:
-    - name: fetch dotfiles
-      git:
-        accept_hostkey: yes
-        repo: git@github.com:f-koehler/dotfiles.git
-        dest: ~/.dotfiles
     - name: symlinks in ~/.config/
       file:
         src: "~/.dotfiles/.config/{{ item }}"
@@ -107,3 +102,32 @@
         state: link
         force: yes
         follow: no
+    - name: check if pipx exists
+      stat:
+        path: /usr/bin/pipx
+      register: pipx_result
+    - name: install python packages with pipx
+      block:
+        - name: install packages with pipx
+          command:
+            cmd: "pipx install {{ item }}"
+            creates: "~/.local/bin/{{ item }}"
+          loop:
+            - bandit
+            - black
+            - dephell
+            - flake8
+            - isort
+            - khal
+            - mypy
+            - poetry
+            - pre-commit
+            - pylint
+            - remind-caldav
+            - tmuxp
+            - vdirsyncer
+        - name: install fortran-language-server
+          command:
+            cmd: pipx install fortran-language-server
+            creates: "~/.local/fortls"
+      when: pipx_result.stat.exists
