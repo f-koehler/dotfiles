@@ -9,7 +9,7 @@
         follow: no
       loop:
         - alacritty
-        - dunst
+        - gtk-3.0
         - htop
         - i3
         - khal
