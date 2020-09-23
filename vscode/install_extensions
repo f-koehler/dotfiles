@@ -1,10 +1,9 @@
 #!/bin/bash
 set -euf -o pipefail
 
-code --install-extension $(cat extensions.txt)
 ARGUMENTS=""
 for extension in $(cat extensions.txt); do
     ARGUMENTS="${ARGUMENTS} --install-extension ${extension}"
 done
 
-code ${ARGUMENTS}
+flatpak run com.visualstudio.code ${ARGUMENTS}
