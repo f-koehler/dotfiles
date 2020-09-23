@@ -188,12 +188,12 @@ exec --no-startup-id deadd-notification-center
 
 bindsym $mod+n exec kill -s USR1 $(pidof deadd-notification-center)
 
-exec --no-startup-id i3-msg "workspace 9, move workspace to output DP2"
-exec --no-startup-id i3-msg "workspace 5, move workspace to output DP1"
-exec --no-startup-id i3-msg "workspace 1, move workspace to output HDMI1"
-exec --no-startup-id i3-msg "workspace 2, move workspace to output HDMI1"
-
 assign [class="Thunderbird"] 9
 assign [class="Spotify"] 9
 exec --no-startup-id thunderbird
 exec --no-startup-id com.spotify.Client
+
+exec --no-startup-id i3-msg "workspace 9, move workspace to output DP2"
+exec --no-startup-id i3-msg "workspace 5, move workspace to output DP1"
+exec --no-startup-id i3-msg "workspace 1, move workspace to output HDMI1"
+exec --no-startup-id i3-msg "workspace 2, move workspace to output HDMI1"
