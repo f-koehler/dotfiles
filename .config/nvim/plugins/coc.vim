@@ -73,4 +73,4 @@ function! s:show_documentation()
   endif
 endfunction
 
-autocmd BufWrite *.py :CocCommand python.sortImports
+" autocmd BufWrite *.py :CocCommand python.sortImports
