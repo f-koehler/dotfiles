@@ -1,3 +1,6 @@
+[submodule ".config/spicetify/Themes"]
+	 path = .config/spicetify/Themes
+	 url = https://github.com/morpheusthewhite/spicetify-themes.git
 [submodule "custom/plugins/zsh-autosuggestions"]
 	 path = .zsh.d/custom/plugins/zsh-autosuggestions
 	 url = https://github.com/zsh-users/zsh-autosuggestions
@@ -40,6 +43,3 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
-[submodule ".config/spicetify/Themes"]
-	path = .config/spicetify/Themes
-	url = https://github.com/morpheusthewhite/spicetify-themes.git
