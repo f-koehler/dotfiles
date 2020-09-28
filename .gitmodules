@@ -25,6 +25,9 @@
 [submodule ".fzf"]
 	 path = .fzf
 	 url = https://github.com/junegunn/fzf.git
+[submodule ".mozilla/firefox/user.js"]
+	 path = .mozilla/firefox/user.js
+	 url = https://github.com/arkenfox/user.js.git
 [submodule "ohmyzsh"]
 	 path = .zsh.d/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git
@@ -43,6 +46,3 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
-[submodule ".mozilla/firefox/user.js"]
-	path = .mozilla/firefox/user.js
-	url = https://github.com/arkenfox/user.js.git
