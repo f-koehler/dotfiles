@@ -23,6 +23,7 @@ extension-settings.json
 extensions.json
 extensions/
 gmp-gmpopenh264/
+handlers.json
 lock
 logins-backup.json
 logins.json

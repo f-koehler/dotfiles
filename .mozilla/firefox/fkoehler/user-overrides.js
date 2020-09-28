@@ -16,4 +16,8 @@ user_pref(
   "https://firefox.fkoehler.xyz/token/1.0/sync/1.5"
 );
 
+// disabling letterboxing
 user_pref("privacy.resistFingerprinting.letterboxing", false);
+
+// enable search in the urlbar
+user_pref("keyword.enabled", true);
