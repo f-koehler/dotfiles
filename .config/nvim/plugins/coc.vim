@@ -20,7 +20,6 @@ let g:coc_global_extensions = [
             \ "coc-omnisharp",
             \ "coc-pairs",
             \ "coc-prettier",
-            \ "coc-pyright",
             \ "coc-python",
             \ "coc-r-lsp",
             \ "coc-rls",
@@ -40,6 +39,8 @@ let g:coc_global_extensions = [
             \ "coc-yaml",
             \ "coc-yank",
             \ ]
+
+" coc-pyright
 
 " highlight current symbol
 "autocmd CursorHold * silent call CocActionAsync('highlight')
