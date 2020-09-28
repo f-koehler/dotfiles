@@ -14,9 +14,11 @@ addons.json
 bookmarkbackups
 broadcast-listeners.json
 compatibility.ini
+containers.json
 crashes/
 datareporting/
 extension-preferences.json
+extension-settings.json
 extensions.json
 extensions/
 gmp-gmpopenh264/
