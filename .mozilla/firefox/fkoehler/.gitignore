@@ -37,5 +37,7 @@ shield-preference-experiments.json
 signedInUser.json
 storage/
 times.json
+user.js
+userjs_backups/
 weave/
 xulstore.json

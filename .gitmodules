@@ -43,3 +43,6 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule ".mozilla/firefox/user.js"]
+	path = .mozilla/firefox/user.js
+	url = https://github.com/arkenfox/user.js.git

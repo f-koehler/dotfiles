@@ -15,3 +15,5 @@ user_pref(
   "identity.sync.tokenserver.uri",
   "https://firefox.fkoehler.xyz/token/1.0/sync/1.5"
 );
+
+user_pref("privacy.resistFingerprinting.letterboxing", false);
