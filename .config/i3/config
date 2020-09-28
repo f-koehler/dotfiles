@@ -13,9 +13,9 @@ set $mod Mod4
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #424c5e #424c5e #eceff4 #81a1c1   #424c5e
-client.focused_inactive #2e3440 #2e3440 #d8dee9 #2e3440   #2e3440
-client.unfocused        #2e3440 #2e3440 #d8dee9 #2e3440   #2e3440
-client.placeholder      #2e3440 #2e3440 #d8dee9 #2e3440   #2e3440
+client.focused_inactive #2e3440 #2e3440 #d8dee9 #2e3440   #3b4252
+client.unfocused        #2e3440 #2e3440 #d8dee9 #2e3440   #3b4252
+client.placeholder      #2e3440 #2e3440 #d8dee9 #2e3440   #3b4252
 client.urgent           #ebcb8b #424c5e #eceff4 #81a1c1   #ebcb8b
 client.background       #ffffff
 
@@ -186,9 +186,9 @@ mouse_warping none
 
 exec --no-startup-id xrandr --output DP1 --mode 1920x1200 --pos 0x0 --rotate left --output DP2 --mode 1920x1200 --pos 3120x0 --rotate left --output DP3 --off --output HDMI1 --primary --mode 1920x1200 --pos 1200x500 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
 exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
-exec --no-startup-id polybar zoq45-left
-exec --no-startup-id polybar zoq45-center
-exec --no-startup-id polybar zoq45-right
+exec --no-startup-id polybar -r zoq45-left
+exec --no-startup-id polybar -r zoq45-center
+exec --no-startup-id polybar -r zoq45-right
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
 exec --no-startup-id picom
