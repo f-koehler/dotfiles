@@ -16,3 +16,6 @@ else
         --hint string:image-path:dialog-warning \
         --replaces-id $NOTIFICATION > /dev/null
 fi
+
+~/.fzf/install --all
+~/.mozilla/firefox/user.js/updater.sh -p ~/.mozilla/firefox/fkoehler -u -d -s
