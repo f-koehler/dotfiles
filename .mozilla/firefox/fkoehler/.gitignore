@@ -17,6 +17,7 @@ compatibility.ini
 containers.json
 crashes/
 datareporting/
+enumerate_devices.txt
 extension-preferences.json
 extension-settings.json
 extensions.json
