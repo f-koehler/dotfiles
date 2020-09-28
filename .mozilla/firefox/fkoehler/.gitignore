@@ -16,6 +16,7 @@ broadcast-listeners.json
 compatibility.ini
 crashes/
 datareporting/
+extension-preferences.json
 extensions.json
 extensions/
 gmp-gmpopenh264/
