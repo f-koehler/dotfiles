@@ -114,3 +114,7 @@ fi
 if (( $+commands[wgadmin] )); then
     eval "$(register-python-argcomplete wgadmin)"
 fi
+
+if [ -d "$HOME/.local/share/flatpak/exports/bin/" ]; then
+  export PATH="$HOME/.local/share/flatpak/exports/bin/:$PATH"
+fi

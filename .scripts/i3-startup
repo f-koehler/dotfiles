@@ -51,8 +51,3 @@ fi
 if [ -f /usr/bin/thunderbird ]; then
     /usr/bin/thunderbird
 fi
-
-# start spotify
-if [ -f /var/lib/flatpak/exports/bin/com.spotify.Client ]; then
-    /var/lib/flatpak/exports/bin/com.spotify.Client
-fi

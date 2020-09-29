@@ -145,3 +145,15 @@
       loop:
         - gnirehtet.service
         - update-dotfiles-submodules.timer
+    - name: Add flathub flatpak repo
+      command:
+        cmd: flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        creates: "~/.local/share/flatpak/repo/flathub.trustedkeys.gpg"
+    - name: Install flatpaks
+      command:
+        cmd: "flatpak install --assumeyes --user --noninteractive flathub {{ item }}"
+        creates: "~/.local/share/flatpak/exports/bin/{{ item }}"
+      loop:
+        - com.spotify.Client
+        - us.zoom.Zoom
+        - com.visualstudio.code
