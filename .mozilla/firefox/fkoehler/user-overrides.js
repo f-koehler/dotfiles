@@ -21,3 +21,7 @@ user_pref("privacy.resistFingerprinting.letterboxing", false);
 
 // enable search in the urlbar
 user_pref("keyword.enabled", true);
+
+// do not clear cookies and history on shutdown
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown.history", false);
