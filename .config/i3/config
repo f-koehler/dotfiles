@@ -184,27 +184,11 @@ bindsym $mod+r mode "resize"
 focus_follows_mouse no
 mouse_warping none
 
-exec --no-startup-id xrandr --output DP1 --mode 1920x1200 --pos 0x0 --rotate left --output DP2 --mode 1920x1200 --pos 3120x0 --rotate left --output DP3 --off --output HDMI1 --primary --mode 1920x1200 --pos 1200x500 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
-exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
-exec --no-startup-id polybar -r zoq45-left
-exec --no-startup-id polybar -r zoq45-center
-exec --no-startup-id polybar -r zoq45-right
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id setxkbmap -layout de -variant nodeadkeys
-exec --no-startup-id picom
-exec --no-startup-id deadd-notification-center
-exec --no-startup-id keepassxc
-
 bindsym $mod+n exec kill -s USR1 $(pidof deadd-notification-center)
 
 assign [class="Thunderbird"] 9
 assign [class="Spotify"] 9
-exec --no-startup-id thunderbird
-exec --no-startup-id com.spotify.Client
-
-exec --no-startup-id i3-msg "workspace 9, move workspace to output DP2"
-exec --no-startup-id i3-msg "workspace 5, move workspace to output DP1"
-exec --no-startup-id i3-msg "workspace 1, move workspace to output HDMI1"
-exec --no-startup-id i3-msg "workspace 2, move workspace to output HDMI1"
 
 for_window [class="Polybar_popup_*"] floating enable
+
+exec --no-startup-id ~/.scripts/i3-startup

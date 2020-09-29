@@ -1,0 +1,58 @@
+#!/bin/bash
+
+set -euf -o pipefail
+
+# setup screens
+if [ -f /usr/bin/xrandr ]; then
+    /usr/bin/xrandr --output DP1 --mode 1920x1200 --pos 0x0 --rotate left --output DP2 --mode 1920x1200 --pos 3120x0 --rotate left --output DP3 --off --output HDMI1 --primary --mode 1920x1200 --pos 1200x500 --rotate normal --output HDMI2 --off --output HDMI3 --off --output VIRTUAL1 --off
+fi
+
+# setup keyboard layout
+if [ -f /usr/bin/setxkbmap ]; then
+    /usr/bin/setxkbmap -layout de -variant nodeadkeys
+fi
+
+# start polybar
+if [ -f /usr/bin/polybar ]; then
+    /usr/bin/polybar -r zoq45-left
+    /usr/bin/polybar -r zoq45-center
+    /usr/bin/polybar -r zoq45-right
+fi
+
+# assign workspaces to scrrens
+if [ -f /usr/bin/i3-msg ]; then
+    /usr/bin/i3-msg "workspace 9, move workspace to output DP2"
+    /usr/bin/i3-msg "workspace 5, move workspace to output DP1"
+    /usr/bin/i3-msg "workspace 1, move workspace to output HDMI1"
+    /usr/bin/i3-msg "workspace 2, move workspace to output HDMI1"
+fi
+
+# start picom compositor
+if [ -f /usr/bin/picom ]; then
+    /usr/bin/picom
+fi
+
+# set wallpaper using nitrogen
+if [ -f /usr/bin/nitrogen ]; then
+    /usr/bin/nitrogen --restore
+fi
+
+# start notification center
+if [ -f /usr/bin/deadd-notification-center ]; then
+    /usr/bin/deadd-notification-center deadd-notification-center
+fi
+
+# start keepassxc
+if [ -f /usr/bin/keepassxc ]; then
+    /usr/bin/keepassxc
+fi
+
+# start thunderbird
+if [ -f /usr/bin/thunderbird ]; then
+    /usr/bin/thunderbird
+fi
+
+# start spotify
+if [ -f /var/lib/flatpak/exports/bin/com.spotify.Client ]; then
+    /var/lib/flatpak/exports/bin/com.spotify.Client
+fi
