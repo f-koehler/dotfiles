@@ -154,6 +154,8 @@
         cmd: "flatpak install --assumeyes --user --noninteractive flathub {{ item }}"
         creates: "~/.local/share/flatpak/exports/bin/{{ item }}"
       loop:
+        - com.leinardi.gwe
+        - com.skype.Client
         - com.spotify.Client
-        - us.zoom.Zoom
         - com.visualstudio.code
+        - us.zoom.Zoom
