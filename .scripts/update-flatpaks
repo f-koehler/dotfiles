@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euf -o pipefail
+
+NOTIFICATION=$($HOME/.local/bin/notify-send.py "Flatpak" "Update all flatpaks" \
+    --hint string:image-path:system-software-update)
+/usr/bin/flatpak update --user --noninteractive --assumeyes
+$HOME/.local/bin/notify-send.py "Flatpak" "Update all flatpaks" \
+    --hint string:image-path:dialog-information \
+    --replaces-id $NOTIFICATION > /dev/null

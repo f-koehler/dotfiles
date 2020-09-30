@@ -1,0 +1,9 @@
+[Unit]
+Description=Update flatpaks
+
+[Timer]
+OnCalendar=*-*-* 10:10:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

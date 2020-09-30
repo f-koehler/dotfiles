@@ -145,6 +145,7 @@
       loop:
         - gnirehtet.service
         - update-dotfiles-submodules.timer
+        - update-flatpaks.timer
     - name: Add flathub flatpak repo
       flatpak_remote:
         flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
