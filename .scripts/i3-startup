@@ -14,9 +14,9 @@ fi
 
 # start polybar
 if [ -f /usr/bin/polybar ]; then
-    /usr/bin/polybar -r zoq45-left
-    /usr/bin/polybar -r zoq45-center
-    /usr/bin/polybar -r zoq45-right
+    /usr/bin/polybar -r zoq45-left &
+    /usr/bin/polybar -r zoq45-center &
+    /usr/bin/polybar -r zoq45-right &
 fi
 
 # assign workspaces to scrrens
@@ -29,25 +29,25 @@ fi
 
 # start picom compositor
 if [ -f /usr/bin/picom ]; then
-    /usr/bin/picom
+    /usr/bin/picom &
 fi
 
 # set wallpaper using nitrogen
 if [ -f /usr/bin/nitrogen ]; then
-    /usr/bin/nitrogen --restore
+    /usr/bin/nitrogen --restore &
 fi
 
 # start notification center
 if [ -f /usr/bin/deadd-notification-center ]; then
-    /usr/bin/deadd-notification-center deadd-notification-center
+    /usr/bin/deadd-notification-center &
 fi
 
 # start keepassxc
 if [ -f /usr/bin/keepassxc ]; then
-    /usr/bin/keepassxc
+    /usr/bin/keepassxc &
 fi
 
 # start thunderbird
 if [ -f /usr/bin/thunderbird ]; then
-    /usr/bin/thunderbird
+    /usr/bin/thunderbird &
 fi
