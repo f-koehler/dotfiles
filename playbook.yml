@@ -146,13 +146,17 @@
         - gnirehtet.service
         - update-dotfiles-submodules.timer
     - name: Add flathub flatpak repo
-      command:
-        cmd: flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        creates: "~/.local/share/flatpak/repo/flathub.trustedkeys.gpg"
+      flatpak_remote:
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        name: flathub
+        state: present
+        method: user
     - name: Install flatpaks
-      command:
-        cmd: "flatpak install --assumeyes --user --noninteractive flathub {{ item }}"
-        creates: "~/.local/share/flatpak/exports/bin/{{ item }}"
+      flatpak:
+        name: "{{ item }}"
+        state: present
+        method: user
+        remote: flathub
       loop:
         - com.leinardi.gwe
         - com.skype.Client
