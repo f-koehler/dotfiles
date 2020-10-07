@@ -18,7 +18,7 @@ type = "caldav"
 url = "https://nextcloud.fkoehler.xyz/remote.php/caldav/"
 username.fetch = ["command", "pass", "nextcloud/username"]
 password.fetch = ["command", "pass", "nextcloud/password"]
-verify_fingerprint = "A3:DD:83:D9:C1:25:91:BD:2B:AD:2A:24:F7:DF:59:0A:9F:4A:9E:44"
+verify_fingerprint = "17:67:F6:00:DD:98:C2:D4:0C:B7:4B:43:CD:ED:83:9F:BF:9F:25:3F"
 
 [pair contacts]
 a = "contacts_local"
