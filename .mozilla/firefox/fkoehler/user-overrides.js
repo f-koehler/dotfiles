@@ -25,3 +25,6 @@ user_pref("keyword.enabled", true);
 // do not clear cookies and history on shutdown
 user_pref("privacy.clearOnShutdown.cookies", false);
 user_pref("privacy.clearOnShutdown.history", false);
+
+// allow web assembly
+user_pref("javascript.options.wasm", true);
