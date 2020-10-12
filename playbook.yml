@@ -161,9 +161,8 @@
         remote: flathub
       loop:
         - com.leinardi.gwe
-        - com.skype.Client
         - com.spotify.Client
-        - com.visualstudio.code
+        - org.musescore.MuseScore
         - us.zoom.Zoom
     - name: Check if anaconda is installed
       stat:
