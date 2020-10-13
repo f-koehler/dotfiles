@@ -1,0 +1,17 @@
+- hosts: targets
+  become: yes
+  tasks:
+    - name: install snaps
+      snap:
+        name: "{{ item }}"
+      loop:
+        - bitwarden
+        - engauge-digitizer
+    - name: install classic snaps
+      snap:
+        classic: yes
+        name: "{{ item }}"
+      loop:
+        - code-insiders
+        - godot
+        - skype
