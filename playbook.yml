@@ -164,6 +164,7 @@
         - com.spotify.Client
         - org.musescore.MuseScore
         - us.zoom.Zoom
+        - ch.protonmail.protonmail-bridge
     - name: Check if anaconda is installed
       stat:
         path: ~/.local/opt/anaconda3/bin/conda

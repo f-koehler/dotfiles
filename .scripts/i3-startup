@@ -47,7 +47,9 @@ if [ -f /usr/bin/keepassxc ]; then
     /usr/bin/keepassxc &
 fi
 
-# start thunderbird
-if [ -f /usr/bin/thunderbird ]; then
-    /usr/bin/thunderbird &
-fi
+# # start thunderbird
+# if [ -f /usr/bin/thunderbird ]; then
+#     /usr/bin/thunderbird &
+# fi
+
+ch.protonmail.protonmail-bridge&
