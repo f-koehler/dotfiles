@@ -38,12 +38,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.scripts/change-volume increase
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.scripts/change-volume decrease
-bindsym XF86AudioMute        exec --no-startup-id ~/.scripts/change-volume mute
-bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -178,6 +172,18 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.scripts/change-volume increase
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.scripts/change-volume decrease
+bindsym XF86AudioMute        exec --no-startup-id ~/.scripts/change-volume mute
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext        exec --no-startup-id playerctl next
+bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
+bindsym XF86HomePage         exec --no-startup-id firefox-developer-edition
+bindsym XF86Mail             exec --no-startup-id firefox-developer-edition
+bindsym XF86Explorer         exec --no-startup-id thunar
 
 bindsym $mod+r mode "resize"
 
