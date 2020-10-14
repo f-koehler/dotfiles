@@ -9,8 +9,14 @@ else
 fi
 
 # Replace cat with bat if installed
-if (( $+commands[bat] )); then
-    alias cat="bat --color=always --italic-text=always --theme=Nord --plain"
+# if (( $+commands[bat] )); then
+#     alias cat="bat --color=always --italic-text=always --theme=Nord --plain"
+# fi
+
+# do not show snaps in df and lsblk output
+if (( $+command[snap] )); then
+    alias df="df -x squashfs"
+    alias lsblk="lsblk -e7"
 fi
 
 # Abbreviate ranger if installed
