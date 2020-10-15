@@ -20,7 +20,7 @@ autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
 set cmdheight=2
 
 " dont show |ins-completion-menu| messages
-set shortmess+=c 
+set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes

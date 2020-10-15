@@ -87,7 +87,7 @@
         state: link
         force: yes
         follow: no
-    - name: configure vscodium 
+    - name: configure vscodium
       file:
         src: "~/.dotfiles/vscode"
         dest: "~/.config/VSCodium"
