@@ -1,5 +1,5 @@
 configuration {
-    font:                           "Ubuntu Nerd 10";
+    font:                           "Hack 10";
     show-icons:                     true;
     icon-theme:                     "Papirus-Dark";
     drun-display-format:            "{name}";

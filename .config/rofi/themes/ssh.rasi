@@ -1,5 +1,5 @@
 configuration {
-    font:                           "Ubuntu Nerd 10";
+    font:                           "Hack 10";
     ssh-display-format:             "{name}";
     threads:                        0;
     scroll-method:                  0;
