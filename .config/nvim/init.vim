@@ -31,6 +31,7 @@ set encoding=utf-8
 " set font
 set guifont=Ubuntu\ Mono\ Nerd\ Font:h11
 
+set nocompatible
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
