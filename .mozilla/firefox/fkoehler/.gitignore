@@ -13,6 +13,7 @@ Telemetry.ShutdownTime.txt
 addons.json
 bookmarkbackups
 broadcast-listeners.json
+cert_override.txt
 compatibility.ini
 containers.json
 crashes/
