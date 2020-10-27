@@ -40,7 +40,8 @@
         - .scripts
         - .xinitrc
         - .zsh.d
-
+        - .Xresources
+        - .Xdefaults
     - name: symlink zsh config
       file:
         src: ~/.zsh.d/init.zsh
@@ -55,20 +56,20 @@
         state: link
         force: yes
         follow: no
-    - name: configure xresources
-      file:
-        src: ~/.dotfiles/xresources/src/nord
-        dest: ~/.Xresources
-        state: link
-        force: yes
-        follow: no
-    - name: configure xdefaults
-      file:
-        src: ~/.dotfiles/xresources/src/nord
-        dest: ~/.Xdefaults
-        state: link
-        force: yes
-        follow: no
+    # - name: configure xresources
+    #   file:
+    #     src: ~/.dotfiles/xresources/src/nord
+    #     dest: ~/.Xresources
+    #     state: link
+    #     force: yes
+    #     follow: no
+    # - name: configure xdefaults
+    #   file:
+    #     src: ~/.dotfiles/xresources/src/nord
+    #     dest: ~/.Xdefaults
+    #     state: link
+    #     force: yes
+    #     follow: no
     - name: make sure to use ~/.tmux.conf instead of ~/.config/tmux/tmux.conf
       file:
         path: ~/.config/tmux
