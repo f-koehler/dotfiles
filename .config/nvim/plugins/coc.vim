@@ -14,6 +14,7 @@ let g:coc_global_extensions = [
             \ "coc-highlight",
             \ "coc-html",
             \ "coc-json",
+            \ "coc-julia",
             \ "coc-lists",
             \ "coc-markdownlint",
             \ "coc-marketplace",
