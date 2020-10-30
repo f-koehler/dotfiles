@@ -27,7 +27,6 @@ let g:coc_global_extensions = [
             \ "coc-rust-analyzer",
             \ "coc-sh",
             \ "coc-snippets",
-            \ "coc-svg",
             \ "coc-syntax",
             \ "coc-tag",
             \ "coc-template",
