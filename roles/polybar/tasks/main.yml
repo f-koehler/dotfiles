@@ -1,0 +1,10 @@
+- name: create polybar config dir
+  file:
+    path: ~/.config/polybar
+    state: directory
+
+- name: configure polybar
+  template:
+    src: main.conf
+    dest: ~/.config/polybar/config
+    trim_blocks: no

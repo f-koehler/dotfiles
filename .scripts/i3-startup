@@ -14,9 +14,9 @@ fi
 
 # start polybar
 if [ -f /usr/bin/polybar ]; then
-    /usr/bin/polybar -r zoq45-left &
-    /usr/bin/polybar -r zoq45-center &
-    /usr/bin/polybar -r zoq45-right &
+    /usr/bin/polybar -r left &
+    /usr/bin/polybar -r center &
+    /usr/bin/polybar -r right &
 fi
 
 # assign workspaces to scrrens
