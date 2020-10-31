@@ -2,7 +2,6 @@ polybar_bars:
   center:
     modules_center:
       - pulseaudio
-      - wired-network-enp0s31f6
       - filesystem-/
       - cpu
       - memory
@@ -10,7 +9,7 @@ polybar_bars:
       - i3
     modules_right:
       - date
-    monitor: HDMI1
+    monitor: LVDS-1
     tray: True
 polybar_filesystems:
   - /
