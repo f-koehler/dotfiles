@@ -1,5 +1,14 @@
-- hosts: targets
-  ignore_unreachable: yes
+- name: find reachable hosts
+  hosts: targets
+  gather_facts: no
+  tasks:
+    - command: /bin/true
+      register: result
+      ignore_errors: yes
+    - group_by: key=reachable
+      when: result is success
+
+- hosts: reachable
   roles:
     - polybar
   tasks:
