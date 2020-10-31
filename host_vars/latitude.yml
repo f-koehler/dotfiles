@@ -9,7 +9,7 @@ polybar_bars:
       - i3
     modules_right:
       - date
-    monitor: LVDS-1
+    monitor: LVDS1
     tray: True
 polybar_filesystems:
   - /
