@@ -1,0 +1,15 @@
+polybar_bars:
+  center:
+    modules_center:
+      - pulseaudio
+      - filesystem-/
+      - cpu
+      - memory
+    modules_left:
+      - i3
+    modules_right:
+      - date
+    monitor: LVDS1
+    tray: True
+polybar_filesystems:
+  - /

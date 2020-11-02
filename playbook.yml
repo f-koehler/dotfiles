@@ -1,45 +1,14 @@
-- hosts: targets
-  vars:
-    polybar_bars:
-      center:
-        modules_center:
-          - pulseaudio
-          - wired-network-enp0s31f6
-          - filesystem-/
-          - cpu
-          - memory
-        modules_left:
-          - i3
-        modules_right:
-          - date
-        monitor: HDMI1
-        tray: True
-      left:
-        modules_center:
-          - pulseaudio
-          - filesystem-/
-          - cpu
-          - memory
-        modules_left:
-          - i3
-        modules_right:
-          - date
-        monitor: DP1
-      right:
-        modules_center:
-          - pulseaudio
-          - filesystem-/
-          - cpu
-          - memory
-        modules_left:
-          - i3
-        modules_right:
-          - date
-        monitor: DP2
-    polybar_wired_networks:
-      - enp0s31f6
-    polybar_filesystems:
-      - /
+- name: find reachable hosts
+  hosts: targets
+  gather_facts: no
+  tasks:
+    - command: /bin/true
+      register: result
+      ignore_errors: yes
+    - group_by: key=reachable
+      when: result is success
+
+- hosts: reachable
   roles:
     - polybar
   tasks:
@@ -170,7 +139,7 @@
             - isort
             - khal
             - mypy
-            - notify-send.py
+            # - notify-send.py
             - poetry
             - pre-commit
             - pylint
