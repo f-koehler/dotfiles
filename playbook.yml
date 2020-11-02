@@ -11,6 +11,7 @@
 - hosts: reachable
   roles:
     - polybar
+    - firefox
   tasks:
     - name: symlinks in ~/.config/
       file:
@@ -48,7 +49,6 @@
         - .emacs.d
         - .fzf
         - .gitconfig
-        - .mozilla
         - .scripts
         - .xinitrc
         - .zsh.d

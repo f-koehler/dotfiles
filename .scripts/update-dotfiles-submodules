@@ -18,4 +18,3 @@ else
 fi
 
 ~/.fzf/install --all
-~/.mozilla/firefox/user.js/updater.sh -p ~/.mozilla/firefox/fkoehler -u -d -s
