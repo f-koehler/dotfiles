@@ -125,6 +125,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'neomake/neomake'
     Plug 'neomutt/neomutt.vim'
+    Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'roxma/vim-tmux-clipboard'
     Plug 'ryanoasis/vim-devicons'
     Plug 'sbdchd/neoformat'
@@ -142,6 +143,14 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
 call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    textobjects = { enable = true },
+}
+EOF
 
 " load plugin configs
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
