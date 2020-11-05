@@ -96,7 +96,8 @@ if [ -f /opt/spack/share/spack/setup-env.sh ]; then
     source $SPACK_ROOT/share/spack/setup-env.sh
 fi
 
-[[ -f /opt/intel/compilers_and_libraries_2020.0.166/linux/bin/compilervars.sh ]] && source /opt/intel/compilers_and_libraries_2020.0.166/linux/bin/compilervars.sh -arch intel64 -platform linux &> /dev/null
+[[ -f /opt/intel/composerxe/linux/bin/compilervars.sh ]] && source source /opt/intel/composerxe/linux/bin/compilervars.sh intel64 &> /dev/null
+
 export QT_API=pyside2
 
 export GPG_TTY=$(tty)
