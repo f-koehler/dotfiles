@@ -1,0 +1,10 @@
+- name: create i3 config dir
+  file:
+    path: ~/.config/i3
+    state: directory
+
+- name: configure i3
+  template:
+    src: main.conf
+    dest: ~/.config/i3/config
+    trim_blocks: no

@@ -10,6 +10,7 @@
 
 - hosts: reachable
   roles:
+    - i3
     - polybar
     - firefox
   tasks:
@@ -24,7 +25,6 @@
         - alacritty
         - gtk-3.0
         - htop
-        - i3
         - khal
         - kitty
         - mpv
