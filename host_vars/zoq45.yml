@@ -12,7 +12,7 @@ screens:
       x: 3120
       y: 0
     rotate: left
-  HDMI2:
+  HDMI1:
     resolution:
       x: 1920
       y: 1200
