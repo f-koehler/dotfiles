@@ -1,3 +1,9 @@
+screens:
+  LVDS1:
+    resolution:
+      x: 1600
+      y: 900
+    primary: yes
 polybar_bars:
   center:
     modules_center:
