@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Stolen from https://gist.github.com/grifferz/64808f61079fe610c6f21f03ac7fd1aa
+
+# Paste at shell prompt (or download and execute) and get:
+#
+#     sdc   9936 hours ( 1.13 years) 3.49TiB SAMSUNG MZ7KH3T8
+# nvme0n1   9936 hours ( 1.13 years) 3.49TiB SAMSUNG MZQLB3T8HALS-00007
+#     sde   9932 hours ( 1.13 years) 4.55TiB ST5000LM000-2AN1
+#     sdd   9931 hours ( 1.13 years) 4.55TiB ST5000LM000-2AN1
+#     sdb   9617 hours ( 1.09 years) 0.01TiB SuperMicro SSD
+#     sda   9616 hours ( 1.09 years) 0.01TiB SuperMicro SSD
+#
+# Requires: smartctl, lslbk and GNU bc.
+#
+# smartctl produces entirely different output for nvme vs ATA, hence the
+# horrible awk. Improvements welcome.
+
+# -e 7 excludes loop devices.
+lsblk -e 7 -bdno NAME,SIZE |
+    while read -r dev size; do
+        model=$(<"/sys/block/${dev}/device/model");
+        hours=$(sudo smartctl -l devstat "/dev/${dev}" 2>/dev/null |
+            awk '/^0x01[[:space:]]+0x010/ { print $4 }');
+        [ -z "$hours" ] && hours=$(sudo smartctl -a "/dev/${dev}" |
+            awk '
+                /^Power On Hours:/ {
+                    gsub(/h.*/, "", $NF);
+                    gsub(/,/, "", $NF);
+                    print $NF
+                }
+                /Power_On_Hours/ {
+                    gsub(/h.*/, "", $10);
+                    print $10
+                }');
+        years=$(bc <<< "scale=2; $hours / 24 / 365.25");
+        size_tib=$(bc <<< "scale=4; x=$size / 1099511627776; if(x<1) print 0; x");
+        printf "%8s %6d hours (%5.2f years) %.2fTiB %s\\n" \
+            "$dev" "$hours" "$years" "$size_tib" "$model";
+    done | sort -rnk 2
