@@ -73,5 +73,6 @@
   "cSpell.userWords": ["eigenbasis"],
   "gitlens.advanced.telemetry.enabled": false,
   "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false
+  "telemetry.enableTelemetry": false,
+  "python.languageServer": "Microsoft"
 }
