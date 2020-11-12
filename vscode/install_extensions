@@ -6,4 +6,4 @@ for extension in $(cat extensions.txt); do
     ARGUMENTS="${ARGUMENTS} --install-extension ${extension}"
 done
 
-flatpak run com.visualstudio.code ${ARGUMENTS}
+code ${ARGUMENTS}

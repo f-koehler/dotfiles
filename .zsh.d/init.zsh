@@ -91,13 +91,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 [[ -f /etc/profile.d/modules.sh ]] && source /etc/profile.d/modules.sh
 
-if [ -f /opt/spack/share/spack/setup-env.sh ]; then
-    export SPACK_ROOT=/opt/spack
-    source $SPACK_ROOT/share/spack/setup-env.sh
-fi
-
-[[ -f /opt/intel/composerxe/linux/bin/compilervars.sh ]] && source source /opt/intel/composerxe/linux/bin/compilervars.sh intel64 &> /dev/null
-
 export QT_API=pyside2
 
 export GPG_TTY=$(tty)
@@ -119,18 +112,3 @@ fi
 if [ -d "$HOME/.local/share/flatpak/exports/bin/" ]; then
   export PATH="$HOME/.local/share/flatpak/exports/bin/:$PATH"
 fi
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/home/fkoehler/.local/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/home/fkoehler/.local/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/home/fkoehler/.local/opt/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/home/fkoehler/.local/opt/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<

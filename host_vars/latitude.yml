@@ -1,6 +1,13 @@
+screens:
+  LVDS1:
+    resolution:
+      x: 1600
+      y: 900
+    primary: yes
 polybar_bars:
   center:
     modules_center:
+      - battery
       - pulseaudio
       - filesystem-/
       - cpu
@@ -13,3 +20,5 @@ polybar_bars:
     tray: True
 polybar_filesystems:
   - /
+polybar_battery_name: BAT0
+polybar_battery_adapter: AC

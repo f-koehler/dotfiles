@@ -1,11 +1,15 @@
+.org.chromium.Chromium.*
 Backups/
 Cache/
 CachedData/
-CachedExtensions
+CachedExtensionVSIXs/
+CachedExtensions/
 Code Cache/
 Cookies
 Cookies-journal
+Crash Reports/
 GPUCache/
+Local Storage/
 Network Persistent State
 Session Storage/
 TransportSecurity
@@ -13,9 +17,9 @@ User/globalStorage/
 User/syncLocalSettings.json
 User/workspaceStorage/
 Workspaces/
+exthost Crash Reports/
 languagepacks.json
 logs/
 machineid
 rapid_render.json
 storage.json
-.org.chromium.Chromium.*
