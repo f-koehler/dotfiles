@@ -74,5 +74,5 @@
   "gitlens.advanced.telemetry.enabled": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "python.languageServer": "Microsoft"
+  "python.languageServer": "Pylance"
 }
