@@ -7,6 +7,7 @@ screens:
 polybar_bars:
   center:
     modules_center:
+      - backlight
       - battery
       - pulseaudio
       - filesystem-/
@@ -22,3 +23,4 @@ polybar_filesystems:
   - /
 polybar_battery_name: BAT0
 polybar_battery_adapter: AC
+polybar_backlight_name: intel_backlight
