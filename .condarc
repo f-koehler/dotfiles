@@ -1,5 +1,4 @@
 # vim: set ft=yaml:
 channels:
-  - nvidia
   - conda-forge
   - defaults
