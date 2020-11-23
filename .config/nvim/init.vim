@@ -143,6 +143,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
     Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+    Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 
     if has('nvim-0.5')
         Plug 'nvim-treesitter/nvim-treesitter'
