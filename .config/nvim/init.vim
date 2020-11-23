@@ -32,6 +32,7 @@ set encoding=utf-8
 set guifont=Ubuntu\ Mono\ Nerd\ Font:h11
 
 set nocompatible
+set termguicolors
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,6 +142,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'vim-airline/vim-airline'
     Plug 'voldikss/vim-floaterm'
     Plug 'yggdroot/indentline'
+    Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
     if has('nvim-0.5')
         Plug 'nvim-treesitter/nvim-treesitter'
