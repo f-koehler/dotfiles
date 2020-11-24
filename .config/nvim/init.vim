@@ -145,21 +145,20 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 
-    if has('nvim-0.5')
-        Plug 'nvim-treesitter/nvim-treesitter'
-    endif
+    " if has('nvim-0.5')
+    "     Plug 'nvim-treesitter/nvim-treesitter'
+    " endif
 call plug#end()
 
-if has('nvim-0.5')
-    lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = { enable = true },
-    incremental_selection = { enable = true },
-    textobjects = { enable = true },
-}
-EOF
-
-endif
+" if has('nvim-0.5')
+"     lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"     highlight = { enable = true },
+"     incremental_selection = { enable = true },
+"     textobjects = { enable = true },
+" }
+" EOF
+" endif
 
 " load plugin configs
 for f in split(glob('~/.config/nvim/plugins/*.vim'), '\n')
