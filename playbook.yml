@@ -12,7 +12,6 @@
   roles:
     - i3
     - polybar
-    - firefox
   tasks:
     - name: symlinks in ~/.config/
       file:
