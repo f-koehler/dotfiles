@@ -3,13 +3,13 @@ screens:
     resolution:
       x: 1920
       y: 1080
+    position:
+      x: 1920
+      y: 0
   HDMI-0:
     resolution:
       x: 1920
       y: 1080
-    position:
-      x: 1920
-      y: 0
     primary: yes
 polybar_bars:
   right:
