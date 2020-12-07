@@ -144,6 +144,7 @@ call plug#begin('~/.cache/vim-plug')
     Plug 'yggdroot/indentline'
     Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
     Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+    Plug 'junegunn/limelight.vim'
 
     " if has('nvim-0.5')
     "     Plug 'nvim-treesitter/nvim-treesitter'
