@@ -3,19 +3,19 @@ screens:
     resolution:
       x: 1920
       y: 1080
+    position:
+      x: 1920
+      y: 0
   HDMI-0:
     resolution:
       x: 1920
       y: 1080
-    position:
-      x: 1920
-      y: 0
     primary: yes
 polybar_bars:
   right:
     modules_center:
       - pulseaudio
-      - wired-network-enp6s0
+      - wireless-network-wlp2s0
       - filesystem-/
       - cpu
       - memory
@@ -36,7 +36,7 @@ polybar_bars:
     modules_right:
       - date
     monitor: DVI-D-0
-polybar_wired_networks:
-  - enp6s0
+polybar_wireless_networks:
+  - wlp2s0
 polybar_filesystems:
   - /
