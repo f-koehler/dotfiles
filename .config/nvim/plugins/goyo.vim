@@ -12,6 +12,8 @@ function! s:goyo_enter()
   set noshowcmd
   set scrolloff=999
   :call CocAction('diagnosticToggle')
+  :GitGutterDisable
+  :CocCommand git.toggleGutters
   Limelight
 endfunction
 
@@ -23,6 +25,8 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set scrolloff=5
+  :CocCommand git.toggleGutters
+  :GitGutterEnable
   Limelight!
 endfunction
 
