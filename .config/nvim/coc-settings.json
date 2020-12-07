@@ -7,6 +7,7 @@
     "rust",
     "typescript"
   ],
+  "coc.preferences.colorSupport": false,
   "languageserver": {
     "fortls": {
       "command": "fortls",
