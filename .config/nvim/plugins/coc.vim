@@ -24,7 +24,6 @@ let g:coc_global_extensions = [
             \ "coc-python",
             \ "coc-r-lsp",
             \ "coc-rls",
-            \ "coc-rust-analyzer",
             \ "coc-sh",
             \ "coc-snippets",
             \ "coc-syntax",
