@@ -8,3 +8,5 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
+[color]
+	ui = auto
