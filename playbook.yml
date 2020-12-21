@@ -53,6 +53,7 @@
         - .zsh.d
         - .Xresources
         - .Xdefaults
+        - .ideavimrc
     - name: symlink zsh config
       file:
         src: ~/.zsh.d/init.zsh
