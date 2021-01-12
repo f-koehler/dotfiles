@@ -100,27 +100,6 @@
         state: link
         force: yes
         follow: no
-    - name: configure vscodium
-      file:
-        src: "~/.dotfiles/vscode"
-        dest: "~/.config/VSCodium"
-        state: link
-        force: yes
-        follow: no
-    - name: configure vscode (OSS)
-      file:
-        src: "~/.dotfiles/vscode"
-        dest: "~/.config/Code - OSS"
-        state: link
-        force: yes
-        follow: no
-    - name: configure vscode
-      file:
-        src: "~/.dotfiles/vscode"
-        dest: "~/.config/Code"
-        state: link
-        force: yes
-        follow: no
     - name: check if pipx exists
       stat:
         path: /usr/bin/pipx
