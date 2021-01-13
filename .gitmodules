@@ -43,3 +43,6 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
+[submodule ".config/spicetify/CustomApps/genius"]
+	path = .config/spicetify/CustomApps/genius
+	url = https://github.com/khanhas/genius-spicetify
