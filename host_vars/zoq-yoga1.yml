@@ -1,0 +1,26 @@
+screens:
+  eDP1:
+    resolution:
+      x: 1920
+      y: 1080
+    primary: yes
+polybar_bars:
+  center:
+    modules_center:
+      - backlight
+      - battery
+      - pulseaudio
+      - filesystem-/
+      - cpu
+      - memory
+    modules_left:
+      - i3
+    modules_right:
+      - date
+    monitor: eDP1
+    tray: True
+polybar_filesystems:
+  - /
+polybar_battery_name: BAT0
+polybar_battery_adapter: AC
+polybar_backlight_name: intel_backlight
