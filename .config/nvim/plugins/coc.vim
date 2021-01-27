@@ -28,7 +28,6 @@ let g:coc_global_extensions = [
             \ "coc-snippets",
             \ "coc-syntax",
             \ "coc-tag",
-            \ "coc-template",
             \ "coc-texlab",
             \ "coc-tslint-plugin",
             \ "coc-tsserver",
