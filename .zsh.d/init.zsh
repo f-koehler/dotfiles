@@ -127,3 +127,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+if [ -d $HOME/.local/share/flatpak/exports/bin ]; then
+    export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+fi
