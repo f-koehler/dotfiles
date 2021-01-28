@@ -1,0 +1,18 @@
+- name: make sure to use ~/.tmux.conf instead of ~/.config/tmux/tmux.conf
+  file:
+    path: ~/.config/tmux
+    state: absent
+- name: link tmux.conf
+  file:
+    src: ~/.dotfiles/tmux/tmux.conf
+    dest: ~/.tmux.conf
+    state: link
+    force: yes
+    follow: no
+- name: link tmux dir
+  file:
+    src: ~/.dotfiles/tmux/
+    dest: ~/.tmux
+    state: link
+    force: yes
+    follow: no
