@@ -6,11 +6,13 @@ screens:
     position:
       x: 1920
       y: 0
+    i3_workspaces: [8, 9, 10]
   HDMI-0:
     resolution:
       x: 1920
       y: 1080
     primary: yes
+    i3_workspaces: [1, 2, 3]
 polybar_bars:
   right:
     modules_center:
