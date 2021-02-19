@@ -18,9 +18,5 @@
         method: user
         remote: flathub
       loop:
-        - com.leinardi.gwe
         - com.spotify.Client
-        - org.musescore.MuseScore
-        - us.zoom.Zoom
-        - ch.protonmail.protonmail-bridge
   when: flatpak_check.stat.exists
