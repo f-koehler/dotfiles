@@ -24,6 +24,5 @@
         state: started
         scope: user
       loop:
-        - gnirehtet.service
         - update-dotfiles-submodules.timer
         - update-flatpaks.timer

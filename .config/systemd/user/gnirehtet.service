@@ -1,8 +1,0 @@
-[Unit]
-Description=Start gnirehtet reverse tethering
-
-[Service]
-ExecStart=/usr/bin/gnirehtet autorun
-
-[Install]
-WantedBy=default.target

@@ -84,6 +84,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 export EDITOR=vim
 
 export PATH="$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+
 [[ -f $HOME/.profile ]] && source $HOME/.profile
 
 # load p10k customizations
@@ -113,6 +115,10 @@ if [ -d "$HOME/.local/share/flatpak/exports/bin/" ]; then
   export PATH="$HOME/.local/share/flatpak/exports/bin/:$PATH"
 fi
 
+if [ -d $HOME/.local/share/flatpak/exports/bin ]; then
+    export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/fkoehler/.local/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -128,6 +134,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-if [ -d $HOME/.local/share/flatpak/exports/bin ]; then
-    export PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
-fi
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH

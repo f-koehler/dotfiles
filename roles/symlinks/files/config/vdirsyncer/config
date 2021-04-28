@@ -16,9 +16,10 @@ fileext = ".ics"
 [storage calendar_remote]
 type = "caldav"
 url = "https://nextcloud.fkoehler.xyz/remote.php/caldav/"
-username.fetch = ["command", "pass", "nextcloud/username"]
-password.fetch = ["command", "pass", "nextcloud/password"]
-verify_fingerprint = "F5:E2:3F:80:CC:C2:91:38:4E:CD:CA:22:3B:68:33:16:A3:54:80:57"
+username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-username.gpg"]
+password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-password.gpg"]
+; verify_fingerprint = "F5:E2:3F:80:CC:C2:91:38:4E:CD:CA:22:3B:68:33:16:A3:54:80:57"
+verify_fingerprint = "4f2aba11cb88f75ade6fccbfb64154b7f0e661ad"
 
 [pair contacts]
 a = "contacts_local"
@@ -33,5 +34,5 @@ fileext = ".vcf"
 [storage contacts_remote]
 type = "carddav"
 url = "https://nextcloud.fkoehler.xyz/remote.php/carddav/"
-username.fetch = ["command", "pass", "nextcloud/username"]
-password.fetch = ["command", "pass", "nextcloud/password"]
+username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-username.gpg"]
+password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-password.gpg"]
