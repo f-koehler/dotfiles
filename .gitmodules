@@ -46,3 +46,6 @@
 [submodule ".config/spicetify/CustomApps/genius"]
 	path = .config/spicetify/CustomApps/genius
 	url = https://github.com/khanhas/genius-spicetify
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:f-koehler/neovim-config.git
