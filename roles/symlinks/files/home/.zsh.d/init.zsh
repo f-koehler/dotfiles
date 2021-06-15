@@ -52,15 +52,15 @@ plugins=(
     zsh-z
 )
 
+# Configure fzf plugin
+export FZF_BASE=/usr/share/fzf
+
 # Activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 
 
 # User configuration
-
-# Configure fzf plugin
-export FZF_BASE=$HOME/.fzf
 
 # Load my keybindings
 source "$ZSHD/keybindings.zsh"
@@ -72,7 +72,7 @@ source "$ZSHD/aliases.zsh"
 source "$ZSHD/functions.zsh"
 
 # Load my fzf tweaks
-[ -f ~/.fzf.zsh ] && source "$ZSHD/fzf.zsh"
+source "$ZSHD/fzf.zsh"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark

@@ -22,9 +22,6 @@
 [submodule "emacs"]
 	path = roles/symlinks/files/home/.emacs.d
 	 url = https://github.com/syl20bnr/spacemacs
-[submodule ".fzf"]
-	path = roles/symlinks/files/home/.fzf
-	 url = https://github.com/junegunn/fzf.git
 [submodule "ohmyzsh"]
 	path = roles/symlinks/files/home/.zsh.d/ohmyzsh
 	 url = https://github.com/ohmyzsh/ohmyzsh.git

@@ -33,7 +33,6 @@
     - .condarc
     - .dir_colors
     - .emacs.d
-    - .fzf
     - .gitconfig
     - .scripts
     - .xinitrc
