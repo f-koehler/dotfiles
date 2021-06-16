@@ -13,11 +13,6 @@ if (( $+commands[bat] )); then
     alias cat="bat --color=always --italic-text=always --theme=Nord --plain"
 fi
 
-# Replace find with fd if installed
-if (( $+commands[fd] )); then
-    alias find="fd"
-fi
-
 # Replace grep with ripgrep if installed
 if (( $+commands[rg] )); then
     alias grep="rg"
@@ -71,3 +66,6 @@ fi
 if (( $+commands[nvim] )); then
     alias vim="nvim"
 fi
+
+
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
