@@ -18,32 +18,6 @@ if (( $+commands[rg] )); then
     alias grep="rg"
 fi
 
-# Replace du with dust if installed
-if (( $+commands[dust] )); then
-    alias du="dust"
-fi
-
-# Replace cloc with tokei if installed
-if (( $+commands[tokei] )); then
-    alias cloc="tokei"
-fi
-
-# Replace ps with procs if installed
-if (( $+commands[procs] )); then
-    alias ps="procs"
-fi
-
-# Replace sed with sd if installed
-if (( $+commands[sd] )); then
-    alias sed="sd"
-fi
-
-# Replace top/htop with bottom if installed
-if (( $+commands[btm] )); then
-    alias top="btm"
-    alias htop="btm"
-fi
-
 # do not show snaps in df and lsblk output
 if (( $+command[snap] )); then
     alias df="df -x squashfs"
