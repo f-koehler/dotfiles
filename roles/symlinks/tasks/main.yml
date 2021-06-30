@@ -17,7 +17,6 @@
     - picom
     - ranger
     - rofi
-    - spicetify
     - systemd
     - vdirsyncer
   notify:
