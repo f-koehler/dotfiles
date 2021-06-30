@@ -1,3 +1,8 @@
+# confirm before overwriting/deleting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
 # Replace ls with exa if installed
 # Change defaults for ls otherwise
 if (( $+commands[exa] )); then
