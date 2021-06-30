@@ -39,6 +39,7 @@
     - .Xresources
     - .Xdefaults
     - .ideavimrc
+    - .profile
 - name: symlink zsh config
   file:
     src: ~/.zsh.d/init.zsh
