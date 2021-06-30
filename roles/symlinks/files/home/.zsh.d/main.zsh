@@ -22,6 +22,9 @@ zle -N down-line-or-beginning-search
 # colors
 autoload -Uz colors && colors
 
+# history
+setopt appendhistory
+setopt histignorealldups
 
 source "$ZSHD/functions.zsh"
 
