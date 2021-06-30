@@ -42,7 +42,7 @@
     - .profile
 - name: symlink zsh config
   file:
-    src: ~/.zsh.d/init.zsh
+    src: ~/.zsh.d/zshrc.zsh
     dest: ~/.zshrc
     state: link
     force: yes

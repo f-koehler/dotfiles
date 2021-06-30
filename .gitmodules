@@ -1,33 +1,12 @@
-[submodule "custom/plugins/zsh-autosuggestions"]
-	path = roles/symlinks/files/home/.zsh.d/custom/plugins/zsh-autosuggestions
-	 url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "custom/plugins/zsh-completions"]
-	path = roles/symlinks/files/home/.zsh.d/custom/plugins/zsh-completions
-	 url = https://github.com/zsh-users/zsh-completions
-[submodule "custom/plugins/zsh-rustup-completion"]
-	path = roles/symlinks/files/home/.zsh.d/custom/plugins/zsh-rustup-completion
-	 url = https://github.com/pkulev/zsh-rustup-completion.git
-[submodule "custom/plugins/zsh-syntax-highlighting"]
-	path = roles/symlinks/files/home/.zsh.d/custom/plugins/zsh-syntax-highlighting
-	 url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "custom/plugins/zsh-z"]
-	path = roles/symlinks/files/home/.zsh.d/custom/plugins/zsh-z
-	 url = https://github.com/agkozak/zsh-z.git
 [submodule "dircolors"]
 	 path = .nord-dircolors
 	 url = https://github.com/arcticicestudio/nord-dircolors
 [submodule "emacs"]
 	path = roles/symlinks/files/home/.emacs.d
 	 url = https://github.com/syl20bnr/spacemacs
-[submodule "ohmyzsh"]
-	path = roles/symlinks/files/home/.zsh.d/ohmyzsh
-	 url = https://github.com/ohmyzsh/ohmyzsh.git
 [submodule "plugins/ranger_devicons"]
 	path = roles/symlinks/files/config/ranger/plugins/ranger_devicons
 	 url = https://github.com/alexanderjeurissen/ranger_devicons
-[submodule "powerlevel10k"]
-	path = roles/symlinks/files/home/.zsh.d/custom/themes/powerlevel10k
-	 url = https://github.com/romkatv/powerlevel10k.git
 [submodule "tmux/plugins/tpm"]
 	 path = tmux/plugins/tpm
 	 url = https://github.com/tmux-plugins/tpm
