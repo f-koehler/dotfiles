@@ -3,6 +3,10 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 
+if (( $+commands[direnv] )); then
+	eval "$(direnv hook zsh)"
+fi
+
 if (( $+commands[zoxide] )); then
 	eval "$(zoxide init zsh)"
 fi
