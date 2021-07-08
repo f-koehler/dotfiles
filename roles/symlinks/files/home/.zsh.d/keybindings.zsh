@@ -12,7 +12,8 @@ zle -N ctrl-z-toggle
 bindkey '^Z' ctrl-z-toggle
 
 
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey "^[[3~" delete-char
