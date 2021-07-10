@@ -16,6 +16,6 @@
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
-[submodule ".config/nvim"]
+[submodule "roles/symlinks/files/config/nvim"]
 	path = roles/symlinks/files/config/nvim
-	url = git@github.com:f-koehler/neovim-config.git
+	url = git@github.com:f-koehler/LunarVim.git
