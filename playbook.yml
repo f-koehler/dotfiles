@@ -12,11 +12,12 @@
   roles:
     - anaconda
     - emacs
+    - fzf
     - i3
+    - nvim
     - polybar
     - symlinks
     - tmux
-    - nvim
     - zsh
   tasks:
     - name: enable systemd user units

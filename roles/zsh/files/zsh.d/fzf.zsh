@@ -5,8 +5,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
 '
 
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 # export FZF_DEFAULT_COMMAND='
 #     (git ls-tree -r --name-only HEAD ||

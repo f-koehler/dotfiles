@@ -1,2 +1,0 @@
-- name: regenerate fontconfig cache
-  command: fc-cache --force --verbose
