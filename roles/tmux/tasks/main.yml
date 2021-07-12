@@ -25,6 +25,20 @@
     repo: "https://github.com/tmux-plugins/tmux-yank"
     version: master
 
+- name: "install tmux-resurrect"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/tmux-resurrect
+    repo: "https://github.com/tmux-plugins/tmux-resurrect"
+    version: master
+
+- name: "install tmux-continuum"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/tmux-continuum
+    repo: "https://github.com/tmux-plugins/tmux-continuum"
+    version: master
+
 - name: "install tmux-tilish"
   ansible.builtin.git:
     accept_hostkey: yes
