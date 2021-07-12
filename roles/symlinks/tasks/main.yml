@@ -28,12 +28,9 @@
     follow: no
   loop:
     - .condarc
-    - .dir_colors
     - .gitconfig
     - .scripts
     - .xinitrc
-    - .Xresources
-    - .Xdefaults
     - .ideavimrc
     - .profile
 - name: flush handlers

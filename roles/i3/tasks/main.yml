@@ -2,8 +2,10 @@
   file:
     path: ~/.config/i3
     state: directory
+    mode: 0750
 
 - name: configure i3
   template:
     src: main.conf
     dest: ~/.config/i3/config
+    mode: 0640

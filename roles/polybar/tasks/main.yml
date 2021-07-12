@@ -2,9 +2,11 @@
   file:
     path: ~/.config/polybar
     state: directory
+    mode: 0750
 
 - name: configure polybar
   template:
     src: main.conf
     dest: ~/.config/polybar/config
     trim_blocks: no
+    mode: 0640

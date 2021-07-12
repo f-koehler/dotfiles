@@ -1,0 +1,6 @@
+- name: clone nord-dircolors config
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.dir_colors
+    repo: https://github.com/arcticicestudio/nord-dircolors.git
+    version: develop

@@ -2,15 +2,18 @@
   hosts: targets
   gather_facts: no
   tasks:
-    - command: /bin/true
+    - name: "run a dummy command on hosts, ignoring failures"
+      command: /bin/true # noqa no-changed-when
       register: result
       ignore_errors: yes
-    - group_by: key=reachable
+    - name: "register reachable hosts"
+      group_by: key=reachable
       when: result is success
 
 - hosts: reachable
   roles:
     - anaconda
+    - dircolors
     - emacs
     - fzf
     - i3
@@ -19,6 +22,7 @@
     - ranger
     - symlinks
     - tmux
+    - xresources
     - zsh
   tasks:
     - name: enable systemd user units
