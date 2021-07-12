@@ -10,3 +10,7 @@ jobs:
         uses: ansible/ansible-lint-action@master
         with:
           targets: "."
+          override-deps: |
+            ansible>4.2
+            ansible-lint>5
+          args: "-vv"
