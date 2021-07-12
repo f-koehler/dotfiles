@@ -16,6 +16,7 @@
     - anaconda
     - dircolors
     - emacs
+    - fish
     - fzf
     - i3
     - nvim
