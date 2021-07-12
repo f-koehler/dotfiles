@@ -1,9 +1,6 @@
 [submodule "dircolors"]
 	 path = .nord-dircolors
 	 url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "plugins/ranger_devicons"]
-	path = roles/symlinks/files/config/ranger/plugins/ranger_devicons
-	 url = https://github.com/alexanderjeurissen/ranger_devicons
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git

@@ -16,6 +16,7 @@
     - i3
     - nvim
     - polybar
+    - ranger
     - symlinks
     - tmux
     - zsh
