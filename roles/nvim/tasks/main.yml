@@ -1,0 +1,22 @@
+- name: clone LunarVim config
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.config/nvim
+    repo: "git@github.com:f-koehler/LunarVim.git"
+    version: "f-koehler"
+
+- name: add LunarVim upstream
+  community.general.git_config:
+    scope: local
+    name: "remote.upstream.url"
+    value: https://github.com/ChristianChiarulli/LunarVim.git
+    repo: ~/.config/nvim
+  notify: fetch LunarVim upstream
+
+- name: set LunarVim upstream fetch rule
+  community.general.git_config:
+    scope: local
+    name: "remote.upstream.fetch"
+    value: "+refs/heads/*:refs/remotes/origin/*"
+    repo: ~/.config/nvim
+  notify: fetch LunarVim upstream

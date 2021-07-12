@@ -11,10 +11,13 @@
 - hosts: reachable
   roles:
     - anaconda
+    - emacs
     - i3
     - polybar
     - symlinks
     - tmux
+    - nvim
+    - zsh
   tasks:
     - name: enable systemd user units
       systemd:

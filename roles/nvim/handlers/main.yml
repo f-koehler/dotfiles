@@ -1,0 +1,4 @@
+- name: fetch LunarVim upstream
+  ansible.builtin.command: git fetch upstream
+  args:
+    chdir: ~/.config/nvim

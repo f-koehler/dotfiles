@@ -1,0 +1,5 @@
+- name: clone Spacemacs config
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.emacs.d
+    repo: "https://github.com/syl20bnr/spacemacs"

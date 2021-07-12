@@ -1,21 +1,12 @@
 [submodule "dircolors"]
 	 path = .nord-dircolors
 	 url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "emacs"]
-	path = roles/symlinks/files/home/.emacs.d
-	 url = https://github.com/syl20bnr/spacemacs
 [submodule "plugins/ranger_devicons"]
 	path = roles/symlinks/files/config/ranger/plugins/ranger_devicons
 	 url = https://github.com/alexanderjeurissen/ranger_devicons
 [submodule "tmux/plugins/tpm"]
 	 path = tmux/plugins/tpm
 	 url = https://github.com/tmux-plugins/tpm
-[submodule "vim-plug"]
-	 path = .config/nvim/vim-plug
-	 url = https://github.com/junegunn/vim-plug
 [submodule "xresources"]
 	 path = xresources
 	 url = https://github.com/arcticicestudio/nord-xresources.git
-[submodule "roles/symlinks/files/config/nvim"]
-	path = roles/symlinks/files/config/nvim
-	url = git@github.com:f-koehler/LunarVim.git
