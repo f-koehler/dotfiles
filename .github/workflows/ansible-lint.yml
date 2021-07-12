@@ -22,4 +22,4 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Run ansible-lint
         run: |
-          python -m ansible-lint -v --show-relpath
+          ansible-lint -v --show-relpath
