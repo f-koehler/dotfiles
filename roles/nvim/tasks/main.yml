@@ -16,5 +16,19 @@
   community.general.git_config:
     scope: local
     name: "remote.upstream.fetch"
+    value: "+refs/heads/*:refs/remotes/upstream/*"
+    repo: ~/.config/nvim
+
+- name: add LunarVim upstream
+  community.general.git_config:
+    scope: local
+    name: "remote.origin.url"
+    value: "git@github.com/f-koehler/LunarVim.git"
+    repo: ~/.config/nvim
+
+- name: set LunarVim upstream fetch rule
+  community.general.git_config:
+    scope: local
+    name: "remote.origin.fetch"
     value: "+refs/heads/*:refs/remotes/origin/*"
     repo: ~/.config/nvim
