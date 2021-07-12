@@ -11,7 +11,6 @@
     name: "remote.upstream.url"
     value: https://github.com/ChristianChiarulli/LunarVim.git
     repo: ~/.config/nvim
-  notify: fetch LunarVim upstream
 
 - name: set LunarVim upstream fetch rule
   community.general.git_config:
@@ -19,4 +18,3 @@
     name: "remote.upstream.fetch"
     value: "+refs/heads/*:refs/remotes/origin/*"
     repo: ~/.config/nvim
-  notify: fetch LunarVim upstream

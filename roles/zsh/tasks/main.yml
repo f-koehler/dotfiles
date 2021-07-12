@@ -15,27 +15,32 @@
     accept_hostkey: yes
     dest: ~/.zsh.d/plugins/zsh-autosuggestions
     repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    version: master
 
 - name: install zsh-syntax-highlighting
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.zsh.d/plugins/zsh-syntax-highlighting
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    version: master
 
 - name: install powerlevel10k
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.zsh.d/plugins/powerlevel10k
     repo: "https://github.com/romkatv/powerlevel10k"
+    version: master
 
 - name: install conda-zsh-completion
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.zsh.d/plugins/conda-zsh-completion
     repo: "https://github.com/esc/conda-zsh-completion"
+    version: master
 
 - name: install zsh-yarn-autocompletions
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.zsh.d/plugins/zsh-yarn-autocompletions
     repo: "https://github.com/g-plane/zsh-yarn-autocompletions"
+    version: master

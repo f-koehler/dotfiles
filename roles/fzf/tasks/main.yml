@@ -3,4 +3,5 @@
     accept_hostkey: yes
     dest: ~/.fzf
     repo: https://github.com/junegunn/fzf
+    version: master
   notify: install fzf

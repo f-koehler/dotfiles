@@ -16,21 +16,25 @@
     accept_hostkey: yes
     dest: ~/.tmux/plugins/tmux-sensible
     repo: "https://github.com/tmux-plugins/tmux-sensible"
+    version: master
 
 - name: "install tmux-yank"
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.tmux/plugins/tmux-yank
     repo: "https://github.com/tmux-plugins/tmux-yank"
+    version: master
 
 - name: "install tmux-tilish"
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.tmux/plugins/tmux-tilish
     repo: "https://github.com/jabirali/tmux-tilish"
+    version: master
 
 - name: "install nord-tmux"
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.tmux/plugins/nord-tmux
     repo: "https://github.com/arcticicestudio/nord-tmux"
+    version: develop
