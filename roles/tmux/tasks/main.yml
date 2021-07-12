@@ -1,18 +1,36 @@
-- name: make sure to use ~/.tmux.conf instead of ~/.config/tmux/tmux.conf
+- name: remove ~/.tmux.conf
   file:
     path: ~/.config/tmux
     state: absent
-- name: link tmux.conf
+
+- name: link tmux config
   file:
-    src: ~/.dotfiles/tmux/tmux.conf
+    src: "{{ role_path }}/files/tmux.conf"
     dest: ~/.tmux.conf
     state: link
     force: yes
     follow: no
-- name: link tmux dir
-  file:
-    src: ~/.dotfiles/tmux/
-    dest: ~/.tmux
-    state: link
-    force: yes
-    follow: no
+
+- name: "install tmux-sensible"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/tmux-sensible
+    repo: "https://github.com/tmux-plugins/tmux-sensible"
+
+- name: "install tmux-yank"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/tmux-yank
+    repo: "https://github.com/tmux-plugins/tmux-yank"
+
+- name: "install tmux-tilish"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/tmux-tilish
+    repo: "https://github.com/jabirali/tmux-tilish"
+
+- name: "install nord-tmux"
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: ~/.tmux/plugins/nord-tmux
+    repo: "https://github.com/arcticicestudio/nord-tmux"

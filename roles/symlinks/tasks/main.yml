@@ -30,7 +30,6 @@
   loop:
     - .condarc
     - .dir_colors
-    - .emacs.d
     - .gitconfig
     - .scripts
     - .xinitrc
