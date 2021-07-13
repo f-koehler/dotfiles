@@ -23,7 +23,7 @@
   community.general.git_config:
     scope: local
     name: "remote.origin.url"
-    value: "git@github.com/f-koehler/LunarVim.git"
+    value: "git@github.com:f-koehler/LunarVim.git"
     repo: ~/.config/nvim
 
 - name: set LunarVim upstream fetch rule
