@@ -1,34 +1,31 @@
 - name: clone LunarVim config
   ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.config/nvim
-    repo: "git@github.com:f-koehler/LunarVim.git"
-    version: "f-koehler"
+    dest: ~/.local/share/lunarvim/lvim
+    repo: "https://github.com/ChristianChiarulli/LunarVim.git"
+    version: "rolling"
 
-- name: add LunarVim upstream
-  community.general.git_config:
-    scope: local
-    name: "remote.upstream.url"
-    value: https://github.com/ChristianChiarulli/LunarVim.git
-    repo: ~/.config/nvim
+- name: clone packer config
+  ansible.builtin.git:
+    dest: ~/.local/share/lunarvim/site/pack/packer/start/packer.nvim
+    repo:  https://github.com/wbthomason/packer.nvim
+    version: "master"
 
-- name: set LunarVim upstream fetch rule
-  community.general.git_config:
-    scope: local
-    name: "remote.upstream.fetch"
-    value: "+refs/heads/*:refs/remotes/upstream/*"
-    repo: ~/.config/nvim
+- name: symlink config
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/lv-config.lua"
+    dest: "~/.config/nvim/lv-config.lua"
+    state: link
+    force: yes
+    follow: no
 
-- name: add LunarVim upstream
-  community.general.git_config:
-    scope: local
-    name: "remote.origin.url"
-    value: "git@github.com:f-koehler/LunarVim.git"
-    repo: ~/.config/nvim
-
-- name: set LunarVim upstream fetch rule
-  community.general.git_config:
-    scope: local
-    name: "remote.origin.fetch"
-    value: "+refs/heads/*:refs/remotes/origin/*"
-    repo: ~/.config/nvim
+- name: symlink startup script
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/lvim.sh"
+    dest: "~/.local/bin/{{ item }}"
+    state: link
+    force: yes
+    follow: no
+  loop:
+    - lvim
+    - nvim
+    - vim
