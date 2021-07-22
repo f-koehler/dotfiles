@@ -10,10 +10,15 @@
     repo:  https://github.com/wbthomason/packer.nvim
     version: "master"
 
+- name: create nvim config dir
+  ansible.builtin.file:
+    path: ~/.config/lvim
+    state: directory
+
 - name: symlink config
   ansible.builtin.file:
     src: "{{ role_path }}/files/lv-config.lua"
-    dest: "~/.config/nvim/lv-config.lua"
+    dest: "~/.config/lvim/lv-config.lua"
     state: link
     force: yes
     follow: no
