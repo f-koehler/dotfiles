@@ -14,3 +14,5 @@ fi
 if (( $+commands[pip] )); then
 	eval "$(pip completion --zsh)"
 fi
+
+export GPG_TTY="$(tty)"
