@@ -1,3 +1,9 @@
+- name: install zsh
+  package:
+    name: zsh
+  become: true
+  become_user: root
+
 - name: symlink zsh config
   ansible.builtin.file:
     src: "{{ role_path }}/files/{{ item }}"

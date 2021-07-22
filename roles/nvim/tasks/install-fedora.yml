@@ -2,6 +2,7 @@
   community.general.copr:
     name: agriffis/neovim-nightly
   become: true
+  become_user: root
 
 - name: install neovim
   ansible.builtin.package:
@@ -9,3 +10,4 @@
       - neovim
       - python3-neovim
   become: true
+  become_user: root
