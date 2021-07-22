@@ -23,6 +23,11 @@
     force: yes
     follow: no
 
+- name: create ~/.local/bin
+  ansible.builtin.file:
+    path: ~/.local/bin
+    state: directory
+
 - name: symlink startup script
   ansible.builtin.file:
     src: "{{ role_path }}/files/lvim.sh"
