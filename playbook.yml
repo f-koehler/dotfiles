@@ -13,6 +13,8 @@
 
 - hosts: reachable
   roles:
+    - info
+
     - anaconda
     - dircolors
     - emacs

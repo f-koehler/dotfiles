@@ -1,0 +1,9 @@
+- name: add neovim-nightly repo
+  community.general.copr:
+    name: agriffis/neovim-nightly
+
+- name: install neovim
+  ansible.builtin.package:
+    name:
+      - neovim
+      - python3-neovim

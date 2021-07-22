@@ -1,3 +1,11 @@
+- name: install neovim
+  include_tasks: "{{ tasks }}"
+  with_first_found:
+    - "install-{{ ansible_distribution | lower }}.yml"
+    - "install-flatpak.yml"
+  loop_control:
+    loop_var: tasks
+
 - name: clone LunarVim config
   ansible.builtin.git:
     dest: ~/.local/share/lunarvim/lvim
