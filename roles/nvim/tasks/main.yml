@@ -22,6 +22,7 @@
   ansible.builtin.file:
     path: ~/.config/lvim
     state: directory
+    mode: 0700
 
 - name: symlink config
   ansible.builtin.file:
@@ -35,6 +36,7 @@
   ansible.builtin.file:
     path: ~/.local/bin
     state: directory
+    mode: 0700
 
 - name: symlink startup script
   ansible.builtin.file:
