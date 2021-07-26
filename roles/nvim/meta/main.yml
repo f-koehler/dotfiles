@@ -1,3 +1,15 @@
+galaxy_info:
+  role_name: nvim
+  author: Fabian Köhler
+  description: install neovim
+  license: MIT
+  min_ansible_version: "2.11"
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+  galaxy_tags:
+    - "archlinux"
 dependencies:
   - role: kewlfft.aur
     when: ansible_distribution == Archlinux
