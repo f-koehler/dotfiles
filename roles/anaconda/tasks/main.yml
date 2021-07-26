@@ -1,6 +1,6 @@
 - name: check if anaconda is installed
   stat:
-    path: ~/.local/opt/anaconda3/bin/conda
+    path: "{{ anaconda_prefix }}/bin/conda"
   register: conda_check
 - name: install anaconda
   block:
@@ -11,7 +11,7 @@
         mode: "u+x"
     - name: install miniconda
       command:
-        cmd: ~/.local/miniconda.sh -b -p ~/.local/opt/anaconda3 -f
+        cmd: "~/.local/miniconda.sh -b -p {{ anaconda_prefix }} -f"
     - name: remove miniconda installer
       file:
         dest: ~/.local/miniconda.sh
@@ -19,5 +19,5 @@
   when: not conda_check.stat.exists
 - name: install mamba
   command:
-    cmd: ~/.local/opt/anaconda3/bin/conda install -c conda-forge -n base -q -y mamba
-    creates: ~/.local/opt/anaconda3/bin/mamba
+    cmd: "{{ anaconda_prefix }}/bin/conda install -c conda-forge -n base -q -y mamba"
+    creates: "{{ anaconda_prefix }}/bin/mamba"
