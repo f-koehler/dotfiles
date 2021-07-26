@@ -1,8 +1,10 @@
-- name: install zsh
-  package:
-    name: zsh
-  become: true
-  become_user: root
+- name: install
+  include_tasks: "{{ tasks }}"
+  with_first_found:
+    - "install-{{ ansible_distribution | lower }}.yml"
+  loop_control:
+    loop_var: tasks
+  when: root_access
 
 - name: symlink zsh config
   ansible.builtin.file:

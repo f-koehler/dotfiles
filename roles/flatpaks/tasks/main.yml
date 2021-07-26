@@ -1,0 +1,7 @@
+- name: install
+  include_tasks: "{{ tasks }}"
+  with_first_found:
+    - "install-{{ ansible_distribution | lower }}.yml"
+  loop_control:
+    loop_var: tasks
+  when: root_access

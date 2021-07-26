@@ -1,3 +1,4 @@
+root_access: true
 screens:
   eDP1:
     resolution:

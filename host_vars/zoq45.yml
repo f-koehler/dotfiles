@@ -1,3 +1,4 @@
+root_access: true
 screens:
   DP1:
     resolution:

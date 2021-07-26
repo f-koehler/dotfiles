@@ -1,3 +1,11 @@
+- name: install i3 and friends
+  include_tasks: "{{ tasks }}"
+  with_first_found:
+    - "install-{{ ansible_distribution | lower }}.yml"
+  loop_control:
+    loop_var: tasks
+  when: root_access
+
 - name: create i3 config dir
   file:
     path: ~/.config/i3
