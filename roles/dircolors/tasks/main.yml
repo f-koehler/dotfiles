@@ -1,6 +1,12 @@
 - name: clone nord-dircolors config
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: ~/.dir_colors
+    dest: ~/.config/nord-dircolors
     repo: https://github.com/arcticicestudio/nord-dircolors.git
     version: develop
+
+- name: symlink dircolors
+  ansible.builtin.file:
+    dest: ~/.dir_colors
+    src: ~/.config/nord-dircolors/src/dir_colors
+    state: link
