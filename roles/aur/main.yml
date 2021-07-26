@@ -1,0 +1,7 @@
+- name: load tasks
+  include_tasks: "{{ tasks }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}.yml"
+  loop_control:
+    loop_var: tasks
+  when: root_access

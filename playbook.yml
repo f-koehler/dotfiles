@@ -14,6 +14,7 @@
 - hosts: reachable
   roles:
     - info
+    - aur
 
     - anaconda
     - dircolors
