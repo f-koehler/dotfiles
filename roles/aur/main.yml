@@ -1,7 +1,18 @@
-- name: load tasks
-  include_tasks: "{{ tasks }}"
-  with_first_found:
-    - "{{ ansible_distribution | lower }}.yml"
-  loop_control:
-    loop_var: tasks
+- name: create aur_builder user
+  block:
+    - ansible.builtin.group:
+        name: aur_builder
+    - ansible.builtin.user:
+        name: aur_builder
+        create_home: no
+        group: aur_builder
+        groups:
+          - wheel
+          - users
+    - ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/11-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: yes
+        validate: 'visudo -cf %s'
   when: root_access
+  become: true
