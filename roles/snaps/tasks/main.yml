@@ -1,0 +1,5 @@
+- name: install vscode
+  community.general.snap:
+    name: code-insiders
+    state: present
+    classic: yes

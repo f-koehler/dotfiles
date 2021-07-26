@@ -13,3 +13,7 @@ lvim.builtin.treesitter.highlight_enabled = true
 lvim.lang.python.formatter.exe = "black"
 
 lvim.lsp.diagnostics.virtual_text = false
+
+lvim.plugins = {
+    {"dstein64/vim-startuptime"},
+}
