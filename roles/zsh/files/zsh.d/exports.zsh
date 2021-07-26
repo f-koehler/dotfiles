@@ -15,4 +15,6 @@ if (( $+commands[pip] )); then
 	eval "$(pip completion --zsh)"
 fi
 
+[[ -f ~/.linuxbrew/bin/brew ]] && eval $(~/.linuxbrew/bin/brew shellenv)
+
 export GPG_TTY="$(tty)"

@@ -22,6 +22,7 @@
     - fish
     - flatpaks
     - fzf
+    - homebrew
     - i3
     - nvim
     - polybar

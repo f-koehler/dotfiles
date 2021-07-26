@@ -1,0 +1,17 @@
+- name: clone
+  ansible.builtin.git:
+    dest: ~/.linuxbrew/Homebrew
+    repo: https://github.com/Homebrew/brew
+    version: "master"
+
+- name: create directory
+  ansible.builtin.file:
+    path: ~/.linuxbrew/bin
+    state: directory
+    mode: 0700
+
+- name: symlink binary
+  ansible.builtin.file:
+    src: ~/.linuxbrew/Homebrew/bin/brew
+    dest: ~/.linuxbrew/bin/brew
+    state: link
