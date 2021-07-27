@@ -1,6 +1,9 @@
 - name: install
   package:
-    name: i3-gaps
+    name: "{{ item }}"
+  loop:
+    - i3-gaps
+    - rofi
   become: true
 
 - name: install AUR packages
@@ -8,6 +11,6 @@
     name: "{{ item }}"
   loop:
     - polybar-git
-    - rofi-git
   become_user: aur_builder
   become: true
+

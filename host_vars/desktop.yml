@@ -1,3 +1,4 @@
+root_access: true
 screens:
   DVI-D-0:
     resolution:
