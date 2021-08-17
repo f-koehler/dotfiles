@@ -18,7 +18,7 @@ type = "caldav"
 url.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-caldav-url.gpg"]
 username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-username.gpg"]
 password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-password.gpg"]
-verify_fingerprint = "C4:DF:E4:80:EE:CD:82:39:04:5E:06:55:6D:4F:7E:42:3A:97:9C:09"
+verify_fingerprint = "08:96:DA:10:12:26:CE:4D:63:93:84:D9:53:F5:6A:9E:DE:AC:F0:AB"
 
 [pair contacts_nextcloud]
 a = "contacts_nextcloud_local"
@@ -36,7 +36,7 @@ type = "carddav"
 url.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-carddav-url.gpg"]
 username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-username.gpg"]
 password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/nextcloud-password.gpg"]
-verify_fingerprint = "C4:DF:E4:80:EE:CD:82:39:04:5E:06:55:6D:4F:7E:42:3A:97:9C:09"
+verify_fingerprint = "08:96:DA:10:12:26:CE:4D:63:93:84:D9:53:F5:6A:9E:DE:AC:F0:AB"
 
 [pair calendar_monica]
 a = "calendar_monica_local"
@@ -53,7 +53,7 @@ type = "caldav"
 url.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-dav-url.gpg"]
 username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-username.gpg"]
 password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-password.gpg"]
-verify_fingerprint = "C4:DF:E4:80:EE:CD:82:39:04:5E:06:55:6D:4F:7E:42:3A:97:9C:09"
+verify_fingerprint = "08:96:DA:10:12:26:CE:4D:63:93:84:D9:53:F5:6A:9E:DE:AC:F0:AB"
 
 [pair contacts_monica]
 a = "contacts_monica_local"
@@ -70,7 +70,7 @@ type = "carddav"
 url.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-dav-url.gpg"]
 username.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-username.gpg"]
 password.fetch = ["command", "gpg", "--decrypt", "/home/fkoehler/.secrets/monica-password.gpg"]
-verify_fingerprint = "C4:DF:E4:80:EE:CD:82:39:04:5E:06:55:6D:4F:7E:42:3A:97:9C:09"
+verify_fingerprint = "08:96:DA:10:12:26:CE:4D:63:93:84:D9:53:F5:6A:9E:DE:AC:F0:AB"
 
 [pair contacts_mirror]
 a = "contacts_monica_remote"
