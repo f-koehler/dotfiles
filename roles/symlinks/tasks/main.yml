@@ -16,6 +16,7 @@
     - picom
     - rofi
     - systemd
+    - todoman
     - vdirsyncer
   notify:
     - systemd reload
