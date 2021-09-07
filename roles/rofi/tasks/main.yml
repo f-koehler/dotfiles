@@ -1,0 +1,37 @@
+- name: clone rofi config
+  ansible.builtin.git:
+    dest: ~/.config/rofi-configs
+    repo: "https://github.com/adi1090x/rofi.git"
+    version: master
+  register: roficlone
+
+- name: setup rofi configs
+  block:
+    - name: remove old backups
+      ansible.builtin.file:
+        path: ~/.config/rofi.old
+        state: absent
+    - name: run setup script
+      ansible.builtin.command:
+        cmd: ~/.config/rofi-configs/setup.sh
+        chdir: ~/.config/rofi-configs
+        stdin: "1"
+        stdin_add_newline: yes
+  when: roficlone.changed
+- name: symlink scripts
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "~/.local/bin/{{ item }}"
+    state: link
+    force: yes
+    follow: no
+  loop:
+    - app-launcher
+    - power-menu
+- name: symlink power menu colors
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/power-menu.rasi"
+    dest: "~/.config/rofi/powermenu/styles/colors.rasi"
+    state: link
+    force: yes
+    follow: no

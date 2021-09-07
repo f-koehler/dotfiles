@@ -26,6 +26,7 @@
     - i3
     - nvim
     - polybar
+    - rofi
     - ranger
     - symlinks
     - tmux
