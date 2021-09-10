@@ -1,6 +1,6 @@
 lvim.format_on_save = true
 lvim.lint_on_save = true
-lvim.colorscheme = "spacegray"
+-- lvim.colorscheme = "spacegray"
 lvim.leader = "space"
 
 lvim.builtin.dashboard.active = true
