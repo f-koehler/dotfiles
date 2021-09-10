@@ -1,7 +1,7 @@
 - name: clone rofi config
   ansible.builtin.git:
     dest: ~/.config/rofi-configs
-    repo: "https://github.com/adi1090x/rofi.git"
+    repo: "https://github.com/f-koehler/rofi.git"
     version: master
   register: roficlone
 

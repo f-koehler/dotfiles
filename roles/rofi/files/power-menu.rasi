@@ -1,1 +1,9 @@
-@import "nordic.rasi"
+* {
+  background: #00000060;
+  background-alt: #00000000;
+  foreground: #f2f2f2ee;
+  border: #00000000;
+  border-alt: #00000000;
+  selected: #ffffff66;
+  urgent: #00000000;
+}
