@@ -7,7 +7,7 @@
   become: true
 
 - name: install AUR packages
-  aur:
+  kewlfft.aur.aur:
     name: "{{ item }}"
   loop:
     - polybar-git
