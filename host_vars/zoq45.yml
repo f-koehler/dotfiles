@@ -1,6 +1,10 @@
 root_access: true
+keyboard:
+  layout: de
+  variant: nodeadkeys
 screens:
-  DP1:
+  - x11: DP1
+    wayland: DP-1
     resolution:
       x: 1920
       y: 1200
@@ -9,7 +13,8 @@ screens:
       - 5
       - 6
       - 7
-  DP2:
+  - x11: DP2
+    wayland: DP-2
     resolution:
       x: 1920
       y: 1200
@@ -21,7 +26,8 @@ screens:
       - 8
       - 9
       - 0
-  HDMI1:
+  - x11: HDMI1
+    wayland: HDMI-A-1
     resolution:
       x: 1920
       y: 1200

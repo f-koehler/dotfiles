@@ -16,4 +16,5 @@
   template:
     src: main.conf
     dest: ~/.config/i3/config
+    validate: "i3 -C %s"
     mode: 0640

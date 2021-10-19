@@ -15,7 +15,7 @@
 - name: clone packer config
   ansible.builtin.git:
     dest: ~/.local/share/lunarvim/site/pack/packer/start/packer.nvim
-    repo:  https://github.com/wbthomason/packer.nvim
+    repo: https://github.com/wbthomason/packer.nvim
     version: "master"
 
 - name: create nvim config dir

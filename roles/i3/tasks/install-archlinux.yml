@@ -13,4 +13,3 @@
     - polybar-git
   become_user: aur_builder
   become: true
-

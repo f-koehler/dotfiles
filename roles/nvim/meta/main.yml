@@ -10,6 +10,8 @@ galaxy_info:
         - all
   galaxy_tags:
     - "archlinux"
-dependencies:
-  - role: kewlfft.aur
-    when: ansible_distribution == Archlinux
+#dependencies:
+#  - collection: kewlfft.aur
+#    when: ansible_distribution == Archlinux
+collections:
+  - kewlfft.aur
