@@ -11,44 +11,30 @@
     force: yes
     follow: no
 
-- name: "install tmux-sensible"
+- name: Install tmux plugins.
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: ~/.tmux/plugins/tmux-sensible
-    repo: "https://github.com/tmux-plugins/tmux-sensible"
-    version: master
-
-- name: "install tmux-yank"
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.tmux/plugins/tmux-yank
-    repo: "https://github.com/tmux-plugins/tmux-yank"
-    version: master
-
-- name: "install tmux-resurrect"
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.tmux/plugins/tmux-resurrect
-    repo: "https://github.com/tmux-plugins/tmux-resurrect"
-    version: master
-
-- name: "install tmux-continuum"
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.tmux/plugins/tmux-continuum
-    repo: "https://github.com/tmux-plugins/tmux-continuum"
-    version: master
-
-- name: "install tmux-tilish"
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.tmux/plugins/tmux-tilish
-    repo: "https://github.com/jabirali/tmux-tilish"
-    version: master
-
-- name: "install nord-tmux"
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: ~/.tmux/plugins/nord-tmux
-    repo: "https://github.com/arcticicestudio/nord-tmux"
-    version: develop
+    dest: "~/.tmux/plugins/{{ plugin['name'] }}"
+    repo: "{{ plugin['repo'] }}"
+    version: "{{ plugin['version'] }}"
+  loop:
+    - name: tmux-sensible
+      repo: "https://github.com/tmux-plugins/tmux-sensible"
+      version: "master"
+    - name: tmux-yank
+      repo: "https://github.com/tmux-plugins/tmux-yank"
+      version: master
+    - name: tmux-resurrect
+      repo: "https://github.com/tmux-plugins/tmux-resurrect"
+      version: master
+    - name: tmux-continuum
+      repo: "https://github.com/tmux-plugins/tmux-continuum"
+      version: master
+    - name: tmux-tilish
+      repo: "https://github.com/jabirali/tmux-tilish"
+      version: master
+    - name: nord-tmux
+      repo: "https://github.com/arcticicestudio/nord-tmux"
+      version: develop
+  loop_control:
+    loop_var: plugin
