@@ -1,43 +1,15 @@
-- name: clone LunarVim config
-  ansible.builtin.git:
-    dest: ~/.local/share/lunarvim/lvim
-    repo: "https://github.com/ChristianChiarulli/LunarVim.git"
-    version: "rolling"
+- name: Install LunarVim.
+  ansible.builtin.shell: LVBRANCH=rolling yes no | bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
+  args:
+    creates: ~/.local/bin/lvim
 
-- name: clone packer config
-  ansible.builtin.git:
-    dest: ~/.local/share/lunarvim/site/pack/packer/start/packer.nvim
-    repo: https://github.com/wbthomason/packer.nvim
-    version: "master"
-
-- name: create nvim config dir
+- name: Symlink {vim, vi} -> {lvim}.
   ansible.builtin.file:
-    path: ~/.config/lvim
-    state: directory
-    mode: 0700
-
-- name: symlink config
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/lv-config.lua"
-    dest: "~/.config/lvim/lv-config.lua"
-    state: link
-    force: yes
-    follow: no
-
-- name: create ~/.local/bin
-  ansible.builtin.file:
-    path: ~/.local/bin
-    state: directory
-    mode: 0700
-
-- name: symlink startup script
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/lvim.sh"
+    src: "~/.local/bin/lvim"
     dest: "~/.local/bin/{{ item }}"
     state: link
     force: yes
     follow: no
   loop:
     - lvim
-    - nvim
     - vim
