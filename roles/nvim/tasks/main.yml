@@ -11,5 +11,5 @@
     force: yes
     follow: no
   loop:
-    - lvim
+    - vi
     - vim
