@@ -1,3 +1,20 @@
+if [[ -d ${HOME}/.fzf/bin ]]; then
+  if [[ ! "$PATH" == *${HOME}/.fzf/bin* ]]; then
+    export PATH="${PATH:+${PATH}:}${HOME}/.fzf/bin"
+  fi
+fi
+
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+elif [[ -f ${HOME}/.fzf/shell/key-bindings.zsh ]]; then
+  source ${HOME}/.fzf/shell/key-bindings.zsh
+fi
+
+if [[ -f /usr/share/fzf/completion.zsh ]]; then
+  source /usr/share/fzf/completion.zsh
+elif [[ -f ${HOME}/.fzf/shell/completion.zsh ]]; then
+  source ${HOME}/.fzf/shell/completion.zsh
+fi
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
