@@ -1,2 +1,2 @@
-- name: install fzf
+- name: Install fzf.
   command: ~/.fzf/install --all

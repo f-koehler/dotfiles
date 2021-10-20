@@ -1,10 +1,10 @@
-- name: remove ~/.tmux.conf
-  file:
+- name: Remove config from old location.
+  ansible.builtin.file:
     path: ~/.config/tmux
     state: absent
 
-- name: link tmux config
-  file:
+- name: Link tmux config.
+  ansible.builtin.file:
     src: "{{ role_path }}/files/tmux.conf"
     dest: ~/.tmux.conf
     state: link

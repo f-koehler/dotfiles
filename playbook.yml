@@ -22,21 +22,11 @@
     - fzf
     - homebrew
     - i3
-      # - nvim
+    - nvim
     - polybar
-    - rofi
     - ranger
+    - rofi
     - symlinks
     - tmux
     - xresources
     - zsh
-  tasks:
-    - name: enable systemd user units
-      systemd:
-        name: "{{ item }}"
-        enabled: yes
-        state: started
-        scope: user
-      loop:
-        - update-dotfiles-submodules.timer
-        - update-flatpaks.timer

@@ -1,11 +1,11 @@
-- name: clone nord-xresources
+- name: Clone nord-xresources.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.nord-xresources
     repo: https://github.com/arcticicestudio/nord-xresources
     version: develop
 
-- name: symlink xresources
+- name: Symlink xresources.
   ansible.builtin.file:
     src: ~/.nord-xresources
     dest: "{{ item }}"

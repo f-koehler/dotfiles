@@ -1,4 +1,4 @@
-- name: symlink config
+- name: Symlink config.
   ansible.builtin.file:
     src: "{{ role_path }}/files/ranger"
     dest: "~/.config/ranger"
@@ -6,7 +6,7 @@
     force: yes
     follow: no
 
-- name: install ranger_devicons
+- name: Install devicons plugin.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.config/ranger/plugins/ranger_devicons

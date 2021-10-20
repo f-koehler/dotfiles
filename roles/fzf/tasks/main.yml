@@ -1,7 +1,19 @@
-- name: clone fzf
+- name: Check if fzf is installed globally.
+  ansible.builtin.stat:
+    path: "/usr/bin/fzf"
+  register: fzf_check
+
+- name: Clone fzf.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.fzf
     repo: https://github.com/junegunn/fzf
     version: master
-  notify: install fzf
+  notify: Install fzf.
+  when: not (fzf_check.stat.exists and fzf_check.stat.executable)
+
+- name: Remove locally installed fzf.
+  ansible.builtin.file:
+    path: ~/.fzf
+    state: absent
+  when: fzf_check.stat.exists and fzf_check.stat.executable

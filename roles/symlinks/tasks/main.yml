@@ -1,5 +1,5 @@
-- name: symlinks in ~/.config/
-  file:
+- name: Create symlinks in ~/.config/.
+  ansible.builtin.file:
     src: "{{ role_path }}/files/config/{{ item }}"
     dest: "~/.config/{{ item }}"
     state: link
@@ -14,13 +14,10 @@
     - mpv
     - offlineimap
     - picom
-    - systemd
     - todoman
     - vdirsyncer
-  notify:
-    - systemd reload
-- name: symlinks in ~/
-  file:
+- name: Create symlinks in ~/.
+  ansible.builtin.file:
     src: "{{ role_path }}/files/home/{{ item }}"
     dest: "~/{{ item }}"
     state: link
@@ -33,14 +30,3 @@
     - .xinitrc
     - .ideavimrc
     - .profile
-- name: flush handlers
-  ansible.builtin.meta: flush_handlers
-- name: enable systemd user units
-  systemd:
-    name: "{{ item }}"
-    enabled: yes
-    state: started
-    scope: user
-  loop:
-    - update-dotfiles-submodules.timer
-    - update-flatpaks.timer

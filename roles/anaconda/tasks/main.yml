@@ -1,23 +1,23 @@
-- name: check if anaconda is installed
-  stat:
+- name: Check if anaconda is installed.
+  ansible.builtin.stat:
     path: "{{ anaconda_prefix }}/bin/conda"
   register: conda_check
-- name: install anaconda
+- name: Install anaconda.
   block:
     - name: download miniconda installer
-      get_url:
+      ansible.builtin.get_url:
         url: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
         dest: ~/.local/miniconda.sh
         mode: "u+x"
     - name: install miniconda
-      command:
+      ansible.builtin.command:
         cmd: "~/.local/miniconda.sh -b -p {{ anaconda_prefix }} -f"
     - name: remove miniconda installer
-      file:
+      ansible.builtin.file:
         dest: ~/.local/miniconda.sh
         state: absent
   when: not conda_check.stat.exists
 - name: install mamba
-  command:
+  ansible.builtin.command:
     cmd: "{{ anaconda_prefix }}/bin/conda install -c conda-forge -n base -q -y mamba"
     creates: "{{ anaconda_prefix }}/bin/mamba"

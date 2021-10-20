@@ -1,4 +1,4 @@
-- name: clone Spacemacs config
+- name: Clone Spacemacs config.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: ~/.emacs.d
