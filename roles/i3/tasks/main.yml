@@ -1,20 +1,32 @@
-- name: install i3 and friends
-  include_tasks: "{{ tasks }}"
-  with_first_found:
-    - "install-{{ ansible_distribution | lower }}.yml"
-  loop_control:
-    loop_var: tasks
-  when: root_access
-
-- name: create i3 config dir
-  file:
-    path: ~/.config/i3
+- name: Create i3 and sway config directories.
+  ansible.builtin.file:
+    path: "~/.config/{{ directory }}"
     state: directory
     mode: 0750
+  loop:
+    - i3
+    - sway
+  loop_control:
+    loop_var: directory
 
-- name: configure i3
-  template:
+- name: Configure i3.
+  ansible.builtin.template:
     src: main.conf
     dest: ~/.config/i3/config
-    validate: "i3 -C %s"
+    validate: "{{ role_path }}/files/validate {{ wm }} %s"
+    trim_blocks: false
+    lstrip_blocks: false
     mode: 0640
+  vars:
+    wm: "i3"
+
+- name: Configure sway.
+  ansible.builtin.template:
+    src: main.conf
+    dest: ~/.config/sway/config
+    validate: "{{ role_path }}/files/validate {{ wm }} %s"
+    trim_blocks: false
+    lstrip_blocks: false
+    mode: 0640
+  vars:
+    wm: "sway"

@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euf -o pipefail
+WM=${1}
+FILE=${2}
+
+if [ -x "$(command -v ${WM})" ]; then
+    ${WM} -C -c "${FILE}"
+fi

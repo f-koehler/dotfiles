@@ -1,8 +1,0 @@
-- name: install neovim
-  aur:
-    name: "{{ item }}"
-  loop:
-    - neovim-git
-    - python-neovim-git
-  become_user: aur_builder
-  become: true
