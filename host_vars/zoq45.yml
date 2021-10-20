@@ -2,6 +2,20 @@ keyboard:
   layout: de
   variant: nodeadkeys
 screens:
+  - x11: HDMI1
+    wayland: HDMI-A-1
+    resolution:
+      x: 1920
+      y: 1200
+    position:
+      x: 1200
+      y: 440
+    primary: yes
+    i3_workspaces:
+      - 1
+      - 2
+      - 3
+      - 4
   - x11: DP1
     wayland: DP-1
     resolution:
@@ -25,20 +39,6 @@ screens:
       - 8
       - 9
       - 0
-  - x11: HDMI1
-    wayland: HDMI-A-1
-    resolution:
-      x: 1920
-      y: 1200
-    position:
-      x: 1200
-      y: 440
-    primary: yes
-    i3_workspaces:
-      - 1
-      - 2
-      - 3
-      - 4
 polybar_bars:
   center:
     modules_center:
