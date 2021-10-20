@@ -14,17 +14,15 @@
 - hosts: reachable
   roles:
     - info
-    - aur
 
     - anaconda
     - dircolors
     - emacs
     - fish
-    - flatpaks
     - fzf
     - homebrew
     - i3
-    - nvim
+      # - nvim
     - polybar
     - rofi
     - ranger
