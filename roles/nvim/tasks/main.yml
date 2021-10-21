@@ -1,5 +1,5 @@
 - name: Install LunarVim.
-  ansible.builtin.shell: LVBRANCH=rolling yes no | bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
+  ansible.builtin.command: "bash {{ role_path }}/files/deploy.sh"
   args:
     creates: ~/.local/bin/lvim
 

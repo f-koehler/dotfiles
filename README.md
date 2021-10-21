@@ -28,6 +28,13 @@ To deploy this project run
 ansible-playbook playbook.yml
 ```
 
+## Dependencies
+
+- `ansible`
+- `bash`
+- `curl`
+- `git`
+
 ## Tech Stack
 
 ### Included Configurations

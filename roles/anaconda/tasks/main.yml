@@ -4,6 +4,10 @@
   register: conda_check
 - name: Install anaconda.
   block:
+    - name: Create ~/.local directory.
+      ansible.builtin.file:
+        path: ~/.local
+        state: directory
     - name: Download miniconda installer.
       ansible.builtin.get_url:
         url: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"

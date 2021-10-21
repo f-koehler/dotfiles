@@ -1,0 +1,15 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: Update apt cache (on Debian).
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == 'Debian'
+    - name: Install git.
+      ansible.builtin.package:
+        name: git
+        state: present
+
+- ansible.builtin.import_playbook: ../../playbook.yml

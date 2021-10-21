@@ -1,5 +1,5 @@
 - name: find reachable hosts
-  hosts: targets
+  hosts: all
   gather_facts: no
   tasks:
     - name: "run a dummy command on hosts, ignoring failures"
@@ -22,9 +22,9 @@
     - fzf
     - homebrew
     - i3
-    - nvim
+    # - nvim
     - polybar
-    - ranger
+    # - ranger
     - rofi
     - symlinks
     - tmux
