@@ -1,16 +1,6 @@
 - name: find reachable hosts
   hosts: all
   gather_facts: no
-  tasks:
-    - name: "run a dummy command on hosts, ignoring failures"
-      ansible.builtin.command: /bin/true # noqa no-changed-when
-      register: result
-      ignore_errors: yes
-    - name: "register reachable hosts"
-      ansible.builtin.group_by:
-        key: reachable
-      when: result is success
-
   roles:
     - info
 
