@@ -46,7 +46,7 @@ jobs:
           - image: geerlingguy/docker-debian9-ansible:latest
           - image: geerlingguy/docker-fedora33-ansible:latest
           - image: geerlingguy/docker-fedora34-ansible:latest
-          - image: geerlingguy/ubuntu1804-ansible:latest
+          - image: geerlingguy/docker-ubuntu1804-ansible:latest
           - image: geerlingguy/docker-ubuntu2004-ansible:latest
     steps:
       - name: Checkout repository
