@@ -6,11 +6,13 @@
       community.general.pacman:
         update_cache: yes
       when: ansible_os_family == "Archlinux"
+      changed_when: false
     - name: Update apt cache.
       ansible.builtin.apt:
         update_cache: true
         cache_valid_time: 3600
       when: ansible_os_family == 'Debian'
+      changed_when: false
     - name: Install dependencies.
       ansible.builtin.package:
         name:
@@ -18,6 +20,7 @@
           - curl
           - git
         state: present
+      changed_when: false
 
 - hosts: reachable
   pre_tasks:
