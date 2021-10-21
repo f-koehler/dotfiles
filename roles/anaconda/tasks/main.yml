@@ -8,6 +8,7 @@
       ansible.builtin.file:
         path: ~/.local
         state: directory
+        mode: "0700"
     - name: Download miniconda installer.
       ansible.builtin.get_url:
         url: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"

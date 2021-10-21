@@ -23,6 +23,7 @@
   ansible.builtin.file:
     path: "{{ directory }}"
     state: directory
+    mode: "0700"
   loop:
     - "~/.local"
     - "~/.local/bin"

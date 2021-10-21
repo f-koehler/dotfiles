@@ -14,6 +14,7 @@
   ansible.builtin.file:
     path: ~/.zsh.d/plugins
     state: directory
+    mode: "0700"
 
 - name: install zsh-autosuggestions
   ansible.builtin.git:
