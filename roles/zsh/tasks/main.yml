@@ -1,6 +1,6 @@
-- name: symlink zsh config
+- name: Symlink zsh config.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/{{ item }}"
+    src: "~/.dotfiles/roles/zsh/files/{{ item }}"
     dest: "~/.{{ item }}"
     state: link
     force: yes
@@ -9,6 +9,11 @@
     - zsh.d
     - zshrc
     - p10k.zsh
+
+- name: Create plugin directory.
+  ansible.builtin.file:
+    path: ~/.zsh.d/plugins
+    state: directory
 
 - name: install zsh-autosuggestions
   ansible.builtin.git:

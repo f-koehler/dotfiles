@@ -1,5 +1,5 @@
 - name: Install LunarVim.
-  ansible.builtin.command: "bash {{ role_path }}/files/deploy.sh"
+  ansible.builtin.command: "bash ~/.dotfiles/roles/nvim/files/deploy.sh"
   args:
     creates: ~/.local/bin/lvim
 

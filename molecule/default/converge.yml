@@ -11,9 +11,20 @@
         update_cache: true
         cache_valid_time: 3600
       when: ansible_os_family == 'Debian'
-    - name: Install git.
+    - name: Install dependencies.
       ansible.builtin.package:
-        name: git
+        name:
+          - bash
+          - curl
+          - git
         state: present
 
-- ansible.builtin.import_playbook: ../../playbook.yml
+- hosts: reachable
+  pre_tasks:
+    - name: Clone dotfiles.
+      ansible.builtin.git:
+        accept-_hostkey: yes
+        dest: "~/.dotfiles"
+        repo: "git@github.com:f-koehler/dotfiles.git"
+
+- ansible.builtin.import_playbook: "../../playbook.yml"

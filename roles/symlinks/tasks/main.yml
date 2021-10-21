@@ -1,6 +1,6 @@
 - name: Create symlinks in ~/.config/.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/config/{{ item }}"
+    src: "~/.dotfiles/roles/symlinks/files/config/{{ item }}"
     dest: "~/.config/{{ item }}"
     state: link
     force: yes
@@ -18,7 +18,7 @@
     - vdirsyncer
 - name: Create symlinks in ~/.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/home/{{ item }}"
+    src: "~/.dotfiles/roles/symlinks/files/home/{{ item }}"
     dest: "~/{{ item }}"
     state: link
     force: yes

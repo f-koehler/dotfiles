@@ -1,6 +1,6 @@
 - name: Symlink fish config.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/fish"
+    src: "~/.dotfiles/roles/fish/files/fish"
     dest: "~/.config/fish"
     state: link
     force: yes

@@ -18,9 +18,20 @@
         stdin: "1"
         stdin_add_newline: yes
   when: roficlone.changed
+
+- name: Create directories.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+  loop:
+    - "~/.local"
+    - "~/.local/bin"
+  loop_control:
+    loop_var: directory
+
 - name: Symlink scripts.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/{{ item }}"
+    src: "~/.dotfiles/roles/rofi/files/{{ item }}"
     dest: "~/.local/bin/{{ item }}"
     state: link
     force: yes
@@ -28,9 +39,10 @@
   loop:
     - app-launcher
     - power-menu
+
 - name: Symlink power menu colors.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/power-menu.rasi"
+    src: "~/.dotfiles/roles/rofi/files/power-menu.rasi"
     dest: "~/.config/rofi/powermenu/styles/colors.rasi"
     state: link
     force: yes

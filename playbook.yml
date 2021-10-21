@@ -11,7 +11,6 @@
         key: reachable
       when: result is success
 
-- hosts: reachable
   roles:
     - info
 
@@ -29,4 +28,4 @@
     - symlinks
     - tmux
     - xresources
-    - zsh
+    # - zsh

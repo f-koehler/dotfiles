@@ -5,7 +5,7 @@
 
 - name: Link tmux config.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/tmux.conf"
+    src: "~/.dotfiles/roles/tmux/files/tmux.conf"
     dest: ~/.tmux.conf
     state: link
     force: yes

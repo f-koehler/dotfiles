@@ -13,7 +13,7 @@
   ansible.builtin.template:
     src: main.conf
     dest: ~/.config/i3/config
-    # validate: "{{ role_path }}/files/validate {{ wm }} %s"
+    # validate: "~/.dotfiles/roles/i3/files/validate {{ wm }} %s"
     trim_blocks: false
     lstrip_blocks: false
     mode: 0640
@@ -24,7 +24,7 @@
   ansible.builtin.template:
     src: main.conf
     dest: ~/.config/sway/config
-    # validate: "{{ role_path }}/files/validate {{ wm }} %s"
+    # validate: "~/.dotfiles/roles/i3/files/validate {{ wm }} %s"
     trim_blocks: false
     lstrip_blocks: false
     mode: 0640
