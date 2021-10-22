@@ -1,6 +1,8 @@
-root_access: true
+keyboard:
+  layout: de
+  variant: nodeadkeys
 screens:
-  DVI-D-0:
+  - x11: DVI-D-0
     resolution:
       x: 1920
       y: 1080
@@ -8,7 +10,7 @@ screens:
       x: 1920
       y: 0
     i3_workspaces: [8, 9, 10]
-  HDMI-0:
+  - x11: HDMI-0
     resolution:
       x: 1920
       y: 1080
