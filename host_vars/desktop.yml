@@ -45,6 +45,3 @@ polybar_wireless_networks:
   - wlp2s0
 polybar_filesystems:
   - /
-gtk_theme_name: "Nordic"
-gtk_icon_theme_name: "Papirus-Dark"
-gtk_application_prefer_dark_theme: True

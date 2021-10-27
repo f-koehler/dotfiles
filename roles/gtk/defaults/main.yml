@@ -1,4 +1,4 @@
 gtk_cursor_theme_name: "Adwaita"
-gtk_icon_theme_name: "Adwaita"
-gtk_theme_name: "Adwaita"
-gtk_application_prefer_dark_theme: false
+gtk_icon_theme_name: "Papirus-Dark"
+gtk_theme_name: "Nordic"
+gtk_application_prefer_dark_theme: true
