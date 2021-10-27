@@ -1,0 +1,76 @@
+- name: Ensure that gtk config directory exists.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+    mode: "0750"
+  loop:
+    - ~/.config
+    - ~/.config/gtk-3.0
+  loop_control:
+    loop_var: directory
+
+- name: Check if requested gtk theme exists.
+  ansible.builtin.set_fact:
+    gtk_theme_path: "{{ lookup('first_found', findme, errors='ignore') }}"
+  vars:
+    findme:
+      - "~/.themes/{{ gtk_theme_name }}"
+      - "~/.local/share/themes/{{ gtk_theme_name }}"
+      - "/usr/local/share/themes/{{ gtk_theme_name }}"
+      - "/usr/share/themes/{{ gtk_theme_name }}"
+
+- name: Determine gtk theme to use.
+  ansible.builtin.set_fact:
+    chosen_gtk_theme_name: "{{ gtk_theme_path is defined | ternary(gtk_theme_name, 'Adwaita') }}"
+
+- name: Set gtk theme.
+  community.general.ini_file:
+    path: ~/.config/gtk-3.0/settings.ini
+    section: Settings
+    option: gtk-theme-name
+    value: "{{ chosen_gtk_theme_name }}"
+    mode: "0640"
+
+- name: Check if requested icon theme exists.
+  ansible.builtin.set_fact:
+    gtk_icon_theme_path: "{{ lookup('first_found', findme, errors='ignore') }}"
+  vars:
+    findme:
+      - "~/.icons/{{ gtk_icon_theme_name }}"
+      - "~/.local/share/icons/{{ gtk_icon_theme_name }}"
+      - "/usr/local/share/icons/{{ gtk_icon_theme_name }}"
+      - "/usr/share/icons/{{ gtk_icon_theme_name }}"
+
+- name: Determine icon theme to use.
+  ansible.builtin.set_fact:
+    chosen_gtk_icon_theme_name: "{{ gtk_icon_theme_path is defined | ternary(gtk_icon_theme_name, 'Adwaita') }}"
+
+- name: Set icon theme.
+  community.general.ini_file:
+    path: ~/.config/gtk-3.0/settings.ini
+    section: Settings
+    option: gtk-icon-theme-name
+    value: "{{ chosen_gtk_icon_theme_name }}"
+    mode: "0640"
+
+- name: Check if requested cursor theme exists.
+  ansible.builtin.set_fact:
+    gtk_cursor_theme_path: "{{ lookup('first_found', findme, errors='ignore') }}"
+  vars:
+    findme:
+      - "~/.icons/{{ gtk_cursor_theme_name }}"
+      - "~/.local/share/icons/{{ gtk_cursor_theme_name }}"
+      - "/usr/local/share/icons/{{ gtk_cursor_theme_name }}"
+      - "/usr/share/icons/{{ gtk_cursor_theme_name }}"
+
+- name: Determine cursor theme to use.
+  ansible.builtin.set_fact:
+    chosen_gtk_cursor_theme_name: "{{ gtk_cursor_theme_path is defined | ternary(gtk_cursor_theme_name, 'Adwaita') }}"
+
+- name: Set cursor theme.
+  community.general.ini_file:
+    path: ~/.config/gtk-3.0/settings.ini
+    section: Settings
+    option: gtk-cursor-theme-name
+    value: "{{ chosen_gtk_cursor_theme_name }}"
+    mode: "0640"
