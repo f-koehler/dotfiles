@@ -74,3 +74,11 @@
     option: gtk-cursor-theme-name
     value: "{{ chosen_gtk_cursor_theme_name }}"
     mode: "0640"
+
+- name: Set dark theme preference.
+  community.general.ini_file:
+    path: ~/.config/gtk-3.0/settings.ini
+    section: Settings
+    option: gtk-application-prefer-dark-theme
+    value: "{{ gtk_application_prefer_dark_theme | ternary('true', 'false') }}"
+    mode: "0640"
