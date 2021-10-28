@@ -7,7 +7,6 @@
     follow: no
   loop:
     - alacritty
-    - gtk-3.0
     - htop
     - khal
     - kitty
