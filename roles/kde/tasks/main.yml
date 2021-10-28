@@ -1,103 +1,116 @@
-- name: Set theme.
-  kconfig:
-    file: ~/.config/plasmarc
-    group: Theme
-    key: name
-    value: breeze-dark
+- name: Check for kwriteconfig5.
+  ansible.builtin.stat:
+    path: /usr/bin/kwriteconfig5
+  register: kwriteconfig5
 
-- name: Set icon theme.
-  kconfig:
-    file: ~/.config/kdeglobals
-    group: Icons
-    key: Theme
-    value: breeze-dark
+- name: Check for kreadconfig5.
+  ansible.builtin.stat:
+    path: /usr/bin/kreadconfig5
+  register: kreadconfig5
 
-- name: Disable window shadows.
-  kconfig:
-    file: ~/.config/breezerc
-    group: Common
-    key: ShadowSize
-    value: ShadowNone
-
-- name: Align title left.
-  kconfig:
-    file: ~/.config/breezerc
-    group: Windeco
-    key: TitleAlignment
-    value: AlignLeft
-
-- name: Set window borders.
-  kconfig:
-    file: ~/.config/kwinrc
-    group: org.kde.kdecoration2
-    key: BorderSize
-    value: Tiny
-
-- name: Disable automatic border size.
-  kconfig:
-    file: ~/.config/kwinrc
-    group: org.kde.kdecoration2
-    key: BorderSizeAuto
-    value: "false"
-    type: bool
-
-- name: Enable bismuth scripts.
-  kconfig:
-    file: ~/.config/kwinrc
-    group: Plugins
-    key: bismuthEnabled
-    value: "true"
-    type: bool
-
-- name: Change border colors.
-  kconfig:
-    file: ~/.config/kdeglobals
-    group: WM
-    key: frame
-    value: "61,174,233"
-
-- name: Change border colors for inactive window.
-  kconfig:
-    file: ~/.config/kdeglobals
-    group: WM
-    key: inactiveFrame
-    value: "239,240,241"
-
-- name: Add window minimum geometry size rule.
+- name: Configure the KDE Plasma desktop.
+  when: kwriteconfig5.stat.exists and kwriteconfig5.stat.executable and kreadconfig5.stat.exists and kreadconfig5.stat.executable
   block:
-    - name: Set description.
+    - name: Set theme.
       kconfig:
-        file: ~/.config/kwinrulesrc
-        group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
-        key: Description
-        value: "Set Minimum Geometry Size"
+        file: ~/.config/plasmarc
+        group: Theme
+        key: name
+        value: breeze-dark
 
-    - name: Set types.
+    - name: Set icon theme.
       kconfig:
-        file: ~/.config/kwinrulesrc
-        group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
-        key: types
-        value: "1"
+        file: ~/.config/kdeglobals
+        group: Icons
+        key: Theme
+        value: breeze-dark
 
-    - name: Set minsizerule.
+    - name: Disable window shadows.
       kconfig:
-        file: ~/.config/kwinrulesrc
-        group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
-        key: minsizerule
-        value: "2"
+        file: ~/.config/breezerc
+        group: Common
+        key: ShadowSize
+        value: ShadowNone
 
-- name: Activate window rules.
-  block:
-    - name: Set count.
+    - name: Align title left.
       kconfig:
-        file: ~/.config/kwinrulesrc
-        group: General
-        key: count
-        value: "1"
+        file: ~/.config/breezerc
+        group: Windeco
+        key: TitleAlignment
+        value: AlignLeft
 
-    - name: Set rules.
+    - name: Set window borders.
       kconfig:
-        file: ~/.config/kwinrulesrc
-        group: General
-        key: rules
-        value: "eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb"
+        file: ~/.config/kwinrc
+        group: org.kde.kdecoration2
+        key: BorderSize
+        value: Tiny
+
+    - name: Disable automatic border size.
+      kconfig:
+        file: ~/.config/kwinrc
+        group: org.kde.kdecoration2
+        key: BorderSizeAuto
+        value: "false"
+        type: bool
+
+    - name: Enable bismuth scripts.
+      kconfig:
+        file: ~/.config/kwinrc
+        group: Plugins
+        key: bismuthEnabled
+        value: "true"
+        type: bool
+
+    - name: Change border colors.
+      kconfig:
+        file: ~/.config/kdeglobals
+        group: WM
+        key: frame
+        value: "61,174,233"
+
+    - name: Change border colors for inactive window.
+      kconfig:
+        file: ~/.config/kdeglobals
+        group: WM
+        key: inactiveFrame
+        value: "239,240,241"
+
+    - name: Add window minimum geometry size rule.
+      block:
+        - name: Set description.
+          kconfig:
+            file: ~/.config/kwinrulesrc
+            group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
+            key: Description
+            value: "Set Minimum Geometry Size"
+
+        - name: Set types.
+          kconfig:
+            file: ~/.config/kwinrulesrc
+            group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
+            key: types
+            value: "1"
+
+        - name: Set minsizerule.
+          kconfig:
+            file: ~/.config/kwinrulesrc
+            group: eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb
+            key: minsizerule
+            value: "2"
+
+    - name: Activate window rules.
+      block:
+        - name: Set count.
+          kconfig:
+            file: ~/.config/kwinrulesrc
+            group: General
+            key: count
+            value: "1"
+
+        - name: Set rules.
+          kconfig:
+            file: ~/.config/kwinrulesrc
+            group: General
+            key: rules
+            value: "eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb"
