@@ -11,6 +11,27 @@
 - name: Configure the KDE Plasma desktop.
   when: kwriteconfig5.stat.exists and kwriteconfig5.stat.executable and kreadconfig5.stat.exists and kreadconfig5.stat.executable
   block:
+    - name: Use double click to open folders.
+      kconfig:
+        file: ~/.config/kdeglobals
+        group: KDE
+        key: SingleClick
+        value: "false"
+        type: bool
+
+    - name: Alacritty shortcuts.
+      kconfig:
+        file: ~/.config/kglobalshortcutsrc
+        group: Alacritty.desktop
+        key: "{{ setting[0] }}"
+        value: "{{ setting[1] }}"
+      loop:
+        - ["_launch", "Ctrl+Alt+T\\\tMeta+Return"]
+        - ["_k_friendly_name", "Alacritty"]
+        # - ["New", ",,New Terminal"]
+      loop_control:
+        loop_var: setting
+
     - name: Set theme.
       kconfig:
         file: ~/.config/plasmarc
@@ -114,3 +135,53 @@
             group: General
             key: rules
             value: "eaa2366f-b4c5-4ecc-a72e-c22be46f4ffb"
+
+    - name: Disable kwin shortcuts.
+      kconfig:
+        file: ~/.config/kglobalshortcutsrc
+        group: kwin
+        key: "{{ item['key'] }}"
+        value: "{{ item['value'] }}"
+      loop:
+        - key: "Window Quick Tile Bottom"
+          value: "none,none,Quick Tile Window to the Bottom"
+        - key: "Window Quick Tile Bottom Left"
+          value: "none,none,Quick Tile Window to the Bottom Left"
+        - key: "Window Quick Tile Bottom Right"
+          value: "none,none,Quick Tile Window to the Bottom Right"
+        - key: "Window Quick Tile Left"
+          value: "none,none,Quick Tile Window to the Left"
+        - key: "Window Quick Tile Right"
+          value: "none,none,Quick Tile Window to the Right"
+        - key: "Window Quick Tile Top"
+          value: "none,none,Quick Tile Window to the Top"
+        - key: "Window Quick Tile Top Left"
+          value: "none,none,Quick Tile Window to the Top Left"
+        - key: "Window Quick Tile Top Right"
+          value: "none,none,Quick Tile Window to the Top Right"
+
+    - name: Enable kwin shortcuts.
+      kconfig:
+        file: ~/.config/kglobalshortcutsrc
+        group: kwin
+        key: "{{ item['key'] }}"
+        value: "{{ item['value'] }}"
+      loop:
+        - key: "bismuth_focus_left_window"
+          value: "Meta+Left,none,Bismuth: Focus Left Window"
+        - key: "bismuth_focus_right_window"
+          value: "Meta+Right,none,Bismuth: Focus Right Window"
+        - key: "bismuth_focus_bottom_window"
+          value: "Meta+Down,none,Bismuth: Focus Bottom Window"
+        - key: "bismuth_focus_upper_window"
+          value: "Meta+Up,none,Bismuth: Focus Upper Window"
+        - key: "bismuth_move_window_to_left_pos"
+          value: "Meta+Shift+Left,none,Bismuth: Move Window Left"
+        - key: "bismuth_move_window_to_right_pos"
+          value: "Meta+Shift+Right,none,Bismuth: Move Window Right"
+        - key: "bismuth_move_window_to_upper_pos"
+          value: "Meta+Shift+Up,none,Bismuth: Move Window Up"
+        - key: "bismuth_move_window_to_bottom_pos"
+          value: "Meta+Shift+Up,none,Bismuth: Move Window Down"
+        - key: "bismuth_toggle_window_floating"
+          value: "Meta+Space,none,Bismuth: Toggle Active Window Floating"

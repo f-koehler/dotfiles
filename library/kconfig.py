@@ -52,15 +52,15 @@ def main():
         value="",
     )
 
-    common_flags = "--file {} --key {}".format(
+    common_flags = '--file {} --key "{}"'.format(
         module.params.get("file"),
         module.params.get("key"),
     )
     if module.params.get("group"):
-        common_flags += " --group {}".format(module.params.get("group"))
+        common_flags += ' --group "{}"'.format(module.params.get("group"))
     elif module.params.get("groups"):
         for group in module.params.get("groups"):
-            common_flags += " --group {}".format(group)
+            common_flags += ' --group "{}"'.format(group)
 
     kreadconfig5_path = module.get_bin_path("kreadconfig5")
     read_cmd = "{} {}".format(kreadconfig5_path, common_flags)
@@ -70,23 +70,29 @@ def main():
     if rc != 0:
         module.fail_json(msg='"{}" failed: {}'.format(read_cmd, err))
 
-    value = module.params.get("value")
     result["previous_value"] = out
-    result["value"] = value
-    if out != value:
+    if module.params.get("state") == "absent":
         result["changed"] = True
-        result["value"] = value
-        if not module.check_mode:
-            kwriteconfig5_path = module.get_bin_path("kwriteconfig5")
-            write_cmd = "{} {} {}".format(
-                kwriteconfig5_path, common_flags, module.params.get("value")
-            )
-            if module.params.get("type") in ["bool", "boolean"]:
-                write_cmd += " --type bool"
+        kwriteconfig5_path = module.get_bin_path("kwriteconfig5")
+        write_cmd = "{} {} --delete".format(kwriteconfig5_path, common_flags)
+        rc, out, err = module.run_command(write_cmd)
+        if rc != 0:
+            module.fail_json(msg='"{}" failed: {}'.format(read_cmd, err))
+    else:
+        value = module.params.get("value")
+        if out != value:
+            result["changed"] = True
+            if not module.check_mode:
+                kwriteconfig5_path = module.get_bin_path("kwriteconfig5")
+                write_cmd = '{} {} "{}"'.format(
+                    kwriteconfig5_path, common_flags, module.params.get("value")
+                )
+                if module.params.get("type") in ["bool", "boolean"]:
+                    write_cmd += " --type bool"
 
-            rc, out, err = module.run_command(write_cmd)
-            if rc != 0:
-                module.fail_json(msg='"{}" failed: {}'.format(read_cmd, err))
+                rc, out, err = module.run_command(write_cmd)
+                if rc != 0:
+                    module.fail_json(msg='"{}" failed: {}'.format(read_cmd, err))
 
     module.exit_json(**result)
 
