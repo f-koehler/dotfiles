@@ -159,6 +159,10 @@
           value: "none,none,Quick Tile Window to the Top Left"
         - key: "Window Quick Tile Top Right"
           value: "none,none,Quick Tile Window to the Top Right"
+        - key: "Window to Next Screen"
+          value: "none,none,Window to Next Screen"
+        - key: "Window to Previous Screen"
+          value: "none+Shift+Left,none,Window to Previous Screen"
 
     - name: Enable kwin shortcuts.
       kconfig:
