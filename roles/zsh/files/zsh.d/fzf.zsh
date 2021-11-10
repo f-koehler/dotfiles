@@ -6,12 +6,16 @@ fi
 
 if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
   source /usr/share/fzf/key-bindings.zsh
+elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
 elif [[ -f ${HOME}/.fzf/shell/key-bindings.zsh ]]; then
   source ${HOME}/.fzf/shell/key-bindings.zsh
 fi
 
 if [[ -f /usr/share/fzf/completion.zsh ]]; then
   source /usr/share/fzf/completion.zsh
+elif [[ -f /usr/share/doc/fzf/examples/completion.zsh ]]; then
+  source /usr/share/doc/fzf/examples/completion.zsh
 elif [[ -f ${HOME}/.fzf/shell/completion.zsh ]]; then
   source ${HOME}/.fzf/shell/completion.zsh
 fi
