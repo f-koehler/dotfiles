@@ -25,8 +25,14 @@
     - name: Setup rust.
       ansible.builtin.include_tasks: tasks/rust.yml
 
+    - name: Setup alacritty.
+      ansible.builtin.include_tasks: tasks/alacritty.yml
+
     - name: Setup anaconda.
       ansible.builtin.include_tasks: tasks/anaconda.yml
+
+    - name: Setup bat.
+      ansible.builtin.include_tasks: tasks/bat.yml
 
     - name: Setup dircolors.
       ansible.builtin.include_tasks: tasks/dircolors.yml
@@ -34,14 +40,23 @@
     - name: Setup direnv.
       ansible.builtin.include_tasks: tasks/direnv.yml
 
+    - name: Setup exa.
+      ansible.builtin.include_tasks: tasks/exa.yml
+
     - name: Setup fish.
       ansible.builtin.include_tasks: tasks/fish.yml
 
     - name: Setup fzf.
       ansible.builtin.include_tasks: tasks/fzf.yml
 
+    - name: Setup git.
+      ansible.builtin.include_tasks: tasks/git.yml
+
     - name: Setup i3/sway.
       ansible.builtin.include_tasks: tasks/i3.yml
+
+    - name: Setup rg.
+      ansible.builtin.include_tasks: tasks/rg.yml
 
     - name: Setup starship.
       ansible.builtin.include_tasks: tasks/starship.yml

@@ -17,4 +17,3 @@ export GPG_TTY=$(tty)
 if [ -d "$HOME/.scripts" ]; then
     export PATH="$HOME/.scripts:$PATH"
 fi
-. "$HOME/.cargo/env"

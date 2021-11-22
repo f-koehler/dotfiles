@@ -16,3 +16,11 @@
     state: absent
     path: ~/.linuxbrew/bin
   when: starship_stat.stat.exists and starship_stat.stat.executable
+
+- name: Link starship config.
+  ansible.builtin.file:
+    src: "~/.dotfiles/files/starship.toml"
+    dest: "~/.config/starship.toml"
+    state: link
+    force: yes
+    follow: no

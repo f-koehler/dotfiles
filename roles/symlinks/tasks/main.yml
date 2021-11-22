@@ -6,7 +6,6 @@
     force: yes
     follow: no
   loop:
-    - alacritty
     - htop
     - khal
     - kitty

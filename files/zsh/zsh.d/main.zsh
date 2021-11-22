@@ -35,7 +35,6 @@ zsh_add_file "keybindings.zsh"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_plugin "romkatv/powerlevel10k"
 
 zsh_add_completion "esc/conda-zsh-completion" false
 

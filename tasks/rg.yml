@@ -1,0 +1,18 @@
+- name: Check if rg is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/rg
+  register: rg_stat
+
+- name: Install rg.
+  community.general.homebrew:
+    name: ripgrep
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (rg_stat.stat.exists and rg_stat.stat.executable)
+
+- name: Remove homebrew rg.
+  community.general.homebrew:
+    name: ripgrep
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: rg_stat.stat.exists and rg_stat.stat.executable

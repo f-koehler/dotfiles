@@ -1,0 +1,37 @@
+- name: Check if git is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/git
+  register: git_stat
+
+- name: Install git.
+  community.general.homebrew:
+    name: git
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (git_stat.stat.exists and git_stat.stat.executable)
+
+- name: Remove homebrew git.
+  community.general.homebrew:
+    name: git
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: git_stat.stat.exists and git_stat.stat.executable
+
+- name: Check if git-annex is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/git-annex
+  register: git_annex_stat
+
+- name: Install git-annex.
+  community.general.homebrew:
+    name: git-annex
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (git_annex_stat.stat.exists and git_annex_stat.stat.executable)
+
+- name: Remove homebrew git-annex.
+  community.general.homebrew:
+    name: git-annex
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: git_annex_stat.stat.exists and git_annex_stat.stat.executable

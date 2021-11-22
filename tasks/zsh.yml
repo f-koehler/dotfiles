@@ -48,9 +48,6 @@
     - name: zsh-syntax-highlighting
       repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
       version: master
-    - name: powerlevel10k
-      repo: "https://github.com/romkatv/powerlevel10k"
-      version: master
     - name: conda-zsh-completion
       repo: "https://github.com/esc/conda-zsh-completion"
       version: master

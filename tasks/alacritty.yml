@@ -19,7 +19,7 @@
 
 - name: Link alacritty config.
   ansible.builtin.file:
-    src: "~/.dotfiles/files/config/alacritty"
+    src: "~/.dotfiles/files/alacritty"
     dest: "~/.config/alacritty"
     state: link
     force: yes

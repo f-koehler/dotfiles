@@ -1,0 +1,18 @@
+- name: Check if exa is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/exa
+  register: exa_stat
+
+- name: Install exa.
+  community.general.homebrew:
+    name: exa
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (exa_stat.stat.exists and exa_stat.stat.executable)
+
+- name: Remove homebrew exa.
+  community.general.homebrew:
+    name: exa
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: exa_stat.stat.exists and exa_stat.stat.executable
