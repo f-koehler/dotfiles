@@ -1,0 +1,26 @@
+- name: Check if alacritty is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/alacritty
+  register: alacritty_stat
+
+- name: Install alacritty.
+  community.general.homebrew:
+    name: alacritty
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (alacritty_stat.stat.exists and alacritty_stat.stat.executable)
+
+- name: Remove homebrew alacritty.
+  community.general.homebrew:
+    name: alacritty
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: alacritty_stat.stat.exists and alacritty_stat.stat.executable
+
+- name: Link alacritty config.
+  ansible.builtin.file:
+    src: "~/.dotfiles/files/config/alacritty"
+    dest: "~/.config/alacritty"
+    state: link
+    force: yes
+    follow: no

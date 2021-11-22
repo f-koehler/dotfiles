@@ -6,7 +6,7 @@
 - name: Install tmux.
   community.general.homebrew:
     name: tmux
-    state: head
+    state: present
     path: ~/.linuxbrew/bin
   when: not (tmux_stat.stat.exists and tmux_stat.stat.executable)
 

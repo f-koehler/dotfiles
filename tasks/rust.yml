@@ -6,7 +6,7 @@
 - name: Install rust.
   community.general.homebrew:
     name: rust
-    state: head
+    state: present
     path: ~/.linuxbrew/bin
   when: not (rust_stat.stat.exists and rust_stat.stat.executable)
 

@@ -6,7 +6,7 @@
 - name: Install starship.
   community.general.homebrew:
     name: starship
-    state: head
+    state: present
     path: ~/.linuxbrew/bin
   when: not (starship_stat.stat.exists and starship_stat.stat.executable)
 

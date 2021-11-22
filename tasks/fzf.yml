@@ -6,7 +6,7 @@
 - name: Install fzf.
   community.general.homebrew:
     name: fzf
-    state: head
+    state: present
     path: ~/.linuxbrew/bin
   when: not (fzf_stat.stat.exists and fzf_stat.stat.executable)
 

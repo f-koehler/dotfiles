@@ -6,7 +6,7 @@
 - name: Install zsh.
   community.general.homebrew:
     name: zsh
-    state: head
+    state: present
     path: ~/.linuxbrew/bin
   when: not (zsh_stat.stat.exists and zsh_stat.stat.executable)
 
