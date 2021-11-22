@@ -1,3 +1,22 @@
+- name: Check if tmux is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/nvim
+  register: nvim_stat
+
+- name: Install tmux.
+  community.general.homebrew:
+    name: tmux
+    state: head
+    path: ~/.linuxbrew/bin
+  when: not (tmux_stat.stat.exists and tmux_stat.stat.executable)
+
+- name: Remove homebrew tmux.
+  community.general.homebrew:
+    name: tmux
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: tmux_stat.stat.exists and tmux_stat.stat.executable
+
 - name: Remove config from old location.
   ansible.builtin.file:
     path: ~/.config/tmux

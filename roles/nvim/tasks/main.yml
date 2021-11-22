@@ -1,3 +1,22 @@
+- name: Check if neovim is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/nvim
+  register: nvim_stat
+
+- name: Install neovim.
+  community.general.homebrew:
+    name: neovim
+    state: head
+    path: ~/.linuxbrew/bin
+  when: not (neovim_stat.stat.exists and neovim_stat.stat.executable)
+
+- name: Remove homebrew neovim.
+  community.general.homebrew:
+    name: neovim
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: neovim_stat.stat.exists and neovim_stat.stat.executable
+
 - name: Install LunarVim.
   ansible.builtin.command: "bash ~/.dotfiles/roles/nvim/files/deploy.sh"
   args:

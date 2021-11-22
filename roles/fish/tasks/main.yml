@@ -5,3 +5,22 @@
     state: link
     force: yes
     follow: no
+
+- name: Check if fish is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/fish
+  register: fish_stat
+
+- name: Install fish.
+  community.general.homebrew:
+    name: fish
+    state: present
+    path: ~/.linuxbrew/bin
+  when: not (fish_stat.stat.exists and fish_stat.stat.executable)
+
+- name: Remove homebrew fish.
+  community.general.homebrew:
+    name: fish
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: fish_stat.stat.exists and fish_stat.stat.executable
