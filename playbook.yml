@@ -1,21 +1,56 @@
 - name: find reachable hosts
   hosts: all
   gather_facts: no
-  roles:
-    - anaconda
-    - dircolors
-    - emacs
-    - fish
-    - fzf
-    - gtk
-    - homebrew
-    - i3
-    - kde
-    # - nvim
-    - polybar
-    # - ranger
-    - rofi
-    - symlinks
-    - tmux
-    - xresources
-    # - zsh
+  pre_tasks:
+    - name: Load config.
+      ansible.builtin.include_vars: config.yml
+  # roles:
+  #   # - dircolors
+  #   # - emacs
+  #   # - gtk
+  #   # - kde
+  #   # # - nvim
+  #   # - polybar
+  #   # # - ranger
+  #   # - rofi
+  #   # - symlinks
+  #   # - xresources
+  tasks:
+    - name: Setup homebrew.
+      ansible.builtin.include_tasks: tasks/homebrew.yml
+
+    - name: Setup node.js.
+      ansible.builtin.include_tasks: tasks/nodejs.yml
+
+    - name: Setup rust.
+      ansible.builtin.include_tasks: tasks/rust.yml
+
+    - name: Setup anaconda.
+      ansible.builtin.include_tasks: tasks/anaconda.yml
+
+    - name: Setup dircolors.
+      ansible.builtin.include_tasks: tasks/dircolors.yml
+
+    - name: Setup direnv.
+      ansible.builtin.include_tasks: tasks/direnv.yml
+
+    - name: Setup fish.
+      ansible.builtin.include_tasks: tasks/fish.yml
+
+    - name: Setup fzf.
+      ansible.builtin.include_tasks: tasks/fzf.yml
+
+    - name: Setup i3/sway.
+      ansible.builtin.include_tasks: tasks/i3.yml
+
+    - name: Setup starship.
+      ansible.builtin.include_tasks: tasks/starship.yml
+
+    - name: Setup tmux.
+      ansible.builtin.include_tasks: tasks/tmux.yml
+
+    - name: Setup zsh.
+      ansible.builtin.include_tasks: tasks/zsh.yml
+
+    - name: Setup zoxide.
+      ansible.builtin.include_tasks: tasks/zoxide.yml

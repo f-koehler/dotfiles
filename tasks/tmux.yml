@@ -1,7 +1,7 @@
 - name: Check if tmux is installed.
   ansible.builtin.stat:
-    path: /usr/bin/nvim
-  register: nvim_stat
+    path: /usr/bin/tmux
+  register: tmux_stat
 
 - name: Install tmux.
   community.general.homebrew:
@@ -24,7 +24,7 @@
 
 - name: Link tmux config.
   ansible.builtin.file:
-    src: "~/.dotfiles/roles/tmux/files/tmux.conf"
+    src: "~/.dotfiles/files/tmux.conf"
     dest: ~/.tmux.conf
     state: link
     force: yes

@@ -1,0 +1,18 @@
+- name: Check if rust is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/rustc
+  register: rust_stat
+
+- name: Install rust.
+  community.general.homebrew:
+    name: rust
+    state: head
+    path: ~/.linuxbrew/bin
+  when: not (rust_stat.stat.exists and rust_stat.stat.executable)
+
+- name: Remove homebrew rust.
+  community.general.homebrew:
+    name: rust
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: rust_stat.stat.exists and rust_stat.stat.executable

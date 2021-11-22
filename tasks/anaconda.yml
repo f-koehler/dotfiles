@@ -2,6 +2,7 @@
   ansible.builtin.stat:
     path: "{{ anaconda_prefix }}/bin/conda"
   register: conda_check
+
 - name: Install anaconda.
   block:
     - name: Create ~/.local directory.
@@ -9,19 +10,23 @@
         path: ~/.local
         state: directory
         mode: "0700"
+
     - name: Download miniconda installer.
       ansible.builtin.get_url:
         url: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
         dest: ~/.local/miniconda.sh
         mode: "u+x"
+
     - name: Install miniconda.
       ansible.builtin.command:
         cmd: "~/.local/miniconda.sh -b -p {{ anaconda_prefix }} -f"
+
     - name: Remove miniconda installer.
       ansible.builtin.file:
         dest: ~/.local/miniconda.sh
         state: absent
   when: not conda_check.stat.exists
+
 - name: Install mamba.
   ansible.builtin.command:
     cmd: "{{ anaconda_prefix }}/bin/conda install -c conda-forge -n base -q -y mamba"

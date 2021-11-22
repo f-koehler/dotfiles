@@ -1,0 +1,18 @@
+- name: Check if zoxide is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/zoxide
+  register: zoxide_stat
+
+- name: Install zoxide.
+  community.general.homebrew:
+    name: zoxide
+    state: head
+    path: ~/.linuxbrew/bin
+  when: not (zoxide_stat.stat.exists and zoxide_stat.stat.executable)
+
+- name: Remove homebrew zoxide.
+  community.general.homebrew:
+    name: zoxide
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: zoxide_stat.stat.exists and zoxide_stat.stat.executable

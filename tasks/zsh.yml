@@ -1,7 +1,7 @@
 - name: Check if zsh is installed.
   ansible.builtin.stat:
-    path: /usr/bin/nvim
-  register: nvim_stat
+    path: /usr/bin/zsh
+  register: zsh_stat
 
 - name: Install zsh.
   community.general.homebrew:
@@ -19,7 +19,7 @@
 
 - name: Symlink zsh config.
   ansible.builtin.file:
-    src: "~/.dotfiles/roles/zsh/files/{{ item }}"
+    src: "~/.dotfiles/files/zsh/{{ item }}"
     dest: "~/.{{ item }}"
     state: link
     force: yes

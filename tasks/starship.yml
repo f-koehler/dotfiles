@@ -1,0 +1,18 @@
+- name: Check if starship is installed.
+  ansible.builtin.stat:
+    path: /usr/bin/starship
+  register: starship_stat
+
+- name: Install starship.
+  community.general.homebrew:
+    name: starship
+    state: head
+    path: ~/.linuxbrew/bin
+  when: not (starship_stat.stat.exists and starship_stat.stat.executable)
+
+- name: Remove homebrew starship.
+  community.general.homebrew:
+    name: starship
+    state: absent
+    path: ~/.linuxbrew/bin
+  when: starship_stat.stat.exists and starship_stat.stat.executable

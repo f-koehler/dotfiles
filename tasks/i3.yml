@@ -11,9 +11,9 @@
 
 - name: Configure i3.
   ansible.builtin.template:
-    src: main.conf
+    src: templates/i3/main.conf
     dest: ~/.config/i3/config
-    # validate: "~/.dotfiles/roles/i3/files/validate {{ wm }} %s"
+    # validate: "~/.dotfiles/files/i3-validate {{ wm }} %s"
     trim_blocks: false
     lstrip_blocks: false
     mode: 0640
@@ -22,9 +22,9 @@
 
 - name: Configure sway.
   ansible.builtin.template:
-    src: main.conf
+    src: templates/i3/main.conf
     dest: ~/.config/sway/config
-    # validate: "~/.dotfiles/roles/i3/files/validate {{ wm }} %s"
+    # validate: "~/.dotfiles/files/i3-validate {{ wm }} %s"
     trim_blocks: false
     lstrip_blocks: false
     mode: 0640
