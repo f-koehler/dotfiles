@@ -1,5 +1,8 @@
 [python]
 symbol = "  "
 
+[golang]
+symbol = " "
+
 [cmd_duration]
 format = 'took [⏱ $duration]($style)'
