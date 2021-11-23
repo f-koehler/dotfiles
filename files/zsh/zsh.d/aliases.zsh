@@ -3,6 +3,16 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
+if (( $+commands[z] )); then
+  alias cd="z"
+fi
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
 # Replace ls with exa if installed
 # Change defaults for ls otherwise
 if (( $+commands[exa] )); then
