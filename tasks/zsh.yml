@@ -62,9 +62,9 @@
 - name: Install zsh plugins.
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: "~/.zsh.d/plugins/{{ plugin['name'] }}"
-    repo: "{{ plugin['repo'] }}"
-    version: "{{ plugin['version'] }}"
+    dest: "~/.zsh.d/plugins/{{ plugin.name }}"
+    repo: "{{ plugin.repo }}"
+    version: "{{ plugin.version }}"
   loop:
     - name: zsh-autosuggestions
       repo: "https://github.com/zsh-users/zsh-autosuggestions.git"

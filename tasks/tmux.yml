@@ -33,9 +33,9 @@
 - name: Install tmux plugins.
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: "~/.tmux/plugins/{{ plugin['name'] }}"
-    repo: "{{ plugin['repo'] }}"
-    version: "{{ plugin['version'] }}"
+    dest: "~/.tmux/plugins/{{ plugin.name }}"
+    repo: "{{ plugin.repo }}"
+    version: "{{ plugin.version }}"
   loop:
     - name: tmux-sensible
       repo: "https://github.com/tmux-plugins/tmux-sensible"
