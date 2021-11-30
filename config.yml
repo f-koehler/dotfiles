@@ -1,1 +1,10 @@
 anaconda_prefix: ~/.local/opt/anaconda3
+aliases:
+  - ["cp", "cp -i"]
+  - ["mv", "mv -i"]
+  - ["rm", "rm -i"]
+  - ["..", "cd .."]
+  - ["...", "cd ../.."]
+  - ["....", "cd ../../.."]
+  - [".....", "cd ../../../.."]
+homebrew_path: ~/.linuxbrew/bin

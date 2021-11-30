@@ -3,16 +3,26 @@
     path: /usr/bin/bat
   register: bat_stat
 
-- name: Install bat.
-  community.general.homebrew:
-    name: bat
-    state: present
-    path: ~/.linuxbrew/bin
+- name: Use bat from homebrew.
   when: not (bat_stat.stat.exists and bat_stat.stat.executable)
+  block:
+    - name: Install bat via homebrew.
+      community.general.homebrew:
+        name: bat
+        state: present
+        path: "{{ homebrew_path }}"
+    - name: Store bat path.
+      ansible.builtin.set_fact:
+        bat_path: "{{ homebrew_path }}/bat"
 
-- name: Remove homebrew bat.
-  community.general.homebrew:
-    name: bat
-    state: absent
-    path: ~/.linuxbrew/bin
+- name: Use system bat.
   when: bat_stat.stat.exists and bat_stat.stat.executable
+  block:
+    - name: Remove homebrew bat.
+      community.general.homebrew:
+        name: bat
+        state: absent
+        path: "{{ homebrew_path }}"
+    - name: Store bat path.
+      ansible.builtin.set_fact:
+        bat_path: "/usr/bin/bat"

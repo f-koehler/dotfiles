@@ -3,16 +3,26 @@
     path: /usr/bin/exa
   register: exa_stat
 
-- name: Install exa.
-  community.general.homebrew:
-    name: exa
-    state: present
-    path: ~/.linuxbrew/bin
+- name: Use exa from homebew.
   when: not (exa_stat.stat.exists and exa_stat.stat.executable)
+  block:
+    - name: Install exa.
+      community.general.homebrew:
+        name: exa
+        state: present
+        path: "{{ homebrew_path }}"
+    - name: Store exa path.
+      ansible.builtin.set_fact:
+        exa_path: "{{ homebrew_path }}/exa"
 
-- name: Remove homebrew exa.
-  community.general.homebrew:
-    name: exa
-    state: absent
-    path: ~/.linuxbrew/bin
+- name: Use exa from system.
   when: exa_stat.stat.exists and exa_stat.stat.executable
+  block:
+    - name: Remove homebrew exa.
+      community.general.homebrew:
+        name: exa
+        state: absent
+        path: "{{ homebrew_path }}"
+    - name: Store exa path.
+      ansible.builtin.set_fact:
+        exa_path: "/usr/bin/exa"

@@ -3,19 +3,29 @@
     path: /usr/bin/starship
   register: starship_stat
 
-- name: Install starship.
-  community.general.homebrew:
-    name: starship
-    state: present
-    path: ~/.linuxbrew/bin
+- name: Use starship from homebrew.
   when: not (starship_stat.stat.exists and starship_stat.stat.executable)
+  block:
+    - name: Install starship.
+      community.general.homebrew:
+        name: starship
+        state: present
+        path: "{{ homebrew_path }}"
+    - name: Store starship path.
+      ansible.builtin.set_fact:
+        starship_path: "{{ homebrew_path }}/starship"
 
-- name: Remove homebrew starship.
-  community.general.homebrew:
-    name: starship
-    state: absent
-    path: ~/.linuxbrew/bin
+- name: Use starship from system.
   when: starship_stat.stat.exists and starship_stat.stat.executable
+  block:
+    - name: Remove homebrew starship.
+      community.general.homebrew:
+        name: starship
+        state: absent
+        path: "{{ homebrew_path }}"
+    - name: Store starship path.
+      ansible.builtin.set_fact:
+        starship_path: "/usr/bin/starship"
 
 - name: Link starship config.
   ansible.builtin.file:

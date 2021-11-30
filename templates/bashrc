@@ -1,0 +1,30 @@
+eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
+
+{% if direnv_path is defined and direnv_path %}
+eval "$({{ direnv_path }} hook bash)"
+{% endif %}
+
+{% if zoxide_path is defined and zoxide_path %}
+eval "$({{ zoxide_path }} init bash)"
+{% endif %}
+
+{% if starship_path is defined and starship_path %}
+eval "$({{ starship_path }} init bash)"
+{% endif %}
+
+# aliases
+{% for alias in aliases %}
+alias {{ alias[0] }}="{{ alias[1] }}"
+{% endfor %}
+
+{% if exa_path is defined and exa_path %}
+alias ll="{{ exa_path }} -lh --color=auto --icons"
+alias ls="{{ exa_path }} --color=auto --icons"
+{% else %}
+alias ll="ls -lh --color=always"
+alias ls="ls --color=always"
+{% endif %}
+
+{% if bat_path is defined and bat_path %}
+alias cat="{{ bat_path }} --color=always --italic-text=always --theme=Nord --plain"
+{% endif %}

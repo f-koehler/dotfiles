@@ -43,9 +43,6 @@
     - name: Setup exa.
       ansible.builtin.include_tasks: tasks/exa.yml
 
-    - name: Setup fish.
-      ansible.builtin.include_tasks: tasks/fish.yml
-
     - name: Setup fzf.
       ansible.builtin.include_tasks: tasks/fzf.yml
 
@@ -64,8 +61,16 @@
     - name: Setup tmux.
       ansible.builtin.include_tasks: tasks/tmux.yml
 
-    - name: Setup zsh.
-      ansible.builtin.include_tasks: tasks/zsh.yml
-
     - name: Setup zoxide.
       ansible.builtin.include_tasks: tasks/zoxide.yml
+
+    # Setup shells.
+
+    - name: Setup bash.
+      ansible.builtin.include_tasks: tasks/bash.yml
+
+    - name: Setup fish.
+      ansible.builtin.include_tasks: tasks/fish.yml
+
+    - name: Setup zsh.
+      ansible.builtin.include_tasks: tasks/zsh.yml
