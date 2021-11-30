@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: neovim
     state: head
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (neovim_stat.stat.exists and neovim_stat.stat.executable)
 
 - name: Remove homebrew neovim.
   community.general.homebrew:
     name: neovim
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: neovim_stat.stat.exists and neovim_stat.stat.executable
 
 - name: Install LunarVim.

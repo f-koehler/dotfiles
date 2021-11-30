@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: zsh
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (zsh_stat.stat.exists and zsh_stat.stat.executable)
 
 - name: Remove homebrew zsh.
   community.general.homebrew:
     name: zsh
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: zsh_stat.stat.exists and zsh_stat.stat.executable
 
 - name: Symlink zsh config.

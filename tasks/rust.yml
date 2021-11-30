@@ -7,12 +7,12 @@
   community.general.homebrew:
     name: rust
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (rust_stat.stat.exists and rust_stat.stat.executable)
 
 - name: Remove homebrew rust.
   community.general.homebrew:
     name: rust
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: rust_stat.stat.exists and rust_stat.stat.executable

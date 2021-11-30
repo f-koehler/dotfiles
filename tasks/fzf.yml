@@ -7,12 +7,12 @@
   community.general.homebrew:
     name: fzf
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (fzf_stat.stat.exists and fzf_stat.stat.executable)
 
 - name: Remove homebrew fzf.
   community.general.homebrew:
     name: fzf
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: fzf_stat.stat.exists and fzf_stat.stat.executable

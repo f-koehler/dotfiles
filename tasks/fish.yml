@@ -15,12 +15,12 @@
   community.general.homebrew:
     name: fish
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (fish_stat.stat.exists and fish_stat.stat.executable)
 
 - name: Remove homebrew fish.
   community.general.homebrew:
     name: fish
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: fish_stat.stat.exists and fish_stat.stat.executable

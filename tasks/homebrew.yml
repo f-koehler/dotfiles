@@ -1,17 +1,17 @@
 - name: Clone repository.
   ansible.builtin.git:
-    dest: ~/.linuxbrew/Homebrew
+    dest: "{{ homebrew_prefix }}/Homebrew"
     repo: https://github.com/Homebrew/brew
     version: "master"
 
 - name: Create bin directory.
   ansible.builtin.file:
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
     state: directory
     mode: 0700
 
 - name: Symlink binary.
   ansible.builtin.file:
-    src: ~/.linuxbrew/Homebrew/bin/brew
-    dest: ~/.linuxbrew/bin/brew
+    src: "{{ homebrew_prefix }}/Homebrew/bin/brew"
+    dest: "{{ homebrew_path }}/brew"
     state: link

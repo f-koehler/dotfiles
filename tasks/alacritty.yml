@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: alacritty
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (alacritty_stat.stat.exists and alacritty_stat.stat.executable)
 
 - name: Remove homebrew alacritty.
   community.general.homebrew:
     name: alacritty
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: alacritty_stat.stat.exists and alacritty_stat.stat.executable
 
 - name: Link alacritty config.

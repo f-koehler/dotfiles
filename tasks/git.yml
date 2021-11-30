@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: git
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (git_stat.stat.exists and git_stat.stat.executable)
 
 - name: Remove homebrew git.
   community.general.homebrew:
     name: git
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: git_stat.stat.exists and git_stat.stat.executable
 
 - name: Check if git-annex is installed.
@@ -26,12 +26,12 @@
   community.general.homebrew:
     name: git-annex
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (git_annex_stat.stat.exists and git_annex_stat.stat.executable)
 
 - name: Remove homebrew git-annex.
   community.general.homebrew:
     name: git-annex
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: git_annex_stat.stat.exists and git_annex_stat.stat.executable

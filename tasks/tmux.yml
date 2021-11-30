@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: tmux
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (tmux_stat.stat.exists and tmux_stat.stat.executable)
 
 - name: Remove homebrew tmux.
   community.general.homebrew:
     name: tmux
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: tmux_stat.stat.exists and tmux_stat.stat.executable
 
 - name: Remove config from old location.

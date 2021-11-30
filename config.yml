@@ -7,4 +7,5 @@ aliases:
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
   - [".....", "cd ../../../.."]
-homebrew_path: ~/.linuxbrew/bin
+homebrew_prefix: ~/.linuxbrew
+homebrew_path: "{{ homebrew_prefix }}/bin"

@@ -7,12 +7,12 @@
   community.general.homebrew:
     name: ripgrep
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (rg_stat.stat.exists and rg_stat.stat.executable)
 
 - name: Remove homebrew rg.
   community.general.homebrew:
     name: ripgrep
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: rg_stat.stat.exists and rg_stat.stat.executable

@@ -7,14 +7,14 @@
   community.general.homebrew:
     name: node
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (node_stat.stat.exists and node_stat.stat.executable)
 
 - name: Remove homebrew node.
   community.general.homebrew:
     name: node
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: node_stat.stat.exists and node_stat.stat.executable
 
 - name: Check if yarn is installed.
@@ -26,12 +26,12 @@
   community.general.homebrew:
     name: yarn
     state: present
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: not (yarn_stat.stat.exists and yarn_stat.stat.executable)
 
 - name: Remove homebrew yarn.
   community.general.homebrew:
     name: yarn
     state: absent
-    path: ~/.linuxbrew/bin
+    path: "{{ homebrew_path }}"
   when: yarn_stat.stat.exists and yarn_stat.stat.executable
