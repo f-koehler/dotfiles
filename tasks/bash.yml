@@ -4,3 +4,4 @@
     dest: ~/.bashrc
     mode: 0600
     validate: bash -ef -o pipefail %s
+    backup: true
