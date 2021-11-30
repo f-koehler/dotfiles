@@ -3,8 +3,8 @@
   kconfig:
     file: ~/.config/kglobalshortcutsrc
     group: kwin
-    key: "{{ item['key'] }}"
-    value: "{{ item['value'] }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
   loop:
     - key: Show Desktop
       value: none,Meta+D,Show Desktop
@@ -47,7 +47,7 @@
     - key: Window to Desktop 10
       value: Meta+=,none,Window to Desktop 10
     - key: Window to Desktop 2
-      value: Meta+",none,Window to Desktop 2
+      value: Meta+,none,Window to Desktop 2
     - key: Window to Desktop 3
       value: Meta+§,none,Window to Desktop 3
     - key: Window to Desktop 4
@@ -144,8 +144,8 @@
   kconfig:
     file: ~/.config/kglobalshortcutsrc
     group: mediacontrol
-    key: "{{ item['key'] }}"
-    value: "{{ item['value'] }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
   loop:
     - key: activate task manager entry 1
       value: none,Meta+1,Activate Task Manager Entry 1
@@ -173,8 +173,8 @@
   kconfig:
     file: ~/.config/kglobalshortcutsrc
     group: mediacontrol
-    key: "{{ item['key'] }}"
-    value: "{{ item['value'] }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
   loop:
     - key: _k_friendly_name
       value: Media Controller
@@ -197,6 +197,8 @@
 
 - name: Set krunner shortcuts.
   notify: Reload hotkeys.
+  tags:
+    - skip_ansible_lint
   kconfig:
     file: ~/.config/kglobalshortcutsrc
     group: org.kde.krunner.desktop
@@ -208,8 +210,8 @@
   kconfig:
     file: ~/.config/kglobalshortcutsrc
     group: Alacritty.desktop
-    key: "{{ item['key'] }}"
-    value: "{{ item['value'] }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
   loop:
     - key: New
       value: Meta+Return,,New Terminal

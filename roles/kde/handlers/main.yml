@@ -1,3 +1,2 @@
 - name: Reload hotkeys.
   ansible.builtin.command: qdbus org.kde.keyboard /modules/khotkeys reread_configuration
-

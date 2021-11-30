@@ -125,4 +125,3 @@
 
     - name: Configure shortcuts for bismuth.
       ansible.builtin.import_tasks: bismuth.yml
-
