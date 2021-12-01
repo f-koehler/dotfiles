@@ -19,6 +19,9 @@
     - name: Setup homebrew.
       ansible.builtin.include_tasks: tasks/homebrew.yml
 
+    - name: Setup flatpak.
+      ansible.builtin.include_tasks: tasks/flatpak.yml
+
     - name: Setup node.js.
       ansible.builtin.include_tasks: tasks/nodejs.yml
 
@@ -52,6 +55,10 @@
     - name: Setup i3/sway.
       ansible.builtin.include_tasks: tasks/i3.yml
 
+    - name: Setup junction.
+      ansible.builtin.include_tasks: tasks/junction.yml
+      when: flatpak_installed
+
     - name: Setup rg.
       ansible.builtin.include_tasks: tasks/rg.yml
 
@@ -60,6 +67,9 @@
 
     - name: Setup tmux.
       ansible.builtin.include_tasks: tasks/tmux.yml
+
+    - name: Setup xdg.
+      ansible.builtin.include_tasks: tasks/xdg.yml
 
     - name: Setup zoxide.
       ansible.builtin.include_tasks: tasks/zoxide.yml

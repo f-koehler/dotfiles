@@ -9,3 +9,6 @@ aliases:
   - [".....", "cd ../../../.."]
 homebrew_prefix: ~/.linuxbrew
 homebrew_path: "{{ homebrew_prefix }}/bin"
+flatpak_remotes:
+  - name: flathub
+    url: https://flathub.org/repo/flathub.flatpakrepo
