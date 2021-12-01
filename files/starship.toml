@@ -4,5 +4,8 @@ symbol = "  "
 [golang]
 symbol = " "
 
+[lua]
+symbol = " "
+
 [cmd_duration]
 format = 'took [⏱ $duration]($style)'
