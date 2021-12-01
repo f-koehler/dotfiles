@@ -1,11 +1,29 @@
-[python]
-symbol = "  "
+[cmd_duration]
+format = 'took [⏱ $duration]($style)'
+
+[directory]
+read_only = " "
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+symbol = " "
 
 [golang]
 symbol = " "
 
+[hg_branch]
+symbol = " "
+
 [lua]
 symbol = " "
 
-[cmd_duration]
-format = 'took [⏱ $duration]($style)'
+[package]
+symbol = " "
+
+[python]
+symbol = "  "
+
+[rust]
+symbol = " "
