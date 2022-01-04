@@ -16,6 +16,8 @@
   #   # - symlinks
   #   # - xresources
   tasks:
+    # Install fundamental dependencies.
+
     - name: Setup homebrew.
       ansible.builtin.include_tasks: tasks/homebrew.yml
 
@@ -27,6 +29,8 @@
 
     - name: Setup rust.
       ansible.builtin.include_tasks: tasks/rust.yml
+
+    # Configure/install software.
 
     - name: Setup alacritty.
       ansible.builtin.include_tasks: tasks/alacritty.yml
@@ -42,6 +46,9 @@
 
     - name: Setup direnv.
       ansible.builtin.include_tasks: tasks/direnv.yml
+
+    - name: Setup emacs.
+      ansible.builtin.include_tasks: tasks/emacs.yml
 
     - name: Setup exa.
       ansible.builtin.include_tasks: tasks/exa.yml
@@ -70,6 +77,9 @@
 
     - name: Setup xdg.
       ansible.builtin.include_tasks: tasks/xdg.yml
+
+    - name: Setup xresources.
+      ansible.builtin.include_tasks: tasks/xresources.yml
 
     - name: Setup zoxide.
       ansible.builtin.include_tasks: tasks/zoxide.yml
