@@ -5,7 +5,7 @@
 
 - name: Store whether flatpak is found.
   ansible.builtin.set_fact:
-    flatpak_installed: flatpak_stat.stat.exists and flatpak_stat.stat.executable
+    flatpak_installed: "{{ flatpak_stat.stat.exists and flatpak_stat.stat.executable }}"
 
 - name: Setup flatpak remotes.
   community.general.flatpak_remote:
