@@ -1,4 +1,5 @@
-anaconda_prefix: ~/.local/opt/anaconda3
+home_dir: "{{ lookup('env', 'HOME') }}"
+anaconda_prefix: "{{ home_dir }}/.local/opt/anaconda3"
 aliases:
   - ["cp", "cp -i"]
   - ["mv", "mv -i"]
@@ -7,7 +8,7 @@ aliases:
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
   - [".....", "cd ../../../.."]
-homebrew_prefix: ~/.linuxbrew
+homebrew_prefix: "{{ home_dir }}/.linuxbrew"
 homebrew_path: "{{ homebrew_prefix }}/bin"
 flatpak_remotes:
   - name: flathub
