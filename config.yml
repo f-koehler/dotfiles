@@ -8,6 +8,7 @@ aliases:
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
   - [".....", "cd ../../../.."]
+homebrew_enabled: true
 homebrew_prefix: "{{ home_dir }}/.linuxbrew"
 homebrew_path: "{{ homebrew_prefix }}/bin"
 flatpak_remotes:

@@ -3,35 +3,43 @@
     path: /usr/bin/git
   register: git_stat
 
+- name: Store whether git is missing.
+  ansible.builtin.set_fact:
+    git_missing: "{{ not (git_stat.stat.exists and git_stat.stat.executable) }}"
+
 - name: Install git.
+  when: git_missing and homebrew_enabled
   community.general.homebrew:
     name: git
     state: present
     path: "{{ homebrew_path }}"
-  when: not (git_stat.stat.exists and git_stat.stat.executable)
 
 - name: Remove homebrew git.
+  when: (not git_missing) and homebrew_present
   community.general.homebrew:
     name: git
     state: absent
     path: "{{ homebrew_path }}"
-  when: git_stat.stat.exists and git_stat.stat.executable
 
 - name: Check if git-annex is installed.
   ansible.builtin.stat:
     path: /usr/bin/git-annex
   register: git_annex_stat
 
+- name: Store whether git_annex is missing.
+  ansible.builtin.set_fact:
+    git_annex_missing: "{{ not (git_annex_stat.stat.exists and git_annex_stat.stat.executable) }}"
+
 - name: Install git-annex.
+  when: git_annex_missing and homebrew_enabled
   community.general.homebrew:
     name: git-annex
     state: present
     path: "{{ homebrew_path }}"
-  when: not (git_annex_stat.stat.exists and git_annex_stat.stat.executable)
 
 - name: Remove homebrew git-annex.
+  when: (not git_annex_missing) and homebrew_present
   community.general.homebrew:
     name: git-annex
     state: absent
     path: "{{ homebrew_path }}"
-  when: git_annex_stat.stat.exists and git_annex_stat.stat.executable

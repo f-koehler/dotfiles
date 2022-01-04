@@ -3,8 +3,12 @@
     path: /usr/bin/starship
   register: starship_stat
 
+- name: Store whether starship is missing.
+  ansible.builtin.set_fact:
+    starship_missing: "{{ not (starship_stat.stat.exists and starship_stat.stat.executable) }}"
+
 - name: Use starship from homebrew.
-  when: not (starship_stat.stat.exists and starship_stat.stat.executable)
+  when: starship_missing and homebrew_enabled
   block:
     - name: Install starship.
       community.general.homebrew:
@@ -16,7 +20,7 @@
         starship_path: "{{ homebrew_path }}/starship"
 
 - name: Use starship from system.
-  when: starship_stat.stat.exists and starship_stat.stat.executable
+  when: (not starship_missing) and homebrew_present
   block:
     - name: Remove homebrew starship.
       community.general.homebrew:

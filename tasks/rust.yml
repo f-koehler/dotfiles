@@ -3,16 +3,20 @@
     path: /usr/bin/rustc
   register: rust_stat
 
+- name: Store whether rust is missing.
+  ansible.builtin.set_fact:
+    rust_missing: "{{ not (rust_stat.stat.exists and rust_stat.stat.executable) }}"
+
 - name: Install rust.
+  when: rust_missing and homebrew_enabled
   community.general.homebrew:
     name: rust
     state: present
     path: "{{ homebrew_path }}"
-  when: not (rust_stat.stat.exists and rust_stat.stat.executable)
 
 - name: Remove homebrew rust.
+  when: (not rust_missing) and homebrew_present
   community.general.homebrew:
     name: rust
     state: absent
     path: "{{ homebrew_path }}"
-  when: rust_stat.stat.exists and rust_stat.stat.executable

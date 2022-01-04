@@ -11,16 +11,20 @@
     path: /usr/bin/fish
   register: fish_stat
 
+- name: Store whether fish is missing.
+  ansible.builtin.set_fact:
+    fish_missing: "{{ not (fish_stat.stat.exists and fish_stat.stat.executable) }}"
+
 - name: Install fish.
+  when: fish_missing and homebrew_enabled
   community.general.homebrew:
     name: fish
     state: present
     path: "{{ homebrew_path }}"
-  when: not (fish_stat.stat.exists and fish_stat.stat.executable)
 
 - name: Remove homebrew fish.
+  when: (not fish_missing) and homebrew_present
   community.general.homebrew:
     name: fish
     state: absent
     path: "{{ homebrew_path }}"
-  when: fish_stat.stat.exists and fish_stat.stat.executable

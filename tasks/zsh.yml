@@ -3,19 +3,23 @@
     path: /usr/bin/zsh
   register: zsh_stat
 
+- name: Store whether zsh is missing.
+  ansible.builtin.set_fact:
+    zsh_missing: "{{ not (zsh_stat.stat.exists and zsh_stat.stat.executable) }}"
+
 - name: Install zsh.
+  when: zsh_missing and homebrew_enabled
   community.general.homebrew:
     name: zsh
     state: present
     path: "{{ homebrew_path }}"
-  when: not (zsh_stat.stat.exists and zsh_stat.stat.executable)
 
 - name: Remove homebrew zsh.
+  when: (not zsh_missing) and homebrew_present
   community.general.homebrew:
     name: zsh
     state: absent
     path: "{{ homebrew_path }}"
-  when: zsh_stat.stat.exists and zsh_stat.stat.executable
 
 - name: Create zsh config directories.
   ansible.builtin.file:

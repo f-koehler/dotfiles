@@ -1,17 +1,29 @@
 - name: Clone repository.
+  when: homebrew_enabled
   ansible.builtin.git:
     dest: "{{ homebrew_prefix }}/Homebrew"
     repo: https://github.com/Homebrew/brew
     version: "master"
 
 - name: Create bin directory.
+  when: homebrew_enabled
   ansible.builtin.file:
     path: "{{ homebrew_path }}"
     state: directory
     mode: 0700
 
 - name: Symlink binary.
+  when: homebrew_enabled
   ansible.builtin.file:
     src: "{{ homebrew_prefix }}/Homebrew/bin/brew"
     dest: "{{ homebrew_path }}/brew"
     state: link
+
+- name: Check if Homebrew is installed.
+  ansible.builtin.stat:
+    path: "{{ homebrew_prefix }}/Homebrew/bin/brew"
+  register: homebrew_stat
+
+- name: Store whether Homebrew is installed.
+  ansible.builtin.set_fact:
+    homebrew_present: "{{ homebrew_stat.stat.exists and homebrew_stat.stat.executable }}"

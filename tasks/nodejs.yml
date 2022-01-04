@@ -3,35 +3,43 @@
     path: /usr/bin/node
   register: node_stat
 
+- name: Store whether node is missing.
+  ansible.builtin.set_fact:
+    node_missing: "{{ not (node_stat.stat.exists and node_stat.stat.executable) }}"
+
 - name: Install node.
+  when: node_missing and homebrew_enabled
   community.general.homebrew:
     name: node
     state: present
     path: "{{ homebrew_path }}"
-  when: not (node_stat.stat.exists and node_stat.stat.executable)
 
 - name: Remove homebrew node.
+  when: (not node_missing) and homebrew_present
   community.general.homebrew:
     name: node
     state: absent
     path: "{{ homebrew_path }}"
-  when: node_stat.stat.exists and node_stat.stat.executable
 
 - name: Check if yarn is installed.
   ansible.builtin.stat:
     path: /usr/bin/yarn
   register: yarn_stat
 
+- name: Store whether yarn is missing.
+  ansible.builtin.set_fact:
+    yarn_missing: "{{ not (yarn_stat.stat.exists and yarn_stat.stat.executable) }}"
+
 - name: Install yarn.
+  when: yarn_missing and homebrew_enabled
   community.general.homebrew:
     name: yarn
     state: present
     path: "{{ homebrew_path }}"
-  when: not (yarn_stat.stat.exists and yarn_stat.stat.executable)
 
 - name: Remove homebrew yarn.
+  when: (not yarn_missing) and homebrew_present
   community.general.homebrew:
     name: yarn
     state: absent
     path: "{{ homebrew_path }}"
-  when: yarn_stat.stat.exists and yarn_stat.stat.executable

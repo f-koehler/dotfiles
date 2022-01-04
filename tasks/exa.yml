@@ -3,8 +3,12 @@
     path: /usr/bin/exa
   register: exa_stat
 
+- name: Store whether exa is missing.
+  ansible.builtin.set_fact:
+    exa_missing: "{{ not (exa_stat.stat.exists and exa_stat.stat.executable) }}"
+
 - name: Use exa from homebew.
-  when: not (exa_stat.stat.exists and exa_stat.stat.executable)
+  when: exa_missing and homebrew_enabled
   block:
     - name: Install exa.
       community.general.homebrew:
@@ -16,7 +20,7 @@
         exa_path: "{{ homebrew_path }}/exa"
 
 - name: Use exa from system.
-  when: exa_stat.stat.exists and exa_stat.stat.executable
+  when: (not exa_missing) and homebrew_enabled
   block:
     - name: Remove homebrew exa.
       community.general.homebrew:

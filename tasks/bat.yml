@@ -3,8 +3,12 @@
     path: /usr/bin/bat
   register: bat_stat
 
+- name: Store whether bat is missing.
+  ansible.builtin.set_fact:
+    bat_missing: "{{ not (bat_stat.stat.exists and bat_stat.stat.executable) }}"
+
 - name: Use bat from homebrew.
-  when: not (bat_stat.stat.exists and bat_stat.stat.executable)
+  when: bat_missing and homebrew_enabled
   block:
     - name: Install bat via homebrew.
       community.general.homebrew:
@@ -16,7 +20,7 @@
         bat_path: "{{ homebrew_path }}/bat"
 
 - name: Use system bat.
-  when: bat_stat.stat.exists and bat_stat.stat.executable
+  when: (not bat_missing) and homebrew_present
   block:
     - name: Remove homebrew bat.
       community.general.homebrew:

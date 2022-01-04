@@ -3,16 +3,20 @@
     path: /usr/bin/rg
   register: rg_stat
 
+- name: Store whether ripgrep is missing.
+  ansible.builtin.set_fact:
+    rg_missing: "{{ not (rg_stat.stat.exists and rg_stat.stat.executable) }}"
+
 - name: Install rg.
+  when: rg_missing and homebrew_enabled
   community.general.homebrew:
     name: ripgrep
     state: present
     path: "{{ homebrew_path }}"
-  when: not (rg_stat.stat.exists and rg_stat.stat.executable)
 
 - name: Remove homebrew rg.
+  when: (not rg_missing) and homebrew_present
   community.general.homebrew:
     name: ripgrep
     state: absent
     path: "{{ homebrew_path }}"
-  when: rg_stat.stat.exists and rg_stat.stat.executable

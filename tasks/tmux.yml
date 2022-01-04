@@ -3,19 +3,23 @@
     path: /usr/bin/tmux
   register: tmux_stat
 
+- name: Store whether tmux is missing.
+  ansible.builtin.set_fact:
+    tmux_missing: "{{ not (tmux_stat.stat.exists and tmux_stat.stat.executable) }}"
+
 - name: Install tmux.
+  when: tmux_missing and homebrew_enabled
   community.general.homebrew:
     name: tmux
     state: present
     path: "{{ homebrew_path }}"
-  when: not (tmux_stat.stat.exists and tmux_stat.stat.executable)
 
 - name: Remove homebrew tmux.
+  when: (not tmux_missing) and homebrew_present
   community.general.homebrew:
     name: tmux
     state: absent
     path: "{{ homebrew_path }}"
-  when: tmux_stat.stat.exists and tmux_stat.stat.executable
 
 - name: Remove config from old location.
   ansible.builtin.file:

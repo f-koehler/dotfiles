@@ -3,8 +3,12 @@
     path: /usr/bin/zoxide
   register: zoxide_stat
 
+- name: Store whether zoxide is missing.
+  ansible.builtin.set_fact:
+    zoxide_missing: "{{ not (zoxide_stat.stat.exists and zoxide_stat.stat.executable) }}"
+
 - name: Use zoxide from homebrew.
-  when: not (zoxide_stat.stat.exists and zoxide_stat.stat.executable)
+  when: zoxide_missing and homebrew_enabled
   block:
     - name: Install zoxide.
       community.general.homebrew:
@@ -16,7 +20,7 @@
         zoxide_path: "{{ homebrew_path }}/zoxide"
 
 - name: Use zoxide from system.
-  when: zoxide_stat.stat.exists and zoxide_stat.stat.executable
+  when: (not zoxide_missing) and homebrew_present
   block:
     - name: Remove homebrew zoxide.
       community.general.homebrew:

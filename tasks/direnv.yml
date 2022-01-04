@@ -3,8 +3,12 @@
     path: /usr/bin/direnv
   register: direnv_stat
 
+- name: Store whether direnv is missing.
+  ansible.builtin.set_fact:
+    direnv_missing: "{{ not (direnv_stat.stat.exists and direnv_stat.stat.executable) }}"
+
 - name: Use direnv from homebrew.
-  when: not (direnv_stat.stat.exists and direnv_stat.stat.executable)
+  when: direnv_missing and homebrew_enabled
   block:
     - name: Install direnv.
       community.general.homebrew:
@@ -16,7 +20,7 @@
         direnv_path: "{{ homebrew_path }}/direnv"
 
 - name: Use direnv from system.
-  when: direnv_stat.stat.exists and direnv_stat.stat.executable
+  when: (not direnv_missing) and homebrew_present
   block:
     - name: Remove homebrew direnv.
       community.general.homebrew:
