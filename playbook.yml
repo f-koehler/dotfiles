@@ -19,78 +19,78 @@
     # Install fundamental dependencies.
 
     - name: Setup homebrew.
-      ansible.builtin.include_tasks: tasks/homebrew.yml
+      ansible.builtin.import_tasks: tasks/homebrew.yml
 
     - name: Setup flatpak.
-      ansible.builtin.include_tasks: tasks/flatpak.yml
+      ansible.builtin.import_tasks: tasks/flatpak.yml
 
     - name: Setup node.js.
-      ansible.builtin.include_tasks: tasks/nodejs.yml
+      ansible.builtin.import_tasks: tasks/nodejs.yml
 
     - name: Setup rust.
-      ansible.builtin.include_tasks: tasks/rust.yml
+      ansible.builtin.import_tasks: tasks/rust.yml
 
     # Configure/install software.
 
     - name: Setup alacritty.
-      ansible.builtin.include_tasks: tasks/alacritty.yml
+      ansible.builtin.import_tasks: tasks/alacritty.yml
 
     - name: Setup anaconda.
-      ansible.builtin.include_tasks: tasks/anaconda.yml
+      ansible.builtin.import_tasks: tasks/anaconda.yml
 
     - name: Setup bat.
-      ansible.builtin.include_tasks: tasks/bat.yml
+      ansible.builtin.import_tasks: tasks/bat.yml
 
     - name: Setup dircolors.
-      ansible.builtin.include_tasks: tasks/dircolors.yml
+      ansible.builtin.import_tasks: tasks/dircolors.yml
 
     - name: Setup direnv.
-      ansible.builtin.include_tasks: tasks/direnv.yml
+      ansible.builtin.import_tasks: tasks/direnv.yml
 
     - name: Setup emacs.
-      ansible.builtin.include_tasks: tasks/emacs.yml
+      ansible.builtin.import_tasks: tasks/emacs.yml
 
     - name: Setup exa.
-      ansible.builtin.include_tasks: tasks/exa.yml
+      ansible.builtin.import_tasks: tasks/exa.yml
 
     - name: Setup fzf.
-      ansible.builtin.include_tasks: tasks/fzf.yml
+      ansible.builtin.import_tasks: tasks/fzf.yml
 
     - name: Setup git.
-      ansible.builtin.include_tasks: tasks/git.yml
+      ansible.builtin.import_tasks: tasks/git.yml
 
     - name: Setup i3/sway.
-      ansible.builtin.include_tasks: tasks/i3.yml
+      ansible.builtin.import_tasks: tasks/i3.yml
 
     - name: Setup junction.
-      ansible.builtin.include_tasks: tasks/junction.yml
+      ansible.builtin.import_tasks: tasks/junction.yml
       when: flatpak_installed
 
     - name: Setup rg.
-      ansible.builtin.include_tasks: tasks/rg.yml
+      ansible.builtin.import_tasks: tasks/rg.yml
 
     - name: Setup starship.
-      ansible.builtin.include_tasks: tasks/starship.yml
+      ansible.builtin.import_tasks: tasks/starship.yml
 
     - name: Setup tmux.
-      ansible.builtin.include_tasks: tasks/tmux.yml
+      ansible.builtin.import_tasks: tasks/tmux.yml
 
     - name: Setup xdg.
-      ansible.builtin.include_tasks: tasks/xdg.yml
+      ansible.builtin.import_tasks: tasks/xdg.yml
 
     - name: Setup xresources.
-      ansible.builtin.include_tasks: tasks/xresources.yml
+      ansible.builtin.import_tasks: tasks/xresources.yml
 
     - name: Setup zoxide.
-      ansible.builtin.include_tasks: tasks/zoxide.yml
+      ansible.builtin.import_tasks: tasks/zoxide.yml
 
     # Setup shells.
 
     - name: Setup bash.
-      ansible.builtin.include_tasks: tasks/bash.yml
+      ansible.builtin.import_tasks: tasks/bash.yml
 
     - name: Setup fish.
-      ansible.builtin.include_tasks: tasks/fish.yml
+      ansible.builtin.import_tasks: tasks/fish.yml
 
     - name: Setup zsh.
-      ansible.builtin.include_tasks: tasks/zsh.yml
+      ansible.builtin.import_tasks: tasks/zsh.yml
