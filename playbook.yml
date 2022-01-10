@@ -1,12 +1,8 @@
-- name: find reachable hosts
-  hosts: all
-  gather_facts: no
+- hosts: all
   pre_tasks:
     - name: Load config.
       ansible.builtin.include_vars: config.yml
   # roles:
-  #   # - dircolors
-  #   # - emacs
   #   # - gtk
   #   # - kde
   #   # # - nvim
@@ -14,7 +10,6 @@
   #   # # - ranger
   #   # - rofi
   #   # - symlinks
-  #   # - xresources
   tasks:
     # Install fundamental dependencies.
 
