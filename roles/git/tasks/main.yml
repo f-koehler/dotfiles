@@ -21,6 +21,14 @@
     state: absent
     path: "{{ homebrew_path }}"
 
+- name: Symlink git config.
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/.gitconfig"
+    dest: "~/.gitconfig"
+    state: link
+    force: yes
+    follow: no
+
 - name: Check if git-annex is installed.
   ansible.builtin.stat:
     path: /usr/bin/git-annex
