@@ -1,7 +1,0 @@
-- name: Create bashrc.
-  ansible.builtin.template:
-    src: templates/bashrc
-    dest: ~/.bashrc
-    mode: 0600
-    validate: bash -ef -o pipefail %s
-    backup: true

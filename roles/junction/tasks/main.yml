@@ -1,0 +1,6 @@
+- name: Install junction.
+  ansible.builtin.flatpak:
+    name: re.sonny.Junction
+    state: present
+    method: user
+  when: flatpak_installed
