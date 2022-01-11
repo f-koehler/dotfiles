@@ -1,4 +1,0 @@
-#include ".dotfiles/xresources/src/nord"
-
-Xcursor.theme: Adwaita
-Xcursor.size: 16
