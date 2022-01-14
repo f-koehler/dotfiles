@@ -25,4 +25,6 @@ fi
 
 [[ -d ${HOME}/.cargo/bin ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
 
-export GPG_TTY="$(tty)"
+{% for var in environment_variables %}
+export {{var}}="{{ environment_variables[var] }}"
+{% endfor %}

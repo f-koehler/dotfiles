@@ -14,3 +14,11 @@ homebrew_path: "{{ homebrew_prefix }}/bin"
 flatpak_remotes:
   - name: flathub
     url: https://flathub.org/repo/flathub.flatpakrepo
+environment_variables:
+  XDG_CONFIG_HOME: "{{ home_dir }}/.config"
+  XDG_CACHE_HOME: "{{ home_dir }}/.cache"
+  XDG_DATA_HOME: "{{ home_dir }}/.local/share"
+  XDG_STATE_HOME: "{{ home_dir }}/.local/statstate"
+  EDITOR: "vim"
+  GPG_TTY: "$(tty)"
+  PATH: "{{ home_dir }}/.local/bin:${PATH}"

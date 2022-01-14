@@ -28,3 +28,7 @@ alias ls="ls --color=always"
 {% if bat_path is defined and bat_path %}
 alias cat="{{ bat_path }} --color=always --italic-text=always --theme=Nord --plain"
 {% endif %}
+
+{% for var in environment_variables %}
+export {{var}}="{{ environment_variables[var] }}"
+{% endfor %}

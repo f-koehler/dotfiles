@@ -42,7 +42,7 @@
         - rg
         - starship
         - tmux
-        - xdg
+        # - xdg
         - xresources
         - zoxide
 
