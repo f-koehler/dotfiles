@@ -7,3 +7,15 @@
   community.general.dconf:
     key: /org/gnome/desktop/interface/enable-hot-corners
     value: "false"
+
+- name: Enable gnome extensions.
+  gnome_extension:
+    name: "{{ extension }}"
+    state: present
+  loop_control:
+    loop_var: extension
+  loop:
+    - launch-new-instance@gnome-shell-extensions.gcampax.github.com
+    - native-window-placement@gnome-shell-extensions.gcampax.github.com
+    - workspace-indicator@gnome-shell-extensions.gcampax.github.com
+    - appindicatorsupport@rgcjonas.gmail.com
