@@ -15,7 +15,8 @@
   loop_control:
     loop_var: extension
   loop:
+    - appindicatorsupport@rgcjonas.gmail.com
+    - gsconnect@andyholmes.github.io
     - launch-new-instance@gnome-shell-extensions.gcampax.github.com
     - native-window-placement@gnome-shell-extensions.gcampax.github.com
     - workspace-indicator@gnome-shell-extensions.gcampax.github.com
-    - appindicatorsupport@rgcjonas.gmail.com
