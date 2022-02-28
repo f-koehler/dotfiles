@@ -1,5 +1,5 @@
 # vim: ft=dosini
-desktop
-zoq45
-latitude
-zoq-yoga1
+; desktop
+zoq45 ansible_connection=local
+; latitude
+; zoq-yoga1

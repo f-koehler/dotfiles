@@ -3,25 +3,12 @@
     path: /usr/bin/zsh
   register: zsh_stat
 
-- name: Store whether zsh is missing.
+- name: Store whether zsh is installed.
   ansible.builtin.set_fact:
-    zsh_missing: "{{ not (zsh_stat.stat.exists and zsh_stat.stat.executable) }}"
-
-- name: Install zsh.
-  when: zsh_missing and homebrew_enabled
-  community.general.homebrew:
-    name: zsh
-    state: present
-    path: "{{ homebrew_path }}"
-
-- name: Remove homebrew zsh.
-  when: (not zsh_missing) and homebrew_present
-  community.general.homebrew:
-    name: zsh
-    state: absent
-    path: "{{ homebrew_path }}"
+    zsh_found: "{{ zsh_stat.stat.exists and zsh_stat.stat.executable }}"
 
 - name: Create zsh config directories.
+  when: zsh_found
   ansible.builtin.file:
     path: "{{ directory }}"
     state: directory
@@ -33,6 +20,7 @@
     loop_var: directory
 
 - name: Symlink zsh config files.
+  when: zsh_found
   ansible.builtin.file:
     src: "{{ role_path }}/files/zsh/{{ file }}"
     dest: "~/.zsh.d/{{ file }}"
@@ -48,6 +36,7 @@
     loop_var: file
 
 - name: Template zsh config files.
+  when: zsh_found
   ansible.builtin.template:
     src: "templates/{{ template.src }}"
     dest: "~/{{ template.dest }}"
@@ -64,6 +53,7 @@
     loop_var: template
 
 - name: Install zsh plugins.
+  when: zsh_found
   ansible.builtin.git:
     accept_hostkey: yes
     dest: "~/.zsh.d/plugins/{{ plugin.name }}"

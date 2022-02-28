@@ -3,20 +3,11 @@
     path: /usr/bin/fzf
   register: fzf_stat
 
-- name: Store whether fzf is missing.
+- name: Store whether fzf is installed.
   ansible.builtin.set_fact:
-    fzf_missing: "{{ not (fzf_stat.stat.exists and fzf_stat.stat.executable) }}"
+    fzf_found: "{{ fzf_stat.stat.exists and fzf_stat.stat.executable }}"
 
-- name: Install fzf.
-  when: fzf_missing and homebrew_enabled
-  community.general.homebrew:
-    name: fzf
-    state: present
-    path: "{{ homebrew_path }}"
-
-- name: Remove homebrew fzf.
-  when: (not fzf_missing) and homebrew_present
-  community.general.homebrew:
-    name: fzf
-    state: absent
-    path: "{{ homebrew_path }}"
+- name: Store fzf path.
+  when: fzf_found
+  ansible.builtin.set_fact:
+    fzf_path: /usr/bin/fzf

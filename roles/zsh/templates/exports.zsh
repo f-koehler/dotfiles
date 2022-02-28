@@ -3,17 +3,15 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 
-eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
-
-{% if direnv_path is defined and direnv_path %}
+{% if direnv_found %}
 eval "$({{ direnv_path }} hook zsh)"
 {% endif %}
 
-{% if zoxide_path is defined and zoxide_path %}
+{% if zoxide_found %}
 eval "$({{ zoxide_path }} init zsh)"
 {% endif %}
 
-{% if starship_path is defined and starship_path %}
+{% if starship_found %}
 eval "$({{ starship_path }} init zsh)"
 {% endif %}
 

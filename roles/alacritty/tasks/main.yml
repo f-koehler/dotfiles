@@ -3,29 +3,16 @@
     path: /usr/bin/alacritty
   register: alacritty_stat
 
-- name: Store whether alacritty is missing.
+- name: Store whether alacritty is installed.
   ansible.builtin.set_fact:
-    alacritty_missing: "{{ not (alacritty_stat.stat.exists and alacritty_stat.stat.executable) }}"
-
-- name: Install alacritty.
-  community.general.homebrew:
-    name: alacritty
-    state: present
-    path: "{{ homebrew_path }}"
-  when: alacritty_missing and homebrew_enabled
-
-- name: Remove homebrew alacritty.
-  community.general.homebrew:
-    name: alacritty
-    state: absent
-    path: "{{ homebrew_path }}"
-  when: (not alacritty_missing) and homebrew_present
+    alacritty_found: "{{ alacritty_stat.stat.exists and alacritty_stat.stat.executable }}"
 
 - name: Create config dir.
   ansible.builtin.file:
     path: ~/.config/alacritty
     state: directory
     force: yes
+  when: alacritty_found
 
 - name: Link config.
   ansible.builtin.file:
@@ -34,3 +21,4 @@
     state: link
     force: yes
     follow: no
+  when: alacritty_found
