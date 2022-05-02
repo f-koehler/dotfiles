@@ -1,13 +1,7 @@
 - name: Check if fzf is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/fzf
-  register: fzf_stat
-
-- name: Store whether fzf is installed.
   ansible.builtin.set_fact:
-    fzf_found: "{{ fzf_stat.stat.exists and fzf_stat.stat.executable }}"
-
-- name: Store fzf path.
-  when: fzf_found
-  ansible.builtin.set_fact:
-    fzf_path: /usr/bin/fzf
+    fzf_path: "{{ lookup('first_found', files, skip=True) }}"
+  vars:
+    files:
+      - /usr/bin/fzf
+      - /opt/homebrew/bin/fzf

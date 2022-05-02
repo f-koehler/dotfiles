@@ -1,19 +1,13 @@
 - name: Check if starship is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/starship
-  register: starship_stat
-
-- name: Store whether starship is installed.
   ansible.builtin.set_fact:
-    starship_found: "{{ starship_stat.stat.exists and starship_stat.stat.executable }}"
-
-- name: Store starship path.
-  when: starship_found
-  ansible.builtin.set_fact:
-    starship_path: "/usr/bin/starship"
+    starship_path: "{{ lookup('first_found', files, skip=True) }}"
+  vars:
+    files:
+      - /usr/bin/starship
+      - /opt/homebrew/bin/starship
 
 - name: Link starship config.
-  when: starship_found
+  when: starship_path
   ansible.builtin.file:
     src: "{{ role_path }}/files/starship.toml"
     dest: "~/.config/starship.toml"

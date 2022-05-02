@@ -11,15 +11,15 @@
         state: directory
         mode: "0700"
 
-    - name: Download miniconda installer.
+    - name: Download miniforge installer.
       ansible.builtin.get_url:
-        url: "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-        dest: ~/.local/miniconda.sh
+        url: "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh"
+        dest: ~/.local/miniforge.sh
         mode: "u+x"
 
-    - name: Install miniconda.
+    - name: Install minigorge.
       ansible.builtin.command:
-        cmd: "~/.local/miniconda.sh -b -p {{ anaconda_prefix }} -f"
+        cmd: "~/.local/miniforge.sh -b -p {{ anaconda_prefix }} -f"
 
     - name: Remove miniconda installer.
       ansible.builtin.file:

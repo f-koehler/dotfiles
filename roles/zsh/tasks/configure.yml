@@ -1,0 +1,63 @@
+- name: Create zsh config directories.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "~/.zsh.d"
+    - "~/.zsh.d/plugins"
+  loop_control:
+    loop_var: directory
+
+- name: Symlink zsh config files.
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/zsh/{{ file }}"
+    dest: "~/.zsh.d/{{ file }}"
+    state: link
+    force: yes
+    follow: no
+  loop:
+    - functions.zsh
+    - fzf.zsh
+    - keybindings.zsh
+    - main.zsh
+  loop_control:
+    loop_var: file
+
+- name: Template zsh config files.
+  ansible.builtin.template:
+    src: "templates/{{ template.src }}"
+    dest: "~/{{ template.dest }}"
+    mode: "0700"
+    # validate: zsh -ef %s
+  loop:
+    - src: aliases.zsh
+      dest: .zsh.d/aliases.zsh
+    - src: exports.zsh
+      dest: .zsh.d/exports.zsh
+    - src: zshrc
+      dest: .zshrc
+  loop_control:
+    loop_var: template
+
+- name: Install zsh plugins.
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: "~/.zsh.d/plugins/{{ plugin.name }}"
+    repo: "{{ plugin.repo }}"
+    version: "{{ plugin.version }}"
+  loop:
+    - name: zsh-autosuggestions
+      repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+      version: master
+    - name: zsh-syntax-highlighting
+      repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+      version: master
+    - name: conda-zsh-completion
+      repo: "https://github.com/esc/conda-zsh-completion"
+      version: master
+    - name: zsh-yarn-autocompletions
+      repo: "https://github.com/g-plane/zsh-yarn-autocompletions"
+      version: master
+  loop_control:
+    loop_var: plugin

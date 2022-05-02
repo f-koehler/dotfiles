@@ -1,13 +1,7 @@
 - name: Check if zoxide is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/zoxide
-  register: zoxide_stat
-
-- name: Store whether zoxide is installed.
   ansible.builtin.set_fact:
-    zoxide_found: "{{ zoxide_stat.stat.exists and zoxide_stat.stat.executable }}"
-
-- name: Store zoxide path.
-  when: zoxide_found
-  ansible.builtin.set_fact:
-    zoxide_path: "/usr/bin/zoxide"
+    zoxide_path: "{{ lookup('first_found', files, skip=True) }}"
+  vars:
+    files:
+      - /usr/bin/zoxide
+      - /opt/homebrew/bin/zoxide

@@ -1,13 +1,7 @@
 - name: Check if direnv is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/direnv
-  register: direnv_stat
-
-- name: Store whether direnv is installed.
   ansible.builtin.set_fact:
-    direnv_found: "{{ direnv_stat.stat.exists and direnv_stat.stat.executable }}"
-
-- name: Store direnv path.
-  when: direnv_found
-  ansible.builtin.set_fact:
-    direnv_path: "/usr/bin/direnv"
+    direnv_path: "{{ lookup('first_found', files, skip=True) }}"
+  vars:
+    files:
+      - /usr/bin/direnv
+      - /opt/homebrew/bin/direnv

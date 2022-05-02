@@ -1,20 +1,22 @@
-if [[ -d ${HOME}/.fzf/bin ]]; then
-  if [[ ! "$PATH" == *${HOME}/.fzf/bin* ]]; then
-    export PATH="${PATH:+${PATH}:}${HOME}/.fzf/bin"
-  fi
+{% if fzf_path %}
+{% if ansible_distribution == 'MacOSX' %}
+
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
 fi
 
-if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-if [[ -f /usr/share/fzf/completion.zsh ]]; then
-  source /usr/share/fzf/completion.zsh
-elif [[ -f /usr/share/doc/fzf/examples/completion.zsh ]]; then
-  source /usr/share/doc/fzf/examples/completion.zsh
-fi
+# Key bindings
+# ------------
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+
+{% endif %}
+{% endif %}
 
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 # --color=dark

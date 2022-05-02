@@ -1,52 +1,13 @@
 - name: Check if tmux is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/tmux
-  register: tmux_stat
-
-- name: Store whether tmux is installed.
-  ansible.builtin.set_fact:
-    tmux_found: "{{ tmux_stat.stat.exists and tmux_stat.stat.executable }}"
+  ansible.builtin.include_tasks:
+    file: configure.yml
+  with_first_found:
+    files:
+      - /usr/bin/tmux
+      - /opt/homebrew/bin/tmux
+    skip: True
 
 - name: Remove config from old location.
-  when: tmux_found
   ansible.builtin.file:
     path: ~/.config/tmux
     state: absent
-
-- name: Link tmux config.
-  when: tmux_found
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/tmux.conf"
-    dest: ~/.tmux.conf
-    state: link
-    force: yes
-    follow: no
-
-- name: Install tmux plugins.
-  when: tmux_found
-  ansible.builtin.git:
-    accept_hostkey: yes
-    dest: "~/.tmux/plugins/{{ plugin.name }}"
-    repo: "{{ plugin.repo }}"
-    version: "{{ plugin.version }}"
-  loop:
-    - name: tmux-sensible
-      repo: "https://github.com/tmux-plugins/tmux-sensible"
-      version: "master"
-    - name: tmux-yank
-      repo: "https://github.com/tmux-plugins/tmux-yank"
-      version: master
-    - name: tmux-resurrect
-      repo: "https://github.com/tmux-plugins/tmux-resurrect"
-      version: master
-    - name: tmux-continuum
-      repo: "https://github.com/tmux-plugins/tmux-continuum"
-      version: master
-    - name: tmux-tilish
-      repo: "https://github.com/jabirali/tmux-tilish"
-      version: master
-    - name: nord-tmux
-      repo: "https://github.com/arcticicestudio/nord-tmux"
-      version: develop
-  loop_control:
-    loop_var: plugin

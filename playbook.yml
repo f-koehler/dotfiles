@@ -36,8 +36,8 @@
         - exa
         - fzf
         - git
-        - gnome
-        - i3
+        # - gnome
+        # - i3
         - rg
         - starship
         - tmux
