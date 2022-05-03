@@ -28,7 +28,6 @@ setopt histignorealldups
 
 source "$ZSHD/functions.zsh"
 
-zsh_add_file "fzf.zsh"
 zsh_add_file "exports.zsh"
 zsh_add_file "keybindings.zsh"
 
