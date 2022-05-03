@@ -1,0 +1,11 @@
+- name: Add zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: '{{ zsh_hooks + [''eval "$(direnv hook zsh)"''] }}'
+
+- name: Add bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: '{{ bash_hooks + [''eval "$(direnv hook bash)"''] }}'
+
+- name: Add fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + ['direnv hook fish | source'] }}"

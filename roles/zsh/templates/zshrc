@@ -1,5 +1,13 @@
 source $HOME/.zsh.d/main.zsh
 
+{% for hook in zsh_hooks %}
+{{ hook }}
+{% endfor %}
+
+{% for alias in aliases %}
+alias {{ alias[0] }}="{{ alias[1] }}"
+{% endfor %}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('{{ anaconda_prefix }}/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

@@ -1,13 +1,12 @@
-- name: Check if bat is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/bat
-  register: bat_stat
-
-- name: Store whether bat is installed.
+- name: Check if installed.
   ansible.builtin.set_fact:
-    bat_found: "{{ bat_stat.stat.exists and bat_stat.stat.executable }}"
+    bat_path: "{{ lookup('first_found', files, skip=True) }}"
+  vars:
+    files:
+      - /usr/bin/bat
+      - /opt/homebrew/bin/bat
 
-- name: Store bat path.
-  when: bat_found
+- name: Add alias.
+  when: bat_path
   ansible.builtin.set_fact:
-    bat_path: "/usr/bin/bat"
+    aliases: '{{ aliases + [["cat", bat_path + " --color=always --italic-text=always --plain"]] }}'

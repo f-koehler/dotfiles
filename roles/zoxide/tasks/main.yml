@@ -5,3 +5,8 @@
     files:
       - /usr/bin/zoxide
       - /opt/homebrew/bin/zoxide
+
+- name: Configure.
+  when: zoxide_path
+  ansible.builtin.include_tasks:
+    file: configure.yml

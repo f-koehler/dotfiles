@@ -1,4 +1,4 @@
-- name: Check if fzf is installed.
+- name: Check if installed.
   ansible.builtin.set_fact:
     fzf_path: "{{ lookup('first_found', files, skip=True) }}"
   vars:

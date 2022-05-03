@@ -31,8 +31,6 @@
     mode: "0700"
     # validate: zsh -ef %s
   loop:
-    - src: aliases.zsh
-      dest: .zsh.d/aliases.zsh
     - src: exports.zsh
       dest: .zsh.d/exports.zsh
     - src: zshrc

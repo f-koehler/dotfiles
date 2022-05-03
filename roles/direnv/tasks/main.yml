@@ -1,7 +1,12 @@
-- name: Check if direnv is installed.
+- name: Check if installed.
   ansible.builtin.set_fact:
     direnv_path: "{{ lookup('first_found', files, skip=True) }}"
   vars:
     files:
       - /usr/bin/direnv
       - /opt/homebrew/bin/direnv
+
+- name: Configure.
+  when: direnv_path
+  ansible.builtin.include_tasks:
+    file: configure.yml

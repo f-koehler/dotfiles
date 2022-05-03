@@ -1,4 +1,4 @@
-- name: Check if starship is installed.
+- name: Check if installed.
   ansible.builtin.set_fact:
     starship_path: "{{ lookup('first_found', files, skip=True) }}"
   vars:
@@ -6,11 +6,7 @@
       - /usr/bin/starship
       - /opt/homebrew/bin/starship
 
-- name: Link starship config.
+- name: Configure.
   when: starship_path
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/starship.toml"
-    dest: "~/.config/starship.toml"
-    state: link
-    force: yes
-    follow: no
+  ansible.builtin.include_tasks:
+    file: configure.yml

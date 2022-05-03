@@ -19,3 +19,6 @@ environment_variables:
   EDITOR: "vim"
   GPG_TTY: "$(tty)"
   PATH: "{{ home_dir }}/.local/bin:${PATH}"
+bash_hooks: []
+zsh_hooks: []
+fish_hooks: []

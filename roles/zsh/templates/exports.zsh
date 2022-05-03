@@ -3,18 +3,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 
-{% if direnv_path %}
-eval "$({{ direnv_path }} hook zsh)"
-{% endif %}
-
-{% if zoxide_path %}
-eval "$({{ zoxide_path }} init zsh)"
-{% endif %}
-
-{% if starship_path %}
-eval "$({{ starship_path }} init zsh)"
-{% endif %}
-
 if (( $+commands[pip] )); then
 	eval "$(pip completion --zsh)"
 fi

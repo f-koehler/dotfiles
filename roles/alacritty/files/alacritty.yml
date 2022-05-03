@@ -13,6 +13,9 @@ font:
     family: Hack Nerd Font
     style: Bold Italic
 
+window:
+  decorations: None
+
 colors:
   bright:
     black: "#666666"

@@ -1,0 +1,19 @@
+- name: Link config file.
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/starship.toml"
+    dest: "~/.config/starship.toml"
+    state: link
+    force: yes
+    follow: no
+
+- name: Add zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: '{{ zsh_hooks + [''eval "$(starship init zsh)"''] }}'
+
+- name: Add bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: '{{ bash_hooks + [''eval "$(starship init bash)"''] }}'
+
+- name: Add fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + ['starship init fish | source'] }}"
