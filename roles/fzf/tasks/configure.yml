@@ -1,0 +1,16 @@
+- name: Configure shell integration.
+  ansible.builtin.command: "{{ installer }} --update-rc --completion  --key-bindings --xdg"
+  args:
+    creates: ~/.config/fzf/fzf.bash
+  with_first_found:
+    - /opt/homebrew/opt/fzf/install
+  loop_control:
+    loop_var: installer
+
+- name: Add zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['source ${HOME}/.config/fzf/fzf.zsh'] }}"
+
+- name: Add bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + ['source ${HOME}/.config/fzf/fzf.bash'] }}"

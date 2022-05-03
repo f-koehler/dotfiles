@@ -5,3 +5,8 @@
     files:
       - /usr/bin/fzf
       - /opt/homebrew/bin/fzf
+
+- name: Configure.
+  when: fzf_path
+  ansible.builtin.include_tasks:
+    file: configure.yml
