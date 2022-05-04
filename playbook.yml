@@ -11,16 +11,6 @@
   #   # - rofi
   #   # - symlinks
   tasks:
-    - name: Setup fundamental dependencies.
-      ansible.builtin.include_role:
-        name: "{{ role }}"
-      loop_control:
-        loop_var: role
-      loop:
-        - flatpak
-        - nodejs
-        - rust
-
     - name: Setup software.
       ansible.builtin.include_role:
         name: "{{ role }}"

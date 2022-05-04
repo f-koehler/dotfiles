@@ -1,8 +1,0 @@
-- name: Check if rust is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/rustc
-  register: rust_stat
-
-- name: Store whether rust is installed.
-  ansible.builtin.set_fact:
-    rust_found: "{{ rust_stat.stat.exists and rust_stat.stat.executable }}"
