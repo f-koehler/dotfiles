@@ -1,0 +1,2 @@
+- name: Reinstall fzf.
+  ansible.builtin.command: "~/.fzf/install --update-rc --completion  --key-bindings --xdg"
