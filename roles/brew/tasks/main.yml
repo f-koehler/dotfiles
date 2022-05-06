@@ -1,0 +1,11 @@
+- name: Check if installed.
+  ansible.builtin.set_fact:
+    brew_path: "{{ lookup('first_found', findme) }}"
+  vars:
+    findme:
+      - /opt/homebrew/bin/brew
+
+- name: Enable brew integrations.
+  when: brew_path
+  ansible.builtin.include_tasks:
+    file: completions.yml

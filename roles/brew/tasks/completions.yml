@@ -1,0 +1,3 @@
+- name: Extend zsh's fpath.
+  ansible.builtin.set_fact:
+    zsh_hooks: '{{ zsh_hooks + [''FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"''] }}'

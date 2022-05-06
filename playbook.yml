@@ -20,6 +20,7 @@
         - alacritty
         - anaconda
         - bat
+        - brew
         - dircolors
         - direnv
         - emacs
