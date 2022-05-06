@@ -1,24 +1,6 @@
-- name: Check if alacritty is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/alacritty
-  register: alacritty_stat
-
-- name: Store whether alacritty is installed.
-  ansible.builtin.set_fact:
-    alacritty_found: "{{ alacritty_stat.stat.exists and alacritty_stat.stat.executable }}"
-
-- name: Create config dir.
-  ansible.builtin.file:
-    path: ~/.config/alacritty
-    state: directory
-    force: yes
-  when: alacritty_found
-
-- name: Link config.
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/alacritty.yml"
-    dest: "~/.config/alacritty/alacritty.yml"
-    state: link
-    force: yes
-    follow: no
-  when: alacritty_found
+- name: Check if installed.
+  ansible.builtin.include_tasks:
+    file: configure.yml
+  with_first_found:
+    - /usr/bin/alacritty
+    - /opt/homebrew/bin
