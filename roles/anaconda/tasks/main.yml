@@ -31,3 +31,12 @@
   ansible.builtin.command:
     cmd: "{{ anaconda_prefix }}/bin/conda install -c conda-forge -n base -q -y mamba"
     creates: "{{ anaconda_prefix }}/bin/mamba"
+
+- name: Install poetry.
+  ansible.builtin.command:
+    cmd: "{{ anaconda_prefix }}/bin/conda install -c conda-forge -n base -q -y poetry"
+    creates: "{{ anaconda_prefix }}/bin/poetry"
+
+- name: Create poetry alias.
+  ansible.builtin.set_fact:
+    aliases: '{{ aliases + [["poetry", anaconda_prefix + "/bin/poetry"]] }}'
