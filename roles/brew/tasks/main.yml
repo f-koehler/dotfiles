@@ -1,6 +1,6 @@
 - name: Check if installed.
   ansible.builtin.set_fact:
-    brew_path: "{{ lookup('first_found', findme) }}"
+    brew_path: "{{ lookup('first_found', findme, skip=True) }}"
   vars:
     findme:
       - /opt/homebrew/bin/brew
