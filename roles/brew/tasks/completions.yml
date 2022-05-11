@@ -1,3 +1,11 @@
 - name: Extend zsh's fpath.
   ansible.builtin.set_fact:
     zsh_hooks: '{{ zsh_hooks + [''FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"''] }}'
+
+- name: Add zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: '{{ zsh_hooks + ["eval \"$({{ brew_path }} shellenv)\""] }}'
+
+- name: Add bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: '{{ bash_hooks + ["eval \"$({{ brew_path }} shellenv)\""] }}'

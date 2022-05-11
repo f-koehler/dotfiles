@@ -14,5 +14,3 @@ fi
 {% for var in environment_variables %}
 export {{var}}="{{ environment_variables[var] }}"
 {% endfor %}
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
