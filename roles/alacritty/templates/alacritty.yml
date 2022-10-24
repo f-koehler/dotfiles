@@ -1,5 +1,5 @@
 font:
-  size: 11.0
+  size: 9.0
   normal:
     family: Hack Nerd Font
     style: Regular
@@ -12,3 +12,29 @@ font:
   bold_italic:
     family: Hack Nerd Font
     style: Bold Italic
+colors:
+  # Default colors
+  primary:
+    background: "#1B1D1E"
+    foreground: "#F8F8F2"
+  # Normal colors
+  normal:
+    black: "#333333"
+    red: "#C4265E"
+    green: "#86B42B"
+    yellow: "#B3B42B"
+    blue: "#6A7EC8"
+    magenta: "#8C6BC8"
+    cyan: "#56ADBC"
+    white: "#E3E3DD"
+  # Bright colors
+  bright:
+    black: "#666666"
+    red: "#F92672"
+    green: "#A6E22E"
+    yellow: "#E2E22E"
+    blue: "#819AFF"
+    magenta: "#AE81FF"
+    cyan: "#66D9EF"
+    white: "#F8F8F2"
+    # theme: Molokai
