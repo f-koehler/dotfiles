@@ -2,46 +2,38 @@
   pre_tasks:
     - name: Load config.
       ansible.builtin.include_vars: config.yml
-  # roles:
-  #   # - gtk
-  #   # - kde
-  #   # # - nvim
-  #   # - polybar
-  #   # # - ranger
-  #   # - rofi
-  #   # - symlinks
   tasks:
-    - name: Setup software.
-      ansible.builtin.include_role:
-        name: "{{ role }}"
+    - name: Find starship executable.
+      ansible.builtin.set_fact:
+        starship_path: "{{ path }}"
+      with_first_found:
+        - /usr/bin/starship
+        - /usr/local/bin/starship
+        - /opt/homebrew/bin/starship
       loop_control:
-        loop_var: role
-      loop:
-        - alacritty
-        - anaconda
-        - bat
-        - brew
-        - dircolors
-        - direnv
-        - emacs
-        - exa
-        - fzf
-        - git
-        # - gnome
-        # - i3
-        - rg
-        - starship
-        - tmux
-        # - xdg
-        - xresources
-        - zoxide
+        loop_var: path
+      changed_when: false
+
+    - name: Find zoxide executable.
+      ansible.builtin.set_fact:
+        zoxide_path: "{{ path }}"
+      with_first_found:
+        - /usr/bin/zoxide
+        - /opt/homebrew/bin/zoxide
+      loop_control:
+        loop_var: path
+      changed_when: false
+
+    - name: Find direnv executable.
+      ansible.builtin.set_fact:
+        direnv_path: "{{ path }}"
+      with_first_found:
+        - /usr/bin/direnv
+        - /opt/homebrew/bin/direnv
+      loop_control:
+        loop_var: path
+      changed_when: false
 
     - name: Setup shells.
       ansible.builtin.include_role:
-        name: "{{ role }}"
-      loop_control:
-        loop_var: role
-      loop:
-        - bash
-        - fish
-        - zsh
+        name: "zsh"

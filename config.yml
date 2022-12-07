@@ -4,6 +4,8 @@ aliases:
   - ["cp", "cp -i"]
   - ["mv", "mv -i"]
   - ["rm", "rm -i"]
+  - ["ls", "ls --color=auto"]
+  - ["ll", "ls --color=auto -lh"]
   - ["..", "cd .."]
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]

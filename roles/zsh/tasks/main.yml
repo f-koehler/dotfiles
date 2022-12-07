@@ -1,8 +1,36 @@
-- name: Check if zsh is installed.
-  ansible.builtin.include_tasks:
-    file: configure.yml
-  with_first_found:
-    files:
-      - /usr/bin/zsh
-      - /opt/homebrew/bin/zsh
-    skip: True
+- name: Create zsh config directories.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "~/.zsh.d"
+    - "~/.zsh.d/plugins"
+  loop_control:
+    loop_var: directory
+
+- name: Template zsh config files.
+  ansible.builtin.template:
+    src: "templates/zshrc"
+    dest: "~/.zshrc"
+    mode: "0700"
+    # validate: zsh -ef %s
+
+- name: Install zsh plugins.
+  ansible.builtin.git:
+    accept_hostkey: yes
+    dest: "~/.zsh.d/plugins/{{ plugin.name }}"
+    repo: "{{ plugin.repo }}"
+    version: "{{ plugin.version }}"
+  loop:
+    - name: zsh-autosuggestions
+      repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+      version: master
+    - name: zsh-syntax-highlighting
+      repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+      version: master
+    - name: conda-zsh-completion
+      repo: "https://github.com/esc/conda-zsh-completion"
+      version: master
+  loop_control:
+    loop_var: plugin
