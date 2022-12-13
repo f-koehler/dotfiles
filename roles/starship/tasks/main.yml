@@ -7,8 +7,8 @@
 - name: Find executable.
   ansible.builtin.set_fact:
     starship_path: "{{ path }}"
-    zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh --print-full-init)'] }}"
-    bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash --print-full-init)'] }}"
+    zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ' init zsh --print-full-init)'] }}"
+    bash_hooks: "{{ bash_hooks + ['source <(' + path + ' init bash --print-full-init)'] }}"
   with_first_found:
     - /usr/bin/starship
     - /usr/local/bin/starship

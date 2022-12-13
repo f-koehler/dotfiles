@@ -1,8 +1,8 @@
 - name: Find executable.
   ansible.builtin.set_fact:
     direnv_path: "{{ path }}"
-    zsh_hooks: "{{ zsh_hooks + ['source <('+path+' hook zsh)'] }}"
-    bash_hooks: "{{ bash_hooks + ['source <('+path+' hook bash)'] }}"
+    zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ' hook zsh)'] }}"
+    bash_hooks: "{{ bash_hooks + ['source <(' + path + ' hook bash)'] }}"
   with_first_found:
     - /usr/bin/direnv
     - /opt/homebrew/bin/direnv
