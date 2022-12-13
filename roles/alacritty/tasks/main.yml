@@ -1,6 +1,11 @@
-- name: Check if installed.
-  ansible.builtin.include_tasks:
-    file: configure.yml
-  with_first_found:
-    - /usr/bin/alacritty
-    - /opt/homebrew/bin
+- name: Create config dir.
+  ansible.builtin.file:
+    path: ~/.config/alacritty
+    state: directory
+    force: yes
+
+- name: Generate config.
+  ansible.builtin.template:
+    src: "alacritty.yml"
+    dest: "~/.config/alacritty/alacritty.yml"
+    mode: "0700"
