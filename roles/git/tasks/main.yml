@@ -1,26 +1,5 @@
-- name: Check if git is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/git
-  register: git_stat
-
-- name: Store whether git is installed.
-  ansible.builtin.set_fact:
-    git_found: "{{ git_stat.stat.exists and git_stat.stat.executable }}"
-
-- name: Symlink git config.
-  when: git_found
-  ansible.builtin.file:
-    src: "{{ role_path }}/files/.gitconfig"
-    dest: "~/.gitconfig"
-    state: link
-    force: yes
-    follow: no
-
-- name: Check if git-annex is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/git-annex
-  register: git_annex_stat
-
-- name: Store whether git_annex is installed.
-  ansible.builtin.set_fact:
-    git_annex_found: "{{ git_annex_stat.stat.exists and git_annex_stat.stat.executable }}"
+- name: Generate config.
+  ansible.builtin.template:
+    src: "gitconfig"
+    dest: "{{ HOME }}/.gitconfig"
+    mode: "0644"

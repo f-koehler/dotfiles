@@ -1,14 +1,8 @@
-- name: Set default PDF viewer.
-  xdg_mime:
-    type: application/pdf
-    application: okularApplication_pdf.desktop
-
-- name: Set default PNG viewer.
-  xdg_mime:
-    type: image/png
-    application: re.sonny.Junction.desktop
-
-- name: Set default JPG viewer.
-  xdg_mime:
-    type: image/jpg
-    application: re.sonny.Junction.desktop
+- name: Create directories.
+  ansible.builtin.file:
+    path: "{{ directory.value }}"
+    state: directory
+    mode: "0744"
+  loop: "{{ xdg | dict2items }}"
+  loop_control:
+    loop_var: directory

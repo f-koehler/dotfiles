@@ -1,0 +1,19 @@
+- name: Find executable.
+  ansible.builtin.set_fact:
+    exa_path: "{{ path }}"
+  with_first_found:
+    - /usr/bin/exa
+    - /opt/homebrew/bin/exa
+  loop_control:
+    loop_var: path
+  changed_when: false
+
+- name: Alias ls to exa.
+  ansible.builtin.set_fact:
+    aliases: "{{ aliases + [['ls', exa_path], ['ll', exa_path + ' --long --icons']] }}"
+  when: exa_path is defined
+
+- name: Change defaults for ls.
+  ansible.builtin.set_fact:
+    aliases: "{{ aliases + [['ls', 'ls --color=auto'], ['ll', 'ls --color=auto -lh']] }}"
+  when: not (exa_path is defined)

@@ -1,0 +1,11 @@
+- name: Find executable.
+  ansible.builtin.set_fact:
+    zoxide_path: "{{ path }}"
+    zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh)'] }}"
+    bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash)'] }}"
+  with_first_found:
+    - /usr/bin/zoxide
+    - /opt/homebrew/bin/zoxide
+  loop_control:
+    loop_var: path
+  changed_when: false

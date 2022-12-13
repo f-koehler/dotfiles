@@ -1,12 +1,18 @@
-- name: Check if installed.
-  ansible.builtin.set_fact:
-    starship_path: "{{ lookup('first_found', files, skip=True) }}"
-  vars:
-    files:
-      - /usr/bin/starship
-      - /opt/homebrew/bin/starship
+- name: Generate config.
+  ansible.builtin.template:
+    src: "starship.toml"
+    dest: "{{ xdg['config_home'] }}/starship.toml"
+    mode: "0644"
 
-- name: Configure.
-  when: starship_path
-  ansible.builtin.include_tasks:
-    file: configure.yml
+- name: Find executable.
+  ansible.builtin.set_fact:
+    starship_path: "{{ path }}"
+    zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh --print-full-init)'] }}"
+    bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash --print-full-init)'] }}"
+  with_first_found:
+    - /usr/bin/starship
+    - /usr/local/bin/starship
+    - /opt/homebrew/bin/starship
+  loop_control:
+    loop_var: path
+  changed_when: false

@@ -2,91 +2,16 @@
   pre_tasks:
     - name: Load config.
       ansible.builtin.include_vars: config.yml
-      
-    - name: Create XDG directories.
-      ansible.builtin.file:
-        path: "{{ directory.value }}"
-        state: directory
-        mode: 0700
-      loop: "{{ xdg | dict2items }}"
-      loop_control:
-        loop_var: directory
-
-    - name: Find starship executable.
-      ansible.builtin.set_fact:
-        starship_path: "{{ path }}"
-        zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh --print-full-init)'] }}"
-        bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash --print-full-init)'] }}"
-      with_first_found:
-        - /usr/bin/starship
-        - /usr/local/bin/starship
-        - /opt/homebrew/bin/starship
-      loop_control:
-        loop_var: path
-      changed_when: false
-
-    - name: Find zoxide executable.
-      ansible.builtin.set_fact:
-        zoxide_path: "{{ path }}"
-        zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh)'] }}"
-        bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash)'] }}"
-      with_first_found:
-        - /usr/bin/zoxide
-        - /opt/homebrew/bin/zoxide
-      loop_control:
-        loop_var: path
-      changed_when: false
-
-    - name: Find direnv executable.
-      ansible.builtin.set_fact:
-        direnv_path: "{{ path }}"
-        zsh_hooks: "{{ zsh_hooks + ['source <('+path+' hook zsh)'] }}"
-        bash_hooks: "{{ bash_hooks + ['source <('+path+' hook bash)'] }}"
-      with_first_found:
-        - /usr/bin/direnv
-        - /opt/homebrew/bin/direnv
-      loop_control:
-        loop_var: path
-      changed_when: false
-        
-    - name: Find exa executable.
-      ansible.builtin.set_fact:
-        exa_path: "{{ path }}"
-      with_first_found:
-        - /usr/bin/exa
-        - /opt/homebrew/bin/exa
-      loop_control:
-        loop_var: path
-      changed_when: false
-        
-    - name: Alias ls to exa.
-      ansible.builtin.set_fact:
-        aliases: "{{ aliases + [['ls', exa_path], ['ll', exa_path + ' --long --icons']] }}"
-      when: exa_path is defined
-        
-    - name: Change defaults for ls.
-      ansible.builtin.set_fact:
-        aliases: "{{ aliases + [['ls', 'ls --color=auto'], ['ll', 'ls --color=auto -lh']] }}"
-      when: not (exa_path is defined)
-        
-    - name: Find bat executable.
-      ansible.builtin.set_fact:
-        bat_path: "{{ path }}"
-      with_first_found:
-        - /usr/bin/bat
-        - /opt/homebrew/bin/bat
-      loop_control:
-        loop_var: path
-      changed_when: false
-        
-    - name: Alias cat to bat.
-      ansible.builtin.set_fact:
-        aliases: "{{ aliases + [['cat', bat_path + ' --plain --paging=never']] }}"
-      when: exa_path is defined
-        
   roles:
     - alacritty
+    - bat
+    - direnv
+    - exa
+    - git
     - neovim
+    - starship
     - tmux
+    - xdg
+    - zoxide
 
     - zsh
