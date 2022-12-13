@@ -25,6 +25,6 @@
     dest: "{{ instance.0 }}/{{ instance.1.name }}"
     update: true
     accept_hostkey: true
-  loop: "{{ [xdg['data_home'] + '/nvim/site/pack/theme/start', HOME + '/.vim/pack/themes/start'] | product(vim_plugins) | list }}"
+  loop: "{{ [xdg['data_home'] + '/nvim/site/pack/plugins/start', HOME + '/.vim/pack/plugins/start'] | product(vim_plugins) | list }}"
   loop_control:
     loop_var: instance
