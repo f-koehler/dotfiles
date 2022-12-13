@@ -2,8 +2,10 @@
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + ['source ' + path] }}"
   with_first_found:
-    - /usr/share/fzf/key-bindings.zsh
-    - /opt/homebrew/share/fzf/key-bindings.zsh
+    - files:
+        - /usr/share/fzf/key-bindings.zsh
+        - /opt/homebrew/share/fzf/key-bindings.zsh
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false
@@ -12,8 +14,10 @@
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + ['source ' + path] }}"
   with_first_found:
-    - /usr/share/fzf/key-bindings.bash
-    - /opt/homebrew/share/fzf/key-bindings.bash
+    - files:
+        - /usr/share/fzf/key-bindings.bash
+        - /opt/homebrew/share/fzf/key-bindings.bash
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false
@@ -22,8 +26,10 @@
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + ['source ' + path] }}"
   with_first_found:
-    - /usr/share/fzf/completion.zsh
-    - /opt/homebrew/share/fzf/completion.zsh
+    - files:
+        - /usr/share/fzf/completion.zsh
+        - /opt/homebrew/share/fzf/completion.zsh
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false
@@ -32,8 +38,10 @@
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + ['source '+path] }}"
   with_first_found:
-    - /usr/share/fzf/completion.bash
-    - /opt/homebrew/share/fzf/completion.bash
+    - files:
+        - /usr/share/fzf/completion.bash
+        - /opt/homebrew/share/fzf/completion.bash
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false

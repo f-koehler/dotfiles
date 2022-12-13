@@ -11,9 +11,11 @@
     bash_hooks: "{{ bash_hooks + ['source <(' + path + ' init bash --print-full-init)'] }}"
     fish_hooks: "{{ fish_hooks + [path + ' init fish --print-full-init | source'] }}"
   with_first_found:
-    - /usr/bin/starship
-    - /usr/local/bin/starship
-    - /opt/homebrew/bin/starship
+    - files:
+        - /usr/bin/starship
+        - /usr/local/bin/starship
+        - /opt/homebrew/bin/starship
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false

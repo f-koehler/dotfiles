@@ -2,8 +2,10 @@
   ansible.builtin.set_fact:
     exa_path: "{{ path }}"
   with_first_found:
-    - /usr/bin/exa
-    - /opt/homebrew/bin/exa
+    - files:
+        - /usr/bin/exa
+        - /opt/homebrew/bin/exa
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false
