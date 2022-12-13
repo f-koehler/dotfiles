@@ -1,0 +1,9 @@
+vim_plugins:
+  - name: vim-polyglot
+    repo: "https://github.com/sheerun/vim-polyglot"
+  - name: vim-commentary
+    repo: "https://github.com/tpope/vim-commentary.git"
+  - name: vim-code-dark
+    repo: "https://github.com/tomasiser/vim-code-dark"
+  - name: vim-vinegar
+    repo: https://github.com/tpope/vim-vinegar.git
