@@ -1,26 +1,23 @@
-home_dir: "{{ lookup('env', 'HOME') }}"
-anaconda_prefix: "{{ home_dir }}/.local/opt/anaconda3"
+HOME: "{{ lookup('env', 'HOME') }}"
+xdg:
+  config_home: "{{ HOME }}/.config"
+  cache_home: "{{ HOME }}/.cache"
+  data_home: "{{ HOME }}/.local/share"
+  state_home: "{{ HOME }}/.local/statstate"
+anaconda_prefix: "{{ HOME }}/.local/opt/anaconda3"
 aliases:
   - ["cp", "cp -i"]
   - ["mv", "mv -i"]
   - ["rm", "rm -i"]
-  - ["ls", "ls --color=auto"]
-  - ["ll", "ls --color=auto -lh"]
+  - ["~", "cd {{ HOME }}"]
   - ["..", "cd .."]
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
   - [".....", "cd ../../../.."]
-flatpak_remotes:
-  - name: flathub
-    url: https://flathub.org/repo/flathub.flatpakrepo
-environment_variables:
-  XDG_CONFIG_HOME: "{{ home_dir }}/.config"
-  XDG_CACHE_HOME: "{{ home_dir }}/.cache"
-  XDG_DATA_HOME: "{{ home_dir }}/.local/share"
-  XDG_STATE_HOME: "{{ home_dir }}/.local/statstate"
-  EDITOR: "vim"
+exports:
+  EDITOR: "/usr/bin/vim"
   GPG_TTY: "$(tty)"
-  PATH: "{{ home_dir }}/.local/bin:${PATH}"
+  PATH: "{{ HOME }}/.local/bin:${PATH}"
 bash_hooks: []
 zsh_hooks: []
 fish_hooks: []

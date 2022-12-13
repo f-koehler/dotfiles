@@ -1,6 +1,6 @@
-export ZSHD="$HOME/.zsh.d"
+export ZSHD="{{ HOME }}/.zsh.d"
 
-[ -f "$HOME/.profile" ] && source "$HOME/.profile"
+[ -f "{{ HOME }}/.profile" ] && source "{{ HOME }}/.profile"
 
 
 setopt autocd extendedglob nomatch menucomplete
@@ -50,9 +50,9 @@ bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
 
 # hooks
-source <({{ starship_path }} init zsh --print-full-init)
-source <({{ direnv_path }} hook zsh)
-source <({{ zoxide_path }} init zsh)
+{% for hook in zsh_hooks %}
+{{ hook }}
+{% endfor %}
 
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -64,21 +64,24 @@ alias {{ alias[0] }}="{{ alias[1] }}"
 {% endfor %}
 
 # exports
-HISTFILE="$HOME/.zsh_history"
+HISTFILE="{{ HOME }}/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
+
+{% for export in xdg %}
+export {{ export }}="{{ xdg[export] }}"
+{% endfor %}
+{% for export in exports %}
+export {{ export }}="{{ exports[export] }}"
+{% endfor %}
 
 if (( $+commands[pip] )); then
 	eval "$(pip completion --zsh)"
 fi
 
-[[ -d ${HOME}/.npm-global/bin ]] && export PATH="${HOME}/.npm-global/bin:${PATH}"
-[[ -d ${HOME}/.cargo/bin ]] && export PATH="${HOME}/.cargo/bin:${PATH}"
-
-{% for var in environment_variables %}
-export {{var}}="{{ environment_variables[var] }}"
-{% endfor %}
+[[ -d {{ HOME }}/.npm-global/bin ]] && export PATH="{{ HOME }}/.npm-global/bin:${PATH}"
+[[ -d {{ HOME }}/.cargo/bin ]] && export PATH="{{ HOME }}/.cargo/bin:${PATH}"
 
 # functions
 function print-colors256 {

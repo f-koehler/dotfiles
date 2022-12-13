@@ -1,11 +1,15 @@
-- name: Create config dir.
+- name: Create config directories.
   ansible.builtin.file:
-    path: ~/.config/alacritty
+    path: "{{ directory }}"
     state: directory
-    force: yes
+    mode: "0700"
+  loop:
+    - "{{ xdg['config_home'] }}/alacritty"
+  loop_control:
+    loop_var: directory
 
 - name: Generate config.
   ansible.builtin.template:
     src: "alacritty.yml"
-    dest: "~/.config/alacritty/alacritty.yml"
+    dest: "{{ xdg['config_home'] }}/alacritty/alacritty.yml"
     mode: "0700"

@@ -4,13 +4,12 @@
     state: directory
     mode: "0700"
   loop:
-    - "~/.config"
-    - "~/.config/nvim"
+    - "{{ xdg['config_home'] }}/nvim"
   loop_control:
     loop_var: directory
 
 - name: Generate neovim config.
   ansible.builtin.template:
     src: "templates/init.lua"
-    dest: "~/.config/nvim/init.lua"
+    dest: "{{ xdg['config_home'] }}/nvim/init.lua"
     mode: "0644"

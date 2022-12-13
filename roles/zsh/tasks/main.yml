@@ -4,22 +4,22 @@
     state: directory
     mode: "0700"
   loop:
-    - "~/.zsh.d"
-    - "~/.zsh.d/plugins"
+    - "{{ HOME }}/.zsh.d"
+    - "{{ HOME }}/.zsh.d/plugins"
   loop_control:
     loop_var: directory
 
 - name: Template zsh config files.
   ansible.builtin.template:
     src: "templates/zshrc"
-    dest: "~/.zshrc"
+    dest: "{{ HOME }}/.zshrc"
     mode: "0700"
     # validate: zsh -ef %s
 
 - name: Install zsh plugins.
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: "~/.zsh.d/plugins/{{ plugin.name }}"
+    dest: "{{ HOME }}/.zsh.d/plugins/{{ plugin.name }}"
     repo: "{{ plugin.repo }}"
     version: "{{ plugin.version }}"
   loop:
