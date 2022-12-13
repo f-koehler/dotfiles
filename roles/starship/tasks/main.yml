@@ -9,6 +9,7 @@
     starship_path: "{{ path }}"
     zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ' init zsh --print-full-init)'] }}"
     bash_hooks: "{{ bash_hooks + ['source <(' + path + ' init bash --print-full-init)'] }}"
+    fish_hooks: "{{ fish_hooks + [path + ' init fish --print-full-init | source'] }}"
   with_first_found:
     - /usr/bin/starship
     - /usr/local/bin/starship

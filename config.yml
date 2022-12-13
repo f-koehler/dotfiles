@@ -9,15 +9,15 @@ aliases:
   - ["cp", "cp -i"]
   - ["mv", "mv -i"]
   - ["rm", "rm -i"]
+exports:
+  EDITOR: "/usr/bin/vim"
+  GPG_TTY: "$(tty)"
+bash_hooks: []
+zsh_hooks: []
+fish_hooks: []
+bash_aliases:
   - ["~", "cd {{ HOME }}"]
   - ["..", "cd .."]
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
   - [".....", "cd ../../../.."]
-exports:
-  EDITOR: "/usr/bin/vim"
-  GPG_TTY: "$(tty)"
-  PATH: "{{ HOME }}/.local/bin:${PATH}"
-bash_hooks: []
-zsh_hooks: []
-fish_hooks: []

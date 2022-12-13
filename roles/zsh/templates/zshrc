@@ -70,10 +70,10 @@ SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 
 {% for export in xdg %}
-export {{ export }}="{{ xdg[export] }}"
+export XDG_{{ export|upper }}="{{ xdg[export] }}"
 {% endfor %}
 {% for export in exports %}
-export {{ export }}="{{ exports[export] }}"
+export {{ export|upper }}="{{ exports[export] }}"
 {% endfor %}
 
 if (( $+commands[pip] )); then

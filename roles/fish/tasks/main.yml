@@ -1,16 +1,11 @@
-- name: Symlink fish config.
+- name: Create config directory.
   ansible.builtin.file:
-    src: "{{ role_path }}/files/fish"
-    dest: "~/.config/fish"
-    state: link
-    force: yes
-    follow: no
+    path: "{{ xdg['config_home'] }}/fish"
+    state: directory
+    mode: "0700"
 
-- name: Check if fish is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/fish
-  register: fish_stat
-
-- name: Store whether fish is installed.
-  ansible.builtin.set_fact:
-    fish_found: "{{ fish_stat.stat.exists and fish_stat.stat.executable }}"
+- name: Generate config.
+  ansible.builtin.template:
+    src: "config.fish"
+    dest: "{{ xdg['config_home'] }}/fish/config.fish"
+    mode: "0644"
