@@ -1,0 +1,9 @@
+- name: Disable automatic suspend.
+  community.general.dconf:
+    key: /org/gnome/settings-daemon/plugins/power
+    value: "'nothing'"
+
+- name: Disable hot corner.
+  community.general.dconf:
+    key: /org/gnome/desktop/interface/enable-hot-corners
+    value: "false"

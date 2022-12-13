@@ -1,22 +1,27 @@
-- name: Disable automatic suspend.
-  community.general.dconf:
-    key: /org/gnome/settings-daemon/plugins/power
-    value: "'nothing'"
+- name: Find dconf executable.
+  ansible.builtin.set_fact:
+    dconf_path: path
+  with_first_found:
+    - files:
+        - /usr/bin/dconf
+      skip: true
+  changed_when: false
 
-- name: Disable hot corner.
-  community.general.dconf:
-    key: /org/gnome/desktop/interface/enable-hot-corners
-    value: "false"
+- name: Find gnome-extensions executable.
+  ansible.builtin.set_fact:
+    gnome_extensions_path: path
+  with_first_found:
+    - files:
+        - /usr/bin/gnome-extensions
+      skip: true
+  changed_when: false
 
-- name: Enable gnome extensions.
-  gnome_extension:
-    name: "{{ extension }}"
-    state: present
-  loop_control:
-    loop_var: extension
-  loop:
-    - appindicatorsupport@rgcjonas.gmail.com
-    - gsconnect@andyholmes.github.io
-    - launch-new-instance@gnome-shell-extensions.gcampax.github.com
-    - native-window-placement@gnome-shell-extensions.gcampax.github.com
-    - workspace-indicator@gnome-shell-extensions.gcampax.github.com
+- name: Load settings tasks.
+  ansible.builtin.include_tasks:
+    file: settings.yml
+  when: dconf_path is defined
+
+- name: Load extensions tasks.
+  ansible.builtin.include_tasks:
+    file: extensions.yml
+  when: gnome_extensions_path is defined
