@@ -6,4 +6,10 @@ vim_plugins:
   - name: vim-code-dark
     repo: "https://github.com/tomasiser/vim-code-dark"
   - name: vim-vinegar
-    repo: https://github.com/tpope/vim-vinegar.git
+    repo: "https://github.com/tpope/vim-vinegar.git"
+  - name: vim-airline
+    repo: "https://github.com/vim-airline/vim-airline.git"
+  - name: vim-airline-themes
+    repo: "https://github.com/vim-airline/vim-airline-themes.git"
+  - name: vim-gitgutter
+    repo: "https://github.com/airblade/vim-gitgutter.git"
