@@ -2,7 +2,7 @@
   pre_tasks:
     - name: Load config.
       ansible.builtin.include_vars: config.yml
-  tasks:
+  pre_tasks:
     - name: Find starship executable.
       ansible.builtin.set_fact:
         starship_path: "{{ path }}"
@@ -33,7 +33,8 @@
       loop_control:
         loop_var: path
       changed_when: false
-
-    - name: Setup shells.
-      ansible.builtin.include_role:
-        name: "zsh"
+        
+  roles:
+    - zsh
+    - neovim
+    - alacritty
