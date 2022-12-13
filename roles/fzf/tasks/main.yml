@@ -1,0 +1,39 @@
+- name: Find key-bidings (zsh).
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ')'] }}"
+  with_first_found:
+    - /usr/share/fzf/key-bindings.zsh
+    - /opt/homebrew/share/fzf/key-bindings.zsh
+  loop_control:
+    loop_var: path
+  changed_when: false
+
+- name: Find key-bidings (bash).
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + ['source <(' + path + ')'] }}"
+  with_first_found:
+    - /usr/share/fzf/key-bindings.bash
+    - /opt/homebrew/share/fzf/key-bindings.bash
+  loop_control:
+    loop_var: path
+  changed_when: false
+
+- name: Find completion (zsh).
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ')'] }}"
+  with_first_found:
+    - /usr/share/fzf/completion.zsh
+    - /opt/homebrew/share/fzf/completion.zsh
+  loop_control:
+    loop_var: path
+  changed_when: false
+
+- name: Find completion (bash).
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + ['source <(' + path + ')'] }}"
+  with_first_found:
+    - /usr/share/fzf/completion.bash
+    - /opt/homebrew/share/fzf/completion.bash
+  loop_control:
+    loop_var: path
+  changed_when: false
