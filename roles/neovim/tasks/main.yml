@@ -8,7 +8,7 @@
   loop_control:
     loop_var: directory
 
-- name: Generate neovim config.
+- name: Generate config.
   ansible.builtin.template:
     src: "templates/init.lua"
     dest: "{{ xdg['config_home'] }}/nvim/init.lua"

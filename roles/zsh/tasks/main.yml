@@ -1,4 +1,4 @@
-- name: Create zsh config directories.
+- name: Create config directories.
   ansible.builtin.file:
     path: "{{ directory }}"
     state: directory
@@ -9,14 +9,14 @@
   loop_control:
     loop_var: directory
 
-- name: Template zsh config files.
+- name: Template config files.
   ansible.builtin.template:
     src: "templates/zshrc"
     dest: "{{ HOME }}/.zshrc"
     mode: "0700"
     # validate: zsh -ef %s
 
-- name: Install zsh plugins.
+- name: Install plugins.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: "{{ HOME }}/.zsh.d/plugins/{{ plugin.name }}"

@@ -9,7 +9,7 @@
     dest: "{{ HOME }}/.tmux.conf"
     mode: "0644"
 
-- name: Install tmux plugins.
+- name: Install plugins.
   ansible.builtin.git:
     accept_hostkey: yes
     dest: "{{ HOME }}/.tmux/plugins/{{ plugin.name }}"
