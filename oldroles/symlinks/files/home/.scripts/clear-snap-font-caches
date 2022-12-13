@@ -1,7 +1,0 @@
-#!/bin/bash
-set -euf -o pipefail
-
-sudo rm -f /var/cache/fontconfig/*
-rm -f ~/.cache/fontconfig/*
-sudo fc-cache -r -v
-rm -rvf $(find ~/snap/ -wholename '*/.cache/fontconfig')

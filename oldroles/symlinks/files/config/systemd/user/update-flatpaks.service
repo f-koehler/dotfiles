@@ -1,9 +1,0 @@
-[Unit]
-Description=Update flatpaks
-
-[Service]
-Type=oneshot
-ExecStart=%h/.scripts/update-flatpaks
-
-[Install]
-WantedBy=default.target

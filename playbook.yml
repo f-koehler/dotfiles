@@ -85,6 +85,8 @@
       when: exa_path is defined
         
   roles:
-    - zsh
-    - neovim
     - alacritty
+    - neovim
+    - tmux
+
+    - zsh

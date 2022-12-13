@@ -1,5 +1,0 @@
-#!/bin/bash
-set -euf -o pipefail
-
-UUID=$(uuidgen)
-infocmp $TERM | ssh "$@" "mkdir -p .terminfo && cat >/tmp/ti-${UUID} && tic /tmp/ti-${UUID} && rm /tmp/ti-${UUID}"

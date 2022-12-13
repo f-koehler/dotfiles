@@ -1,8 +1,0 @@
-- name: Check if rg is installed.
-  ansible.builtin.stat:
-    path: /usr/bin/rg
-  register: rg_stat
-
-- name: Store whether ripgrep is installed.
-  ansible.builtin.set_fact:
-    rg_found: "{{ rg_stat.stat.exists and rg_stat.stat.executable }}"

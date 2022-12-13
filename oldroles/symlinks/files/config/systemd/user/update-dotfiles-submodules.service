@@ -1,9 +1,0 @@
-[Unit]
-Description=Update submodules in ~/.dotfiles
-
-[Service]
-Type=oneshot
-ExecStart=%h/.scripts/update-dotfiles-submodules
-
-[Install]
-WantedBy=default.target

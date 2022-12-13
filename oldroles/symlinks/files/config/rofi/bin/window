@@ -1,2 +1,0 @@
-#!/bin/bash
-rofi -modi window -sort -sorting-method fzf -matching fuzzy -no-lazy-grab -show window -show-icons -window-thumbnail -theme ~/.config/rofi/themes/window.rasi

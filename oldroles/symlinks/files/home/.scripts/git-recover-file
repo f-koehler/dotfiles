@@ -1,5 +1,0 @@
-#!/bin/bash
-set -euf -o pipefail
-
-file="$1"
-git checkout $(git rev-list -n 1 HEAD -- "$file")~1 -- "$file"
