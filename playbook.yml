@@ -16,6 +16,7 @@
       ansible.builtin.set_fact:
         starship_path: "{{ path }}"
         zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh --print-full-init)'] }}"
+        bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash --print-full-init)'] }}"
       with_first_found:
         - /usr/bin/starship
         - /usr/local/bin/starship
@@ -28,6 +29,7 @@
       ansible.builtin.set_fact:
         zoxide_path: "{{ path }}"
         zsh_hooks: "{{ zsh_hooks + ['source <('+path+' init zsh)'] }}"
+        bash_hooks: "{{ bash_hooks + ['source <('+path+' init bash)'] }}"
       with_first_found:
         - /usr/bin/zoxide
         - /opt/homebrew/bin/zoxide
@@ -39,6 +41,7 @@
       ansible.builtin.set_fact:
         direnv_path: "{{ path }}"
         zsh_hooks: "{{ zsh_hooks + ['source <('+path+' hook zsh)'] }}"
+        bash_hooks: "{{ bash_hooks + ['source <('+path+' hook bash)'] }}"
       with_first_found:
         - /usr/bin/direnv
         - /opt/homebrew/bin/direnv
