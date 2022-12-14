@@ -1,2 +1,0 @@
-- name: Check if ~/.cargo/bin exists.
-  ansible.builtin.stat:

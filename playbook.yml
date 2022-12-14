@@ -12,6 +12,7 @@
     - git
     - gnome
     - neovim
+    - rustup
     - starship
     - tmux
     - xdg

@@ -78,12 +78,10 @@ if (( $+commands[pip] )); then
 	eval "$(pip completion --zsh)"
 fi
 
-[[ -d {{ HOME }}/.npm-global/bin ]] && export PATH="{{ HOME }}/.npm-global/bin:${PATH}"
-[[ -d {{ HOME }}/.cargo/bin ]] && export PATH="{{ HOME }}/.cargo/bin:${PATH}"
-
 
 # completions
 fpath+={{ HOME }}/.zsh.d/plugins/conda-zsh-completion
+fpath+={{ HOME }}/.zfunc
 compinit
 
 # >>> conda initialize >>>
