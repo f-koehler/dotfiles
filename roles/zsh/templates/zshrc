@@ -53,6 +53,8 @@ bindkey "^[[1;3C" forward-word
 {% for hook in zsh_hooks %}
 {{ hook }}
 {% endfor %}
+source {{ HOME }}//.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source {{ HOME }}//.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # aliases
 {% for alias in aliases %}
@@ -79,44 +81,9 @@ fi
 [[ -d {{ HOME }}/.npm-global/bin ]] && export PATH="{{ HOME }}/.npm-global/bin:${PATH}"
 [[ -d {{ HOME }}/.cargo/bin ]] && export PATH="{{ HOME }}/.cargo/bin:${PATH}"
 
-# functions
-function print-colors256 {
-    for i in {0..255}; do
-        print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%8)):#7}:+$'\n'};
-    done
-}
 
-function zsh_add_file() {
-    [ -f "$ZSHD/$1" ] && source "$ZSHD/$1"
-}
-
-function zsh_add_plugin() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZSHD/plugins/$PLUGIN_NAME" ]; then
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh" || \
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.zsh-theme"
-    fi
-}
-
-function zsh_add_completion() {
-    PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
-    if [ -d "$ZSHD/plugins/$PLUGIN_NAME" ]; then
-        # For completions
-		completion_file_path=$(ls $ZSHD/plugins/$PLUGIN_NAME/_*)
-		fpath+="$(dirname "${completion_file_path}")"
-        zsh_add_file "plugins/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh"
-    fi
-	completion_file="$(basename "${completion_file_path}")"
-	if [ "$2" = true ] && compinit "${completion_file:1}"
-}
-
-
-# plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_completion "esc/conda-zsh-completion" false
-
+# completions
+fpath+={{ HOME }}/.zsh.d/plugins/conda-zsh-completion
 compinit
 
 # >>> conda initialize >>>
