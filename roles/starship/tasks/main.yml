@@ -8,9 +8,11 @@
   ansible.builtin.set_fact:
     starship_path: "{{ path }}"
   with_first_found:
-    - /usr/bin/starship
-    - /usr/local/bin/starship
-    - /opt/homebrew/bin/starship
+    - files:
+        - /usr/bin/starship
+        - /usr/local/bin/starship
+        - /opt/homebrew/bin/starship
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false

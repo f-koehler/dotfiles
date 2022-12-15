@@ -2,8 +2,10 @@
   ansible.builtin.set_fact:
     zoxide_path: "{{ path }}"
   with_first_found:
-    - /usr/bin/zoxide
-    - /opt/homebrew/bin/zoxide
+    - files:
+        - /usr/bin/zoxide
+        - /opt/homebrew/bin/zoxide
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false

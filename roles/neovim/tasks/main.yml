@@ -10,6 +10,21 @@
 
 - name: Generate config.
   ansible.builtin.template:
-    src: "templates/init.lua"
-    dest: "{{ xdg['config_home'] }}/nvim/init.lua"
+    src: "templates/init.vim"
+    dest: "{{ dest }}"
     mode: "0644"
+  loop:
+    - "{{ xdg['config_home'] }}/nvim/init.vim"
+    - "{{ HOME }}/.vimrc"
+  loop_control:
+    loop_var: dest
+
+- name: Install plugins.
+  ansible.builtin.git:
+    repo: "{{ instance.1.repo }}"
+    dest: "{{ instance.0 }}/{{ instance.1.name }}"
+    update: true
+    accept_hostkey: true
+  loop: "{{ [xdg['data_home'] + '/nvim/site/pack/plugins/start', HOME + '/.vim/pack/plugins/start'] | product(vim_plugins) | list }}"
+  loop_control:
+    loop_var: instance

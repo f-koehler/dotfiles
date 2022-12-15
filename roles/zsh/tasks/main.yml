@@ -21,7 +21,7 @@
     accept_hostkey: yes
     dest: "{{ HOME }}/.zsh.d/plugins/{{ plugin.name }}"
     repo: "{{ plugin.repo }}"
-    version: "{{ plugin.version }}"
+    update: true
   loop:
     - name: zsh-autosuggestions
       repo: "https://github.com/zsh-users/zsh-autosuggestions.git"

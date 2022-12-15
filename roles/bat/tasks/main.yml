@@ -2,8 +2,10 @@
   ansible.builtin.set_fact:
     bat_path: "{{ path }}"
   with_first_found:
-    - /usr/bin/bat
-    - /opt/homebrew/bin/bat
+    - files:
+        - /usr/bin/bat
+        - /opt/homebrew/bin/bat
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false

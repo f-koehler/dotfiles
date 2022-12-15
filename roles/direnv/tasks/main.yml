@@ -2,8 +2,10 @@
   ansible.builtin.set_fact:
     direnv_path: "{{ path }}"
   with_first_found:
-    - /usr/bin/direnv
-    - /opt/homebrew/bin/direnv
+    - files:
+        - /usr/bin/direnv
+        - /opt/homebrew/bin/direnv
+      skip: true
   loop_control:
     loop_var: path
   changed_when: false
