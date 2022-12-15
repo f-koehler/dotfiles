@@ -7,9 +7,6 @@
 - name: Find executable.
   ansible.builtin.set_fact:
     starship_path: "{{ path }}"
-    zsh_hooks: "{{ zsh_hooks + ['source <(' + path + ' init zsh --print-full-init)'] }}"
-    bash_hooks: "{{ bash_hooks + ['source <(' + path + ' init bash --print-full-init)'] }}"
-    fish_hooks: "{{ fish_hooks + [path + ' init fish --print-full-init | source'] }}"
   with_first_found:
     - /usr/bin/starship
     - /usr/local/bin/starship
@@ -17,3 +14,39 @@
   loop_control:
     loop_var: path
   changed_when: false
+
+- name: Get zsh hook.
+  ansible.builtin.command: "{{ starship_path }} init zsh --print-full-init"
+  changed_when: false
+  when: starship_path is defined
+  register: starship_zsh_hook_result
+
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [starship_zsh_hook_result.stdout + '\n'] }}"
+  changed_when: false
+  when: starship_zsh_hook_result is defined
+
+- name: Get bash hook.
+  ansible.builtin.command: "{{ starship_path }} init bash --print-full-init"
+  changed_when: false
+  when: starship_path is defined
+  register: starship_bash_hook_result
+
+- name: Register bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\\n'] }}"
+  changed_when: false
+  when: starship_bash_hook_result is defined
+
+- name: Get fish hook.
+  ansible.builtin.command: "{{ starship_path }} init fish --print-full-init"
+  changed_when: false
+  when: starship_path is defined
+  register: starship_fish_hook_result
+
+- name: Register fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\\n'] }}"
+  changed_when: false
+  when: starship_fish_hook_result is defined
