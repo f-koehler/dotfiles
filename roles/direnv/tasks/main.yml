@@ -20,7 +20,7 @@
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [direnv_zsh_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: direnv_zsh_hook_result is defined
+  when: (zoxide_path is defined) and (direnv_zsh_hook_result is defined)
 
 - name: Get bash hook.
   ansible.builtin.command: "{{ direnv_path }} hook bash"
@@ -32,7 +32,7 @@
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [direnv_bash_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: direnv_bash_hook_result is defined
+  when: (zoxide_path is defined) and (direnv_bash_hook_result is defined)
 
 - name: Get fish hook.
   ansible.builtin.command: "{{ direnv_path }} hook fish"
@@ -44,4 +44,4 @@
   ansible.builtin.set_fact:
     fish_hooks: "{{ fish_hooks + [direnv_fish_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: direnv_fish_hook_result is defined
+  when: (zoxide_path is defined) and (direnv_fish_hook_result is defined)

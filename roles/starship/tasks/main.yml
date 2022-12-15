@@ -10,7 +10,6 @@
   with_first_found:
     - files:
         - /usr/bin/starship
-        - /usr/local/bin/starship
         - /opt/homebrew/bin/starship
       skip: true
   loop_control:
@@ -27,7 +26,7 @@
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [starship_zsh_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: starship_zsh_hook_result is defined
+  when: (starship_path is defined) and (starship_zsh_hook_result is defined)
 
 - name: Get bash hook.
   ansible.builtin.command: "{{ starship_path }} init bash --print-full-init"
@@ -39,7 +38,7 @@
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: starship_bash_hook_result is defined
+  when: (starship_path is defined) and (starship_bash_hook_result is defined)
 
 - name: Get fish hook.
   ansible.builtin.command: "{{ starship_path }} init fish --print-full-init"
@@ -51,4 +50,4 @@
   ansible.builtin.set_fact:
     fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: starship_fish_hook_result is defined
+  when: (starship_path is defined) and (starship_fish_hook_result is defined)

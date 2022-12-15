@@ -20,7 +20,7 @@
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [zoxide_zsh_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: zoxide_zsh_hook_result is defined
+  when: (zoxide_path is defined) and (zoxide_zsh_hook_result is defined)
 
 - name: Get bash hook.
   ansible.builtin.command: "{{ zoxide_path }} init bash"
@@ -32,4 +32,4 @@
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [zoxide_bash_hook_result.stdout + '\n'] }}"
   changed_when: false
-  when: zoxide_bash_hook_result is defined
+  when: (zoxide_path is defined) and (zoxide_bash_hook_result is defined)
