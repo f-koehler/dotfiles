@@ -10,7 +10,7 @@
     - exa
     - fzf
     - git
-    - gnome
+    # - gnome
     - neovim
     - rustup
     - starship
