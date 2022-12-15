@@ -37,7 +37,7 @@
 
 - name: Register bash hook.
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\\n'] }}"
+    bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\n'] }}"
   changed_when: false
   when: starship_bash_hook_result is defined
 
@@ -49,6 +49,6 @@
 
 - name: Register fish hook.
   ansible.builtin.set_fact:
-    fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\\n'] }}"
+    fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\n'] }}"
   changed_when: false
   when: starship_fish_hook_result is defined
