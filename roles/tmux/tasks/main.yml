@@ -1,18 +1,18 @@
 - name: Remove old config.
   ansible.builtin.file:
-    path: "{{ xdg['config_home'] }}/tmux"
+    path: "{{ xdg_config_home }}/tmux"
     state: absent
 
 - name: Generate config.
   ansible.builtin.template:
     src: "tmux.conf"
-    dest: "{{ HOME }}/.tmux.conf"
+    dest: "{{ home }}/.tmux.conf"
     mode: "0644"
 
 - name: Install plugins.
   ansible.builtin.git:
     accept_hostkey: yes
-    dest: "{{ HOME }}/.tmux/plugins/{{ plugin.name }}"
+    dest: "{{ home }}/.tmux/plugins/{{ plugin.name }}"
     repo: "{{ plugin.repo }}"
     version: "{{ plugin.version }}"
   loop:

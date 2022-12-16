@@ -1,8 +1,12 @@
 - name: Create directories.
   ansible.builtin.file:
-    path: "{{ directory.value }}"
+    path: "{{ directory }}"
     state: directory
     mode: "0744"
-  loop: "{{ xdg | dict2items }}"
+  loop:
+    - "{{ xdg_config_home }}"
+    - "{{ xdg_cache_home }}"
+    - "{{ xdg_data_home }}"
+    - "{{ xdg_state_home }}"
   loop_control:
     loop_var: directory

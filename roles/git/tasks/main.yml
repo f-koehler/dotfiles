@@ -1,5 +1,5 @@
 - name: Generate config.
   ansible.builtin.template:
     src: "gitconfig"
-    dest: "{{ HOME }}/.gitconfig"
+    dest: "{{ home }}/.gitconfig"
     mode: "0644"

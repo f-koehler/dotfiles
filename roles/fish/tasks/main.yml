@@ -1,11 +1,11 @@
 - name: Create config directory.
   ansible.builtin.file:
-    path: "{{ xdg['config_home'] }}/fish"
+    path: "{{ xdg_config_home }}/fish"
     state: directory
     mode: "0700"
 
 - name: Generate config.
   ansible.builtin.template:
     src: "config.fish"
-    dest: "{{ xdg['config_home'] }}/fish/config.fish"
+    dest: "{{ xdg_config_home }}/fish/config.fish"
     mode: "0644"

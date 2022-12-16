@@ -4,12 +4,12 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ xdg['config_home'] }}/alacritty"
+    - "{{ xdg_config_home }}/alacritty"
   loop_control:
     loop_var: directory
 
 - name: Generate config.
   ansible.builtin.template:
     src: "alacritty.yml"
-    dest: "{{ xdg['config_home'] }}/alacritty/alacritty.yml"
+    dest: "{{ xdg_config_home }}/alacritty/alacritty.yml"
     mode: "0700"

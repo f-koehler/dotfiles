@@ -1,6 +1,6 @@
-export ZSHD="{{ HOME }}/.zsh.d"
+export ZSHD="{{ home }}/.zsh.d"
 
-[ -f "{{ HOME }}/.profile" ] && source "{{ HOME }}/.profile"
+[ -f "{{ home }}/.profile" ] && source "{{ home }}/.profile"
 
 
 setopt autocd extendedglob nomatch menucomplete
@@ -53,8 +53,6 @@ bindkey "^[[1;3C" forward-word
 {% for hook in zsh_hooks %}
 {{ hook }}
 {% endfor %}
-source {{ HOME }}//.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source {{ HOME }}//.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # aliases
 {% for alias in aliases %}
@@ -62,14 +60,11 @@ alias {{ alias[0] }}="{{ alias[1] }}"
 {% endfor %}
 
 # exports
-HISTFILE="{{ HOME }}/.zsh_history"
+HISTFILE="{{ home }}/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
 
-{% for export in xdg %}
-export XDG_{{ export|upper }}="{{ xdg[export] }}"
-{% endfor %}
 {% for export in exports %}
 export {{ export|upper }}="{{ exports[export] }}"
 {% endfor %}
@@ -80,8 +75,8 @@ fi
 
 
 # completions
-fpath+={{ HOME }}/.zsh.d/plugins/conda-zsh-completion
-fpath+={{ HOME }}/.zfunc
+fpath+={{ home }}/.zsh.d/plugins/conda-zsh-completion
+fpath+={{ home }}/.zfunc
 compinit
 
 # >>> conda initialize >>>

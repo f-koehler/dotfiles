@@ -1,16 +1,14 @@
 - name: Find executable.
+  search_file:
+    name: bat
+    paths:
+      - /opt/homebrew/bin
+      - /usr/bin
+    executable: true
+  register: bat_check
+    
+- name: Store path and alias.
   ansible.builtin.set_fact:
-    bat_path: "{{ path }}"
-  with_first_found:
-    - files:
-        - /usr/bin/bat
-        - /opt/homebrew/bin/bat
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
-
-- name: Alias cat to bat.
-  ansible.builtin.set_fact:
-    aliases: "{{ aliases + [['cat', bat_path + ' --plain --paging=never']] }}"
-  when: bat_path is defined
+    bat_path: "{{ bat_check.path }}"
+    aliases: "{{ aliases + [['cat', bat_check.path + ' --plain --paging=never']] }}"
+  when: bat_check.found

@@ -4,7 +4,7 @@
     state: directory
     mode: "0700"
   loop:
-    - "{{ xdg['config_home'] }}/nvim"
+    - "{{ xdg_config_home }}/nvim"
   loop_control:
     loop_var: directory
 
@@ -14,8 +14,8 @@
     dest: "{{ dest }}"
     mode: "0644"
   loop:
-    - "{{ xdg['config_home'] }}/nvim/init.vim"
-    - "{{ HOME }}/.vimrc"
+    - "{{ xdg_config_home }}/nvim/init.vim"
+    - "{{ home }}/.vimrc"
   loop_control:
     loop_var: dest
 
@@ -25,6 +25,6 @@
     dest: "{{ instance.0 }}/{{ instance.1.name }}"
     update: true
     accept_hostkey: true
-  loop: "{{ [xdg['data_home'] + '/nvim/site/pack/plugins/start', HOME + '/.vim/pack/plugins/start'] | product(vim_plugins) | list }}"
+  loop: "{{ [xdg_data_home + '/nvim/site/pack/plugins/start', home + '/.vim/pack/plugins/start'] | product(vim_plugins) | list }}"
   loop_control:
     loop_var: instance

@@ -1,4 +1,4 @@
-eval "$(${HOME}/.linuxbrew/bin/brew shellenv)"
+eval "$(${home}/.linuxbrew/bin/brew shellenv)"
 
 {% if direnv_path is defined and direnv_path %}
 eval "$({{ direnv_path }} hook bash)"

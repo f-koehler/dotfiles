@@ -1,20 +1,26 @@
-- name: Find dconf executable.
-  ansible.builtin.set_fact:
-    dconf_path: path
-  with_first_found:
-    - files:
-        - /usr/bin/dconf
-      skip: true
+- name: Find executable.
+  ansible.builtin.shell: which dconf
+  register: dconf_check
   changed_when: false
+  ignore_errors: true
+  failed_when: false
+    
+- name: Store path.
+  ansible.builtin.set_fact:
+    dconf_path: "{{ dconf_check.stdout }}"
+  when: dconf_check.rc == 0
 
-- name: Find gnome-extensions executable.
-  ansible.builtin.set_fact:
-    gnome_extensions_path: path
-  with_first_found:
-    - files:
-        - /usr/bin/gnome-extensions
-      skip: true
+- name: Find executable.
+  ansible.builtin.shell: which gnome-extensions
+  register: gnome_extensions_check
   changed_when: false
+  ignore_errors: true
+  failed_when: false
+    
+- name: Store path.
+  ansible.builtin.set_fact:
+    gnome_extensions_path: "{{ gnome_extensions_check.stdout }}"
+  when: gnome_extensions_check.rc == 0
 
 - name: Load settings tasks.
   ansible.builtin.include_tasks:

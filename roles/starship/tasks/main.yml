@@ -1,20 +1,22 @@
 - name: Generate config.
   ansible.builtin.template:
     src: "starship.toml"
-    dest: "{{ xdg['config_home'] }}/starship.toml"
+    dest: "{{ xdg_config_home }}/starship.toml"
     mode: "0644"
 
 - name: Find executable.
+  search_file:
+    name: starship
+    paths:
+      - /opt/homebrew/bin
+      - /usr/bin
+    executable: true
+  register: starship_check
+    
+- name: Store path.
   ansible.builtin.set_fact:
-    starship_path: "{{ path }}"
-  with_first_found:
-    - files:
-        - /usr/bin/starship
-        - /opt/homebrew/bin/starship
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+    starship_path: "{{ starship_check.path }}"
+  when: starship_check.found
 
 - name: Get zsh hook.
   ansible.builtin.command: "{{ starship_path }} init zsh --print-full-init"

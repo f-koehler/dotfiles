@@ -1,77 +1,56 @@
-- name: Store fzf config paths.
-  ansible.builtin.set_fact:
-    fzf_config_paths:
-      - /usr/share/fzf
-  changed_when: false
+- name: Find key-bindings (zsh).
+  search_file:
+    name: key-bindings.zsh
+    paths:
+      - "/opt/homebrew/Cellar/fzf/*/shell"
+      - "/usr/share/fzf"
+    glob: true
+  register: fzf_key_bindings_zsh_check
 
-- name: Find executable.
-  ansible.builtin.set_fact:
-    fzf_path: "{{ path }}"
-  with_first_found:
-    - files:
-        - /usr/bin/fzf
-        - /opt/homebrew/bin/fzf
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+- name: Find key-bindings (bash).
+  search_file:
+    name: key-bindings.bash
+    paths:
+      - "/opt/homebrew/Cellar/fzf/*/shell"
+      - "/usr/share/fzf"
+    glob: true
+  register: fzf_key_bindings_bash_check
 
-- name: Check version.
-  ansible.builtin.shell: "set -o pipefail && {{ fzf_path }} --version | cut -d' ' -f1"
-  register: fzf_version_check
-  changed_when: false
-  when: fzf_path is defined
-
-- name: Add homebrew config path.
-  ansible.builtin.set_fact:
-    fzf_config_paths: "{{ fzf_config_paths + ['/opt/homebrew/Cellar/fzf/{{ fzf_version_check.stdout }}/shell'] }}"
-  changed_when: false
-  when: (fzf_path is defined) and (fzf_version_check.rc == 0)
-
-- name: Find key-bidings (zsh).
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['source ' + path] }}"
-  with_first_found:
-    - files:
-        - key-bindings.zsh
-      paths: "{{ fzf_config_paths }}"
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
-
-- name: Find key-bidings (bash).
-  ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + ['source ' + path] }}"
-  with_first_found:
-    - files:
-        - key-bindings.bash
-      paths: "{{ fzf_config_paths }}"
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
 
 - name: Find completion (zsh).
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['source ' + path] }}"
-  with_first_found:
-    - files:
-        - completion.zsh
-      paths: "{{ fzf_config_paths }}"
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+  search_file:
+    name: completion.zsh
+    paths:
+      - "/opt/homebrew/Cellar/fzf/*/shell"
+      - "/usr/share/fzf"
+    glob: true
+  register: fzf_completion_zsh_check
 
 - name: Find completion (bash).
+  search_file:
+    name: completion.bash
+    paths:
+      - "/opt/homebrew/Cellar/fzf/*/shell"
+      - "/usr/share/fzf"
+    glob: true
+  register: fzf_completion_bash_check
+  
+- name: Add key-bindings (zsh).
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + ['source ' + path] }}"
-  with_first_found:
-    - files:
-        - completion.bash
-      paths: "{{ fzf_config_paths }}"
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+    zsh_hooks: "{{ zsh_hooks + [fzf_key_bindings_zsh_check.path] }}"
+  when: fzf_key_bindings_zsh_check.found
+  
+- name: Add key-bindings (bash).
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [fzf_key_bindings_bash_check.path] }}"
+  when: fzf_key_bindings_bash_check.found
+  
+- name: Add completion (zsh).
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [fzf_completion_zsh_check.path] }}"
+  when: fzf_completion_zsh_check.found
+  
+- name: Add completion (bash).
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [fzf_completion_bash_check.path] }}"
+  when: fzf_completion_bash_check.found

@@ -1,14 +1,16 @@
 - name: Find executable.
+  search_file:
+    name: exa
+    paths:
+      - /opt/homebrew/bin
+      - /usr/bin
+    executable: true
+  register: exa_check
+    
+- name: Store path.
   ansible.builtin.set_fact:
-    exa_path: "{{ path }}"
-  with_first_found:
-    - files:
-        - /usr/bin/exa
-        - /opt/homebrew/bin/exa
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+    exa_path: "{{ exa_check.path }}"
+  when: exa_check.found
 
 - name: Alias ls to exa.
   ansible.builtin.set_fact:

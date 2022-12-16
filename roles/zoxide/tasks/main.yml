@@ -1,14 +1,16 @@
 - name: Find executable.
+  search_file:
+    name: zoxide
+    paths:
+      - /opt/homebrew/bin
+      - /usr/bin
+    executable: true
+  register: zoxide_check
+    
+- name: Store path.
   ansible.builtin.set_fact:
-    zoxide_path: "{{ path }}"
-  with_first_found:
-    - files:
-        - /usr/bin/zoxide
-        - /opt/homebrew/bin/zoxide
-      skip: true
-  loop_control:
-    loop_var: path
-  changed_when: false
+    zoxide_path: "{{ zoxide_check.path }}"
+  when: zoxide_check.found
 
 - name: Get zsh hook.
   ansible.builtin.command: "{{ zoxide_path }} init zsh"

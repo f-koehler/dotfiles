@@ -1,10 +1,4 @@
-HOME: "{{ lookup('env', 'HOME') }}"
-xdg:
-  config_home: "{{ HOME }}/.config"
-  cache_home: "{{ HOME }}/.cache"
-  data_home: "{{ HOME }}/.local/share"
-  state_home: "{{ HOME }}/.local/statstate"
-anaconda_prefix: "{{ HOME }}/.local/opt/anaconda3"
+anaconda_prefix: "{{ home }}/.local/opt/anaconda3"
 aliases:
   - ["cp", "cp -i"]
   - ["mv", "mv -i"]
@@ -16,7 +10,7 @@ bash_hooks: []
 zsh_hooks: []
 fish_hooks: []
 bash_aliases:
-  - ["~", "cd {{ HOME }}"]
+  - ["~", "cd {{ home }}"]
   - ["..", "cd .."]
   - ["...", "cd ../.."]
   - ["....", "cd ../../.."]
