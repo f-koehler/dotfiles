@@ -40,7 +40,7 @@
       repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
       version: master
     - name: conda-zsh-completion
-      repo: "https://github.com/esc/conda-zsh-completion"
+      repo: "https://github.com/conda-incubator/conda-zsh-completion"
       version: master
   loop_control:
     loop_var: plugin
