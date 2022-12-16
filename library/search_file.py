@@ -31,7 +31,7 @@ def main():
     executable = module.params.get("name")
     for path in module.params.get("paths"):
         if module.params.get("glob"):
-            candidates = glob.glob(path)
+            candidates = [os.path.join(p, executable) for p in glob.glob(path)]
         else:
             candidates = [os.path.join(path, executable)]
             
