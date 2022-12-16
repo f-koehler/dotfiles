@@ -1,0 +1,50 @@
+- name: Find executable.
+  search_file:
+    name: conda
+    paths:
+      - "{{ home }}/.local/opt/anaconda3/bin/"
+      - "{{ home }}/anaconda3/bin/"
+      - "/opt/anconda3/bin/"
+    executable: true
+  register: conda_check
+    
+- name: Store path.
+  ansible.builtin.set_fact:
+    conda_path: "{{ conda_check.path }}"
+  when: conda_check.found
+
+- name: Get zsh hook.
+  ansible.builtin.command: "{{ conda_path }} shell.zsh hook"
+  changed_when: false
+  when: conda_path is defined
+  register: conda_zsh_hook_result
+
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [conda_zsh_hook_result.stdout + '\n'] }}"
+  changed_when: false
+  when: conda_path is defined
+
+- name: Get bash hook.
+  ansible.builtin.command: "{{ conda_path }} shell.bash hook"
+  changed_when: false
+  when: conda_path is defined
+  register: conda_bash_hook_result
+
+- name: Register bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [conda_bash_hook_result.stdout + '\n'] }}"
+  changed_when: false
+  when: conda_path is defined
+
+- name: Get fish hook.
+  ansible.builtin.command: "{{ conda_path }} shell.fish hook"
+  changed_when: false
+  when: conda_path is defined
+  register: conda_fish_hook_result
+
+- name: Register fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + [conda_fish_hook_result.stdout + '\n'] }}"
+  changed_when: false
+  when: conda_path is defined
