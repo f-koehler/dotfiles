@@ -9,12 +9,22 @@
   loop_control:
     loop_var: directory
 
+
+- name: Find executable.
+  search_file:
+    name: zsh
+    paths:
+      - /opt/homebrew/bin
+      - /usr/bin
+    executable: true
+  register: zsh_check
+
 - name: Template config files.
   ansible.builtin.template:
     src: "templates/zshrc"
     dest: "{{ home }}/.zshrc"
     mode: "0700"
-    # validate: zsh -ef %s
+    validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true') }}"
 
 - name: Install plugins.
   ansible.builtin.git:
