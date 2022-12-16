@@ -22,10 +22,10 @@
     - fzf
     - git
     # - gnome
-    - neovim
     - rustup
     - starship
     - tmux
+    - vim
     - xdg
     - zoxide
 
