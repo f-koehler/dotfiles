@@ -37,20 +37,20 @@
   
 - name: Add key-bindings (zsh).
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [fzf_key_bindings_zsh_check.path] }}"
+    zsh_hooks: "{{ zsh_hooks + ['source ' + fzf_key_bindings_zsh_check.path] }}"
   when: fzf_key_bindings_zsh_check.found
   
 - name: Add key-bindings (bash).
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [fzf_key_bindings_bash_check.path] }}"
+    bash_hooks: "{{ bash_hooks + ['source ' + fzf_key_bindings_bash_check.path] }}"
   when: fzf_key_bindings_bash_check.found
   
 - name: Add completion (zsh).
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [fzf_completion_zsh_check.path] }}"
+    zsh_hooks: "{{ zsh_hooks + ['source ' + fzf_completion_zsh_check.path] }}"
   when: fzf_completion_zsh_check.found
   
 - name: Add completion (bash).
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [fzf_completion_bash_check.path] }}"
+    bash_hooks: "{{ bash_hooks + ['source ' + fzf_completion_bash_check.path] }}"
   when: fzf_completion_bash_check.found
