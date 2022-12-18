@@ -1,11 +1,31 @@
-- name: Check if installed.
+- name: Find executable.
+  search_file:
+    name: brew
+    paths:
+      - /opt/homebrew/bin
+    executable: true
+  register: brew_check
+    
+- name: Store path.
   ansible.builtin.set_fact:
-    brew_path: "{{ lookup('first_found', findme, skip=True) }}"
-  vars:
-    findme:
-      - /opt/homebrew/bin/brew
+    brew_path: "{{ brew_check.path }}"
+  when: brew_check.found
 
-- name: Enable brew integrations.
-  when: brew_path
-  ansible.builtin.include_tasks:
-    file: completions.yml
+- name: Get hook.
+  ansible.builtin.command: "{{ brew_path }} shellenv"
+  changed_when: false
+  when: brew_path is defined
+  register: brew_hook_result
+    
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [brew_hook_result.stdout + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks + [brew_hook_result.stdout + '\n'] }}"
+  changed_when: false
+  when: brew_path is defined
+
+    # TODO: handle this properly
+- name: Register completions.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['export FPATH=\"/opt/homebrew/share/zsh/site-functions:${FPATH}\"'] }}"
+  when: brew_path is defined

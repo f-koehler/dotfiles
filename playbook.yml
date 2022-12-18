@@ -17,6 +17,7 @@
   roles:
     - alacritty
     - bat
+    - brew
     - conda
     - direnv
     - exa

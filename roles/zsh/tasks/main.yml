@@ -24,7 +24,7 @@
     src: "templates/zshrc"
     dest: "{{ home }}/.zshrc"
     mode: "0700"
-    validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true') }}"
+    # validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true') }}"
 
 - name: Install plugins.
   ansible.builtin.git:
