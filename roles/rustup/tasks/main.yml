@@ -7,7 +7,7 @@
       - /usr/bin
     executable: true
   register: rustup_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     rustup_path: "{{ rustup_check.path }}"

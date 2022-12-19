@@ -7,7 +7,7 @@
       - "/opt/anconda3/bin/"
     executable: true
   register: conda_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     conda_path: "{{ conda_check.path }}"

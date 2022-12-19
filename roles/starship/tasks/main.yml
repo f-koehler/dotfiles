@@ -12,7 +12,7 @@
       - /usr/bin
     executable: true
   register: starship_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     starship_path: "{{ starship_check.path }}"

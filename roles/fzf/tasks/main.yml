@@ -34,22 +34,22 @@
       - "/usr/share/fzf"
     glob: true
   register: fzf_completion_bash_check
-  
+
 - name: Add key-bindings (zsh).
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [lookup('file', fzf_key_bindings_zsh_check.path)] }}"
   when: fzf_key_bindings_zsh_check.found
-  
+
 - name: Add key-bindings (bash).
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [lookup('file', fzf_key_bindings_bash_check.path)] }}"
   when: fzf_key_bindings_bash_check.found
-  
+
 - name: Add completion (zsh).
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [lookup('file', fzf_completion_zsh_check.path)] }}"
   when: fzf_completion_zsh_check.found
-  
+
 - name: Add completion (bash).
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [lookup('file', fzf_completion_bash_check.path)] }}"
