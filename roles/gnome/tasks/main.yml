@@ -4,7 +4,7 @@
   changed_when: false
   ignore_errors: true
   failed_when: false
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     dconf_path: "{{ dconf_check.stdout }}"
@@ -16,7 +16,7 @@
   changed_when: false
   ignore_errors: true
   failed_when: false
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     gnome_extensions_path: "{{ gnome_extensions_check.stdout }}"

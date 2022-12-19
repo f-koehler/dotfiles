@@ -6,7 +6,7 @@
       - /usr/bin
     executable: true
   register: zoxide_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     zoxide_path: "{{ zoxide_check.path }}"

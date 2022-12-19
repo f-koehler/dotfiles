@@ -6,7 +6,7 @@
       - /usr/bin
     executable: true
   register: exa_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     exa_path: "{{ exa_check.path }}"

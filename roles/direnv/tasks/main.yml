@@ -6,7 +6,7 @@
       - /usr/bin
     executable: true
   register: direnv_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     direnv_path: "{{ direnv_check.path }}"

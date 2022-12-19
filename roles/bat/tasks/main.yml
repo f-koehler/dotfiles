@@ -6,7 +6,7 @@
       - /usr/bin
     executable: true
   register: bat_check
-    
+
 - name: Store path and alias.
   ansible.builtin.set_fact:
     bat_path: "{{ bat_check.path }}"

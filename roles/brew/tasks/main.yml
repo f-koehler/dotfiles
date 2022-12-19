@@ -5,7 +5,7 @@
       - /opt/homebrew/bin
     executable: true
   register: brew_check
-    
+
 - name: Store path.
   ansible.builtin.set_fact:
     brew_path: "{{ brew_check.path }}"
@@ -16,7 +16,7 @@
   changed_when: false
   when: brew_path is defined
   register: brew_hook_result
-    
+
 - name: Register zsh hook.
   ansible.builtin.set_fact:
     bash_hooks: "{{ bash_hooks + [brew_hook_result.stdout + '\n'] }}"
