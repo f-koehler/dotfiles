@@ -5,6 +5,7 @@
       - "{{ home }}/.cargo/bin"
       - /opt/homebrew/bin
       - /usr/bin
+      - /run/current-system/sw/bin/
     executable: true
   register: rustup_check
 
