@@ -1,0 +1,6 @@
+- name: Restart ssh-agent service.
+  ansible.builtin.systemd:
+    name: ssh-agent.service
+    state: restarted
+    daemon_reload: true
+    scope: user

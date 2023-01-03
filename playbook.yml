@@ -25,6 +25,7 @@
     - git
     # - gnome
     - rustup
+    - ssh
     - starship
     - tmux
     - vim
