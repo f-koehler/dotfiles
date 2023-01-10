@@ -64,6 +64,7 @@ HISTFILE="{{ home }}/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 HIST_STAMPS="yyyy-mm-dd"
+PATH="{{ home }}/.local/bin:${PATH}"
 
 {% for export in exports %}
 export {{ export|upper }}="{{ exports[export] }}"
