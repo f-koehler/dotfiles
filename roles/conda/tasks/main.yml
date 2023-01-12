@@ -1,3 +1,11 @@
+- name: Configure.
+  ansible.builtin.template:
+    src: "condarc"
+    dest: "{{ home }}/.condarc"
+    mode: "0644"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
 - name: Find executable.
   search_file:
     name: conda
