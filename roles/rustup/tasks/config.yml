@@ -1,0 +1,46 @@
+- name: Store path.
+  ansible.builtin.set_fact:
+    rustup_path: "{{ rustup_check.path }}"
+
+- name: Create directories for completions.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+    mode: "0700"
+  loop:
+    - "{{ home }}/.zfunc"
+    - "{{ xdg_config_home }}/fish"
+    - "{{ xdg_config_home }}/fish/completions"
+    - "{{ xdg_data_home }}/bash-completion"
+    - "{{ xdg_data_home }}/bash-completion/completions"
+  loop_control:
+    loop_var: directory
+
+- name: Create zsh completions.
+  ansible.builtin.shell: "{{ rustup_path }} completions zsh {{ tool }} >> {{ home }}/.zfunc/_{{ tool }}"
+  args:
+    creates: "{{ home }}/.zfunc/_{{ tool }}"
+  loop:
+    - cargo
+    - rustup
+  loop_control:
+    loop_var: tool
+
+- name: Create bash completions.
+  ansible.builtin.shell: "{{ rustup_path }} completions bash {{ tool }} >> {{ xdg_data_home }}/bash-completion/completions/{{ tool }}"
+  args:
+    creates: "{{ xdg_data_home }}/bash-completion/completions/{{ tool }}"
+  loop:
+    - cargo
+    - rustup
+  loop_control:
+    loop_var: tool
+
+- name: Create fish completions.
+  ansible.builtin.shell: "{{ rustup_path }} completions fish {{ tool }} >> {{ xdg_config_home }}/fish/completions/{{ tool }}.fish"
+  args:
+    creates: "{{ xdg_config_home }}/fish/completions/{{ tool }}.fish"
+  loop:
+    - rustup
+  loop_control:
+    loop_var: tool

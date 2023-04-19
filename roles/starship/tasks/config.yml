@@ -1,0 +1,33 @@
+- name: Store path.
+  ansible.builtin.set_fact:
+    starship_path: "{{ starship_check.path }}"
+
+- name: Get zsh hook.
+  ansible.builtin.command: "{{ starship_path }} init zsh --print-full-init"
+  changed_when: false
+  register: starship_zsh_hook_result
+
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [starship_zsh_hook_result.stdout + '\n'] }}"
+  changed_when: false
+
+- name: Get bash hook.
+  ansible.builtin.command: "{{ starship_path }} init bash --print-full-init"
+  changed_when: false
+  register: starship_bash_hook_result
+
+- name: Register bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\n'] }}"
+  changed_when: false
+
+- name: Get fish hook.
+  ansible.builtin.command: "{{ starship_path }} init fish --print-full-init"
+  changed_when: false
+  register: starship_fish_hook_result
+
+- name: Register fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\n'] }}"
+  changed_when: false

@@ -14,43 +14,6 @@
     executable: true
   register: starship_check
 
-- name: Store path.
-  ansible.builtin.set_fact:
-    starship_path: "{{ starship_check.path }}"
+- name: Configure starship.
+  ansible.builtin.include_tasks: config.yml
   when: starship_check.found
-
-- name: Get zsh hook.
-  ansible.builtin.command: "{{ starship_path }} init zsh --print-full-init"
-  changed_when: false
-  when: starship_path is defined
-  register: starship_zsh_hook_result
-
-- name: Register zsh hook.
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [starship_zsh_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: starship_path is defined
-
-- name: Get bash hook.
-  ansible.builtin.command: "{{ starship_path }} init bash --print-full-init"
-  changed_when: false
-  when: starship_path is defined
-  register: starship_bash_hook_result
-
-- name: Register bash hook.
-  ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [starship_bash_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: starship_path is defined
-
-- name: Get fish hook.
-  ansible.builtin.command: "{{ starship_path }} init fish --print-full-init"
-  changed_when: false
-  when: starship_path is defined
-  register: starship_fish_hook_result
-
-- name: Register fish hook.
-  ansible.builtin.set_fact:
-    fish_hooks: "{{ fish_hooks + [starship_fish_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: starship_path is defined

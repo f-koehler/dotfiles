@@ -1,0 +1,7 @@
+- name: Store path.
+  ansible.builtin.set_fact:
+    exa_path: "{{ exa_check.path }}"
+
+- name: Alias ls to exa.
+  ansible.builtin.set_fact:
+    aliases: "{{ aliases + [['ls', exa_path], ['ll', exa_path + ' --long --icons']] }}"

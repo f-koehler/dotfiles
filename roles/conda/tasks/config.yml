@@ -1,0 +1,41 @@
+- name: Create condarc.
+  ansible.builtin.template:
+    src: "condarc"
+    dest: "{{ home }}/.condarc"
+    mode: "0644"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
+- name: Store path.
+  ansible.builtin.set_fact:
+    conda_path: "{{ conda_check.path }}"
+
+- name: Get zsh hook.
+  ansible.builtin.command: "{{ conda_path }} shell.zsh hook"
+  changed_when: false
+  register: conda_zsh_hook_result
+
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [conda_zsh_hook_result.stdout + '\n'] }}"
+  changed_when: false
+
+- name: Get bash hook.
+  ansible.builtin.command: "{{ conda_path }} shell.bash hook"
+  changed_when: false
+  register: conda_bash_hook_result
+
+- name: Register bash hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [conda_bash_hook_result.stdout + '\n'] }}"
+  changed_when: false
+
+- name: Get fish hook.
+  ansible.builtin.command: "{{ conda_path }} shell.fish hook"
+  changed_when: false
+  register: conda_fish_hook_result
+
+- name: Register fish hook.
+  ansible.builtin.set_fact:
+    fish_hooks: "{{ fish_hooks + [conda_fish_hook_result.stdout + '\n'] }}"
+  changed_when: false

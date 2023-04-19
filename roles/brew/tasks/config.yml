@@ -1,0 +1,19 @@
+- name: Store path.
+  ansible.builtin.set_fact:
+    brew_path: "{{ brew_check.path }}"
+
+- name: Get hook.
+  ansible.builtin.command: "{{ brew_path }} shellenv"
+  changed_when: false
+  register: brew_hook_result
+
+- name: Register zsh hook.
+  ansible.builtin.set_fact:
+    bash_hooks: "{{ bash_hooks + [brew_hook_result.stdout + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks + [brew_hook_result.stdout + '\n'] }}"
+  changed_when: false
+
+    # TODO: handle this properly
+- name: Register completions.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['export FPATH=\"/opt/homebrew/share/zsh/site-functions:${FPATH}\"'] }}"

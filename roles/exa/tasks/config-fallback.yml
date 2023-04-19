@@ -1,0 +1,3 @@
+- name: Change defaults for ls.
+  ansible.builtin.set_fact:
+    aliases: "{{ aliases + [['ls', 'ls --color=auto'], ['ll', 'ls --color=auto -lh']] }}"

@@ -6,26 +6,6 @@
     executable: true
   register: brew_check
 
-- name: Store path.
-  ansible.builtin.set_fact:
-    brew_path: "{{ brew_check.path }}"
+- name: Configure brew.
+  ansible.builtin.include_tasks: config.yml
   when: brew_check.found
-
-- name: Get hook.
-  ansible.builtin.command: "{{ brew_path }} shellenv"
-  changed_when: false
-  when: brew_path is defined
-  register: brew_hook_result
-
-- name: Register zsh hook.
-  ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [brew_hook_result.stdout + '\n'] }}"
-    zsh_hooks: "{{ zsh_hooks + [brew_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: brew_path is defined
-
-    # TODO: handle this properly
-- name: Register completions.
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['export FPATH=\"/opt/homebrew/share/zsh/site-functions:${FPATH}\"'] }}"
-  when: brew_path is defined

@@ -7,44 +7,7 @@
       - /run/current-system/sw/bin/
     executable: true
   register: zoxide_check
-
-- name: Store path.
-  ansible.builtin.set_fact:
-    zoxide_path: "{{ zoxide_check.path }}"
+  
+- name: Configure zoxide.
+  ansible.builtin.include_tasks: config.yml
   when: zoxide_check.found
-
-- name: Get zsh hook.
-  ansible.builtin.command: "{{ zoxide_path }} init zsh"
-  changed_when: false
-  when: zoxide_path is defined
-  register: zoxide_zsh_hook_result
-
-- name: Register zsh hook.
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zoxide_zsh_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: zoxide_path is defined
-
-- name: Get bash hook.
-  ansible.builtin.command: "{{ zoxide_path }} init bash"
-  changed_when: false
-  when: zoxide_path is defined
-  register: zoxide_bash_hook_result
-
-- name: Register bash hook.
-  ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [zoxide_bash_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: zoxide_path is defined
-
-- name: Get fish hook.
-  ansible.builtin.command: "{{ zoxide_path }} init fish"
-  changed_when: false
-  when: zoxide_path is defined
-  register: zoxide_fish_hook_result
-
-- name: Register fish hook.
-  ansible.builtin.set_fact:
-    fish_hooks: "{{ fish_hooks + [zoxide_fish_hook_result.stdout + '\n'] }}"
-  changed_when: false
-  when: zoxide_path is defined
