@@ -1,0 +1,20 @@
+- name: "Configure GTK {{ gtk_version }}"
+  kconfig:
+    file: "{{ xdg_config_home }}/gtk-{{ gtk_version }}/settings.ini"
+    group: "Settings"
+    key: "gtk-{{ setting.key }}"
+    type: str
+    value: "{{ setting.value }}"
+  loop:
+    - key: "application-prefer-dark-theme"
+      value: "true"
+    - key: "enable-animations"
+      value: "true"
+    - key: "cursor-theme-name"
+      value: "breeze_cursors"
+    - key: "icon-theme-name"
+      value: "breeze-dark"
+    - key: "theme-name"
+      value: "Breeze"
+  loop_control:
+    loop_var: setting

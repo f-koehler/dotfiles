@@ -1,0 +1,82 @@
+- name: Enable theme.
+  kconfig:
+    file: "{{ xdg_config_home }}/kdeglobals"
+    group: "KDE"
+    key: "LookAndFeelPackage"
+    type: str
+    value: "org.kde.breezedark.desktop"
+
+- name: Enable widget style theme.
+  kconfig:
+    file: "{{ xdg_config_home }}/kdeglobals"
+    group: "KDE"
+    key: "widgetStyle"
+    type: str
+    value: "Breeze"
+      
+- name: Enable file selection with single click.
+  kconfig:
+    file: "{{ xdg_config_home }}/kdeglobals"
+    group: "KDE"
+    key: "SingleClick"
+    type: bool
+    value: "false"
+
+- name: Disable file indexing.
+  kconfig:
+    file: "{{ xdg_config_home }}/baloofilerc"
+    group: "Basic Settings"
+    key: "Indexing-Enabled"
+    type: bool
+    value: "false"
+
+- name: Configure GTK 2.
+  ansible.builtin.template:
+    src: gtkrc
+    dest: "{{ xdg_config_home }}/gtkrc"
+    mode: "0644"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+      
+- name: Configure GTK 3 and 4.
+  ansible.builtin.include_tasks:
+    file: "gtk.yml"
+  loop:
+    - "3.0"
+    - "4.0"
+  loop_control:
+    loop_var: gtk_version
+      
+- name: Krunner shortcut.
+  kconfig:
+    file: "{{ xdg_config_home }}/kglobalshortcutsrc"
+    group: "org.kde.krunner.desktop"
+    key: "{{ setting.key }}"
+    type: str
+    value: "{{ setting.value }}"
+  loop:
+    - key: "RunClipboard"
+      value: "Alt+Shift+F2,Alt+Shift+F2,Run command on clipboard contents"
+    - key: "_k_friendly_name"
+      value: "KRunner"
+    - key: "_launch"
+      value: "Alt+Space\tSearch\tAlt+F2\tMeta+Space,Alt+Space\tAlt+F2\tSearch,KRunner"
+  loop_control:
+    loop_var: setting
+      
+- name: Alacritty shortcut.
+  kconfig:
+    file: "{{ xdg_config_home }}/kglobalshortcutsrc"
+    group: "org.kde.krunner.desktop"
+    key: "{{ setting.key }}"
+    type: str
+    value: "{{ setting.value }}"
+  loop:
+    - key: "New"
+      value: "Meta+Return,none,New Terminal"
+    - key: "_k_friendly_name"
+      value: "Alacritty"
+    - key: "_launch"
+      value: "none,none,Alacritty"
+  loop_control:
+    loop_var: setting

@@ -24,6 +24,7 @@
     - fzf
     - git
     # - gnome
+    - kde
     - keepassxc
     - rustup
     - ssh
