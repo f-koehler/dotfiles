@@ -35,7 +35,7 @@
     - fzf
     - git
     # - gnome
-    # - kde
+    - kde
     - keepassxc
     - rustup
     - ssh
