@@ -3,8 +3,8 @@
     src: "condarc"
     dest: "{{ home }}/.condarc"
     mode: "0644"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
 
 - name: Store path.
   ansible.builtin.set_fact:

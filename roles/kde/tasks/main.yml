@@ -35,8 +35,8 @@
     src: gtkrc
     dest: "{{ xdg_config_home }}/gtkrc"
     mode: "0644"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    owner: "{{ username }}"
+    group: "{{ group }}"
       
 - name: Configure GTK 3 and 4.
   ansible.builtin.include_tasks:
