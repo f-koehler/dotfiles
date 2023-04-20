@@ -1,5 +1,5 @@
 - name: Deploy dotfiles.
-  hosts: all
+  hosts: tailscale
   pre_tasks:
     - name: Load config.
       ansible.builtin.include_vars: config.yml

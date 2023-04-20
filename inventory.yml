@@ -1,18 +1,20 @@
 all:
-  hosts:
-    mbp2021:
-      ansible_host: 100.65.236.106
-      ansible_port: 22
-      ansible_user: fkoehler
-    vps:
-      ansible_host: 100.74.108.18
-      ansible_port: 20257
-      ansible_user: fkoehler
-    osmc:
-      ansible_host: 100.82.94.54
-      ansible_port: 22
-      ansible_user: osmc
-    zoq45:
-      ansible_host: 100.107.23.113
-      ansible_port: 22
-      ansible_user: fkoehler
+  children:
+    tailscale:
+      hosts:
+        mbp2021:
+          ansible_host: 100.65.236.106
+          ansible_port: 22
+          ansible_user: fkoehler
+        vps:
+          ansible_host: 100.74.108.18
+          ansible_port: 20257
+          ansible_user: fkoehler
+        osmc:
+          ansible_host: 100.82.94.54
+          ansible_port: 22
+          ansible_user: osmc
+        zoq45:
+          ansible_host: 100.107.23.113
+          ansible_port: 22
+          ansible_user: fkoehler
