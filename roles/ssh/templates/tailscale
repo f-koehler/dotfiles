@@ -1,0 +1,6 @@
+{% for host in groups["tailscale"] %}
+Host {{ host }}
+    HostName {{ hostvars[host]["ansible_host"] }}
+    Port {{ hostvars[host]["ansible_port"] }}
+    User {{ hostvars[host]["ansible_user"] }}
+{% endfor %}

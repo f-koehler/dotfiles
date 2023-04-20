@@ -1,3 +1,32 @@
 - name: Include Linux tasks.
   ansible.builtin.include_tasks: linux.yml
   when: ansible_system == "Linux"
+
+- name: Create config directory.
+  ansible.builtin.file:
+    path: "{{ directory }}"
+    state: directory
+    mode: 0700
+    owner: "{{ username }}"
+    group: "{{ group }}"
+  loop:
+    - "{{ home }}/.ssh"
+    - "{{ home }}/.ssh/config.d"
+  loop_control:
+    loop_var: directory
+      
+- name: Generate SSH config.
+  ansible.builtin.template:
+    src: config
+    dest: "{{ home }}/.ssh/config"
+    mode: "0600"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+      
+- name: Generate SSH config for tailscale hosts.
+  ansible.builtin.template:
+    src: tailscale
+    dest: "{{ home }}/.ssh/config.d/tailscale"
+    mode: "0600"
+    owner: "{{ username }}"
+    group: "{{ group }}"
