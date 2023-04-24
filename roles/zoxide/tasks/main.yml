@@ -7,7 +7,7 @@
       - /run/current-system/sw/bin/
     executable: true
   register: zoxide_check
-  
+
 - name: Configure zoxide.
   ansible.builtin.include_tasks: config.yml
   when: zoxide_check.found
