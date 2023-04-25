@@ -13,7 +13,7 @@
     key: "widgetStyle"
     type: str
     value: "Breeze"
-      
+
 - name: Enable file selection with single click.
   kconfig:
     file: "{{ xdg_config_home }}/kdeglobals"
@@ -37,7 +37,7 @@
     mode: "0644"
     owner: "{{ username }}"
     group: "{{ group }}"
-      
+
 - name: Configure GTK 3 and 4.
   ansible.builtin.include_tasks:
     file: "gtk.yml"
@@ -46,7 +46,7 @@
     - "4.0"
   loop_control:
     loop_var: gtk_version
-      
+
 - name: Krunner shortcut.
   kconfig:
     file: "{{ xdg_config_home }}/kglobalshortcutsrc"
@@ -63,7 +63,7 @@
       value: "Alt+Space\tSearch\tAlt+F2\tMeta+Space,Alt+Space\tAlt+F2\tSearch,KRunner"
   loop_control:
     loop_var: setting
-      
+
 - name: Alacritty shortcut.
   kconfig:
     file: "{{ xdg_config_home }}/kglobalshortcutsrc"

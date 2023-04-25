@@ -6,7 +6,7 @@
       - /run/current-system/sw/bin/
     executable: true
   register: kwriteconfig_check
-    
+
 - name: Configure KDE.
   ansible.builtin.include_tasks: config.yml
   when: kwriteconfig_check.found
