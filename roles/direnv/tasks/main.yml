@@ -7,7 +7,7 @@
       - /run/current-system/sw/bin/
     executable: true
   register: direnv_check
-    
+
 - name: Configure direnv.
   ansible.builtin.include_tasks: config.yml
   when: direnv_check.found
