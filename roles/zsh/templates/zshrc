@@ -23,8 +23,21 @@ zle -N down-line-or-beginning-search
 autoload -Uz colors && colors
 
 # history
-setopt appendhistory
-setopt histignorealldups
+setopt APPEND_HISTORY         # append history to the history file
+setopt EXTENDED_HISTORY       # write extended history information
+setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first when trimming history
+setopt HIST_IGNORE_DUPS       # don't record an entry that was just recorded again
+setopt HIST_IGNORE_ALL_DUPS   # delete old recorded entry if new entry is a duplicate
+setopt HIST_FIND_NO_DUPS      # do not display a line previously found
+setopt HIST_IGNORE_SPACE      # ignore commands that start with a space
+setopt HIST_SAVE_NO_DUPS      # don't write duplicate entries in the history file
+setopt HIST_REDUCE_BLANKS     # remove superfluous blanks before recording entry
+setopt HIST_VERIFY            # don't execute immediately upon history expansion
+setopt INC_APPEND_HISTORY     # write to the history file immediately, not when shell exits
+setopt SHARE_HISTORY          # share history between all sessions
+HISTFILE="{{ home }}/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 # keybindings
 ctrl-z-toggle () {
@@ -60,10 +73,6 @@ alias {{ alias[0] }}="{{ alias[1] }}"
 {% endfor %}
 
 # exports
-HISTFILE="{{ home }}/.zsh_history"
-HISTSIZE=1000000
-SAVEHIST=1000000
-HIST_STAMPS="yyyy-mm-dd"
 PATH="{{ home }}/.local/bin:${PATH}"
 
 {% for export in exports %}
