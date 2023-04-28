@@ -4,4 +4,4 @@
 
 - name: Alias ls to exa.
   ansible.builtin.set_fact:
-    aliases: "{{ aliases + [['ls', exa_path], ['ll', exa_path + ' --long --icons']] }}"
+    aliases: "{{ aliases + [['ls', exa_path], ['ll', exa_path + ' --long --icons --group-directories-first --git']] }}"
