@@ -26,6 +26,9 @@
     repo: "{{ plugin.repo }}"
     update: true
   loop:
+    - name: zsh-autopair
+      repo: "https://github.com/hlissner/zsh-autopair"
+      version: master
     - name: zsh-autosuggestions
       repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
       version: master
@@ -35,20 +38,30 @@
     - name: conda-zsh-completion
       repo: "https://github.com/conda-incubator/conda-zsh-completion"
       version: master
-    - name: zsh-autopair
-      repo: "https://github.com/hlissner/zsh-autopair"
-      version: master
   loop_control:
     loop_var: plugin
 
 - name: Load zsh-autopair hook.
   ansible.builtin.slurp:
     src: "{{ home }}/.zsh.d/plugins/zsh-autopair/autopair.zsh"
-  register: autopair_hook
+  register: zsh_autopair_hook
     
 - name: Register zsh-autopair hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [autopair_hook.content | b64decode + '\n' + 'autopair-init\n' ] }}"
+    zsh_hooks: "{{ zsh_hooks + [zsh_autopair_hook.content | b64decode + '\n' + 'autopair-init\n' ] }}"
+
+- name: Load zsh-autosuggestions hook.
+  ansible.builtin.slurp:
+    src: "{{ home }}/.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  register: zsh_autosuggestions_hook
+    
+- name: Register zsh-autosuggestions hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [zsh_autosuggestions_hook.content | b64decode + '\n' ] }}"
+    
+- name: Register zsh-syntax-highlighting hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + ['source ' + home + '/.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\n' ] }}"
 
 - name: Template config files.
   ansible.builtin.template:
