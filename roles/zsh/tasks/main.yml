@@ -19,13 +19,6 @@
     executable: true
   register: zsh_check
 
-- name: Template config files.
-  ansible.builtin.template:
-    src: "templates/zshrc"
-    dest: "{{ home }}/.zshrc"
-    mode: "0700"
-    # validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true') }}"
-
 - name: Install plugins.
   ansible.builtin.git:
     accept_hostkey: yes
@@ -42,5 +35,24 @@
     - name: conda-zsh-completion
       repo: "https://github.com/conda-incubator/conda-zsh-completion"
       version: master
+    - name: zsh-autopair
+      repo: "https://github.com/hlissner/zsh-autopair"
+      version: master
   loop_control:
     loop_var: plugin
+
+- name: Load zsh-autopair hook.
+  ansible.builtin.slurp:
+    src: "{{ home }}/.zsh.d/plugins/zsh-autopair/autopair.zsh"
+  register: autopair_hook
+    
+- name: Register zsh-autopair hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [autopair_hook.content | b64decode + '\n' + 'autopair-init\n' ] }}"
+
+- name: Template config files.
+  ansible.builtin.template:
+    src: "templates/zshrc"
+    dest: "{{ home }}/.zshrc"
+    mode: "0700"
+    # validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true') }}"
