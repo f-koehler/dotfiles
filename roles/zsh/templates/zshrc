@@ -3,16 +3,20 @@ export ZSHD="{{ home }}/.zsh.d"
 [ -f "{{ home }}/.profile" ] && source "{{ home }}/.profile"
 
 
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
-zle_highlight=('paste:none')
 unsetopt BEEP
+setopt AUTO_CD
+setopt GLOB_DOTS
+setopt NOMATCH
+setopt MENU_COMPLETE
+setopt EXTENDED_GLOB
+setopt INTERACTIVE_COMMENTS
 
 # completion system
 autoload -Uz compinit
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu yes select
 zmodload zsh/complist
 _comp_options+=(globdots)
+zle_highlight=('paste:none')
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -62,6 +66,9 @@ bindkey "^[[3~" delete-char
 bindkey "^[[1;3D" backward-word
 bindkey "^[[1;3C" forward-word
 
+bindkey -M menuselect '?' history-incremental-search-forward
+bindkey -M menuselect '/' history-incremental-search-backward
+
 # hooks
 {% for hook in zsh_hooks %}
 {{ hook }}
@@ -87,4 +94,7 @@ fi
 # completions
 fpath+={{ home }}/.zsh.d/plugins/conda-zsh-completion
 fpath+={{ home }}/.zfunc
-compinit
+for dump in "{{ home }}/.zcompdump"(N.mh+24); do
+  compinit
+done
+compinit -C
