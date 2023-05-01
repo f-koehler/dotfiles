@@ -14,7 +14,7 @@
     - "{{ home }}/.ssh/config.d"
   loop_control:
     loop_var: directory
-      
+
 - name: Generate SSH config.
   ansible.builtin.template:
     src: config
@@ -22,7 +22,7 @@
     mode: "0600"
     owner: "{{ username }}"
     group: "{{ group }}"
-      
+
 - name: Generate SSH config for tailscale hosts.
   ansible.builtin.template:
     src: tailscale
