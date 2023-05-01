@@ -1,0 +1,15 @@
+- name: Check if nix is installed.
+  ansible.builtin.stat:
+    path: /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+  register: nix_check
+    
+- name: Get zsh hook.
+  ansible.builtin.slurp:
+    src: "{{ nix_check.stat.path }}"
+  register: nix_zsh_hook
+    
+- name: Add hook.
+  ansible.builtin.set_fact:
+    zsh_hooks: "{{ zsh_hooks + [nix_zsh_hook.content | b64decode] }}"
+  when: nix_check.stat.exists
+  
