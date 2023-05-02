@@ -4,6 +4,7 @@
     paths:
       - "/opt/homebrew/Cellar/fzf/*/shell"
       - "/usr/share/fzf"
+      - "/run/current-system/sw/share/fzf/"
     glob: true
   register: fzf_key_bindings_zsh_check
 
@@ -13,6 +14,7 @@
     paths:
       - "/opt/homebrew/Cellar/fzf/*/shell"
       - "/usr/share/fzf"
+      - "/run/current-system/sw/share/fzf/"
     glob: true
   register: fzf_key_bindings_bash_check
 
@@ -22,6 +24,7 @@
     paths:
       - "/opt/homebrew/Cellar/fzf/*/shell"
       - "/usr/share/fzf"
+      - "/run/current-system/sw/share/fzf/"
     glob: true
   register: fzf_completion_zsh_check
 
@@ -31,6 +34,7 @@
     paths:
       - "/opt/homebrew/Cellar/fzf/*/shell"
       - "/usr/share/fzf"
+      - "/run/current-system/sw/share/fzf/"
     glob: true
   register: fzf_completion_bash_check
 
