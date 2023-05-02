@@ -31,3 +31,7 @@
   ansible.builtin.set_fact:
     fish_hooks: "{{ fish_hooks + [zoxide_fish_hook_result.stdout + '\n'] }}"
   changed_when: false
+    
+- name: Add alias.
+  ansible.builtin.set_fact:
+    aliases: "{{ aliases + [['cd', 'z']] }}"
