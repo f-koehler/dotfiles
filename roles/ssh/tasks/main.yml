@@ -30,3 +30,4 @@
     mode: "0600"
     owner: "{{ username }}"
     group: "{{ group }}"
+  when: "'tailscale' in group_names"
