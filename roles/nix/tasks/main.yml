@@ -14,3 +14,18 @@
     zsh_hooks: "{{ zsh_hooks + [nix_zsh_hook.content | b64decode] }}"
   when: nix_check.stat.exists
   
+- name: Create config dir.
+  ansible.builtin.file:
+    path: "{{ xdg_config_home }}/nix"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: "0700"
+      
+- name: Create config file.
+  ansible.builtin.template:
+    src: nix.conf
+    dest: "{{ xdg_config_home }}/nix/nix.conf"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: "0600"
