@@ -6,7 +6,7 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[commit]
-	gpgsign = true
+# [commit]
+# 	gpgsign = true
 [color]
 	ui = auto
