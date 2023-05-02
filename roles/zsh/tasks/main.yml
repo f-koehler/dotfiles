@@ -16,6 +16,7 @@
     paths:
       - /opt/homebrew/bin
       - /usr/bin
+      - /run/current-system/sw/bin/
     executable: true
   register: zsh_check
 
