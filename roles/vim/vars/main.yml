@@ -1,15 +1,22 @@
 vim_plugins:
   - name: vim-polyglot
     repo: "https://github.com/sheerun/vim-polyglot"
+    version: master
   - name: vim-commentary
     repo: "https://github.com/tpope/vim-commentary.git"
+    version: master
   - name: vim-code-dark
     repo: "https://github.com/tomasiser/vim-code-dark"
+    version: master
   - name: vim-vinegar
     repo: "https://github.com/tpope/vim-vinegar.git"
+    version: master
   - name: vim-airline
     repo: "https://github.com/vim-airline/vim-airline.git"
+    version: master
   - name: vim-airline-themes
     repo: "https://github.com/vim-airline/vim-airline-themes.git"
+    version: master
   - name: vim-gitgutter
     repo: "https://github.com/airblade/vim-gitgutter.git"
+    version: master

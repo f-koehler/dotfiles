@@ -23,6 +23,7 @@
   ansible.builtin.git:
     repo: "{{ instance.1.repo }}"
     dest: "{{ instance.0 }}/{{ instance.1.name }}"
+    version: "{{ instance.1.version }}"
     update: true
     accept_hostkey: true
   loop: "{{ [xdg_data_home + '/nvim/site/pack/plugins/start', home + '/.vim/pack/plugins/start'] | product(vim_plugins) | list }}"

@@ -26,6 +26,7 @@
     accept_hostkey: yes
     dest: "{{ home }}/.zsh.d/plugins/{{ plugin.name }}"
     repo: "{{ plugin.repo }}"
+    version: "{{ plugin.version }}"
     update: true
   loop:
     - name: zsh-autopair

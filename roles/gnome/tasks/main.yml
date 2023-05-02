@@ -1,5 +1,5 @@
 - name: Find executable.
-  ansible.builtin.shell: which dconf
+  ansible.builtin.command: which dconf
   register: dconf_check
   changed_when: false
   ignore_errors: true
@@ -11,7 +11,7 @@
   when: dconf_check.rc == 0
 
 - name: Find executable.
-  ansible.builtin.shell: which gnome-extensions
+  ansible.builtin.command: which gnome-extensions
   register: gnome_extensions_check
   changed_when: false
   ignore_errors: true

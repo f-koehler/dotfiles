@@ -21,7 +21,7 @@
   notify: Restart ssh-agent service.
 
 - name: Flush handlers.
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Enable ssh-agent service.
   ansible.builtin.systemd:
