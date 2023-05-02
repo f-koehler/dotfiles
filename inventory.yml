@@ -18,3 +18,7 @@ all:
           ansible_host: 100.107.23.113
           ansible_port: 22
           ansible_user: fkoehler
+    local:
+      hosts:
+        localhost:
+          ansible_connection: local
