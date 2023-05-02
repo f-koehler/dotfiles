@@ -1,7 +1,7 @@
 - name: Create config dir.
   ansible.builtin.file:
     path: "{{ xdg_config_home }}/tealdeer"
-    owner: "{{ user }}"
+    owner: "{{ username }}"
     group: "{{ group }}"
     mode: "0700"
       
@@ -9,6 +9,6 @@
   ansible.builtin.template:
     src: config.toml
     dest: "{{ xdg_config_home }}/tealdeer/config.toml"
-    owner: "{{ user }}"
+    owner: "{{ username }}"
     group: "{{ group }}"
     mode: "0700"
