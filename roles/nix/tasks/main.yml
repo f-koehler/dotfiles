@@ -7,6 +7,7 @@
   ansible.builtin.slurp:
     src: "{{ nix_check.stat.path }}"
   register: nix_zsh_hook
+  when: nix_check.stat.exists
     
 - name: Add hook.
   ansible.builtin.set_fact:
