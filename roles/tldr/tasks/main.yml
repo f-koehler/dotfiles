@@ -4,6 +4,7 @@
     owner: "{{ username }}"
     group: "{{ group }}"
     mode: "0700"
+    state: directory
       
 - name: Generate config.
   ansible.builtin.template:
