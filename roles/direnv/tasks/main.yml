@@ -12,3 +12,16 @@
 - name: Configure direnv.
   ansible.builtin.include_tasks: config.yml
   when: direnv_check.found
+
+- name: Create config directory.
+  ansible.builtin.file:
+    path: "{{ xdg_config_home }}/direnv"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ group }}"
+    mode: "0700"
+
+- name: Generate direnvrc.
+  ansible.builtin.template:
+    src: direnvrc
+    dest: "{{ xdg_config_home }}/direnv/direnvrc"
