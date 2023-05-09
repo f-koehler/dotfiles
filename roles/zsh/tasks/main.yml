@@ -51,7 +51,7 @@
   ansible.builtin.slurp:
     src: "{{ home }}/.zsh.d/plugins/zsh-autopair/autopair.zsh"
   register: zsh_autopair_hook
-    
+
 - name: Register zsh-autopair hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [zsh_autopair_hook.content | b64decode + '\n' + 'autopair-init\n'] }}"
@@ -60,11 +60,11 @@
   ansible.builtin.slurp:
     src: "{{ home }}/.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
   register: zsh_autosuggestions_hook
-    
+
 - name: Register zsh-autosuggestions hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [zsh_autosuggestions_hook.content | b64decode + '\n'] }}"
-    
+
 - name: Register zsh-syntax-highlighting hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + ['source ' + home + '/.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\n'] }}"
@@ -73,7 +73,7 @@
   ansible.builtin.slurp:
     src: "{{ home }}/.zsh.d/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh"
   register: zsh_sudo_hook
-    
+
 - name: Register sudo hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [zsh_sudo_hook.content | b64decode + '\n'] }}"
@@ -100,7 +100,7 @@
   ansible.builtin.slurp:
     src: "{{ home }}/.zsh.d/plugins/ohmyzsh/plugins/dirhistory/dirhistory.plugin.zsh"
   register: zsh_dirhistory_hook
-    
+
 - name: Register dirhistory hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks + [zsh_dirhistory_hook.content | b64decode + '\n'] }}"
