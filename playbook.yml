@@ -25,6 +25,10 @@
       ansible.builtin.set_fact:
         username: "{{ username_check.stdout }}"
         group: "{{ group_check.stdout }}"
+    - name: Alias xdg-open to open.
+      ansible.builtin.set_fact:
+        aliases: "{{ aliases + [['open', 'xdg-open']] }}"
+      when: ansible_system|lower == "linux"
   roles:
     - alacritty
     - bat
@@ -44,7 +48,7 @@
     - tmux
     - vim
     - xdg
-    - zoxide
+    # - zoxide
 
     - nix
     - fish
