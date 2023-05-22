@@ -69,14 +69,14 @@ bindkey "^[[1;3C" forward-word
 bindkey -M menuselect '?' history-incremental-search-forward
 bindkey -M menuselect '/' history-incremental-search-backward
 
-# hooks
-{% for hook in zsh_hooks %}
-{{ hook }}
-{% endfor %}
-
 # aliases
 {% for alias in aliases %}
 alias {{ alias[0] }}="{{ alias[1] }}"
+{% endfor %}
+
+# hooks
+{% for hook in zsh_hooks %}
+{{ hook }}
 {% endfor %}
 
 # exports
