@@ -112,6 +112,7 @@
     mode: "0600"
     owner: "{{ username }}"
     group: "{{ group }}"
+    validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -euf -pipefail %s', 'true %s') }}"
   loop: "{{ zsh_hooks|dict2items }}"
   loop_control:
     loop_var: hook
@@ -121,4 +122,4 @@
     src: "templates/zshrc"
     dest: "{{ home }}/.zshrc"
     mode: "0600"
-    validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true %s') }}"
+    validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -euf -pipefail %s', 'true %s') }}"
