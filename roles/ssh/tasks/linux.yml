@@ -32,4 +32,4 @@
 
 - name: Add shell hooks.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['[[ -z \"${SSH_AUTH_SOCK}\" ]] && export SSH_AUTH_SOCK=\"' + home + '/.ssh/ssh-agent.socket\"\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'ssh': '[[ -z \"${SSH_AUTH_SOCK}\" ]] && export SSH_AUTH_SOCK=\"' + home + '/.ssh/ssh-agent.socket\"\n'}) }}"

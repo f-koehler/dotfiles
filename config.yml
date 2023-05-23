@@ -6,9 +6,9 @@ aliases:
 exports:
   EDITOR: "/usr/bin/vim"
   GPG_TTY: "$(tty)"
-bash_hooks: []
-zsh_hooks: []
-fish_hooks: []
+bash_hooks: {}
+zsh_hooks: {}
+fish_hooks: {}
 bash_aliases:
   - ["~", "cd {{ home }}"]
   - ["..", "cd .."]

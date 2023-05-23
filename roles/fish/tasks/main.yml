@@ -1,11 +1,27 @@
 - name: Create config directory.
   ansible.builtin.file:
-    path: "{{ xdg_config_home }}/fish"
+    path: "{{ directory }}"
     state: directory
     mode: "0700"
+  loop:
+    - "{{ xdg_config_home }}/fish"
+    - "{{ xdg_config_home }}/fish/hooks"
+  loop_control:
+    loop_var: directory
+
+- name: Store hooks.
+  ansible.builtin.template:
+    src: hook.fish
+    dest: "{{ xdg_config_home }}/fish/hooks/{{ hook.key }}.fish"
+    mode: "0600"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+  loop: "{{ fish_hooks|dict2items }}"
+  loop_control:
+    loop_var: hook
 
 - name: Generate config.
   ansible.builtin.template:
     src: "config.fish"
     dest: "{{ xdg_config_home }}/fish/config.fish"
-    mode: "0644"
+    mode: "0600"

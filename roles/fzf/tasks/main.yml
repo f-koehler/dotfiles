@@ -51,7 +51,7 @@
       register: fzf_key_bindings_zsh_slurp
     - name: Add key-bindings (zsh).
       ansible.builtin.set_fact:
-        zsh_hooks: "{{ zsh_hooks + [fzf_key_bindings_zsh_slurp.content | b64decode] }}"
+        zsh_hooks: "{{ zsh_hooks | combine({'fzf_key_bindings': fzf_key_bindings_zsh_slurp.content | b64decode}) }}"
 
 - name: Add key-bindings (bash).
   when: fzf_key_bindings_bash_check.found
@@ -62,7 +62,7 @@
       register: fzf_key_bindings_bash_slurp
     - name: Add key-bindings (bash).
       ansible.builtin.set_fact:
-        bash_hooks: "{{ bash_hooks + [fzf_key_bindings_bash_slurp.content | b64decode] }}"
+        bash_hooks: "{{ bash_hooks | combine({'fzf_key_bindings': fzf_key_bindings_bash_slurp.content | b64decode}) }}"
 
 - name: Add completion (zsh).
   when: fzf_completion_zsh_check.found
@@ -73,7 +73,7 @@
       register: fzf_completion_zsh_slurp
     - name: Add completion (zsh).
       ansible.builtin.set_fact:
-        zsh_hooks: "{{ zsh_hooks + [fzf_completion_zsh_slurp.content | b64decode] }}"
+        zsh_hooks: "{{ zsh_hooks | combine({'fzf_completion': fzf_completion_zsh_slurp.content | b64decode}) }}"
 
 - name: Add completion (bash).
   when: fzf_completion_bash_check.found
@@ -84,4 +84,4 @@
       register: fzf_completion_bash_slurp
     - name: Add completion (bash).
       ansible.builtin.set_fact:
-        bash_hooks: "{{ bash_hooks + [fzf_completion_bash_slurp.content | b64decode] }}"
+        bash_hooks: "{{ bash_hooks | combine({'bash_completion': fzf_completion_bash_slurp.content | b64decode}) }}"

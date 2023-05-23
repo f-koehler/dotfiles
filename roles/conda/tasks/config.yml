@@ -17,7 +17,7 @@
 
 - name: Register zsh hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [conda_zsh_hook_result.stdout + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'conda': conda_zsh_hook_result.stdout}) }}"
   changed_when: false
 
 - name: Get bash hook.
@@ -27,7 +27,7 @@
 
 - name: Register bash hook.
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [conda_bash_hook_result.stdout + '\n'] }}"
+    bash_hooks: "{{ bash_hooks | combine({'conda': conda_bash_hook_result.stdout}) }}"
   changed_when: false
 
 - name: Get fish hook.
@@ -37,5 +37,5 @@
 
 - name: Register fish hook.
   ansible.builtin.set_fact:
-    fish_hooks: "{{ fish_hooks + [conda_fish_hook_result.stdout + '\n'] }}"
+    fish_hooks: "{{ fish_hooks | combine({'conda': conda_fish_hook_result.stdout}) }}"
   changed_when: false

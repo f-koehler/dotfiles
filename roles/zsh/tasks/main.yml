@@ -6,9 +6,9 @@
   loop:
     - "{{ home }}/.zsh.d"
     - "{{ home }}/.zsh.d/plugins"
+    - "{{ home }}/.zsh.d/hooks"
   loop_control:
     loop_var: directory
-
 
 - name: Find executable.
   search_file:
@@ -54,7 +54,7 @@
 
 - name: Register zsh-autopair hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_autopair_hook.content | b64decode + '\n' + 'autopair-init\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'autopair': zsh_autopair_hook.content | b64decode + '\n' + 'autopair-init'}) }}"
 
 - name: Load zsh-autosuggestions hook.
   ansible.builtin.slurp:
@@ -63,11 +63,11 @@
 
 - name: Register zsh-autosuggestions hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_autosuggestions_hook.content | b64decode + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'autosuggestions': zsh_autosuggestions_hook.content | b64decode}) }}"
 
 - name: Register zsh-syntax-highlighting hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['source ' + home + '/.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'syntax-highlighting': 'source ' + home + '/.zsh.d/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'}) }}"
 
 - name: Load sudo hook.
   ansible.builtin.slurp:
@@ -76,7 +76,7 @@
 
 - name: Register sudo hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_sudo_hook.content | b64decode + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'sudo': zsh_sudo_hook.content | b64decode}) }}"
 
 - name: Load clipboard hook.
   ansible.builtin.slurp:
@@ -85,7 +85,7 @@
 
 - name: Register clipboard hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_clipboard_hook.content | b64decode + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'clipboard': zsh_clipboard_hook.content | b64decode}) }}"
 
 - name: Load copyfile hook.
   ansible.builtin.slurp:
@@ -94,7 +94,7 @@
 
 - name: Register copyfile hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_copyfile_hook.content | b64decode + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'copyfile': zsh_copyfile_hook.content | b64decode}) }}"
 
 - name: Load dirhistory hook.
   ansible.builtin.slurp:
@@ -103,11 +103,22 @@
 
 - name: Register dirhistory hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + [zsh_dirhistory_hook.content | b64decode + '\n'] }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'dirhistory': zsh_dirhistory_hook.content | b64decode}) }}"
+      
+- name: Store hooks.
+  ansible.builtin.template:
+    src: hook.zsh
+    dest: "{{ home }}/.zsh.d/hooks/{{ hook.key }}.zsh"
+    mode: "0600"
+    owner: "{{ username }}"
+    group: "{{ group }}"
+  loop: "{{ zsh_hooks|dict2items }}"
+  loop_control:
+    loop_var: hook
 
 - name: Generate zshrc.
   ansible.builtin.template:
     src: "templates/zshrc"
     dest: "{{ home }}/.zshrc"
-    mode: "0700"
+    mode: "0600"
     validate: "{{ zsh_check.found | ternary(zsh_check.path + ' -ef %s', 'true %s') }}"

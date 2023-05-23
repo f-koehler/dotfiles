@@ -9,11 +9,6 @@
 
 - name: Register zsh hook.
   ansible.builtin.set_fact:
-    bash_hooks: "{{ bash_hooks + [brew_hook_result.stdout + '\n'] }}"
-    zsh_hooks: "{{ zsh_hooks + [brew_hook_result.stdout + '\n'] }}"
+    bash_hooks: "{{ bash_hooks | combine({'brew': brew_hook_result.stdout}) }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'brew': brew_hook_result.stdout + '\nexport FPATH=\"/opt/homebrew/share/zsh/site-functions:${FPATH}\"'}) }}"
   changed_when: false
-
-    # TODO: handle this properly
-- name: Register completions.
-  ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks + ['export FPATH=\"/opt/homebrew/share/zsh/site-functions:${FPATH}\"'] }}"
