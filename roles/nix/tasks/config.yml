@@ -5,7 +5,7 @@
 
 - name: Add hook.
   ansible.builtin.set_fact:
-    zsh_hooks: "{{ zsh_hooks | combine({'nix': [nix_zsh_hook.content | b64decode}) }}"
+    zsh_hooks: "{{ zsh_hooks | combine({'nix': nix_zsh_hook.content | b64decode}) }}"
 
 - name: Create config dir.
   ansible.builtin.file:
