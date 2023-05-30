@@ -93,7 +93,7 @@
 - name: Register dirhistory hook.
   ansible.builtin.set_fact:
     zsh_hooks: "{{ zsh_hooks | combine({'dirhistory': zsh_dirhistory_hook.content | b64decode}) }}"
-      
+
 - name: Store hooks.
   ansible.builtin.template:
     src: hook.zsh
