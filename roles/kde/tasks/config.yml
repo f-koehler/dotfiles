@@ -67,7 +67,7 @@
 - name: Alacritty shortcut.
   kconfig:
     file: "{{ xdg_config_home }}/kglobalshortcutsrc"
-    group: "org.kde.krunner.desktop"
+    group: "Alacritty.desktop"
     key: "{{ setting.key }}"
     type: str
     value: "{{ setting.value }}"
