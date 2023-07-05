@@ -3,7 +3,7 @@ all:
     tailscale:
       hosts:
         mbp2021:
-          ansible_host: 100.65.236.106
+          ansible_host: 100.90.110.7
           ansible_port: 22
           ansible_user: fkoehler
         vps:
