@@ -8,7 +8,7 @@
       - /run/current-system/sw/bin/
     executable: true
   register: zsh_check
-    
+
 - name: Configure zsh.
   ansible.builtin.include_tasks: config.yml
   when: zsh_check.found
