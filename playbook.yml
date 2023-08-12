@@ -29,6 +29,23 @@
       ansible.builtin.set_fact:
         aliases: "{{ aliases + [['open', 'xdg-open']] }}"
       when: ansible_system|lower == "linux"
+    - name: Check if system is using systemd.
+      ansible.builtin.stat:
+        path: /run/systemd/system
+      register: systemd_stat
+    - name: Store whether system is running systemd.
+      ansible.builtin.set_fact:
+        systemd_running: "{{ systemd_stat.stat.exists and systemd.stat.isDir }}"
+    - name: Fix multiplexers on certain systemd systems.
+      ansible.builtin.set_fact:
+        aliases: "{{ aliases + [[tool, 'systemd-run --scope --user ' + tool]] }}"
+      with_items:
+        - tmux
+        - screen
+        - zellij
+      loop_control:
+        loop_var: tool
+      when: systemd_running
   roles:
     - alacritty
     - bat
