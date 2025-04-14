@@ -1,3 +1,5 @@
+**Deprecated**: I now use nix to manage my user config, see: https://github.com/f-koehler/nix-configs
+
 # dotfiles
 
 Configuration for various programs and tools
